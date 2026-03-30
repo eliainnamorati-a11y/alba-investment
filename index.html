@@ -154,7 +154,8 @@
         .initial-content {
             position: absolute;
             bottom: 12vh; /* Bottom load constraint */
-            left: 8%; width: 84%;
+            left: 60px; /* Exactly matches navbar padding */
+            width: calc(100% - 120px);
             transform-origin: top left;
             will-change: transform;
             pointer-events: auto;
@@ -185,7 +186,8 @@
         .secondary-content {
             position: absolute;
             bottom: 12vh; /* Same geometric baseline as title */
-            left: 8%; width: 84%;
+            left: 60px; /* Exactly matches navbar padding */
+            width: calc(100% - 120px);
             pointer-events: auto;
         }
 
@@ -275,7 +277,7 @@
             bottom: 30px;
             left: 0;
             width: 100%;
-            padding: 0 8%;
+            padding: 0 60px; /* Perfectly aligned with navigation bar / hero text */
             box-sizing: border-box;
             z-index: 3;
             display: flex;
