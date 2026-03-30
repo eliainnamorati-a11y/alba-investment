@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alba Investment Partners</title>
+    <style>
+        :root {
+            --bg-color: #fcfcfc;
+            --text-main: #111111;
+            --text-secondary: #555555;
+            --accent: #1e362d; /* Alba deep green */
+            --gold: #cfa85f; /* Alba gold */
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        @font-face {
+            font-family: 'Aperto';
+            src: url('<?php echo get_template_directory_uri(); ?>/LinotypeAperto-Roman.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        html {
+            scroll-snap-type: y proximity;
+        }
+        
+        body {
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, .serif {
+            font-family: 'Aperto', "Georgia", "Times New Roman", serif;
+            font-weight: 400;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 24px 60px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.navbar-scrolled {
+            background: rgba(252, 252, 252, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 12px 60px; /* Thinner navbar when scrolled */
+        }
+
+        .navbar.navbar-scrolled .logo {
+            height: 45px;
+        }
+
+        .logo {
+            cursor: pointer;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            transition: height 0.3s ease;
+        }
+
+        .logo img {
+            max-height: 100%;
+            width: auto;
+            object-fit: contain;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px; /* A bit larger */
+            font-family: 'Aperto', serif;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: capitalize; /* Title case */
+            transition: color 0.3s ease;
+        }
+
+        .navbar.navbar-scrolled .nav-links a {
+            color: var(--text-main);
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Sticky Hero Section */
+        .hero-container {
+            height: 350vh;
+            position: relative;
+            background-color: #0b110e;
+            color: #ffffff;
+        }
+
+        .hero-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            z-index: 1;
+        }
+
+        .hero-bg video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6; /* Slight darkening overlay to make text pop */
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: 2; pointer-events: none;
+            display: block;
+        }
+
+        .initial-content {
+            position: absolute;
+            bottom: 12vh; /* Bottom load constraint */
+            left: 8%; width: 84%;
+            transform-origin: top left;
+            will-change: transform;
+            pointer-events: auto;
+        }
+
+        @keyframes heroTextReveal {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .initial-content h1 {
+            font-size: 5.5vw;
+            line-height: 1.05;
+            max-width: 90%;
+            margin: 0;
+            color: #ffffff;
+            font-family: 'Aperto', "Georgia", "Times New Roman", serif;
+            font-weight: 300;
+            opacity: 0;
+            animation: heroTextReveal 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            animation-delay: 0.2s;
+        }
+
+        .secondary-content {
+            position: absolute;
+            bottom: 12vh; /* Same geometric baseline as title */
+            left: 8%; width: 84%;
+            pointer-events: auto;
+        }
+
+        .founder-img-placeholder,
+        .intro-text,
+        .hero-stat {
+            opacity: 0;
+            transform: translateY(40px);
+            will-change: opacity, transform;
+        }
+
+        .secondary-inner {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .secondary-left {
+            flex: 0 0 350px;
+        }
+
+        .founder-img-placeholder {
+            width: 100%;
+            height: 200px;
+            background: url('<?php echo get_template_directory_uri(); ?>/FINNEWS (1).jpg') center/cover;
+            border-radius: 4px;
+        }
+
+        .secondary-right {
+            flex: 1;
+        }
+
+        .intro-text {
+            font-size: 1.6rem;
+            line-height: 1.4;
+            margin-bottom: 40px;
+            font-weight: 300;
+            color: #ffffff;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 50px;
+        }
+
+        .hero-stat {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .hero-stat::before {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--accent); /* Now use #1a3222 or similar */
+            border: 1px solid #4a6854;
+        }
+
+        .stat-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-details .stat-num {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 2px;
+        }
+
+        .stat-details .stat-label {
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.7);
+            font-family: sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* Bottom Progress Bar */
+        .hero-bottom-bar {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            width: 100%;
+            padding: 0 8%;
+            box-sizing: border-box;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 1px; /* Thinner */
+            background-color: rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0%;
+            background-color: #ffffff; /* White line */
+        }
+
+        /* Scrollytelling Section */
+        .scrollytelling-wrapper {
+            display: flex;
+            position: relative;
+            background-color: #ffffff; /* Perfectly matched to the 'new bridge' pure white sequence */
+            border-top: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: background-color 0.5s ease;
+        }
+
+        .text-column {
+            width: 50%;
+            padding-left: 10%;
+            padding-right: 5%;
+        }
+
+        .canvas-column {
+            width: 50%;
+            position: relative;
+        }
+
+        .normal-section {
+            padding: 100px 10%;
+            background-color: var(--bg-color);
+        }
+
+        .normal-section h2 {
+            font-size: 3.5rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            margin-top: 0;
+        }
+
+        .section-desc {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 800px;
+            margin-bottom: 40px;
+        }
+
+        .canvas-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-color: transparent;
+            transition: background-color 0.5s ease;
+        }
+
+        canvas {
+            max-width: 100%;
+            max-height: 100vh;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+            clip-path: inset(0 2% 0 0);
+        }
+
+        #bridge-canvas-1 {
+            mix-blend-mode: normal;
+        }
+
+        #bridge-canvas-2 {
+            transform: scale(1.4);
+            transform-origin: center center;
+        }
+
+        /* Steps (Text changing sections) */
+        .step {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .step h2 {
+            font-size: 3.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            margin-top: 0;
+        }
+
+        .step p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 450px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-item h3 {
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-family: sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .stat-item h4 {
+            font-size: 4rem;
+            margin: 0;
+            color: var(--accent);
+        }
+        
+        .stat-item p {
+            font-family: sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        /* Footer space */
+        .footer-pad {
+            height: 30vh;
+            background: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Mobile overrides moved to global master query below */
+
+        /* Scrollytelling Mission */
+        .mission-scroll-section {
+            height: 180vh; /* Dramatically faster lighting curve */
+            position: relative;
+            background-color: var(--bg-color);
+            z-index: 5;
+        }
+        
+        .mission-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .mission-container {
+            width: 100%;
+            padding: 0 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Vertically center the title to exactly match the paragraph weight */
+        }
+
+        .mission-left {
+            flex: 0 0 35%;
+        }
+
+        .mission-left h2 {
+            font-size: 3rem;
+            color: var(--text-main);
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .mission-right {
+            flex: 1;
+            max-width: 800px;
+        }
+
+        #mission-text {
+            font-size: 2.2rem;
+            line-height: 1.5;
+            margin: 0;
+            color: rgba(17, 17, 17, 0.15); /* light grey base */
+            font-weight: 400;
+            will-change: transform;
+            transform: translateY(100px); /* Initial position */
+        }
+
+        .mission-word {
+            transition: color 0.1s;
+        }
+        .mission-word.active {
+            color: var(--text-main);
+        }
+
+
+
+        /* Scroll Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: opacity, transform;
+        }
+        .fade-up.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-1 { transition-delay: 0.1s; }
+
+        /* Built on Principles - Arc Section */
+        .arc-section {
+            height: 400vh;
+            background-color: #1a3622; /* Custom dark green background */
+            color: #ffffff;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .arc-snap-markers {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex; flex-direction: column;
+            pointer-events: none;
+        }
+        .arc-snap-target {
+            flex: 1; /* Divides the section into exactly 4 blocks of 100vh each */
+            scroll-snap-align: start;
+        }
+        
+        .arc-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .arc-title {
+            position: absolute;
+            top: 15vh;
+            left: 5vw;
+            font-size: 3.5rem; /* Matched to .normal-section h2 perfectly */
+            font-weight: 300;
+            color: #ffffff;
+            margin: 0;
+            line-height: 1.1;
+            z-index: 30;
+            font-family: 'Aperto', "Georgia", serif;
+            letter-spacing: -1px;
+        }
+
+        .arc-content-wrapper {
+            position: absolute;
+            top: 60vh; /* Lowered significantly */
+            left: 50%;
+            text-align: center;
+            z-index: 20;
+            width: 80%;
+            max-width: 600px;
+            opacity: 0;
+            transform: translateX(-50%) scale(0.8);
+            will-change: opacity, transform;
+        }
+
+        .arc-active-word {
+            font-family: 'Aperto', "Georgia", serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            opacity: 1;
+            transition: opacity 0.4s ease;
+            letter-spacing: -0.5px;
+        }
+
+        .arc-active-desc {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.6;
+            transition: opacity 0.4s ease;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .arc-circle-container {
+            position: absolute;
+            top: 45vh; /* Lowered the wheel significantly */
+            left: 50%;
+            width: 140vw; 
+            height: 140vw; 
+            pointer-events: none;
+            opacity: 0;
+            transform: translateX(-50%) scale(0.5);
+            will-change: opacity, transform;
+        }
+
+        .arc-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            position: relative;
+            will-change: transform;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Makes the snapping wheel spin buttery smooth */
+        }
+
+        .arc-spoke {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            transform-origin: center center;
+            will-change: transform;
+        }
+
+        .arc-node {
+            position: absolute;
+            top: -22px; /* Pull it exactly to center on the border line */
+            left: 50%;
+            width: 44px;
+            height: 44px;
+            margin-left: -22px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: #050505;
+            color: rgba(255,255,255,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: color 0.3s, border-color 0.3s;
+        }
+        
+        .arc-node-inner {
+            will-change: transform;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Match wheel spin perfectly to stay upright */
+        }
+
+        .arc-apex-indicator {
+            position: absolute;
+            top: 36px; /* Exactly dropping under the active node natively */
+            left: 0;
+            width: 100%; /* Force absolutely perfect centering to overcome subpixel drift */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .apex-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--gold);
+            /* Intentionally removed the glowing drop shadow */
+        }
+
+        .apex-line {
+            width: 1px;
+            height: 12vh;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+        }
+
+
+
+        /* Modern Green Footer */
+        .alba-footer {
+            background-color: #1a3622;
+            color: #ffffff;
+            padding: 80px 10% 40px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            position: relative;
+            z-index: 20;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            scroll-snap-align: end; 
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            height: 40px;
+            margin-bottom: 25px;
+            object-fit: contain;
+            opacity: 0.9;
+        }
+
+        .footer-mission {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .footer-links-grid {
+            display: flex;
+            gap: 80px;
+        }
+
+        .footer-column h4 {
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: inherit;
+        }
+
+        .footer-column a {
+            display: block;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            font-weight: 300;
+        }
+
+        .footer-column a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .legal-links a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .legal-links a:hover {
+            color: #ffffff;
+        }
+
+        /* --- MASTER MOBILE RESPONSIVE BLOCK --- */
+        @media (max-width: 900px) {
+            /* General & Navbar */
+            .nav-links { display: none; }
+            .navbar { padding: 15px 20px; }
+            .navbar.navbar-scrolled { padding: 10px 20px; }
+            .logo { height: 40px; }
+
+            /* Hero section */
+            .hero-container { height: 250vh; } 
+            .hero-content {
+                height: 100vh; top: 0; left: 0; width: 100%; display: block;
+            }
+            .initial-content {
+                position: absolute; bottom: 8vh; width: 90%; left: 5%; text-align: left; transform-origin: left center;
+            }
+            .initial-content h1 { font-size: 2.8rem; line-height: 1.05; text-align: left; }
+            .secondary-content {
+                position: absolute; bottom: 8vh; width: 90%; left: 5%;
+            }
+            .secondary-inner { flex-direction: column; gap: 20px; align-items: flex-start; }
+            .secondary-left { width: 100%; }
+            .founder-img-placeholder { width: 100%; height: auto; aspect-ratio: 16/9; flex: none; }
+            .intro-text { font-size: 1.15rem; margin-bottom: 25px; text-align: left; }
+            .hero-stats { gap: 15px; flex-wrap: wrap; justify-content: flex-start; }
+            .stat-details .stat-num { font-size: 1.1rem; }
+            .hero-bottom-bar { display: none; } /* Clear screen clutter on load */
+
+            /* Scrollytelling Bridge */
+            .scrollytelling-wrapper, .scrollytelling-wrapper.scrolly-reverse {
+                display: block; position: relative;
+            }
+            .canvas-column {
+                position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+                z-index: 10; pointer-events: none; padding: 0; overflow: hidden;
+            }
+            .canvas-sticky {
+                position: sticky; top: 0; height: 45vh; border: none; align-items: stretch; justify-content: center; background: linear-gradient(to bottom, #ffffff 85%, rgba(255,255,255,0)); display: flex;
+            }
+            canvas { max-width: 90%; max-height: 90%; mix-blend-mode: normal; margin-top: 5vh; }
+            .text-column {
+                position: relative; z-index: 5; width: 100%; padding: 45vh 5% 5vh; /* Prevents text colliding mathematically with top sticky container */
+            }
+            .step {
+                min-height: 70vh; justify-content: center; padding-bottom: 15vh; text-align: left;
+            }
+            
+            /* Mission */
+            .mission-container { flex-direction: column; gap: 30px; padding-top: 80px; align-items: flex-start; }
+            .mission-left h2 { font-size: 2.2rem; text-align: left; }
+            #mission-text { font-size: 1.8rem; line-height: 1.4; text-align: left; }
+            .normal-section { padding: 60px 8%; text-align: left; }
+            .normal-section h2, .step h2 { font-size: 2.4rem; letter-spacing: -1px; }
+            .section-desc { font-size: 1.1rem; margin: 0 0 30px 0; }
+            .stats-grid, .features-grid { grid-template-columns: 1fr; gap: 30px; }
+            .stat-item h4 { font-size: 3.5rem; letter-spacing: -2px; }
+
+            /* Arc "Built on Principles" */
+            .arc-title { font-size: 2.4rem; top: 8vh; text-align: left; left: 0; width: 100%; padding: 0 5%; box-sizing: border-box; }
+            .arc-circle-container { 
+                top: 55vh; width: 170vw; height: 170vw; /* Perfect native dial UX placement */
+            }
+            .arc-content-wrapper { top: 25vh; width: 90%; left: 5%; text-align: left; }
+            .arc-active-word { font-size: 2.2rem; margin-bottom: 0.5rem; letter-spacing: -0.5px; }
+            .arc-active-desc { font-size: 1rem; margin: 0; }
+
+            /* Footer */
+            .footer-top { flex-direction: column; gap: 40px; text-align: left; align-items: flex-start; }
+            .footer-brand { display: flex; flex-direction: column; align-items: flex-start; }
+            .footer-links-grid { flex-wrap: wrap; gap: 30px; flex-direction: column; text-align: left; }
+            .footer-bottom { flex-direction: column; gap: 15px; align-items: flex-start; text-align: left; }
+            .alba-footer { padding: 50px 8% 30px; }
+        }
+    </style>
+<?php wp_head(); ?>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="logo">
+            <img src="<?php echo get_template_directory_uri(); ?>/logos/Untitled%20design%20(73).png" id="navbar-logo" alt="Alba Investment Partners">
+        </div>
+        <div class="nav-links">
+            <a href="#">About Us</a>
+            <a href="#">Credit Opportunities</a>
+            <a href="#">Private Wealth</a>
+            <a href="#">News</a>
+        </div>
+    </nav>
+
+    <!-- Sticky Scrollytelling Hero Section -->
+    <div class="hero-container" id="hero-section">
+        <div class="hero-sticky">
+            <div class="hero-bg">
+                <video autoplay loop muted playsinline>
+                    <source src="<?php echo get_template_directory_uri(); ?>/Untitled design (1).mp4" type="video/mp4">
+                </video>
+            </div>
+            
+            <!-- Hero Wrapper for Text and Content -->
+            <div class="hero-content">
+                <div class="initial-content" id="hero-initial">
+                    <h1>Investing with Insight,<br>Partnering with Integrity</h1>
+                </div>
+                
+                <div class="secondary-content" id="hero-secondary">
+                    <div class="secondary-inner">
+                        <div class="secondary-left">
+                            <div class="founder-img-placeholder"></div>
+                        </div>
+                        <div class="secondary-right">
+                            <p class="intro-text">Alba is an independent investment management boutique dedicated to providing superior risk-adjusted returns in fixed income and credit.</p>
+                            
+                            <div class="hero-stats">
+                                <div class="hero-stat">
+                                    <div class="stat-details">
+                                        <span class="stat-num">30+</span>
+                                        <span class="stat-label">INVESTMENT EXPERIENCE</span>
+                                    </div>
+                                </div>
+                                <div class="hero-stat">
+                                    <div class="stat-details">
+                                        <span class="stat-num">1</span>
+                                        <span class="stat-label">FLAGSHIP FUND</span>
+                                    </div>
+                                </div>
+                                <div class="hero-stat">
+                                    <div class="stat-details">
+                                        <span class="stat-num">2024</span>
+                                        <span class="stat-label">FIRM FOUNDED</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Progress bar -->
+            <div class="hero-bottom-bar">
+                <div class="progress-track">
+                    <div class="progress-fill" id="hero-progress"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scrollytelling Mission Section -->
+    <section class="mission-scroll-section" id="mission-scroll-section">
+        <div class="mission-sticky">
+            <div class="mission-container">
+                <div class="mission-left">
+                    <h2>Our Mission</h2>
+                </div>
+                <div class="mission-right">
+                    <p id="mission-text">For nearly a decade, our Founding Partners have collaborated to manage the fixed income and credit allocation of a major European single family office. We apply the same analytical rigour, independence, and founder capital invested alongside yours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scrollytelling Section 1 (Image Left) -->
+    <div class="scrollytelling-wrapper scrolly-reverse" id="scroll-section-1">
+        <div class="canvas-column">
+            <div class="canvas-sticky">
+                <canvas id="bridge-canvas-1"></canvas>
+            </div>
+        </div>
+        
+        <div class="text-column">
+            <div class="step" style="min-height: 150vh; justify-content: flex-start; padding-top: 20vh;">
+                <h2>Credit Expertise</h2>
+                <p>Managing assets with discipline and a relentless focus on sustainable, conflict-free growth across all verticals.</p>
+                <div class="stats-grid">
+                    <div class="stat-item"><h4>500M+</h4><p>AUM</p></div>
+                    <div class="stat-item"><h4>30+</h4><p>Years</p></div>
+                    <div class="stat-item"><h4>20+</h4><p>Case Studies</p></div>
+                    <div class="stat-item"><h4>95%</h4><p>Retention</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scrollytelling Section 2 (Image Right) -->
+    <div class="scrollytelling-wrapper" id="scroll-section-2" style="background-color: #ffffff;">
+        <div class="text-column">
+            <div class="step" style="min-height: 150vh; justify-content: flex-start; padding-top: 20vh;">
+                <h2>Private Wealth</h2>
+                <p>Applying the same structured rigor to private capital, maintaining true alignment with our investors.</p>
+                <div class="stats-grid">
+                    <div class="stat-item"><h4>1B+</h4><p>Target AUM</p></div>
+                    <div class="stat-item"><h4>100%</h4><p>Alignment</p></div>
+                    <div class="stat-item"><h4>15+</h4><p>Specialists</p></div>
+                    <div class="stat-item"><h4>24/7</h4><p>Access</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="canvas-column">
+            <div class="canvas-sticky">
+                <canvas id="bridge-canvas-2"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Built on Principles -> Arc Section -->
+    <section class="arc-section" id="arc-section">
+        <!-- Invisible snap markers for perfect scrolling interpolation -->
+        <div class="arc-snap-markers">
+            <div class="arc-snap-target"></div>
+            <div class="arc-snap-target"></div>
+            <div class="arc-snap-target"></div>
+            <div class="arc-snap-target"></div>
+        </div>
+        
+        <div class="arc-sticky">
+            <h2 class="arc-title">Built on<br>principles ...</h2>
+            
+            <div class="arc-content-wrapper">
+                <div class="arc-active-word" id="arc-word">Analytical Rigour</div>
+                <p class="arc-active-desc" id="arc-desc">We believe deep due diligence is the cornerstone of sustainable credit performance.</p>
+            </div>
+
+            <div class="arc-circle-container">
+                <div class="arc-circle" id="arc-circle">
+                    <!-- Nodes orbit the circle via spokes strictly solving rotational pivot drift -->
+                    <div class="arc-spoke" data-angle="-45">
+                        <div class="arc-node">
+                            <div class="arc-node-inner">1</div>
+                        </div>
+                    </div>
+                    <div class="arc-spoke" data-angle="-15">
+                        <div class="arc-node">
+                            <div class="arc-node-inner">2</div>
+                        </div>
+                    </div>
+                    <div class="arc-spoke" data-angle="15">
+                        <div class="arc-node">
+                            <div class="arc-node-inner">3</div>
+                        </div>
+                    </div>
+                    <div class="arc-spoke" data-angle="45">
+                        <div class="arc-node">
+                            <div class="arc-node-inner">4</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Stationary Apex Indicator -->
+                <div class="arc-apex-indicator">
+                    <div class="apex-dot"></div>
+                    <div class="apex-line"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern Green Footer -->
+    <footer class="alba-footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="<?php echo get_template_directory_uri(); ?>/logos/Untitled%20design%20(73).png" alt="Alba Investment Partners" class="footer-logo">
+                    <p class="footer-mission">Preserving capital, ensuring enduring growth in fixed income and credit markets.</p>
+                </div>
+                
+                <div class="footer-links-grid">
+                    <div class="footer-column">
+                        <h4>Firm</h4>
+                        <a href="#">About Us</a>
+                        <a href="#">Our Philosophy</a>
+                        <a href="#">Leadership</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Strategies</h4>
+                        <a href="#">Credit Opportunities</a>
+                        <a href="#">Private Wealth</a>
+                        <a href="#">Absolute Return</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <a href="#">News & Insights</a>
+                        <a href="#">Contact Us</a>
+                        <a href="#">Client Portal</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 Alba Investment Partners. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Regulatory Disclosures</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const bridgeFrameCount = 192;
+        const lighthouseFrameCount = 192;
+        const currentBridgeFrame = index => `new%20bridge/${index.toString().padStart(5, '0')}.png`;
+        const currentLighthouseFrame = index => `lighthouse/${index.toString().padStart(5, '0')}.png`;
+
+        const bridgeImages = [];
+        const lighthouseImages = [];
+
+        // Setup both canvases
+        const canvas1 = document.getElementById('bridge-canvas-1');
+        const ctx1 = canvas1.getContext('2d');
+        const scroll1 = document.getElementById('scroll-section-1');
+
+        const canvas2 = document.getElementById('bridge-canvas-2');
+        const ctx2 = canvas2.getContext('2d');
+        const scroll2 = document.getElementById('scroll-section-2');
+
+        // Load Bridge First Image
+        const firstBridge = new Image();
+        firstBridge.src = currentBridgeFrame(1);
+        firstBridge.onload = () => {
+            canvas1.width = firstBridge.naturalWidth;
+            canvas1.height = firstBridge.naturalHeight;
+            ctx1.drawImage(firstBridge, 0, 0);
+        };
+        bridgeImages[1] = firstBridge;
+
+        // Load Lighthouse First Image
+        const firstLighthouse = new Image();
+        firstLighthouse.src = currentLighthouseFrame(1);
+        firstLighthouse.onload = () => {
+            canvas2.width = firstLighthouse.naturalWidth;
+            canvas2.height = firstLighthouse.naturalHeight;
+            ctx2.drawImage(firstLighthouse, 0, 0);
+        };
+        lighthouseImages[1] = firstLighthouse;
+
+        // Preload rest of images
+        for (let i = 2; i <= bridgeFrameCount; i++) {
+            const img = new Image();
+            img.src = currentBridgeFrame(i);
+            bridgeImages[i] = img;
+        }
+        for (let i = 2; i <= lighthouseFrameCount; i++) {
+            const img = new Image();
+            img.src = currentLighthouseFrame(i);
+            lighthouseImages[i] = img;
+        }
+
+        function handleCanvasScroll(scrollElem, canvasElem, ctx, imgArray, fCount) {
+            if (!scrollElem || !canvasElem || !ctx) return;
+            const sectionTop = scrollElem.offsetTop;
+            const scrollableDistance = scrollElem.scrollHeight - window.innerHeight;
+            let fraction = (window.scrollY - sectionTop) / scrollableDistance;
+            fraction = Math.max(0, Math.min(1, fraction));
+            const frameIndex = Math.min(fCount, Math.max(1, Math.ceil(fraction * fCount)));
+            
+            requestAnimationFrame(() => {
+                if (imgArray[frameIndex] && imgArray[frameIndex].complete) {
+                    ctx.clearRect(0, 0, canvasElem.width, canvasElem.height);
+                    ctx.drawImage(imgArray[frameIndex], 0, 0);
+                }
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            handleCanvasScroll(scroll1, canvas1, ctx1, bridgeImages, bridgeFrameCount);
+            handleCanvasScroll(scroll2, canvas2, ctx2, lighthouseImages, lighthouseFrameCount);
+        });
+
+        // Hero animation logic
+        const heroSection = document.getElementById('hero-section');
+        const heroInitial = document.getElementById('hero-initial');
+        
+        const animatedElements = [
+            document.querySelector('.founder-img-placeholder'),
+            document.querySelector('.intro-text'),
+            ...document.querySelectorAll('.hero-stat')
+        ];
+
+        function interpolate(progress, start, end, startVal, endVal) {
+            if (progress <= start) return startVal;
+            if (progress >= end) return endVal;
+            return startVal + ((progress - start) / (end - start)) * (endVal - startVal);
+        }
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const navLogo = document.getElementById('navbar-logo');
+            
+            if (heroSection) {
+                const scrollable = heroSection.scrollHeight - window.innerHeight;
+                if (window.scrollY >= scrollable - 50) { // Slight offset to trigger exactly at transition
+                    if (navbar) navbar.classList.add('navbar-scrolled');
+                    if (navLogo && !navLogo.src.includes('72')) navLogo.src = '<?php echo get_template_directory_uri(); ?>/logos/Untitled%20design%20(72).png';
+                } else {
+                    if (navbar) navbar.classList.remove('navbar-scrolled');
+                    if (navLogo && !navLogo.src.includes('73')) navLogo.src = '<?php echo get_template_directory_uri(); ?>/logos/Untitled%20design%20(73).png';
+                }
+            }
+
+            if (!heroSection) return;
+            const heroRect = heroSection.getBoundingClientRect();
+            const scrollDistance = heroSection.offsetHeight - window.innerHeight;
+            let progress = -heroRect.top / Math.max(1, scrollDistance);
+            progress = Math.max(0, Math.min(1, progress));
+
+            const isMobile = window.innerWidth <= 900;
+            
+            // Execute the precise layout math pushing the h1 explicitly out of the way to uncover identically stacked secondary items
+            const targetY = isMobile ? -5 : -32; // Explicitly calculated to exact match secondary content overlap height
+            const initialY = interpolate(progress, 0, 0.4, 0, targetY); 
+            
+            // Crossfade cleanly on mobile, hold firm 1 opacity continuously desktop
+            const initialOp = isMobile ? interpolate(progress, 0, 0.25, 1, 0) : 1; 
+            
+            heroInitial.style.transform = `translateY(${initialY}vh)`;
+            
+            if (isMobile) {
+                heroInitial.style.opacity = initialOp;
+            } else {
+                heroInitial.style.opacity = 1;
+            }
+
+
+            // Animate secondary elements progressively
+            animatedElements.forEach((el, index) => {
+                if (!el) return;
+                const startP = 0.15 + (index * 0.12); // progressive stagger
+                const endP = startP + 0.25;
+                
+                const elemOpacity = interpolate(progress, startP, endP, 0, 1);
+                const elemY = interpolate(progress, startP, endP, 40, 0);
+                
+                el.style.opacity = elemOpacity;
+                el.style.transform = `translateY(${elemY}px)`;
+            });
+
+            // Update the scroll progress bar
+            const heroProgressFill = document.getElementById('hero-progress');
+            if (heroProgressFill) {
+                heroProgressFill.style.width = `${progress * 100}%`;
+            }
+        });
+
+        // Setup Mission text scrub
+        const missionTextElem = document.getElementById('mission-text');
+        if (missionTextElem) {
+            const words = missionTextElem.innerText.split(' ');
+            missionTextElem.innerHTML = '';
+            words.forEach(word => {
+                const span = document.createElement('span');
+                span.className = 'mission-word';
+                span.innerText = word + ' ';
+                missionTextElem.appendChild(span);
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            const missionSection = document.getElementById('mission-scroll-section');
+            if (missionSection && missionTextElem) {
+                const rect = missionSection.getBoundingClientRect();
+                const scrollable = missionSection.offsetHeight - window.innerHeight;
+                let progress = -rect.top / Math.max(1, scrollable);
+                
+                // Add a small buffer so it starts filling after 10% scroll and fully fills by 90%
+                let fillProgress = (progress - 0.1) / 0.8;
+                fillProgress = Math.max(0, Math.min(1, fillProgress));
+                
+                const spans = missionTextElem.querySelectorAll('.mission-word');
+                const revealCount = Math.floor(fillProgress * spans.length);
+                
+                spans.forEach((span, i) => {
+                    if (i < revealCount) {
+                        span.classList.add('active');
+                    } else {
+                        span.classList.remove('active');
+                    }
+                });
+
+                // Apply graceful upwards scroll to text as section is scrubbed
+                const clampedProgress = Math.max(0, Math.min(1, progress));
+                const textY = 100 - (200 * clampedProgress); // Moves from 100px to -100px
+                missionTextElem.style.transform = `translateY(${textY}px)`;
+            }
+        });
+
+        // Built on Principles - Arc Section Logic
+        const arcSection = document.getElementById('arc-section');
+        const arcCircle = document.getElementById('arc-circle');
+        const arcWord = document.getElementById('arc-word');
+        const arcDesc = document.getElementById('arc-desc');
+        const arcSpokes = document.querySelectorAll('.arc-spoke');
+        
+        const arcData = [
+            { title: "Analytical Rigour", desc: "We believe deep due diligence is the cornerstone of sustainable credit performance." },
+            { title: "Independence", desc: "Long-term relationships built on reliability and complete objectivity." },
+            { title: "Alignment", desc: "Founder capital is continually invested securely alongside yours." },
+            { title: "Long-Term Focus", desc: "Tailored market strategies designed to perform steadily through entire cycles." }
+        ];
+
+        // Initialize values
+        if (arcSpokes.length > 0) {
+            arcSpokes.forEach(spoke => {
+                const angle = parseFloat(spoke.getAttribute('data-angle'));
+                spoke.style.transform = `rotate(${angle}deg)`;
+            });
+            const firstNode = arcSpokes[0].querySelector('.arc-node');
+            if (firstNode) {
+                firstNode.style.borderColor = 'var(--gold)';
+                firstNode.style.color = 'var(--gold)';
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            if (arcSection && arcCircle) {
+                const rect = arcSection.getBoundingClientRect();
+                
+                // 1. Dynamic scrub expansion when scrolling INTO the section
+                const containerElem = document.querySelector('.arc-circle-container');
+                const contentElem = document.querySelector('.arc-content-wrapper');
+                
+                if (rect.top > 0 && rect.top <= window.innerHeight) {
+                    let entryProgress = 1 - (rect.top / window.innerHeight);
+                    entryProgress = Math.max(0, Math.min(1, entryProgress));
+                    
+                    const circleScale = 0.5 + (0.5 * entryProgress);
+                    if (containerElem) {
+                        containerElem.style.transform = `translateX(-50%) scale(${circleScale})`;
+                        containerElem.style.opacity = entryProgress;
+                    }
+                    
+                    const contentScale = 0.8 + (0.2 * entryProgress);
+                    if (contentElem) {
+                        contentElem.style.transform = `translateX(-50%) scale(${contentScale})`;
+                        contentElem.style.opacity = entryProgress;
+                    }
+                } else if (rect.top <= 0) {
+                    // Fully visible
+                    if (containerElem) {
+                        containerElem.style.transform = `translateX(-50%) scale(1)`;
+                        containerElem.style.opacity = 1;
+                    }
+                    if (contentElem) {
+                        contentElem.style.transform = `translateX(-50%) scale(1)`;
+                        contentElem.style.opacity = 1;
+                    }
+                }
+                
+                // 2. Wheel rotation logic
+                const scrollDistance = arcSection.offsetHeight - window.innerHeight;
+                let progress = -rect.top / Math.max(1, scrollDistance);
+                progress = Math.max(0, Math.min(1, progress));
+                
+                // Determine active index based on scroll position safely snapped explicitly to 0, 1, 2, 3
+                let activeIndex = Math.floor(progress * 3.99); 
+                
+                // Directly snap only to exact milestone node angles (1, 2, 3, 4)
+                const targetAngles = [45, 15, -15, -45];
+                const arcRotation = targetAngles[activeIndex];
+                
+                // Since the wheel element has `transition`, it spins smoothly to snap exactly into place natively
+                arcCircle.style.transform = `rotate(${arcRotation}deg)`;
+                
+                // Counter-rotate the inner digits safely
+                arcSpokes.forEach(spoke => {
+                    const angle = parseFloat(spoke.getAttribute('data-angle'));
+                    const inner = spoke.querySelector('.arc-node-inner');
+                    const totalAngle = angle + arcRotation;
+                    if (inner) {
+                        inner.style.transform = `rotate(${-totalAngle}deg)`;
+                    }
+                });
+
+                // Update Text Content natively using existing activeIndex
+                
+                if (arcWord.dataset.current !== activeIndex.toString()) {
+                    arcWord.style.opacity = '0';
+                    arcDesc.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        arcWord.innerText = arcData[activeIndex].title;
+                        arcDesc.innerText = arcData[activeIndex].desc;
+                        arcWord.style.opacity = '1';
+                        arcDesc.style.opacity = '1';
+                    }, 200);
+                    
+                    arcWord.dataset.current = activeIndex;
+
+                    // Highlight the active node's border
+                    arcSpokes.forEach((spoke, idx) => {
+                        const node = spoke.querySelector('.arc-node');
+                        if (node) {
+                            if (idx === activeIndex) {
+                                node.style.borderColor = 'var(--gold)';
+                                node.style.color = 'var(--gold)';
+                            } else {
+                                node.style.borderColor = 'rgba(255,255,255,0.2)';
+                                node.style.color = 'rgba(255,255,255,0.8)';
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
+        // Intersection Observer for fade-up animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+<?php wp_footer(); ?>
+</body>
+</html>
