@@ -244,11 +244,14 @@
         .hero-stat::before {
             content: '';
             display: block;
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
-            background-color: var(--accent); /* Now use #1a3222 or similar */
-            border: 1px solid #4a6854;
+            background-color: var(--accent);
+            border: 4px solid transparent;
+            box-shadow: 0 0 0 0.5px var(--accent); /* Hairline sub-pixel ring */
+            background-clip: padding-box;
+            box-sizing: content-box;
         }
 
         .stat-details {
@@ -565,6 +568,8 @@
             letter-spacing: -1px;
         }
 
+        .arc-mobile-list { display: none; }
+
         .arc-content-wrapper {
             position: absolute;
             top: 60vh; /* Lowered significantly */
@@ -727,12 +732,12 @@
 
         .footer-column h4 {
             color: #ffffff;
-            font-size: 1.1rem;
+            font-size: 1.15rem; /* Scaled slightly for Aperto rendering */
             font-weight: 400;
             margin-bottom: 25px;
-            text-transform: uppercase;
+            text-transform: capitalize;
             letter-spacing: 1px;
-            font-family: inherit;
+            font-family: 'Aperto', "Georgia", "Times New Roman", serif;
         }
 
         .footer-column a {
@@ -800,8 +805,8 @@
                 position: absolute; bottom: 8vh; width: 90%; left: 5%;
             }
             .secondary-inner { flex-direction: column; gap: 20px; align-items: flex-start; }
-            .secondary-left { width: 100%; }
-            .founder-img-placeholder { width: 100%; height: auto; aspect-ratio: 16/9; flex: none; }
+            .secondary-left { display: none !important; }
+            .founder-img-placeholder { display: none !important; }
             .intro-text { font-size: 1.15rem; margin-bottom: 25px; text-align: left; }
             .hero-stats { gap: 15px; flex-wrap: wrap; justify-content: flex-start; }
             .stat-details .stat-num { font-size: 1.1rem; }
@@ -836,14 +841,20 @@
             .stats-grid, .features-grid { grid-template-columns: 1fr; gap: 30px; }
             .stat-item h4 { font-size: 3.5rem; letter-spacing: -2px; }
 
-            /* Arc "Built on Principles" */
-            .arc-title { font-size: 2.4rem; top: 8vh; text-align: left; left: 0; width: 100%; padding: 0 5%; box-sizing: border-box; }
-            .arc-circle-container { 
-                top: 55vh; width: 170vw; height: 170vw; /* Perfect native dial UX placement */
-            }
-            .arc-content-wrapper { top: 25vh; width: 90%; left: 5%; text-align: left; }
-            .arc-active-word { font-size: 2.2rem; margin-bottom: 0.5rem; letter-spacing: -0.5px; }
-            .arc-active-desc { font-size: 1rem; margin: 0; }
+            /* Arc "Built on Principles" - Brutally Simplified for Mobile */
+            .arc-section { height: auto !important; min-height: 100vh; padding: 100px 0 80px; }
+            .arc-snap-markers { display: none !important; }
+            .arc-sticky { position: relative !important; height: auto !important; padding: 0 8%; overflow: visible; align-items: flex-start; justify-content: flex-start; }
+            
+            .arc-title { position: relative; top: 0; left: 0; width: 100%; padding: 0; margin-bottom: 50px; font-size: 2.8rem; text-align: left; }
+            
+            .arc-content-wrapper, .arc-circle-container { display: none !important; }
+            
+            .arc-mobile-list { display: flex; flex-direction: column; gap: 40px; width: 100%; }
+            .arc-mobile-item { display: flex; gap: 20px; align-items: flex-start; }
+            .arc-mobile-num { flex: 0 0 36px; height: 36px; border-radius: 50%; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 1rem; font-family: sans-serif; }
+            .arc-mobile-text h3 { margin: 0 0 10px 0; font-size: 1.6rem; color: #ffffff; font-family: 'Aperto', "Georgia", serif; font-weight: 400; letter-spacing: -0.5px; }
+            .arc-mobile-text p { margin: 0; font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.5; font-family: sans-serif; }
 
             /* Footer */
             .footer-top { flex-direction: column; gap: 40px; text-align: left; align-items: flex-start; }
@@ -873,7 +884,7 @@
         <div class="hero-sticky">
             <div class="hero-bg">
                 <video autoplay loop muted playsinline>
-                    <source src="Untitled design (1).mp4" type="video/mp4">
+                    <source src="Untitled design (1) copy.mp4" type="video/mp4">
                 </video>
             </div>
             
@@ -949,7 +960,7 @@
         
         <div class="text-column">
             <div class="step" style="min-height: 150vh; justify-content: flex-start; padding-top: 20vh;">
-                <h2>Credit Expertise</h2>
+                <h2>Credit Opportunities</h2>
                 <p>Managing assets with discipline and a relentless focus on sustainable, conflict-free growth across all verticals.</p>
                 <div class="stats-grid">
                     <div class="stat-item"><h4>500M+</h4><p>AUM</p></div>
@@ -999,6 +1010,38 @@
             <div class="arc-content-wrapper">
                 <div class="arc-active-word" id="arc-word">Analytical Rigour</div>
                 <p class="arc-active-desc" id="arc-desc">We believe deep due diligence is the cornerstone of sustainable credit performance.</p>
+            </div>
+
+            <!-- Simplified Mobile List Fallback -->
+            <div class="arc-mobile-list">
+                <div class="arc-mobile-item">
+                    <div class="arc-mobile-num">1</div>
+                    <div class="arc-mobile-text">
+                        <h3>Analytical Rigour</h3>
+                        <p>We believe deep due diligence is the cornerstone of sustainable credit performance.</p>
+                    </div>
+                </div>
+                <div class="arc-mobile-item">
+                    <div class="arc-mobile-num">2</div>
+                    <div class="arc-mobile-text">
+                        <h3>Independence</h3>
+                        <p>Long-term relationships built on reliability and complete objectivity.</p>
+                    </div>
+                </div>
+                <div class="arc-mobile-item">
+                    <div class="arc-mobile-num">3</div>
+                    <div class="arc-mobile-text">
+                        <h3>Alignment</h3>
+                        <p>Founder capital is continually invested securely alongside yours.</p>
+                    </div>
+                </div>
+                <div class="arc-mobile-item">
+                    <div class="arc-mobile-num">4</div>
+                    <div class="arc-mobile-text">
+                        <h3>Long-Term Focus</h3>
+                        <p>Tailored market strategies designed to perform steadily through entire cycles.</p>
+                    </div>
+                </div>
             </div>
 
             <div class="arc-circle-container">
@@ -1128,6 +1171,7 @@
 
         function handleCanvasScroll(scrollElem, canvasElem, ctx, imgArray, fCount) {
             if (!scrollElem || !canvasElem || !ctx) return;
+            if (window.innerWidth <= 900) return; // Disabled on mobile to favor auto-playing GIF mode
             const sectionTop = scrollElem.offsetTop;
             const scrollableDistance = scrollElem.scrollHeight - window.innerHeight;
             let fraction = (window.scrollY - sectionTop) / scrollableDistance;
@@ -1141,6 +1185,34 @@
                 }
             });
         }
+
+        function playAsGifOnMobile(canvasElem, ctx, imgArray, fCount) {
+            let currentFrame = 1;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && window.innerWidth <= 900) {
+                        // Automatically play sequence once like a non-looping GIF
+                        const interval = setInterval(() => {
+                            if (currentFrame > fCount) {
+                                clearInterval(interval);
+                                return;
+                            }
+                            if (imgArray[currentFrame] && imgArray[currentFrame].complete) {
+                                ctx.clearRect(0, 0, canvasElem.width, canvasElem.height);
+                                ctx.drawImage(imgArray[currentFrame], 0, 0);
+                                currentFrame += 2; // Faster sequential playback for mobile
+                            }
+                        }, 50); // ~20fps + skipping frames feels like 40fps snappy loader
+                        observer.unobserve(canvasElem); 
+                    }
+                });
+            }, { threshold: 0.25 });
+            observer.observe(canvasElem);
+        }
+
+        playAsGifOnMobile(canvas1, ctx1, bridgeImages, bridgeFrameCount);
+        playAsGifOnMobile(canvas2, ctx2, lighthouseImages, lighthouseFrameCount);
+
 
         window.addEventListener('scroll', () => {
             handleCanvasScroll(scroll1, canvas1, ctx1, bridgeImages, bridgeFrameCount);
@@ -1186,33 +1258,41 @@
 
             const isMobile = window.innerWidth <= 900;
             
-            // Execute the precise layout math pushing the h1 explicitly out of the way to uncover identically stacked secondary items
-            const targetY = isMobile ? -5 : -32; // Explicitly calculated to exact match secondary content overlap height
+            // Execute the precise layout math pushing the h1 explicitly out of the way
+            const targetY = isMobile ? -5 : -32; 
             const initialY = interpolate(progress, 0, 0.4, 0, targetY); 
             
-            // Crossfade cleanly on mobile, hold firm 1 opacity continuously desktop
-            const initialOp = isMobile ? interpolate(progress, 0, 0.25, 1, 0) : 1; 
+            // Exit crossfade for the massive title at the very end of the hero sequence (0.7 to 0.95)
+            const exitTitleOp = interpolate(progress, 0.7, 0.95, 1, 0);
+            
+            // Pure elegant vertical crossfade on mobile natively, Kenslow exit fade on desktop
+            const initialOp = isMobile ? interpolate(progress, 0, 0.25, 1, 0) : exitTitleOp; 
             
             heroInitial.style.transform = `translateY(${initialY}vh)`;
-            
-            if (isMobile) {
-                heroInitial.style.opacity = initialOp;
-            } else {
-                heroInitial.style.opacity = 1;
-            }
+            heroInitial.style.opacity = initialOp;
 
-
-            // Animate secondary elements progressively
+            // Animate secondary elements progressively + Kenslow exit styling
             animatedElements.forEach((el, index) => {
                 if (!el) return;
-                const startP = 0.15 + (index * 0.12); // progressive stagger
+                const startP = 0.15 + (index * 0.12); 
                 const endP = startP + 0.25;
                 
-                const elemOpacity = interpolate(progress, startP, endP, 0, 1);
+                let elemOpacity = interpolate(progress, startP, endP, 0, 1);
                 const elemY = interpolate(progress, startP, endP, 40, 0);
+                let elemScale = 1;
+                
+                // Apply the Kenslow-style unified exit mechanism
+                if (progress > 0.7) {
+                    elemOpacity = interpolate(progress, 0.7, 0.95, 1, 0); // Text washes out smoothly
+                    
+                    // Specifically target the founder image to actively shrink natively
+                    if (el.classList.contains('founder-img-placeholder')) {
+                        elemScale = interpolate(progress, 0.7, 0.95, 1, 0.85); 
+                    }
+                }
                 
                 el.style.opacity = elemOpacity;
-                el.style.transform = `translateY(${elemY}px)`;
+                el.style.transform = `translateY(${elemY}px) scale(${elemScale})`;
             });
 
             // Update the scroll progress bar
@@ -1259,8 +1339,12 @@
 
                 // Apply graceful upwards scroll to text as section is scrubbed
                 const clampedProgress = Math.max(0, Math.min(1, progress));
-                const textY = 100 - (200 * clampedProgress); // Moves from 100px to -100px
-                missionTextElem.style.transform = `translateY(${textY}px)`;
+                if (window.innerWidth > 900) {
+                    const textY = 100 - (200 * clampedProgress); // Moves from 100px to -100px
+                    missionTextElem.style.transform = `translateY(${textY}px)`;
+                } else {
+                    missionTextElem.style.transform = 'none'; // Prevent text overlapping the H2 label on mobile viewports
+                }
             }
         });
 
