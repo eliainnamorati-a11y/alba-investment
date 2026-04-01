@@ -1054,7 +1054,7 @@
     <!-- Latest Insights Section (Kenslow 300vh Scroll Sequence) -->
     <style>
         .insights-scroll-wrapper {
-            height: 200vh; /* scrollable duration - heavily compressed for speed */
+            height: 400vh; /* scrollable duration - precisely 100vh per insight slide for fluid pacing */
             position: relative;
             z-index: 10;
         }
@@ -1403,11 +1403,14 @@
                     const progress = Math.min(Math.max((scrolled / scrollableDistance) * 3, 0), 3);
                     
                     // Phase logic
-                    const phaseIndex = Math.floor(progress); // 0, 1, or 2
-                    const phaseProgress = progress % 1; // 0.0 to 1.0 within the phase
+                    let activePhase = Math.floor(progress); // 0, 1, or 2
+                    let phaseProgress = progress % 1; // 0.0 to 1.0 within the phase
                     
-                    // Fix bounds where progress exactly equals 3.0
-                    const activePhase = Math.min(phaseIndex, 2);
+                    // Fix bounds where progress exactly equals 3.0 preventing arbitrary resets
+                    if (progress >= 3) {
+                        activePhase = 2;
+                        phaseProgress = 1;
+                    }
 
                     // Sync the text visibly perfectly mapped to the scroll progress frame execution
                     if (descText) {
