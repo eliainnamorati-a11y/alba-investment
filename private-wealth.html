@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Alba Investment Partners - Private Wealth & MFO</title>
     <style>
         :root {
@@ -38,7 +41,7 @@
             margin: 0;
             background-color: var(--bg-color);
             color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
@@ -58,7 +61,8 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 24px 60px;
+            padding: 0 60px;
+            height: 108px;
             box-sizing: border-box;
             display: flex;
             justify-content: space-between;
@@ -66,14 +70,14 @@
             z-index: 100;
             background: transparent;
             transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.15); /* Continuous thin baseline */
         }
 
         .navbar.navbar-scrolled {
             background: rgba(252, 252, 252, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            padding: 12px 60px;
-            /* Thinner navbar when scrolled */
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            height: 70px;
         }
 
         .navbar.navbar-scrolled .logo {
@@ -98,27 +102,51 @@
         .nav-links {
             display: flex;
             gap: 40px;
+            height: 100%;
         }
 
         .nav-links a {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
             color: #ffffff;
             text-decoration: none;
             font-size: 15px;
-            /* A bit larger */
             font-family: 'Aperto', serif;
             font-weight: 500;
             letter-spacing: 1px;
             text-transform: capitalize;
-            /* Title case */
             transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -1px; /* Ensures exact overlap on physical border */
+            left: 0;
+            width: 100%;
+            height: 2px; /* Active bold state tracking text width */
+            background-color: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform-origin: center;
         }
 
         .navbar.navbar-scrolled .nav-links a {
             color: var(--text-main);
         }
+        
+        .navbar.navbar-scrolled .nav-links a::after {
+            background-color: var(--accent); /* Match the scrolled dark green state */
+        }
 
         .nav-links a:hover {
             color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
         }
 
         /* Sticky Hero Section */
@@ -542,6 +570,18 @@
 
 
         /* Scroll Animations */
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: opacity, transform;
+        }
+
+        .zoom-in.in-view {
+            opacity: 1;
+            transform: scale(1);
+        }
+
         .fade-up {
             opacity: 0;
             transform: translateY(40px);
@@ -556,6 +596,15 @@
 
         .delay-1 {
             transition-delay: 0.1s;
+        }
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+        .delay-4 {
+            transition-delay: 0.4s;
         }
 
         /* Built on Principles - Arc Section */
@@ -1252,100 +1301,471 @@
 
     <!-- Static Partial-Height Hero Section -->
 
-    <div class="hero-container" id="hero-section" style="height: 70vh; min-height: 500px;">
-        <div class="hero-sticky" style="height: 70vh; min-height: 500px; position: relative;">
-            <div class="hero-bg" style="background-image: url('map.jpg'); background-position: center top; background-size: cover; filter: grayscale(100%);">
-                <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(30, 54, 45, 0.85);"></div>
+    <!-- Cape-Capital Layout Custom Hero Section -->
+    <style>
+        .cc-hero {
+            background-color: #f7f9f8; /* Soft Alba off-white */
+            padding: 220px 60px 80px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 100px;
+        }
+        .cc-hero-left { flex: 0 0 65%; }
+        .cc-hero-left h1 {
+            font-family: 'Aperto', serif;
+            font-size: clamp(2.8rem, 4.2vw, 4.5rem);
+            font-weight: 300;
+            color: var(--accent);
+            margin: 0;
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+        .cc-hero-right {
+            flex: 0 0 25%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-top: 15px;
+        }
+        .cc-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin: 0;
+        }
+        .cc-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        .cc-hero-media {
+            width: 100%;
+            height: 75vh;
+            overflow: hidden;
+            background-color: var(--bg-color);
+            position: relative;
+        }
+        .cc-hero-media img, .cc-hero-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .navbar { border-bottom: 1px solid rgba(0,0,0,0.1) !important; background: #f7f9f8 !important; }
+        .nav-links a { color: var(--text-main) !important; }
+        .nav-links a::after { background-color: var(--accent) !important; }
+        .logo img { filter: brightness(0); }
+
+        @media(max-width: 900px) {
+            .cc-hero { flex-direction: column; padding: 160px 30px 60px 30px; gap: 40px; }
+            .cc-hero-left h1 { font-size: 2.8rem; }
+            .cc-hero-right { padding-top: 0; }
+        }
+    </style>
+
+    <div class="cc-hero">
+        <div class="cc-hero-left">
+            <h1 class="fade-up delay-1">Independent asset management and tailored investment solutions.</h1>
+        </div>
+        <div class="cc-hero-right">
+            <p class="cc-label fade-up delay-2">Private Wealth</p>
+            <p class="cc-desc fade-up delay-3">We provide independent wealth management, asset allocation, and investment advisory services tailored exclusively to entrepreneurs and private investors.</p>
+        </div>
+    </div>
+    <div class="cc-hero-media delay-4">
+        <img src="map.jpg" alt="Private Wealth Map" class="zoom-in" style="object-position: center 30%; filter: grayscale(100%);">
+    </div>
+
+
+    <!-- Unified Overview & Approach Header -->
+    <div class="normal-section" style="padding: 15vh 10%; background: #ffffff;">
+        <div class="fade-up delay-1" style="max-width: 1200px; margin: 0 auto; text-align: center;">
+            <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 30px;">Core Principles</p>
+            <h2 style="font-size: clamp(2.5rem, 4.5vw, 4rem); font-family: 'Aperto', serif; font-weight: 300; line-height: 1.25; margin-bottom: 60px; color: var(--accent); letter-spacing: -0.5px;">
+                We focus on <span style="font-style: italic; color: var(--gold);">long-term asset allocation</span>, sophisticated diversification, and steadfast risk management.
+            </h2>
+            <div style="display: flex; gap: 60px; justify-content: center; text-align: left; max-width: 1000px; margin: 0 auto; flex-wrap: wrap;">
+                <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7; flex: 1 1 350px; margin: 0;">As an independent asset manager, we select investments purely without conflicts of interest, relentlessly focusing on after-fee performance and capital preservation across generations.</p>
+                <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7; flex: 1 1 350px; margin: 0;">We construct customized portfolios across fixed income, equities, and alternative investments securely based on each client’s unique risk profile, liquidity needs, and long-term legacy objectives.</p>
             </div>
-            <div class="hero-content" style="pointer-events: auto;">
-                <div class="initial-content fade-up" style="bottom: 15vh;">
-                    <h1 style="font-size: 4.5rem; opacity: 1; margin-bottom: 20px;">Private Wealth &<br>Multi-Family Office</h1>
-                    <p style="font-size: 1.5rem; font-weight: 300; max-width: 800px; margin-bottom: 20px;">Independent asset management and tailored investment solutions.</p>
-                    <p style="font-size: 1.15rem; color: rgba(255,255,255,0.7); max-width: 800px; line-height: 1.6; margin-bottom: 40px; font-family: -apple-system, sans-serif;">We provide independent wealth management, asset allocation, and investment advisory services tailored to entrepreneurs, families, and private investors.</p>
+        </div>
+    </div>
+
+    <!-- Interactive Scroll-Based Approach Section -->
+    <style>
+        .scroll-approach-section {
+            background-color: var(--accent); /* Alba dark green */
+            color: #ffffff;
+            padding: 20vh 10%;
+            position: relative;
+        }
+        .sa-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 100px;
+            align-items: flex-start;
+        }
+        .sa-sticky {
+            flex: 1 1 400px;
+            position: sticky;
+            top: 25vh;
+        }
+        .sa-title {
+            font-size: 4.5rem;
+            font-weight: 300;
+            margin: 0 0 40px 0;
+            letter-spacing: -1px;
+            font-family: 'Aperto', serif;
+            line-height: 1.1;
+        }
+        .sa-list {
+            flex: 1.5 1 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 15vh;
+            padding-top: 15vh;
+            padding-bottom: 25vh;
+        }
+        .sa-item {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        .sa-num {
+            font-size: 1.15rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            color: var(--gold);
+            letter-spacing: 2px;
+            padding-top: 10px;
+        }
+        .sa-text-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .sa-text {
+            font-size: 2.2rem;
+            margin: 0;
+            font-family: 'Aperto', serif;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+        }
+        .sa-desc {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.7);
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            max-width: 600px;
+            font-weight: 300;
+        }
+        @media(max-width: 900px) {
+            .scroll-approach-section { padding: 100px 30px; }
+            .sa-container { flex-direction: column; gap: 50px; }
+            .sa-sticky { position: static; }
+            .sa-list { padding: 0; gap: 8vh; }
+            .sa-title { font-size: 3.2rem; }
+            .sa-item { flex-direction: column; gap: 15px; }
+        }
+    </style>
+
+    <div class="scroll-approach-section" id="sa-section">
+        <div class="sa-container">
+            <div class="sa-left">
+                <div class="sa-sticky">
+                    <h2 class="sa-title">Our<br>Services</h2>
+                    <p class="sa-desc">Tailored, independent wealth solutions.</p>
+                </div>
+            </div>
+            
+            <div class="sa-list">
+                <div class="sa-item fade-up">
+                    <span class="sa-num">01</span>
+                    <div class="sa-text-wrapper">
+                        <h3 class="sa-text">Investment Management</h3>
+                        <p class="sa-desc">Bespoke portfolio management designed to deliver risk-adjusted returns through deep fundamental analysis and opportunistic market allocations.</p>
+                    </div>
+                </div>
+                <div class="sa-item fade-up">
+                    <span class="sa-num">02</span>
+                    <div class="sa-text-wrapper">
+                        <h3 class="sa-text">Asset Allocation</h3>
+                        <p class="sa-desc">Strategic shifting of portfolio weighting across traditional and private asset classes to strictly weather generational market cycles.</p>
+                    </div>
+                </div>
+                <div class="sa-item fade-up">
+                    <span class="sa-num">03</span>
+                    <div class="sa-text-wrapper">
+                        <h3 class="sa-text">Portfolio Construction</h3>
+                        <p class="sa-desc">Building resilient financial architectures by combining passive beta with highly active alpha-seeking strategies for sophisticated downside mitigation.</p>
+                    </div>
+                </div>
+                <div class="sa-item fade-up">
+                    <span class="sa-num">04</span>
+                    <div class="sa-text-wrapper">
+                        <h3 class="sa-text">Risk Management</h3>
+                        <p class="sa-desc">Continuous stress-testing, duration tracking, and macro-exposure monitoring specifically designed to safeguard legacy capital.</p>
+                    </div>
+                </div>
+                <div class="sa-item fade-up">
+                    <span class="sa-num">05</span>
+                    <div class="sa-text-wrapper">
+                        <h3 class="sa-text">Alternative Investments</h3>
+                        <p class="sa-desc">Curated proprietary access to private credit, direct equity, and un-correlated absolute return strategies avoiding public crowding.</p>
+                    </div>
+                </div>
+                <div class="sa-item fade-up">
+                    <span class="sa-num">06</span>
+                    <div class="sa-text-wrapper">
+                        <h3 class="sa-text">Liquidity Event Planning</h3>
+                        <p class="sa-desc">Pre- and post-transaction structuring, ensuring corporate sales or generational wealth transfers map securely against tax and liquidity goals.</p>
+                    </div>
+                </div>
+                <div class="sa-item fade-up">
+                    <span class="sa-num">07</span>
+                    <div class="sa-text-wrapper">
+                        <h3 class="sa-text">Bank Selection & Coordination</h3>
+                        <p class="sa-desc">Objective negotiation and oversight of tier-1 global custardians and lending facilities to eliminate frictional drag and hidden costs.</p>
+                    </div>
+                </div>
+                <div class="sa-item fade-up">
+                    <span class="sa-num">08</span>
+                    <div class="sa-text-wrapper">
+                        <h3 class="sa-text">Family Office Governance</h3>
+                        <p class="sa-desc">Establishing rigorous institutional frameworks for reporting, generational transitions, and aligned family wealth consolidation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Philosophy Section -->
+    <style>
+        .phil-section {
+            padding: 20vh 10%;
+            background: #ffffff;
+        }
+        .phil-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            gap: 100px;
+            align-items: flex-start;
+        }
+        .phil-sticky {
+            flex: 1;
+            position: sticky;
+            top: 20vh;
+        }
+        .phil-list {
+            flex: 1.5;
+            display: flex;
+            flex-direction: column;
+        }
+        .phil-item {
+            padding: 45px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            cursor: default;
+            transition: padding-left 0.4s ease;
+        }
+        .phil-item:last-child {
+            border-bottom: none;
+        }
+        .phil-item:hover {
+            padding-left: 30px;
+        }
+        .phil-item:hover .phil-text {
+            color: var(--accent);
+        }
+        .phil-item:hover .phil-icon svg {
+            stroke: var(--gold);
+            transform: scale(1.15);
+        }
+        .phil-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .phil-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: rgba(0,0,0,0.2);
+            stroke-width: 1.5;
+            fill: none;
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .phil-text {
+            font-size: 1.8rem;
+            font-family: 'Aperto', serif;
+            color: var(--text-secondary);
+            font-weight: 300;
+            transition: color 0.4s ease;
+            margin: 0;
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+        }
+        @media (max-width: 1024px) {
+            .phil-container { flex-direction: column; gap: 50px; }
+            .phil-sticky { position: static; }
+            .phil-text { font-size: 1.5rem; }
+            .phil-item { padding: 30px 0; }
+        }
+    </style>
+
+    <div class="phil-section">
+        <div class="phil-container fade-up delay-1">
+            <div class="phil-sticky">
+                <h2 style="font-size: 4rem; font-weight: 300; line-height: 1.1; margin-bottom: 25px; letter-spacing: -1px; font-family: 'Aperto', serif;">Investment<br>Philosophy</h2>
+                <div style="width: 40px; height: 1px; background: var(--gold); margin-bottom: 30px;"></div>
+                <p style="font-size: 1.2rem; color: var(--text-secondary); line-height: 1.6;">Our deeply held convictions guide every decision we carefully execute on behalf of our clients.</p>
+            </div>
+            <div class="phil-list">
+                <div class="phil-item">
+                    <div class="phil-icon"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
+                    <h3 class="phil-text">Active management natively in fixed income and credit</h3>
+                </div>
+                <div class="phil-item">
+                    <div class="phil-icon"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
+                    <h3 class="phil-text">Passive structural exposure in equities where appropriate</h3>
+                </div>
+                <div class="phil-item">
+                    <div class="phil-icon"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
+                    <h3 class="phil-text">Selection of best-in-class alternative investments</h3>
+                </div>
+                <div class="phil-item">
+                    <div class="phil-icon"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
+                    <h3 class="phil-text">Pure independent and conflict-free portfolio advice</h3>
+                </div>
+                <div class="phil-item">
+                    <div class="phil-icon"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
+                    <h3 class="phil-text">Long-term wealth preservation and growth legacy</h3>
                 </div>
             </div>
         </div>
     </div>
 
 
-    <!-- Our Approach Section -->
-    <div class="normal-section fade-up delay-1" style="padding: 15vh 10%;">
-        <div style="display: flex; gap: 80px; flex-wrap: wrap;">
-            <div style="flex: 1 1 350px;">
-                <h2 style="font-size: 3.5rem;">Our<br>Approach</h2>
-            </div>
-            <div style="flex: 2 1 600px;">
-                <p class="section-desc" style="opacity:1; transform:none;">We focus on long-term asset allocation, diversification, and risk management. As an independent asset manager, we select investments and managers without conflicts of interest, always focusing on after-fee performance and capital preservation.</p>
-            </div>
-        </div>
-    </div>
 
-    <!-- Asset Allocation Section -->
-    <div class="normal-section" style="background-color: #f7f7f7; padding: 15vh 10%;">
-        <div style="display: flex; gap: 80px; flex-wrap: wrap-reverse;">
-            <div style="flex: 2 1 600px;">
-                <p class="section-desc" style="opacity:1; transform:none;">We construct portfolios across fixed income, equities, and alternative investments based on each client’s risk profile, liquidity needs, and long-term objectives. Strategic and tactical asset allocation form the foundation of portfolio construction.</p>
-            </div>
-            <div style="flex: 1 1 350px;">
-                <h2 style="font-size: 3.5rem;">Asset<br>Allocation</h2>
-            </div>
-        </div>
-    </div>
-
-    <!-- Our Services Section -->
-    <div class="normal-section" style="padding: 15vh 10%;">
-        <div style="display: flex; gap: 80px; flex-wrap: wrap; margin-bottom: 15vh;">
-            <div style="flex: 1 1 350px;">
-                <h2 style="font-size: 3.5rem;">Our<br>Services</h2>
-            </div>
-            <div style="flex: 2 1 600px;">
-                <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
-                    <li style="font-size: 1.15rem; color: var(--text-secondary);"><span style="color: var(--gold); margin-right: 15px;">&#x2726;</span>Investment Management</li>
-                    <li style="font-size: 1.15rem; color: var(--text-secondary);"><span style="color: var(--gold); margin-right: 15px;">&#x2726;</span>Asset Allocation</li>
-                    <li style="font-size: 1.15rem; color: var(--text-secondary);"><span style="color: var(--gold); margin-right: 15px;">&#x2726;</span>Portfolio Construction</li>
-                    <li style="font-size: 1.15rem; color: var(--text-secondary);"><span style="color: var(--gold); margin-right: 15px;">&#x2726;</span>Risk Management</li>
-                    <li style="font-size: 1.15rem; color: var(--text-secondary);"><span style="color: var(--gold); margin-right: 15px;">&#x2726;</span>Alternative Investments</li>
-                    <li style="font-size: 1.15rem; color: var(--text-secondary);"><span style="color: var(--gold); margin-right: 15px;">&#x2726;</span>Liquidity Event Planning</li>
-                    <li style="font-size: 1.15rem; color: var(--text-secondary);"><span style="color: var(--gold); margin-right: 15px;">&#x2726;</span>Bank Selection & Coordination</li>
-                    <li style="font-size: 1.15rem; color: var(--text-secondary);"><span style="color: var(--gold); margin-right: 15px;">&#x2726;</span>Family Office Governance</li>
-                </ul>
-            </div>
-        </div>
+    <style>
+        .newsletter-section {
+            background-color: #f7f9f8; /* Alba off-white background */
+            padding: 15vh 8%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
         
-        <div style="height: 1px; width: 100%; background: rgba(0,0,0,0.1); margin-bottom: 15vh;"></div>
+        .newsletter-container {
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 8px;
+            padding: 8vh 40px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+            margin: 0 auto;
+        }
 
-        <div style="display: flex; gap: 80px; flex-wrap: wrap;">
-            <div style="flex: 1 1 350px;">
-                <h2 style="font-size: 3.5rem;">Investment<br>Philosophy</h2>
-            </div>
-            <div style="flex: 2 1 600px;">
-                <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr; gap: 20px;">
-                    <li style="font-size: 1.15rem; color: var(--text-secondary); display:flex; align-items:flex-start;"><span style="color: var(--gold); margin-right: 15px; margin-top:2px;">&#x2713;</span>Active management in fixed income and credit</li>
-                    <li style="font-size: 1.15rem; color: var(--text-secondary); display:flex; align-items:flex-start;"><span style="color: var(--gold); margin-right: 15px; margin-top:2px;">&#x2713;</span>Passive exposure in equities where appropriate</li>
-                    <li style="font-size: 1.15rem; color: var(--text-secondary); display:flex; align-items:flex-start;"><span style="color: var(--gold); margin-right: 15px; margin-top:2px;">&#x2713;</span>Best-in-class alternative investments</li>
-                    <li style="font-size: 1.15rem; color: var(--text-secondary); display:flex; align-items:flex-start;"><span style="color: var(--gold); margin-right: 15px; margin-top:2px;">&#x2713;</span>Independent and conflict-free advice</li>
-                    <li style="font-size: 1.15rem; color: var(--text-secondary); display:flex; align-items:flex-start;"><span style="color: var(--gold); margin-right: 15px; margin-top:2px;">&#x2713;</span>Long-term wealth preservation and growth</li>
-                </ul>
-            </div>
-        </div>
-    </div>
+        .newsletter-container h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+            font-family: 'Aperto', "Georgia", serif;
+        }
 
-    <!-- CTA Section -->
-    <div class="normal-section" style="padding: 15vh 10%; background: #050505; color: #fff; text-align: center;">
-        <h2 style="font-size: 4rem; color: #fff; margin-bottom: 25px;">Work With Us</h2>
-        <p style="font-size: 1.25rem; font-weight: 300; color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto 50px;">Contact us to discuss your investment and wealth management needs.</p>
-        <a href="mailto:info@albapartners.com" class="newsletter-btn" style="text-decoration: none; display: inline-block; padding: 18px 40px; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; border: 1px solid var(--gold); border-radius: 4px; background: transparent; color: var(--gold);">Contact Us</a>
-    </div>
+        .newsletter-container p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+        }
 
-<section class="newsletter-section">
+        .newsletter-form {
+            display: flex;
+            gap: 15px;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex-grow: 1;
+            padding: 18px 25px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 4px;
+            font-size: 1rem;
+            background: #fdfdfd;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            color: var(--accent);
+            font-family: inherit;
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(207, 168, 95, 0.1);
+        }
+
+        .newsletter-btn-submit {
+            background-color: var(--accent);
+            color: #ffffff;
+            border: none;
+            padding: 0 35px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            white-space: nowrap;
+        }
+
+        .newsletter-btn-submit:hover {
+            background-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .newsletter-disclaimer {
+            font-size: 0.85rem !important;
+            margin-bottom: 0 !important;
+            margin-top: 20px !important;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 600px) {
+            .newsletter-form { flex-direction: column; }
+            .newsletter-btn-submit { padding: 18px; }
+            .newsletter-container h2 { font-size: 2.2rem; }
+        }
+    </style>
+
+    <section class="newsletter-section">
         <div class="newsletter-container fade-up delay-1">
             <h2>Stay Informed</h2>
             <p>Subscribe to receive Alba's latest macroeconomic insights and credit market updates securely to your inbox.</p>
             
-            <!-- FORM ENDPOINT CONNECTION: Update the action="" URL to link specifically to Mailchimp, Formspree, or your WordPress logic! -->
             <form action="https://formspree.io/f/YOUR_ENDPOINT_KEY" method="POST" class="newsletter-form">
                 <input type="email" name="email" placeholder="Enter your email address" required class="newsletter-input">
-                <button type="submit" class="newsletter-btn">Subscribe</button>
+                <button type="submit" class="newsletter-btn-submit">Subscribe</button>
             </form>
             
             <p class="newsletter-disclaimer">We respect your privacy. No spam, ever.</p>
@@ -1656,7 +2076,7 @@
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+        document.querySelectorAll('.fade-up, .zoom-in').forEach(el => observer.observe(el));
     </script>
 </body>
 

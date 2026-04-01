@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Alba Investment Partners - About Us</title>
     <style>
         :root {
@@ -38,9 +41,10 @@
             margin: 0;
             background-color: var(--bg-color);
             color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         h1,
@@ -58,7 +62,8 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 24px 60px;
+            padding: 0 60px;
+            height: 108px;
             box-sizing: border-box;
             display: flex;
             justify-content: space-between;
@@ -66,14 +71,14 @@
             z-index: 100;
             background: transparent;
             transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.15); /* Continuous thin baseline */
         }
 
         .navbar.navbar-scrolled {
             background: rgba(252, 252, 252, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            padding: 12px 60px;
-            /* Thinner navbar when scrolled */
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            height: 70px;
         }
 
         .navbar.navbar-scrolled .logo {
@@ -98,27 +103,51 @@
         .nav-links {
             display: flex;
             gap: 40px;
+            height: 100%;
         }
 
         .nav-links a {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
             color: #ffffff;
             text-decoration: none;
             font-size: 15px;
-            /* A bit larger */
             font-family: 'Aperto', serif;
             font-weight: 500;
             letter-spacing: 1px;
             text-transform: capitalize;
-            /* Title case */
             transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -1px; /* Ensures exact overlap on physical border */
+            left: 0;
+            width: 100%;
+            height: 2px; /* Active bold state tracking text width */
+            background-color: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform-origin: center;
         }
 
         .navbar.navbar-scrolled .nav-links a {
             color: var(--text-main);
         }
+        
+        .navbar.navbar-scrolled .nav-links a::after {
+            background-color: var(--accent); /* Match the scrolled dark green state */
+        }
 
         .nav-links a:hover {
             color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
         }
 
         /* Sticky Hero Section */
@@ -542,6 +571,18 @@
 
 
         /* Scroll Animations */
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: opacity, transform;
+        }
+
+        .zoom-in.in-view {
+            opacity: 1;
+            transform: scale(1);
+        }
+
         .fade-up {
             opacity: 0;
             transform: translateY(40px);
@@ -556,6 +597,15 @@
 
         .delay-1 {
             transition-delay: 0.1s;
+        }
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+        .delay-4 {
+            transition-delay: 0.4s;
         }
 
         /* Built on Principles - Arc Section */
@@ -599,8 +649,8 @@
         .arc-title {
             position: absolute;
             top: 15vh;
-            left: 5vw;
-            font-size: 3.5rem;
+            left: 10%;
+            font-size: 4rem;
             /* Matched to .normal-section h2 perfectly */
             font-weight: 300;
             color: #ffffff;
@@ -1043,7 +1093,7 @@
             .arc-sticky {
                 position: relative !important;
                 height: auto !important;
-                padding: 0 8%;
+                padding: 0 30px;
                 overflow: visible;
                 align-items: flex-start;
                 justify-content: flex-start;
@@ -1172,7 +1222,7 @@
             border-radius: 8px; /* Clean edge aesthetic mapping to the clean layout */
         }
 
-        /* Alba Timeline Section */
+        /* Alba Timeline Section - Light Mode Editorial UI */
         .timeline-container {
             padding-left: 60px;
             position: relative;
@@ -1184,16 +1234,17 @@
             top: 20px;
             bottom: 20px;
             width: 1px;
-            background-color: rgba(255,255,255, 0.1); 
+            /* Changed from white to black alpha for light-mode contrast */
+            background-color: rgba(0,0,0,0.15); 
             transform-origin: top;
         }
 
         .timeline-fill {
             position: absolute;
             top: 0; left: 0;
-            width: 100%; /* Perfectly matches the 1px track without blooming */
+            width: 100%; /* Matches track width */
             height: 0%;
-            background-color: var(--gold); /* Solid, clean flat color profile */
+            background-color: var(--gold); 
             border-radius: 4px;
             transform-origin: top;
             will-change: height;
@@ -1201,10 +1252,11 @@
 
         .timeline-node {
             position: relative;
-            margin-bottom: 25vh; /* Extremely tall immersive scroll gap */
+            margin-bottom: 25vh; 
             opacity: 0; 
-            transform: translateY(30px); /* Clean editorial upward lift */
+            transform: translateY(30px); 
             will-change: opacity, transform;
+            padding-right: 40px; /* Give the text room to breathe */
         }
 
         .timeline-node:last-child {
@@ -1213,25 +1265,42 @@
 
         .node-dot {
             position: absolute;
-            left: -44px; /* Perfectly centered on the 1px rail */
+            left: -44px; /* Aligned precisely on the 1px rail */
             top: 6px; 
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background-color: transparent;
-            border: 1px solid rgba(255,255,255,0.2);
+            background-color: #fcfcfc; /* Matches Alba light background */
+            /* High contrast border */
+            border: 2px solid rgba(0,0,0,0.2);
             z-index: 2;
+            transition: background-color 0.4s ease, border-color 0.4s ease;
+        }
+
+        .node-dot.active {
+            background-color: var(--gold);
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(207, 168, 95, 0.4);
         }
 
         .node-year {
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             text-transform: uppercase;
             letter-spacing: 3px; 
-            color: rgba(255,255,255,0.5); /* Muted initial state mapping to lighting tracker */
+            color: var(--gold); /* Gold stands out beautifully against white */
             margin-top: 0;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             font-family: 'Inter', sans-serif;
-            font-weight: 500;
+            font-weight: 700;
+        }
+        
+        .node-content .section-desc {
+            font-family: 'Aperto', serif;
+            font-size: 1.6rem;
+            font-weight: 300;
+            line-height: 1.4;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
         }
     </style>
 </head>
@@ -1250,20 +1319,86 @@
         </div>
     </nav>
 
-    <!-- Static Partial-Height Hero Section -->
-    <div class="hero-container" id="hero-section" style="height: 70vh; min-height: 500px;">
-        <div class="hero-sticky" style="height: 70vh; min-height: 500px; position: relative;">
-            <div class="hero-bg" style="background-image: url('team-sketch.jpg'); background-position: center 25%; background-size: cover;">
-                <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5);">
-                </div>
-            </div>
+    <!-- Unified 95vh Premium Hero Section -->
+    <!-- Cape-Capital Layout Custom Hero Section -->
+    <style>
+        .cc-hero {
+            background-color: #f7f9f8; /* Soft Alba off-white */
+            padding: 220px 60px 80px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 100px;
+        }
+        .cc-hero-left { flex: 0 0 65%; }
+        .cc-hero-left h1 {
+            font-family: 'Aperto', serif;
+            font-size: clamp(2.8rem, 4.2vw, 4.5rem);
+            font-weight: 300;
+            color: var(--accent);
+            margin: 0;
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+        .cc-hero-right {
+            flex: 0 0 25%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-top: 15px;
+        }
+        .cc-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin: 0;
+        }
+        .cc-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        .cc-hero-media {
+            width: 100%;
+            height: 75vh;
+            overflow: hidden;
+            background-color: var(--bg-color);
+            position: relative;
+        }
+        .cc-hero-media img, .cc-hero-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .navbar { border-bottom: 1px solid rgba(0,0,0,0.1) !important; background: #f7f9f8 !important; }
+        .nav-links a { color: var(--text-main) !important; }
+        .nav-links a::after { background-color: var(--accent) !important; }
+        .logo img { filter: brightness(0); }
 
-            <div class="hero-content">
-                <div class="initial-content" id="hero-initial">
-                    <h1>About Us</h1>
-                </div>
-            </div>
+        @media(max-width: 900px) {
+            .cc-hero { flex-direction: column; padding: 160px 30px 60px 30px; gap: 40px; }
+            .cc-hero-left h1 { font-size: 2.8rem; }
+            .cc-hero-right { padding-top: 0; }
+        }
+    </style>
+
+    <div class="cc-hero">
+        <div class="cc-hero-left">
+            <h1 class="fade-up delay-1">An independent investment management boutique dedicated to delivering superior risk-adjusted returns.</h1>
         </div>
+        <div class="cc-hero-right">
+            <p class="cc-label fade-up delay-2">About Us</p>
+            <p class="cc-desc fade-up delay-3">Specializing in fixed income and sophisticated credit strategies, Alba is built on decades of institutional expertise and uncompromised excellence.</p>
+        </div>
+    </div>
+    <div class="cc-hero-media delay-4">
+        <img src="team-sketch.jpg" alt="Alba Team Sketch" class="zoom-in" style="filter: grayscale(10%);">
     </div>
 
     <!-- Alba's Timeline Section -->
@@ -1306,31 +1441,29 @@
     </div>
 
     <!-- Map Parallax Zoom Section -->
-    <div class="sketch-zoom-wrapper" id="sketch-zoom-section">
+    <div class="sketch-zoom-wrapper" id="sketch-zoom-section" style="overflow: hidden;">
         <div class="sketch-zoom-sticky">
-            <div class="sketch-bg-img" id="sketch-bg-img" style="background: url('map.jpg') center/cover;"></div>
+            <div class="sketch-bg-img zoom-in" id="sketch-bg-img" style="background: url('alba.jpg') center/cover; transform-origin: center;"></div>
         </div>
     </div>
 
-    <!-- Scrollytelling Mission Section -> The Alba Approach (After the Image) -->
-    <section class="mission-scroll-section" id="mission-scroll-section">
-        <div class="mission-sticky">
-            <div class="mission-container">
-                <div class="mission-left">
-                    <h2>The Alba Approach</h2>
-                </div>
-                <div class="mission-right">
-                    <p id="mission-text">Alba's investment philosophy integrates a research-driven, bottom-up approach
-                        to credit selection with a top-down macro framework to manage risk effectively. Alba's
-                        portfolios are built around the principle of diversified concentration: a focus on a select
-                        number of high-conviction trades diversified across multiple risk dimensions. This strategy
-                        enables the team to apply equity-level research rigor to credit investments. Complementing
-                        Alba's human-led investment decisions, the team utilizes proprietary tools that harness
-                        real-time market data to identify dislocations and arbitrage opportunities.</p>
-                </div>
+    <!-- Replaced Static Approach Section with Staggered Scroll Triggers -->
+    <div class="normal-section" style="padding: 15vh 10%; background: #ffffff;">
+        <div style="display: flex; gap: 80px; flex-wrap: wrap; max-width: 1400px; margin: 0 auto; align-items: flex-start;">
+            <div style="flex: 1 1 350px;">
+                <h2 class="fade-up" style="font-size: 4rem; font-family: 'Aperto', serif; font-weight: 300; line-height: 1.1; margin: 0; color: var(--accent); letter-spacing: -1px;">The Alba<br>Approach</h2>
+                <div class="fade-up delay-1" style="width: 40px; height: 1px; background: var(--gold); margin-top: 30px;"></div>
+            </div>
+            <div style="flex: 2 1 600px;">
+                <p class="fade-up delay-1" style="font-family: 'Aperto', serif; font-size: 2rem; color: var(--text-main); line-height: 1.35; margin: 0 0 30px 0; font-weight: 300; letter-spacing: -0.5px;">
+                    Our investment philosophy integrates a research-driven, bottom-up approach to credit selection with a sophisticated top-down macro framework to actively manage risk.
+                </p>
+                <p class="fade-up delay-2" style="font-family: 'Inter', sans-serif; font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7; margin: 0; max-width: 800px;">
+                    Alba's portfolios are built strategically around the principle of <strong style="color: var(--accent); font-weight: 500;">diversified concentration</strong>: a rigid focus on a select number of high-conviction trades seamlessly mapped across multiple risk dimensions. This strategy powerfully enables the team to apply equity-level research rigor to complex credit investments. Complementing our human-led investment decisions, the team directly utilizes proprietary tools that harness real-time market data to identify dislocations and arbitrage opportunities.
+                </p>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Built on Principles -> Arc Section -->
     <section class="arc-section" id="arc-section">
@@ -1343,7 +1476,7 @@
         </div>
 
         <div class="arc-sticky">
-            <h2 class="arc-title">Alba's<br>Edge</h2>
+            <h2 class="arc-title">The Alba<br>Edge</h2>
 
             <div class="arc-content-wrapper">
                 <div class="arc-active-word" id="arc-word">People</div>
@@ -1917,7 +2050,7 @@
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+        document.querySelectorAll('.fade-up, .zoom-in').forEach(el => observer.observe(el));
     </script>
 </body>
 

@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>Alba Investment Partners - Credit Opportunities</title>
     <style>
         :root {
@@ -38,9 +41,10 @@
             margin: 0;
             background-color: var(--bg-color);
             color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         h1,
@@ -58,7 +62,8 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 24px 60px;
+            padding: 0 60px;
+            height: 108px;
             box-sizing: border-box;
             display: flex;
             justify-content: space-between;
@@ -66,14 +71,14 @@
             z-index: 100;
             background: transparent;
             transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.15); /* Continuous thin baseline */
         }
 
         .navbar.navbar-scrolled {
             background: rgba(252, 252, 252, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            padding: 12px 60px;
-            /* Thinner navbar when scrolled */
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            height: 70px;
         }
 
         .navbar.navbar-scrolled .logo {
@@ -98,27 +103,51 @@
         .nav-links {
             display: flex;
             gap: 40px;
+            height: 100%;
         }
 
         .nav-links a {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
             color: #ffffff;
             text-decoration: none;
             font-size: 15px;
-            /* A bit larger */
             font-family: 'Aperto', serif;
             font-weight: 500;
             letter-spacing: 1px;
             text-transform: capitalize;
-            /* Title case */
             transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -1px; /* Ensures exact overlap on physical border */
+            left: 0;
+            width: 100%;
+            height: 2px; /* Active bold state tracking text width */
+            background-color: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform-origin: center;
         }
 
         .navbar.navbar-scrolled .nav-links a {
             color: var(--text-main);
         }
+        
+        .navbar.navbar-scrolled .nav-links a::after {
+            background-color: var(--accent); /* Match the scrolled dark green state */
+        }
 
         .nav-links a:hover {
             color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
         }
 
         /* Sticky Hero Section */
@@ -542,6 +571,19 @@
 
 
         /* Scroll Animations */
+        /* Scroll Animations */
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: opacity, transform;
+        }
+
+        .zoom-in.in-view {
+            opacity: 1;
+            transform: scale(1);
+        }
+
         .fade-up {
             opacity: 0;
             transform: translateY(40px);
@@ -556,6 +598,15 @@
 
         .delay-1 {
             transition-delay: 0.1s;
+        }
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+        .delay-4 {
+            transition-delay: 0.4s;
         }
 
         /* Built on Principles - Arc Section */
@@ -1252,19 +1303,85 @@
 
     <!-- Static Partial-Height Hero Section -->
 
-    <div class="hero-container" id="hero-section" style="height: 70vh; min-height: 500px;">
-        <div class="hero-sticky" style="height: 70vh; min-height: 500px; position: relative;">
-            <div class="hero-bg" style="background-image: url('map.jpg'); background-position: center 25%; background-size: cover;">
-                <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(11, 17, 14, 0.75);"></div>
-            </div>
-            <div class="hero-content" style="pointer-events: auto;">
-                <div class="initial-content fade-up" style="bottom: 15vh;">
-                    <h1 style="font-size: 4.5rem; opacity: 1; margin-bottom: 20px;">Alba Credit Opportunities</h1>
-                    <p style="font-size: 1.5rem; font-weight: 300; max-width: 800px; margin-bottom: 20px;">A long/short credit strategy focused on liquid global credit opportunities.</p>
-                    <p style="font-size: 1.15rem; color: rgba(255,255,255,0.7); max-width: 800px; line-height: 1.6; margin-bottom: 40px; font-family: -apple-system, sans-serif;">We invest across the credit spectrum to capture mispricing, market dislocations, and catalyst-driven opportunities while actively managing risk across market cycles.</p>
-                </div>
-            </div>
+    <!-- Cape-Capital Layout Custom Hero Section -->
+    <style>
+        .cc-hero {
+            background-color: #f7f9f8; /* Soft Alba off-white */
+            padding: 220px 60px 80px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 100px;
+        }
+        .cc-hero-left { flex: 0 0 65%; }
+        .cc-hero-left h1 {
+            font-family: 'Aperto', serif;
+            font-size: clamp(2.8rem, 4.2vw, 4.5rem);
+            font-weight: 300;
+            color: var(--accent);
+            margin: 0;
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+        .cc-hero-right {
+            flex: 0 0 25%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-top: 15px;
+        }
+        .cc-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin: 0;
+        }
+        .cc-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        .cc-hero-media {
+            width: 100%;
+            height: 75vh;
+            overflow: hidden;
+            background-color: var(--bg-color);
+            position: relative;
+        }
+        .cc-hero-media img, .cc-hero-media video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .navbar { border-bottom: 1px solid rgba(0,0,0,0.1) !important; background: #f7f9f8 !important; }
+        .nav-links a { color: var(--text-main) !important; }
+        .nav-links a::after { background-color: var(--accent) !important; }
+        .logo img { filter: brightness(0); }
+
+        @media(max-width: 900px) {
+            .cc-hero { flex-direction: column; padding: 160px 30px 60px 30px; gap: 40px; }
+            .cc-hero-left h1 { font-size: 2.8rem; }
+            .cc-hero-right { padding-top: 0; }
+        }
+    </style>
+
+    <div class="cc-hero">
+        <div class="cc-hero-left">
+            <h1 class="fade-up delay-1">A long/short credit strategy focused on liquid global credit opportunities.</h1>
         </div>
+        <div class="cc-hero-right">
+            <p class="cc-label fade-up delay-2">Alba Credit</p>
+            <p class="cc-desc fade-up delay-3">We invest across the credit spectrum to intelligently capture mispricing, market dislocations, and catalyst-driven events.</p>
+        </div>
+    </div>
+    <div class="cc-hero-media delay-4">
+        <img src="map.jpg" alt="Credit Opportunities Map" class="zoom-in" style="object-position: center 25%;">
     </div>
 
 
@@ -1275,26 +1392,153 @@
                 <h2 style="font-size: 3.5rem;">Strategy<br>Overview</h2>
             </div>
             <div style="flex: 2 1 600px;">
-                <p class="section-desc fade-up" style="opacity:1; transform:none;">Alba Credit Opportunities is a long/short credit strategy investing in liquid corporate and financial credit globally with a European bias. The strategy combines bottom-up fundamental credit analysis with top-down macro positioning to identify asymmetric risk-return opportunities across the capital structure.</p>
+                <p class="section-desc fade-up">Alba Credit Opportunities is a long/short credit strategy investing in liquid corporate and financial credit globally with a European bias. The strategy combines bottom-up fundamental credit analysis with top-down macro positioning to identify asymmetric risk-return opportunities across the capital structure.</p>
             </div>
         </div>
     </div>
 
-    <!-- Investment Approach Section -->
-    <div class="normal-section" style="background-color: #1a3622; color: #ffffff; padding: 15vh 10%;">
-        <div style="display: flex; gap: 80px; flex-wrap: wrap-reverse;">
-            <div style="flex: 2 1 600px;">
-                <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
-                    <li style="font-size: 1.2rem; color: rgba(255,255,255,0.8);"><span style="color: var(--gold); margin-right: 15px;">&#x2726;</span>Bottom-up fundamental credit research</li>
-                    <li style="font-size: 1.2rem; color: rgba(255,255,255,0.8);"><span style="color: var(--gold); margin-right: 15px;">&#x2726;</span>Top-down macro positioning</li>
-                    <li style="font-size: 1.2rem; color: rgba(255,255,255,0.8);"><span style="color: var(--gold); margin-right: 15px;">&#x2726;</span>Relative value and dislocation opportunities</li>
-                    <li style="font-size: 1.2rem; color: rgba(255,255,255,0.8);"><span style="color: var(--gold); margin-right: 15px;">&#x2726;</span>Catalyst-driven investments</li>
-                    <li style="font-size: 1.2rem; color: rgba(255,255,255,0.8);"><span style="color: var(--gold); margin-right: 15px;">&#x2726;</span>Active risk management</li>
-                    <li style="font-size: 1.2rem; color: rgba(255,255,255,0.8);"><span style="color: var(--gold); margin-right: 15px;">&#x2726;</span>FX and interest rate hedging</li>
-                </ul>
+    <!-- Interactive Scroll-Based Approach Section -->
+    <style>
+        .scroll-approach-section {
+            background-color: var(--accent); /* Alba dark green */
+            color: #ffffff;
+            padding: 20vh 10%;
+            position: relative;
+        }
+        .sa-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 100px;
+            align-items: flex-start;
+        }
+        .sa-sticky {
+            flex: 1 1 400px;
+            position: sticky;
+            top: 25vh;
+        }
+        .sa-title {
+            font-size: 4.5rem;
+            font-weight: 300;
+            margin: 0 0 40px 0;
+            letter-spacing: -1px;
+            font-family: 'Aperto', serif;
+            line-height: 1.1;
+        }
+        .sa-list {
+            flex: 1.5 1 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 20vh; /* Massive spacing to force scroll engagement */
+            padding-top: 15vh;
+            padding-bottom: 25vh;
+        }
+        .sa-item {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        .sa-num {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin-top: 10px;
+            flex-shrink: 0;
+            width: 40px;
+        }
+        .sa-text-wrapper {
+            border-left: 1px solid rgba(255,255,255,0.15);
+            padding-left: 45px;
+            transition: border-color 0.4s ease;
+        }
+        .sa-item:hover .sa-text-wrapper {
+            border-left-color: var(--gold);
+        }
+        .sa-text {
+            margin: 0 0 25px 0;
+            font-family: 'Aperto', serif;
+            font-size: 3.2rem;
+            font-weight: 300;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+        }
+        .sa-desc {
+            font-family: 'Inter', sans-serif;
+            color: rgba(255,255,255,0.6);
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin: 0;
+            max-width: 550px;
+            font-weight: 300;
+        }
+        @media (max-width: 1024px) {
+            .sa-container { flex-direction: column; gap: 60px; }
+            .sa-sticky { position: static; }
+            .sa-list { gap: 100px; padding-top: 0; padding-bottom: 0; }
+            .sa-text { font-size: 2.2rem; }
+            .sa-text-wrapper { padding-left: 25px; }
+            .sa-item { gap: 20px; }
+        }
+    </style>
+
+    <div class="scroll-approach-section">
+        <div class="sa-container">
+            <div class="sa-sticky fade-up">
+                <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px;">Methodology</p>
+                <h2 class="sa-title">Investment<br>Approach</h2>
+                <div style="width: 60px; height: 1px; background: rgba(255,255,255,0.2);"></div>
             </div>
-            <div style="flex: 1 1 350px;">
-                <h2 style="font-size: 3.5rem; color: #ffffff;">Investment<br>Approach</h2>
+            
+            <div class="sa-list">
+                <div class="sa-item fade-up">
+                    <span class="sa-num">01</span>
+                    <div class="sa-text-wrapper">
+                        <h3 class="sa-text">Bottom-up fundamental credit research</h3>
+                        <p class="sa-desc">We conduct deep-dive institutional analysis into complex capital structures, rigorously identifying asymmetric risk-return profiles safely prior to macro sizing.</p>
+                    </div>
+                </div>
+
+                <div class="sa-item fade-up">
+                    <span class="sa-num">02</span>
+                    <div class="sa-text-wrapper">
+                        <h3 class="sa-text">Top-down macro positioning</h3>
+                        <p class="sa-desc">Translating thematic macroeconomic indicators into strategic sector flows and duration shifts to flawlessly navigate systemic global volatility.</p>
+                    </div>
+                </div>
+
+                <div class="sa-item fade-up">
+                    <span class="sa-num">03</span>
+                    <div class="sa-text-wrapper">
+                        <h3 class="sa-text">Relative value & dislocation opportunities</h3>
+                        <p class="sa-desc">Exploiting temporary pricing inefficiencies and deeply misunderstood capital tranche dynamics across geographically fragmented European markets.</p>
+                    </div>
+                </div>
+
+                <div class="sa-item fade-up">
+                    <span class="sa-num">04</span>
+                    <div class="sa-text-wrapper">
+                        <h3 class="sa-text">Catalyst-driven investments</h3>
+                        <p class="sa-desc">Executing high-conviction momentum plays anchored to concrete corporate events, restructuring narratives, and M&A liquidity triggers.</p>
+                    </div>
+                </div>
+
+                <div class="sa-item fade-up">
+                    <span class="sa-num">05</span>
+                    <div class="sa-text-wrapper">
+                        <h3 class="sa-text">Active risk management</h3>
+                        <p class="sa-desc">Employing aggressive daily portfolio monitoring, downside modeling, and absolute loss barriers mathematically ensuring capital preservation.</p>
+                    </div>
+                </div>
+
+                <div class="sa-item fade-up">
+                    <span class="sa-num">06</span>
+                    <div class="sa-text-wrapper">
+                        <h3 class="sa-text">FX & interest rate hedging</h3>
+                        <p class="sa-desc">Systematically stripping out unintended cross-border currency drag and interest rate delta via institutional swap and forward overlays.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -1310,42 +1554,371 @@
             </div>
         </div>
         
-        <div style="height: 1px; width: 100%; background: rgba(0,0,0,0.1); margin-bottom: 15vh;"></div>
+    </div> <!-- Close previous normal-section early to allow full viewport dark mode -->
 
-        <div style="display: flex; gap: 80px; flex-wrap: wrap;">
-            <div style="flex: 1 1 350px;">
-                <h2 style="font-size: 3.5rem;">Key<br>Characteristics</h2>
+    <!-- Compass Key Characteristics Section -->
+    <style>
+        .compass-section {
+            position: relative;
+            background-color: var(--accent); /* Switched to Alba signature deep green */
+            color: #ffffff;
+            z-index: 10;
+            width: 100%;
+        }
+        .compass-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10%;
+            overflow: hidden;
+        }
+        .compass-side {
+            width: 35%;
+            z-index: 5;
+        }
+        .compass-side h2 {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            color: #ffffff;
+            font-family: 'Aperto', "Georgia", serif;
+            font-weight: 300;
+        }
+        .compass-side p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+            font-family: -apple-system, sans-serif;
+            max-width: 90%;
+        }
+        .compass-container {
+            position: relative;
+            width: 70vh;
+            height: 70vh;
+            max-width: 750px;
+            max-height: 750px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1; /* fills remaining space smoothly */
+        }
+        .compass-svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            transform: translate(-50%, -50%) rotate(-90deg); /* Start 12 o'clock */
+        }
+        .tick-line {
+            stroke: rgba(255,255,255,0.15);
+            stroke-linecap: round;
+            transition: stroke 0.3s;
+        }
+        .ring-bg {
+            fill: none;
+            stroke: rgba(255,255,255,0.08); 
+            stroke-width: 1;
+        }
+        .ring-progress {
+            fill: none;
+            stroke: var(--gold);
+            stroke-width: 2; 
+            stroke-dasharray: 1068; /* will be dynamically updated by JS if needed, but 2*PI*170 is safe */
+            stroke-dashoffset: 1068;
+            stroke-linecap: round;
+            will-change: stroke-dashoffset;
+        }
+        .compass-content {
+            text-align: center;
+            width: 60%;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .compass-step {
+            background: #ffffff;
+            color: #000000;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            font-family: 'Inter', -apple-system, sans-serif;
+            letter-spacing: 2px;
+        }
+        .compass-title {
+            font-size: 2.8rem;
+            font-weight: 400;
+            margin: 0 0 20px 0;
+            font-family: 'Aperto', "Georgia", serif;
+            color: #ffffff;
+            opacity: 1;
+            transition: opacity 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            letter-spacing: -1px;
+        }
+        .compass-desc {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin: 0;
+            font-family: 'Inter', -apple-system, sans-serif;
+            opacity: 1;
+            transition: opacity 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            max-width: 80%;
+        }
+
+        /* Mobile overrides logic */
+        @media (max-width: 900px) {
+            .compass-sticky {
+                flex-direction: column;
+                justify-content: center;
+                padding: 10% 5%;
+            }
+            .compass-side {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 40px;
+            }
+            .compass-side h2 { font-size: 2.5rem; }
+            .compass-side p { display: none; } /* Hide heavy text on mobile overlap */
+            .compass-container {
+                width: 100vw;
+                height: 100vw;
+            }
+            .compass-content { width: 80%; }
+            .compass-title { font-size: 2rem; }
+            .compass-desc { font-size: 1rem; }
+        }
+    </style>
+
+    <div class="compass-section" id="compass-section">
+        <div class="compass-sticky">
+            <div class="compass-side">
+                <h2>Key<br>Characteristics</h2>
+                <p>Alba Credit Opportunities relies on a concentrated setup to deliver asymmetric risk-return metrics across the capital structure.</p>
             </div>
-            <div style="flex: 2 1 600px;">
-                <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
-                    <li style="font-size: 1.15rem; color: var(--text-secondary);"><strong style="color: var(--text-main); display: block; margin-bottom: 8px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;">Strategy</strong>Long / Short Credit Strategy</li>
-                    <li style="font-size: 1.15rem; color: var(--text-secondary);"><strong style="color: var(--text-main); display: block; margin-bottom: 8px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;">Focus</strong>Global Liquid Credit</li>
-                    <li style="font-size: 1.15rem; color: var(--text-secondary);"><strong style="color: var(--text-main); display: block; margin-bottom: 8px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;">Bias</strong>European Bias</li>
-                    <li style="font-size: 1.15rem; color: var(--text-secondary);"><strong style="color: var(--text-main); display: block; margin-bottom: 8px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;">Leverage</strong>Moderate Leverage</li>
-                    <li style="font-size: 1.15rem; color: var(--text-secondary);"><strong style="color: var(--text-main); display: block; margin-bottom: 8px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;">Management</strong>Active Risk Management</li>
-                    <li style="font-size: 1.15rem; color: var(--text-secondary);"><strong style="color: var(--text-main); display: block; margin-bottom: 8px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;">Returns</strong>Target Returns: Low Teens</li>
-                    <li style="font-size: 1.15rem; color: var(--text-secondary);"><strong style="color: var(--text-main); display: block; margin-bottom: 8px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;">Volatility</strong>Controlled Volatility</li>
-                </ul>
+            
+            <div class="compass-container" id="compass-wrapper">
+                <svg class="compass-svg" viewBox="0 0 400 400" id="compass-svg-graphic"></svg>
+                
+                <div class="compass-content">
+                    <div class="compass-step" id="compass-step">1 / 7</div>
+                    <h3 class="compass-title" id="compass-title">Strategy</h3>
+                    <p class="compass-desc" id="compass-desc">Long / Short Credit Strategy</p>
+                </div>
             </div>
         </div>
+        
+        <!-- 7 items = 700vh height to trigger massive scrub distance mapping seamlessly -->
+        <div style="height: 700vh;"></div>
     </div>
 
-    <!-- CTA Section -->
-    <div class="normal-section" style="padding: 15vh 10%; background: #050505; color: #fff; text-align: center;">
-        <h2 style="font-size: 4rem; color: #fff; margin-bottom: 25px;">Learn More</h2>
-        <p style="font-size: 1.25rem; font-weight: 300; color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto 50px;">Contact us for further information or access to fund documentation.</p>
-        <a href="mailto:info@albapartners.com" class="newsletter-btn" style="text-decoration: none; display: inline-block; padding: 18px 40px; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; border: 1px solid var(--gold); border-radius: 4px; background: transparent; color: var(--gold);">Contact Us</a>
-    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const compassSection = document.getElementById("compass-section");
+            const svgGraphic = document.getElementById("compass-svg-graphic");
+            const titleEl = document.getElementById("compass-title");
+            const descEl = document.getElementById("compass-desc");
+            const stepEl = document.getElementById("compass-step");
+            
+            if(!compassSection || !svgGraphic) return;
 
-<section class="newsletter-section">
+            const characteristics = [
+                { label: "Strategy", value: "Long / Short Credit Strategy" },
+                { label: "Focus", value: "Global Liquid Credit" },
+                { label: "Bias", value: "European Bias" },
+                { label: "Leverage", value: "Moderate Leverage" },
+                { label: "Management", value: "Active Risk Management" },
+                { label: "Returns", value: "Target Returns: Low Teens" },
+                { label: "Volatility", value: "Controlled Volatility" }
+            ];
+            
+            const cx = 200, cy = 200, rTicks = 160, rProgress = 180;
+            const totalTicks = 84; 
+            
+            let svgHTML = `<circle cx="${cx}" cy="${cy}" r="${rProgress}" class="ring-bg"></circle>`;
+            
+            // Build dial layout
+            for(let i=0; i<totalTicks; i++) {
+                const angle = (i / totalTicks) * Math.PI * 2;
+                const isMajor = (i % 12 === 0);
+                const innerR = isMajor ? rTicks - 16 : rTicks - 6;
+                const x1 = cx + innerR * Math.cos(angle);
+                const y1 = cy + innerR * Math.sin(angle);
+                const x2 = cx + rTicks * Math.cos(angle);
+                const y2 = cy + rTicks * Math.sin(angle);
+                const strokeW = isMajor ? 2 : 1;
+                svgHTML += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="tick-line" id="tick-${i}" stroke-width="${strokeW}"></line>`;
+            }
+            
+            const circumference = 2 * Math.PI * rProgress;
+            svgHTML += `<circle cx="${cx}" cy="${cy}" r="${rProgress}" class="ring-progress" id="compass-progress" style="stroke-dasharray: ${circumference}; stroke-dashoffset: ${circumference};"></circle>`; 
+            
+            svgGraphic.innerHTML = svgHTML;
+            const progressRing = document.getElementById("compass-progress");
+            
+            let lastIndex = -1;
+            
+            window.addEventListener('scroll', () => {
+                const rect = compassSection.getBoundingClientRect();
+                const scrollDistance = compassSection.offsetHeight - window.innerHeight;
+                
+                let progress = -rect.top / Math.max(1, scrollDistance);
+                progress = Math.max(0, Math.min(1, progress));
+                if(progress < 0) progress = 0;
+                
+                // Advance the progress ring beautifully mapping directly to scroll mechanics
+                const offset = circumference - (progress * circumference);
+                if(progressRing) progressRing.style.strokeDashoffset = offset;
+                
+                // Color the ticks passed
+                const currentTick = Math.floor(progress * totalTicks);
+                for(let i=0; i<totalTicks; i++) {
+                    const tk = document.getElementById(`tick-${i}`);
+                    if(tk) {
+                        if (i <= currentTick && progress > 0.01) {
+                            tk.style.stroke = "var(--gold)";
+                        } else {
+                            tk.style.stroke = "rgba(255,255,255,0.15)";
+                        }
+                    }
+                }
+                
+                // Advance the payload content (7 items)
+                let activeIndex = Math.floor(progress * characteristics.length);
+                if(activeIndex >= characteristics.length) activeIndex = characteristics.length - 1;
+                if(activeIndex < 0) activeIndex = 0;
+                
+                if(activeIndex !== lastIndex) {
+                    titleEl.style.opacity = 0;
+                    descEl.style.opacity = 0;
+                    
+                    setTimeout(() => {
+                        titleEl.innerText = characteristics[activeIndex].label;
+                        descEl.innerText = characteristics[activeIndex].value;
+                        stepEl.innerText = `${activeIndex + 1} / ${characteristics.length}`;
+                        titleEl.style.opacity = 1;
+                        descEl.style.opacity = 1;
+                    }, 150); // Fast crisp switch mimicking native crossfade
+                    lastIndex = activeIndex;
+                }
+            });
+        });
+    </script>
+
+    <!-- Stay Informed Section -->
+    <style>
+        .newsletter-section {
+            background-color: #f7f9f8; /* Alba off-white background */
+            padding: 15vh 8%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .newsletter-container {
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 8px;
+            padding: 8vh 40px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+            margin: 0 auto;
+        }
+
+        .newsletter-container h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+            font-family: 'Aperto', "Georgia", serif;
+        }
+
+        .newsletter-container p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 15px;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex-grow: 1;
+            padding: 18px 25px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 4px;
+            font-size: 1rem;
+            background: #fdfdfd;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            color: var(--accent);
+            font-family: inherit;
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(207, 168, 95, 0.1);
+        }
+
+        .newsletter-btn-submit {
+            background-color: var(--accent);
+            color: #ffffff;
+            border: none;
+            padding: 0 35px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            white-space: nowrap;
+        }
+
+        .newsletter-btn-submit:hover {
+            background-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .newsletter-disclaimer {
+            font-size: 0.85rem !important;
+            margin-bottom: 0 !important;
+            margin-top: 20px !important;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 600px) {
+            .newsletter-form { flex-direction: column; }
+            .newsletter-btn-submit { padding: 18px; }
+            .newsletter-container h2 { font-size: 2.2rem; }
+        }
+    </style>
+
+    <section class="newsletter-section">
         <div class="newsletter-container fade-up delay-1">
             <h2>Stay Informed</h2>
             <p>Subscribe to receive Alba's latest macroeconomic insights and credit market updates securely to your inbox.</p>
             
-            <!-- FORM ENDPOINT CONNECTION: Update the action="" URL to link specifically to Mailchimp, Formspree, or your WordPress logic! -->
             <form action="https://formspree.io/f/YOUR_ENDPOINT_KEY" method="POST" class="newsletter-form">
                 <input type="email" name="email" placeholder="Enter your email address" required class="newsletter-input">
-                <button type="submit" class="newsletter-btn">Subscribe</button>
+                <button type="submit" class="newsletter-btn-submit">Subscribe</button>
             </form>
             
             <p class="newsletter-disclaimer">We respect your privacy. No spam, ever.</p>
@@ -1656,7 +2229,7 @@
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+        document.querySelectorAll('.fade-up, .zoom-in').forEach(el => observer.observe(el));
     </script>
 </body>
 
