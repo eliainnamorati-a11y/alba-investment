@@ -214,7 +214,7 @@
         .founder-img-placeholder {
             width: 100%;
             height: 200px;
-            background: url('FINNEWS (1).jpg') center/cover;
+            background: url('team-sketch.jpg') center/cover;
             border-radius: 4px;
         }
 
@@ -370,7 +370,7 @@
         }
 
         #bridge-canvas-2 {
-            transform: scale(1.4);
+            transform: scale(1.05); /* Reduced scale to make lighthouse smaller natively */
             transform-origin: center center;
         }
 
@@ -437,6 +437,32 @@
             font-size: 0.8rem;
             color: var(--text-secondary);
             margin-top: 5px;
+        }
+
+        .pill-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 40px;
+        }
+
+        .metric-pill {
+            padding: 10px 22px;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 40px;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            color: var(--accent);
+            background: rgba(0, 0, 0, 0.02);
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+        
+        .metric-pill:hover {
+            border-color: var(--gold);
+            background: rgba(207, 168, 95, 0.1); /* Alba gold tint */
+            color: #000;
         }
 
         /* Footer space */
@@ -868,14 +894,14 @@
 <body>
 
     <nav class="navbar" id="navbar">
-        <div class="logo">
+        <a href="index.html" class="logo" style="text-decoration: none;">
             <img src="logos/Untitled%20design%20(73).png" id="navbar-logo" alt="Alba Investment Partners">
-        </div>
+        </a>
         <div class="nav-links">
-            <a href="#">About Us</a>
-            <a href="#">Credit Opportunities</a>
-            <a href="#">Private Wealth</a>
-            <a href="#">News</a>
+            <a href="about.html">About Us</a>
+            <a href="credit-opportunities.html">Credit Opportunities</a>
+            <a href="private-wealth.html">Private Wealth</a>
+            <a href="mailto:contact@albainvestments.ch">Contact</a>
         </div>
     </nav>
 
@@ -961,12 +987,12 @@
         <div class="text-column">
             <div class="step" style="min-height: 150vh; justify-content: flex-start; padding-top: 20vh;">
                 <h2>Credit Opportunities</h2>
-                <p>Managing assets with discipline and a relentless focus on sustainable, conflict-free growth across all verticals.</p>
-                <div class="stats-grid">
-                    <div class="stat-item"><h4>500M+</h4><p>AUM</p></div>
-                    <div class="stat-item"><h4>30+</h4><p>Years</p></div>
-                    <div class="stat-item"><h4>20+</h4><p>Case Studies</p></div>
-                    <div class="stat-item"><h4>95%</h4><p>Retention</p></div>
+                <p style="font-size: 1.25rem; line-height: 1.6; max-width: 700px; text-align: left;">The Alba Credit Opportunities fund is a long/short credit strategy investing in liquid corporate and financial credit globally with a European bias, focusing on high-conviction opportunities across the capital structure. The strategy combines bottom-up fundamental credit analysis with top-down macro positioning and uses derivatives to actively manage interest rate, FX, and credit exposure. The fund aims to generate equity-like returns with contained volatility by exploiting market dislocations, dispersion, and catalyst-driven credit opportunities.</p>
+                <div class="pill-grid">
+                    <div class="metric-pill">25–35 Positions</div>
+                    <div class="metric-pill">Low-Teens Target Return</div>
+                    <div class="metric-pill">Global Credit</div>
+                    <div class="metric-pill">Active Risk Mgmt</div>
                 </div>
             </div>
         </div>
@@ -977,12 +1003,12 @@
         <div class="text-column">
             <div class="step" style="min-height: 150vh; justify-content: flex-start; padding-top: 20vh;">
                 <h2>Private Wealth</h2>
-                <p>Applying the same structured rigor to private capital, maintaining true alignment with our investors.</p>
-                <div class="stats-grid">
-                    <div class="stat-item"><h4>1B+</h4><p>Target AUM</p></div>
-                    <div class="stat-item"><h4>100%</h4><p>Alignment</p></div>
-                    <div class="stat-item"><h4>15+</h4><p>Specialists</p></div>
-                    <div class="stat-item"><h4>24/7</h4><p>Access</p></div>
+                <p style="font-size: 1.25rem; line-height: 1.6; max-width: 700px; text-align: left;">Alba’s private wealth and multi-family office offering provides independent asset management and advisory services tailored to each client’s financial situation, risk profile, and long-term objectives. The firm focuses on strategic asset allocation, portfolio construction, risk management, and access to best-in-class investment opportunities across fixed income, equities, and alternatives. The service also supports clients through liquidity events, bank selection, governance, and coordination with legal and tax advisors.</p>
+                <div class="pill-grid">
+                    <div class="metric-pill">Tailored Portfolios</div>
+                    <div class="metric-pill">Open Architecture</div>
+                    <div class="metric-pill">Alternatives Focus</div>
+                    <div class="metric-pill">Family Office Advisory</div>
                 </div>
             </div>
         </div>
@@ -993,6 +1019,402 @@
             </div>
         </div>
     </div>
+    <!-- Case Studies Section (Kenslow Latest Insights Style) -->
+    <!-- Latest Insights Section (Kenslow 300vh Scroll Sequence) -->
+    <style>
+        .insights-scroll-wrapper {
+            height: 300vh; /* scrollable duration */
+            position: relative;
+            z-index: 10;
+        }
+
+        .insights-sticky-container {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            background-color: #050a08;
+            color: #ffffff;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cs-bg-image {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -2;
+            transform: scale(1.05);
+            transition: opacity 0.5s ease, transform 3s ease;
+            opacity: 0;
+        }
+        
+        .cs-bg-image.active {
+            opacity: 1;
+            transform: scale(1.0);
+        }
+
+        /* Unique high-quality stock photography for each insight phase */
+        #bg-1 { 
+            background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop') center/cover;
+            filter: blur(2px) brightness(0.2); 
+        }
+        #bg-2 { 
+            background: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop') center/cover;
+            filter: blur(2px) brightness(0.25); 
+        }
+        #bg-3 { 
+            background: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2070&auto=format&fit=crop') center/cover;
+            filter: blur(3px) brightness(0.15); 
+        }
+
+        .cs-grid-lines {
+            position: absolute;
+            top: 0; left: 8%; width: 84%; height: 100%;
+            display: flex;
+            justify-content: space-between;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .cs-grid-line {
+            width: 1px;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .cs-top-bar {
+            padding: 40px 8%;
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            text-transform: uppercase;
+        }
+
+        .cs-middle {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            transform: translateY(-55%);
+            z-index: 5;
+            box-sizing: border-box;
+            padding: 0 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .cs-title-wrapper {
+            flex: 1.2;
+        }
+
+        .cs-title {
+            font-family: 'Aperto', "Georgia", serif;
+            font-size: clamp(3rem, 6vw, 6rem);
+            line-height: 1;
+            font-weight: 300;
+            margin: 0;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .cs-desc-wrapper {
+            flex: 1;
+            max-width: 450px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease 0.3s, transform 1s ease 0.3s;
+        }
+
+        .cs-desc {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-family: 'Inter', sans-serif;
+            /* Scroll JS loop natively handles opacity logic per frame now */
+        }
+
+        .cs-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-family: 'Inter', sans-serif;
+            transition: opacity 0.3s ease;
+        }
+        
+        .cs-btn:hover {
+            opacity: 0.8;
+        }
+
+        .cs-btn-icon {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(207, 168, 95, 0.4); /* Alba gold tint */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+        }
+
+        .cs-btn-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: #fff;
+            stroke-width: 1.5;
+            transition: transform 0.3s ease;
+        }
+        
+        .cs-btn:hover .cs-btn-icon svg {
+            transform: translate(3px, 3px);
+        }
+
+        .cs-bottom-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0 8% 60px;
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            z-index: 5;
+        }
+
+        .cs-col {
+            flex: 1;
+            position: relative;
+            padding-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .cs-col-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .cs-year {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .cs-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: right;
+            opacity: 0.9;
+        }
+
+        .cs-progress-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            width: 100%;
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .cs-progress-fill {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            width: 0%;
+            background-color: var(--gold);
+            will-change: width;
+            transform-origin: left;
+        }
+        
+        .cs-elements-visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        @media(max-width: 900px) {
+            .insights-scroll-wrapper { height: auto; }
+            .insights-sticky-container { position: relative; height: auto; padding: 100px 0 60px; top: 0; }
+            .cs-middle { flex-direction: column; align-items: flex-start; margin-bottom: 60px; gap: 30px; }
+            .cs-bottom-bar { flex-direction: column; gap: 50px; }
+            .cs-grid-lines { display: none; }
+            .cs-desc-wrapper { margin-top: 20px; }
+            .cs-progress-bg { display: none; } /* On mobile, static rendering is better */
+            .cs-progress-fill { width: 100%; transition: width 1s ease; }
+        }
+    </style>
+
+    <div class="insights-scroll-wrapper" id="insights-sequence">
+        <section class="insights-sticky-container">
+            
+            <div class="cs-bg-image active" id="bg-1"></div>
+            <div class="cs-bg-image" id="bg-2"></div>
+            <div class="cs-bg-image" id="bg-3"></div>
+            
+            <div class="cs-grid-lines">
+                <div class="cs-grid-line"></div>
+                <div class="cs-grid-line"></div>
+                <div class="cs-grid-line"></div>
+                <div class="cs-grid-line"></div>
+                <div class="cs-grid-line"></div>
+            </div>
+
+            <div class="cs-top-bar">
+                <span>Insights & News</span>
+                <span>2026</span>
+            </div>
+
+            <div class="cs-middle">
+                <div class="cs-title-wrapper">
+                    <h2 class="cs-title">Latest Insights</h2>
+                </div>
+                <div class="cs-desc-wrapper">
+                    <p class="cs-desc" id="insight-desc-text">Our latest insights highlight the depth of our expertise and the impact of our rigorous credit strategies.</p>
+                    
+                    <a href="#" class="cs-btn">
+                        <div class="cs-btn-icon">
+                            <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                        </div>
+                        All insights
+                    </a>
+                </div>
+            </div>
+
+            <div class="cs-bottom-bar">
+                <div class="cs-col">
+                    <div class="cs-col-top">
+                        <span class="cs-year">Q1 2026</span>
+                        <span class="cs-name">MACRO DISLOCATIONS</span>
+                    </div>
+                    <div class="cs-progress-bg"></div>
+                    <div class="cs-progress-fill" id="prog-1"></div>
+                </div>
+                <div class="cs-col">
+                    <div class="cs-col-top">
+                        <span class="cs-year">Q1 2026</span>
+                        <span class="cs-name">ACTIVE RISK MANAGEMENT</span>
+                    </div>
+                    <div class="cs-progress-bg"></div>
+                    <div class="cs-progress-fill" id="prog-2"></div>
+                </div>
+                <div class="cs-col">
+                    <div class="cs-col-top">
+                        <span class="cs-year">2025</span>
+                        <span class="cs-name">WEALTH PRESERVATION</span>
+                    </div>
+                    <div class="cs-progress-bg"></div>
+                    <div class="cs-progress-fill" id="prog-3"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const wrapper = document.getElementById('insights-sequence');
+            const csTitle = document.querySelector('.cs-title');
+            const csDescWrapper = document.querySelector('.cs-desc-wrapper');
+            const csCols = document.querySelectorAll('.cs-col');
+            const bgs = [document.getElementById('bg-1'), document.getElementById('bg-2'), document.getElementById('bg-3')];
+            const progs = [document.getElementById('prog-1'), document.getElementById('prog-2'), document.getElementById('prog-3')];
+            const descText = document.getElementById('insight-desc-text');
+
+            const descriptions = [
+                "Discover how our proprietary research identifies structural dislocations and asymmetric opportunities across global credit markets.",
+                "A deep dive into our proactive risk management and bottom-up credit selection that targets absolute capital retention.",
+                "Learn how our multi-family office advisory teams preserve long-term capital through tailored, open-architecture portfolios."
+            ];
+
+            // Initial fade-up logic just for entry
+            const entryObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    if(csTitle) csTitle.classList.add('cs-elements-visible');
+                    if(csDescWrapper) csDescWrapper.classList.add('cs-elements-visible');
+                    csCols.forEach((col, idx) => {
+                        setTimeout(() => col.classList.add('cs-elements-visible'), 400 + (idx * 200)); 
+                    });
+                    entryObserver.disconnect();
+                }
+            }, { threshold: 0.1 });
+            if(wrapper) entryObserver.observe(wrapper);
+            
+            // Complex sticky scroll sequence
+            let currentPhase = 0;
+            
+            window.addEventListener('scroll', () => {
+                if(!wrapper || window.innerWidth <= 900) return; // Disable complex scroll on mobile, static logic kicks in
+
+                const rect = wrapper.getBoundingClientRect();
+                
+                // Only process if wrapper is scrolling through viewport
+                if(rect.top <= 0 && rect.bottom >= window.innerHeight/2) {
+                    
+                    // Total scrollable distance inside the wrapper
+                    const scrollableDistance = rect.height - window.innerHeight;
+                    const scrolled = Math.abs(rect.top);
+                    
+                    // Normalize scroll to 0.0 -> 3.0 (3 phases)
+                    const progress = Math.min(Math.max((scrolled / scrollableDistance) * 3, 0), 3);
+                    
+                    // Phase logic
+                    const phaseIndex = Math.floor(progress); // 0, 1, or 2
+                    const phaseProgress = progress % 1; // 0.0 to 1.0 within the phase
+                    
+                    // Fix bounds where progress exactly equals 3.0
+                    const activePhase = Math.min(phaseIndex, 2);
+
+                    // Sync the text visibly perfectly mapped to the scroll progress frame execution
+                    if (descText) {
+                        descText.textContent = descriptions[activePhase];
+                        
+                        let textAlpha = 1;
+                        if (phaseProgress < 0.15 && activePhase > 0) {
+                            textAlpha = phaseProgress / 0.15; // Smooth fade-in natively on initial 15% phase entry
+                        } else if (phaseProgress > 0.85 && activePhase < 2) {
+                            textAlpha = (1.0 - phaseProgress) / 0.15; // Smooth fade-out natively on final 15% phase exit
+                        }
+                        descText.style.opacity = textAlpha;
+                    }
+
+                    // If we shifted to a new phase physically, cross-fade background wrapper globally
+                    if (activePhase !== currentPhase) {
+                        currentPhase = activePhase;
+                        bgs.forEach((bg, idx) => {
+                            if(bg) bg.classList.toggle('active', idx === currentPhase);
+                        });
+                    }
+
+                    // Update the 3 golden progress lines dynamically
+                    progs.forEach((prog, idx) => {
+                        if(prog) {
+                            if (idx < activePhase) {
+                                prog.style.width = '100%'; // Previous lines completely filled
+                            } else if (idx === activePhase) {
+                                prog.style.width = `${Math.min(phaseProgress * 100, 100)}%`; // Current line filling
+                            } else {
+                                prog.style.width = '0%'; // Future lines empty
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 
     <!-- Built on Principles -> Arc Section -->
     <section class="arc-section" id="arc-section">
@@ -1089,21 +1511,19 @@
                 <div class="footer-links-grid">
                     <div class="footer-column">
                         <h4>Firm</h4>
-                        <a href="#">About Us</a>
-                        <a href="#">Our Philosophy</a>
-                        <a href="#">Leadership</a>
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About Us</a>
+                        <a href="#case-studies">Insights</a>
                     </div>
                     <div class="footer-column">
                         <h4>Strategies</h4>
-                        <a href="#">Credit Opportunities</a>
-                        <a href="#">Private Wealth</a>
-                        <a href="#">Absolute Return</a>
+                        <a href="credit-opportunities.html">Credit Opportunities</a>
+                        <a href="private-wealth.html">Private Wealth</a>
                     </div>
                     <div class="footer-column">
                         <h4>Connect</h4>
-                        <a href="#">News & Insights</a>
-                        <a href="#">Contact Us</a>
-                        <a href="#">Client Portal</a>
+                        <a href="mailto:contact@albainvestments.ch">Contact</a>
+                        <a href="#">LinkedIn</a>
                     </div>
                 </div>
             </div>

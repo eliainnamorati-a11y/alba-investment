@@ -1,0 +1,1924 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alba Investment Partners - About Us</title>
+    <style>
+        :root {
+            --bg-color: #fcfcfc;
+            --text-main: #111111;
+            --text-secondary: #555555;
+            --accent: #1e362d;
+            /* Alba deep green */
+            --gold: #cfa85f;
+            /* Alba gold */
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        @font-face {
+            font-family: 'Aperto';
+            src: url('LinotypeAperto-Roman.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        html {
+            scroll-snap-type: y proximity;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .serif {
+            font-family: 'Aperto', "Georgia", "Times New Roman", serif;
+            font-weight: 400;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 24px 60px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.navbar-scrolled {
+            background: rgba(252, 252, 252, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 12px 60px;
+            /* Thinner navbar when scrolled */
+        }
+
+        .navbar.navbar-scrolled .logo {
+            height: 45px;
+        }
+
+        .logo {
+            cursor: pointer;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            transition: height 0.3s ease;
+        }
+
+        .logo img {
+            max-height: 100%;
+            width: auto;
+            object-fit: contain;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            /* A bit larger */
+            font-family: 'Aperto', serif;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: capitalize;
+            /* Title case */
+            transition: color 0.3s ease;
+        }
+
+        .navbar.navbar-scrolled .nav-links a {
+            color: var(--text-main);
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Sticky Hero Section */
+        .hero-container {
+            height: 350vh;
+            position: relative;
+            background-color: #0b110e;
+            color: #ffffff;
+        }
+
+        .hero-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            z-index: 1;
+        }
+
+        .hero-bg video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+            /* Slight darkening overlay to make text pop */
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+            display: block;
+        }
+
+        .initial-content {
+            position: absolute;
+            bottom: 12vh;
+            /* Bottom load constraint */
+            left: 60px;
+            /* Exactly matches navbar padding */
+            width: calc(100% - 120px);
+            transform-origin: top left;
+            will-change: transform;
+            pointer-events: auto;
+        }
+
+        @keyframes heroTextReveal {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .initial-content h1 {
+            font-size: 5.5vw;
+            line-height: 1.05;
+            max-width: 90%;
+            margin: 0;
+            color: #ffffff;
+            font-family: 'Aperto', "Georgia", "Times New Roman", serif;
+            font-weight: 300;
+            opacity: 0;
+            animation: heroTextReveal 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            animation-delay: 0.2s;
+        }
+
+        .secondary-content {
+            position: absolute;
+            bottom: 12vh;
+            /* Same geometric baseline as title */
+            left: 60px;
+            /* Exactly matches navbar padding */
+            width: calc(100% - 120px);
+            pointer-events: auto;
+        }
+
+        .founder-img-placeholder,
+        .intro-text,
+        .hero-stat {
+            opacity: 0;
+            transform: translateY(40px);
+            will-change: opacity, transform;
+        }
+
+        .secondary-inner {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .secondary-left {
+            flex: 0 0 350px;
+        }
+
+        .founder-img-placeholder {
+            width: 100%;
+            height: 200px;
+            background: url('FINNEWS (1).jpg') center/cover;
+            border-radius: 4px;
+        }
+
+        .secondary-right {
+            flex: 1;
+        }
+
+        .intro-text {
+            font-size: 1.6rem;
+            line-height: 1.4;
+            margin-bottom: 40px;
+            font-weight: 300;
+            color: #ffffff;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 50px;
+        }
+
+        .hero-stat {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .hero-stat::before {
+            content: '';
+            display: block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            border: 4px solid transparent;
+            box-shadow: 0 0 0 0.5px var(--accent);
+            /* Hairline sub-pixel ring */
+            background-clip: padding-box;
+            box-sizing: content-box;
+        }
+
+        .stat-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-details .stat-num {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 2px;
+        }
+
+        .stat-details .stat-label {
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.7);
+            font-family: sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* Bottom Progress Bar */
+        .hero-bottom-bar {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            width: 100%;
+            padding: 0 60px;
+            /* Perfectly aligned with navigation bar / hero text */
+            box-sizing: border-box;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 1px;
+            /* Thinner */
+            background-color: rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0%;
+            background-color: #ffffff;
+            /* White line */
+        }
+
+        /* Scrollytelling Section */
+        .scrollytelling-wrapper {
+            display: flex;
+            position: relative;
+            background-color: #ffffff;
+            /* Perfectly matched to the 'new bridge' pure white sequence */
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: background-color 0.5s ease;
+        }
+
+        .text-column {
+            width: 50%;
+            padding-left: 10%;
+            padding-right: 5%;
+        }
+
+        .canvas-column {
+            width: 50%;
+            position: relative;
+        }
+
+        .normal-section {
+            padding: 100px 10%;
+            background-color: var(--bg-color);
+        }
+
+        .normal-section h2 {
+            font-size: 3.5rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            margin-top: 0;
+        }
+
+        .section-desc {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 800px;
+            margin-bottom: 40px;
+        }
+
+        .canvas-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-color: transparent;
+            transition: background-color 0.5s ease;
+        }
+
+        canvas {
+            max-width: 100%;
+            max-height: 100vh;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+            clip-path: inset(0 2% 0 0);
+        }
+
+        #bridge-canvas-1 {
+            mix-blend-mode: normal;
+        }
+
+        #bridge-canvas-2 {
+            transform: scale(1.4);
+            transform-origin: center center;
+        }
+
+        /* Steps (Text changing sections) */
+        .step {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .step h2 {
+            font-size: 3.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            margin-top: 0;
+        }
+
+        .step p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 450px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-item h3 {
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-family: sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-item h4 {
+            font-size: 4rem;
+            margin: 0;
+            color: var(--accent);
+        }
+
+        .stat-item p {
+            font-family: sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        /* Footer space */
+        .footer-pad {
+            height: 30vh;
+            background: var(--bg-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Mobile overrides moved to global master query below */
+
+        /* Scrollytelling Mission */
+        .mission-scroll-section {
+            height: 180vh;
+            /* Dramatically faster lighting curve */
+            position: relative;
+            background-color: var(--bg-color);
+            z-index: 5;
+        }
+
+        .mission-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .mission-container {
+            width: 100%;
+            padding: 0 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 100px; /* Expanded heavily for premium breathing room */
+        }
+
+        .mission-left {
+            flex: 0 0 30%; /* Shrunk title column footprint marginally giving text more volume */
+        }
+
+        .mission-left h2 {
+            font-size: 3rem;
+            color: var(--text-main);
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .mission-right {
+            flex: 1;
+            max-width: 800px;
+        }
+
+        #mission-text {
+            font-size: 2.2rem;
+            line-height: 1.5;
+            margin: 0;
+            color: rgba(17, 17, 17, 0.15);
+            /* light grey base */
+            font-weight: 400;
+            will-change: transform;
+            transform: translateY(100px);
+            /* Initial position */
+        }
+
+        .mission-word {
+            transition: color 0.1s;
+        }
+
+        .mission-word.active {
+            color: var(--text-main);
+        }
+
+
+
+        /* Scroll Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: opacity, transform;
+        }
+
+        .fade-up.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        /* Built on Principles - Arc Section */
+        .arc-section {
+            height: 400vh;
+            background-color: #1a3622;
+            /* Custom dark green background */
+            color: #ffffff;
+            position: relative;
+            z-index: 10;
+        }
+
+        .arc-snap-markers {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            pointer-events: none;
+        }
+
+        .arc-snap-target {
+            flex: 1;
+            /* Divides the section into exactly 4 blocks of 100vh each */
+            scroll-snap-align: start;
+        }
+
+        .arc-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .arc-title {
+            position: absolute;
+            top: 15vh;
+            left: 5vw;
+            font-size: 3.5rem;
+            /* Matched to .normal-section h2 perfectly */
+            font-weight: 300;
+            color: #ffffff;
+            margin: 0;
+            line-height: 1.1;
+            z-index: 30;
+            font-family: 'Aperto', "Georgia", serif;
+            letter-spacing: -1px;
+        }
+
+        .arc-mobile-list {
+            display: none;
+        }
+
+        .arc-content-wrapper {
+            position: absolute;
+            top: 60vh;
+            /* Lowered significantly */
+            left: 50%;
+            text-align: center;
+            z-index: 20;
+            width: 80%;
+            max-width: 600px;
+            opacity: 0;
+            transform: translateX(-50%) scale(0.8);
+            will-change: opacity, transform;
+        }
+
+        .arc-active-word {
+            font-family: 'Aperto', "Georgia", serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            opacity: 1;
+            transition: opacity 0.4s ease;
+            letter-spacing: -0.5px;
+        }
+
+        .arc-active-desc {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.6;
+            transition: opacity 0.4s ease;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .arc-circle-container {
+            position: absolute;
+            top: 45vh;
+            /* Lowered the wheel significantly */
+            left: 50%;
+            width: 140vw;
+            height: 140vw;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateX(-50%) scale(0.5);
+            will-change: opacity, transform;
+        }
+
+        .arc-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            position: relative;
+            will-change: transform;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            /* Makes the snapping wheel spin buttery smooth */
+        }
+
+        .arc-spoke {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform-origin: center center;
+            will-change: transform;
+        }
+
+        .arc-node {
+            position: absolute;
+            top: -22px;
+            /* Pull it exactly to center on the border line */
+            left: 50%;
+            width: 44px;
+            height: 44px;
+            margin-left: -22px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: #050505;
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: color 0.3s, border-color 0.3s;
+        }
+
+        .arc-node-inner {
+            will-change: transform;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            /* Match wheel spin perfectly to stay upright */
+        }
+
+        .arc-apex-indicator {
+            position: absolute;
+            top: 36px;
+            /* Exactly dropping under the active node natively */
+            left: 0;
+            width: 100%;
+            /* Force absolutely perfect centering to overcome subpixel drift */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .apex-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--gold);
+            /* Intentionally removed the glowing drop shadow */
+        }
+
+        .apex-line {
+            width: 1px;
+            height: 12vh;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+        }
+
+
+
+        /* Modern Green Footer */
+        .alba-footer {
+            background-color: #1a3622;
+            color: #ffffff;
+            padding: 80px 10% 40px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            position: relative;
+            z-index: 20;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            scroll-snap-align: end;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            height: 40px;
+            margin-bottom: 25px;
+            object-fit: contain;
+            opacity: 0.9;
+        }
+
+        .footer-mission {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .footer-links-grid {
+            display: flex;
+            gap: 80px;
+        }
+
+        .footer-column h4 {
+            color: #ffffff;
+            font-size: 1.15rem;
+            /* Scaled slightly for Aperto rendering */
+            font-weight: 400;
+            margin-bottom: 25px;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            font-family: 'Aperto', "Georgia", "Times New Roman", serif;
+        }
+
+        .footer-column a {
+            display: block;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            font-weight: 300;
+        }
+
+        .footer-column a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .legal-links a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .legal-links a:hover {
+            color: #ffffff;
+        }
+
+        /* --- MASTER MOBILE RESPONSIVE BLOCK --- */
+        @media (max-width: 900px) {
+
+            /* General & Navbar */
+            .nav-links {
+                display: none;
+            }
+
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .navbar.navbar-scrolled {
+                padding: 10px 20px;
+            }
+
+            .logo {
+                height: 40px;
+            }
+
+            /* Hero section */
+            .hero-container {
+                height: 250vh;
+            }
+
+            .hero-content {
+                height: 100vh;
+                top: 0;
+                left: 0;
+                width: 100%;
+                display: block;
+            }
+
+            .initial-content {
+                position: absolute;
+                bottom: 8vh;
+                width: 90%;
+                left: 5%;
+                text-align: left;
+                transform-origin: left center;
+            }
+
+            .initial-content h1 {
+                font-size: 2.8rem;
+                line-height: 1.05;
+                text-align: left;
+            }
+
+            .secondary-content {
+                position: absolute;
+                bottom: 8vh;
+                width: 90%;
+                left: 5%;
+            }
+
+            .secondary-inner {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+
+            .secondary-left {
+                display: none !important;
+            }
+
+            .founder-img-placeholder {
+                display: none !important;
+            }
+
+            .intro-text {
+                font-size: 1.15rem;
+                margin-bottom: 25px;
+                text-align: left;
+            }
+
+            .hero-stats {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+            }
+
+            .stat-details .stat-num {
+                font-size: 1.1rem;
+            }
+
+            .hero-bottom-bar {
+                display: none;
+            }
+
+            /* Clear screen clutter on load */
+
+            /* Scrollytelling Bridge */
+            .scrollytelling-wrapper,
+            .scrollytelling-wrapper.scrolly-reverse {
+                display: block;
+                position: relative;
+            }
+
+            .canvas-column {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 10;
+                pointer-events: none;
+                padding: 0;
+                overflow: hidden;
+            }
+
+            .canvas-sticky {
+                position: sticky;
+                top: 0;
+                height: 45vh;
+                border: none;
+                align-items: stretch;
+                justify-content: center;
+                background: linear-gradient(to bottom, #ffffff 85%, rgba(255, 255, 255, 0));
+                display: flex;
+            }
+
+            canvas {
+                max-width: 90%;
+                max-height: 90%;
+                mix-blend-mode: normal;
+                margin-top: 5vh;
+            }
+
+            .text-column {
+                position: relative;
+                z-index: 5;
+                width: 100%;
+                padding: 45vh 5% 5vh;
+                /* Prevents text colliding mathematically with top sticky container */
+            }
+
+            .step {
+                min-height: 70vh;
+                justify-content: center;
+                padding-bottom: 15vh;
+                text-align: left;
+            }
+
+            /* Mission */
+            .mission-container {
+                flex-direction: column;
+                gap: 30px;
+                padding-top: 80px;
+                align-items: flex-start;
+            }
+
+            .mission-left h2 {
+                font-size: 2.2rem;
+                text-align: left;
+            }
+
+            #mission-text {
+                font-size: 1.8rem;
+                line-height: 1.4;
+                text-align: left;
+            }
+
+            .normal-section {
+                padding: 60px 8%;
+                text-align: left;
+            }
+
+            .normal-section h2,
+            .step h2 {
+                font-size: 2.4rem;
+                letter-spacing: -1px;
+            }
+
+            .section-desc {
+                font-size: 1.1rem;
+                margin: 0 0 30px 0;
+            }
+
+            .stats-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .stat-item h4 {
+                font-size: 3.5rem;
+                letter-spacing: -2px;
+            }
+
+            /* Arc "Built on Principles" - Brutally Simplified for Mobile */
+            .arc-section {
+                height: auto !important;
+                min-height: 100vh;
+                padding: 100px 0 80px;
+            }
+
+            .arc-snap-markers {
+                display: none !important;
+            }
+
+            .arc-sticky {
+                position: relative !important;
+                height: auto !important;
+                padding: 0 8%;
+                overflow: visible;
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
+
+            .arc-title {
+                position: relative;
+                top: 0;
+                left: 0;
+                width: 100%;
+                padding: 0;
+                margin-bottom: 50px;
+                font-size: 2.8rem;
+                text-align: left;
+            }
+
+            .arc-content-wrapper,
+            .arc-circle-container {
+                display: none !important;
+            }
+
+            .arc-mobile-list {
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                width: 100%;
+            }
+
+            .arc-mobile-item {
+                display: flex;
+                gap: 20px;
+                align-items: flex-start;
+            }
+
+            .arc-mobile-num {
+                flex: 0 0 36px;
+                height: 36px;
+                border-radius: 50%;
+                border: 1px solid var(--gold);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--gold);
+                font-size: 1rem;
+                font-family: sans-serif;
+            }
+
+            .arc-mobile-text h3 {
+                margin: 0 0 10px 0;
+                font-size: 1.6rem;
+                color: #ffffff;
+                font-family: 'Aperto', "Georgia", serif;
+                font-weight: 400;
+                letter-spacing: -0.5px;
+            }
+
+            .arc-mobile-text p {
+                margin: 0;
+                font-size: 1rem;
+                color: rgba(255, 255, 255, 0.6);
+                line-height: 1.5;
+                font-family: sans-serif;
+            }
+
+            /* Footer */
+            .footer-top {
+                flex-direction: column;
+                gap: 40px;
+                text-align: left;
+                align-items: flex-start;
+            }
+
+            .footer-brand {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-links-grid {
+                flex-wrap: wrap;
+                gap: 30px;
+                flex-direction: column;
+                text-align: left;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            .alba-footer {
+                padding: 50px 8% 30px;
+            }
+        }
+        /* Team Sketch Parallax Zoom Matrix */
+        .sketch-zoom-wrapper {
+            height: 150vh; /* Reduced from 250vh to make the scroll sequence faster and punchier */
+            position: relative;
+            background: #fcfcfc;
+        }
+        
+        .sketch-zoom-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-color); /* Matches the main theme container seamlessly */
+        }
+        
+        .sketch-bg-img {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            width: 90%;
+            height: 90%;
+            background: url('team-sketch.jpg') center/cover;
+            transform-origin: center center;
+            transform: scale(1);
+            will-change: transform;
+            border-radius: 8px; /* Clean edge aesthetic mapping to the clean layout */
+        }
+
+        /* Alba Timeline Section */
+        .timeline-container {
+            padding-left: 60px;
+            position: relative;
+        }
+        
+        .timeline-track {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            bottom: 20px;
+            width: 1px;
+            background-color: rgba(255,255,255, 0.1); 
+            transform-origin: top;
+        }
+
+        .timeline-fill {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; /* Perfectly matches the 1px track without blooming */
+            height: 0%;
+            background-color: var(--gold); /* Solid, clean flat color profile */
+            border-radius: 4px;
+            transform-origin: top;
+            will-change: height;
+        }
+
+        .timeline-node {
+            position: relative;
+            margin-bottom: 25vh; /* Extremely tall immersive scroll gap */
+            opacity: 0; 
+            transform: translateY(30px); /* Clean editorial upward lift */
+            will-change: opacity, transform;
+        }
+
+        .timeline-node:last-child {
+            margin-bottom: 0;
+        }
+
+        .node-dot {
+            position: absolute;
+            left: -44px; /* Perfectly centered on the 1px rail */
+            top: 6px; 
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            z-index: 2;
+        }
+
+        .node-year {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px; 
+            color: rgba(255,255,255,0.5); /* Muted initial state mapping to lighting tracker */
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="logo" style="text-decoration: none;">
+            <img src="logos/Untitled%20design%20(73).png" id="navbar-logo" alt="Alba Investment Partners">
+        </a>
+        <div class="nav-links">
+            <a href="about.html" style="color: var(--gold)">About Us</a>
+            <a href="credit-opportunities.html">Credit Opportunities</a>
+            <a href="private-wealth.html">Private Wealth</a>
+            <a href="mailto:contact@albainvestments.ch">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Static Partial-Height Hero Section -->
+    <div class="hero-container" id="hero-section" style="height: 70vh; min-height: 500px;">
+        <div class="hero-sticky" style="height: 70vh; min-height: 500px; position: relative;">
+            <div class="hero-bg" style="background-image: url('team-sketch.jpg'); background-position: center 25%; background-size: cover;">
+                <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5);">
+                </div>
+            </div>
+
+            <div class="hero-content">
+                <div class="initial-content" id="hero-initial">
+                    <h1>About Us</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alba's Timeline Section -->
+    <div class="normal-section" id="story-timeline-section" style="padding: 15vh 10%;">
+        <div style="display: flex; flex-direction: row; gap: 80px; align-items: flex-start; flex-wrap: wrap;">
+            <div style="flex: 1 1 30%; min-width: 300px;">
+                <h2 style="font-size: 3.5rem; position: sticky; top: 35vh; color: var(--accent); margin: 0;">Alba's<br>Story</h2>
+            </div>
+            
+            <div class="timeline-container" style="flex: 2 1 60%; min-width: 300px;">
+                <div class="timeline-track" id="timeline-track">
+                    <div class="timeline-fill" id="timeline-fill"></div>
+                </div>
+
+                <div class="timeline-node" id="node-1">
+                    <div class="node-dot"></div>
+                    <div class="node-content">
+                        <h3 class="node-year">Origin</h3>
+                        <p class="section-desc" style="margin-bottom:0;">For nearly a decade, our Founding Partners have collaborated to manage the fixed income and credit allocation of a major European single family office, consistently delivering superior risk-adjusted returns.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-node" id="node-2">
+                    <div class="node-dot"></div>
+                    <div class="node-content">
+                        <h3 class="node-year">2024</h3>
+                        <p class="section-desc" style="margin-bottom:0;">Bringing their entrepreneurial vision to life, the Founding Partners established Alba in 2024 with the goal of opening their investment strategies to a broader range of professional and institutional investors.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-node" id="node-3">
+                    <div class="node-dot"></div>
+                    <div class="node-content">
+                        <h3 class="node-year">Present</h3>
+                        <p class="section-desc" style="margin-bottom:0;">Named after the Italian town of Alba, nestled in the heart of Piedmont, the firm pays homage to the place where the seed of their venture was sown. The name “Alba” also symbolizes a new dawn, marking the beginning of an exciting new chapter for the team.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Map Parallax Zoom Section -->
+    <div class="sketch-zoom-wrapper" id="sketch-zoom-section">
+        <div class="sketch-zoom-sticky">
+            <div class="sketch-bg-img" id="sketch-bg-img" style="background: url('map.jpg') center/cover;"></div>
+        </div>
+    </div>
+
+    <!-- Scrollytelling Mission Section -> The Alba Approach (After the Image) -->
+    <section class="mission-scroll-section" id="mission-scroll-section">
+        <div class="mission-sticky">
+            <div class="mission-container">
+                <div class="mission-left">
+                    <h2>The Alba Approach</h2>
+                </div>
+                <div class="mission-right">
+                    <p id="mission-text">Alba's investment philosophy integrates a research-driven, bottom-up approach
+                        to credit selection with a top-down macro framework to manage risk effectively. Alba's
+                        portfolios are built around the principle of diversified concentration: a focus on a select
+                        number of high-conviction trades diversified across multiple risk dimensions. This strategy
+                        enables the team to apply equity-level research rigor to credit investments. Complementing
+                        Alba's human-led investment decisions, the team utilizes proprietary tools that harness
+                        real-time market data to identify dislocations and arbitrage opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Built on Principles -> Arc Section -->
+    <section class="arc-section" id="arc-section">
+        <!-- Invisible snap markers for perfect scrolling interpolation -->
+        <div class="arc-snap-markers">
+            <div class="arc-snap-target"></div>
+            <div class="arc-snap-target"></div>
+            <div class="arc-snap-target"></div>
+            <div class="arc-snap-target"></div>
+        </div>
+
+        <div class="arc-sticky">
+            <h2 class="arc-title">Alba's<br>Edge</h2>
+
+            <div class="arc-content-wrapper">
+                <div class="arc-active-word" id="arc-word">People</div>
+                <p class="arc-active-desc" id="arc-desc">Our diverse backgrounds and skillsets bring unique
+                    perspectives, fostering innovative solutions and creative problem-solving.</p>
+            </div>
+
+            <!-- Simplified Mobile List Fallback -->
+            <div class="arc-mobile-list">
+                <div class="arc-mobile-item">
+                    <div class="arc-mobile-num">1</div>
+                    <div class="arc-mobile-text">
+                        <h3>People</h3>
+                        <p>Our diverse backgrounds and skillsets bring unique perspectives, fostering innovative
+                            solutions and creative problem-solving while sharing a commitment to hard work and
+                            excellence.</p>
+                    </div>
+                </div>
+                <div class="arc-mobile-item">
+                    <div class="arc-mobile-num">2</div>
+                    <div class="arc-mobile-text">
+                        <h3>Credentials</h3>
+                        <p>A proven history of consistently delivering superior risk-adjusted returns across fixed
+                            income and credit asset classes, demonstrating resilience through all economic environments.
+                        </p>
+                    </div>
+                </div>
+                <div class="arc-mobile-item">
+                    <div class="arc-mobile-num">3</div>
+                    <div class="arc-mobile-text">
+                        <h3>Deep Research</h3>
+                        <p>Combining data, technology and deep-rooted experience in financial markets, we uncover
+                            opportunities that others often overlook.</p>
+                    </div>
+                </div>
+                <div class="arc-mobile-item">
+                    <div class="arc-mobile-num">4</div>
+                    <div class="arc-mobile-text">
+                        <h3>Agility</h3>
+                        <p>With lean teams and niche, size-constrained strategies, we foster agility and adaptability —
+                            key attributes for delivering superior returns.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arc-circle-container">
+                <div class="arc-circle" id="arc-circle">
+                    <!-- Nodes orbit the circle via spokes strictly solving rotational pivot drift -->
+                    <div class="arc-spoke" data-angle="-45">
+                        <div class="arc-node">
+                            <div class="arc-node-inner">1</div>
+                        </div>
+                    </div>
+                    <div class="arc-spoke" data-angle="-15">
+                        <div class="arc-node">
+                            <div class="arc-node-inner">2</div>
+                        </div>
+                    </div>
+                    <div class="arc-spoke" data-angle="15">
+                        <div class="arc-node">
+                            <div class="arc-node-inner">3</div>
+                        </div>
+                    </div>
+                    <div class="arc-spoke" data-angle="45">
+                        <div class="arc-node">
+                            <div class="arc-node-inner">4</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Stationary Apex Indicator -->
+                <div class="arc-apex-indicator">
+                    <div class="apex-dot"></div>
+                    <div class="apex-line"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <style>
+        .newsletter-section {
+            background-color: var(--bg-color);
+            padding: 10vh 8%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .newsletter-container {
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 8px;
+            padding: 8vh 40px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+        }
+
+        .newsletter-container h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+            font-family: 'Aperto', "Georgia", serif;
+        }
+
+        .newsletter-container p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 15px;
+            max-width: 550px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 18px 25px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 4px;
+            font-size: 1rem;
+            color: var(--text-main);
+            outline: none;
+            transition: border-color 0.3s ease;
+            font-family: 'Inter', "SF Pro Display", sans-serif;
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--gold);
+        }
+
+        .newsletter-btn {
+            background-color: var(--accent);
+            color: #ffffff;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-family: 'Inter', "SF Pro Display", sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .newsletter-btn:hover {
+            background-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .newsletter-disclaimer {
+            font-size: 0.85rem !important;
+            margin-top: 25px !important;
+            margin-bottom: 0 !important;
+            opacity: 0.6;
+        }
+        
+        @media (max-width: 600px) {
+            .newsletter-form { flex-direction: column; }
+            .newsletter-btn { width: 100%; }
+            .newsletter-container { padding: 40px 20px; }
+            .newsletter-container h2 { font-size: 2rem; }
+        }
+    </style>
+    <section class="newsletter-section">
+        <div class="newsletter-container fade-up delay-1">
+            <h2>Stay Informed</h2>
+            <p>Subscribe to receive Alba's latest macroeconomic insights and credit market updates securely to your inbox.</p>
+            
+            <!-- FORM ENDPOINT CONNECTION: Update the action="" URL to link specifically to Mailchimp, Formspree, or your WordPress logic! -->
+            <form action="https://formspree.io/f/YOUR_ENDPOINT_KEY" method="POST" class="newsletter-form">
+                <input type="email" name="email" placeholder="Enter your email address" required class="newsletter-input">
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+            
+            <p class="newsletter-disclaimer">We respect your privacy. No spam, ever.</p>
+        </div>
+    </section>
+
+    <!-- Modern Green Footer -->
+    <footer class="alba-footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="logos/Untitled%20design%20(73).png" alt="Alba Investment Partners" class="footer-logo">
+                    <p class="footer-mission">Preserving capital, ensuring enduring growth in fixed income and credit
+                        markets.</p>
+                </div>
+
+                <div class="footer-links-grid">
+                    <div class="footer-column">
+                        <h4>Firm</h4>
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About Us</a>
+                        <a href="index.html#insights-sequence">Insights</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Strategies</h4>
+                        <a href="credit-opportunities.html">Credit Opportunities</a>
+                        <a href="private-wealth.html">Private Wealth</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <a href="mailto:contact@albainvestments.ch">Contact</a>
+                        <a href="#">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 Alba Investment Partners. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Regulatory Disclosures</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Background canvas sequencers have been removed to reduce payload overhead on the About page
+
+        // Hero animation logic
+        const heroSection = document.getElementById('hero-section');
+        const heroInitial = document.getElementById('hero-initial');
+
+        const animatedElements = [
+            document.querySelector('.founder-img-placeholder'),
+            document.querySelector('.intro-text'),
+            ...document.querySelectorAll('.hero-stat')
+        ];
+
+        function interpolate(progress, start, end, startVal, endVal) {
+            if (progress <= start) return startVal;
+            if (progress >= end) return endVal;
+            return startVal + ((progress - start) / (end - start)) * (endVal - startVal);
+        }
+
+        window.addEventListener('scroll', () => {
+            // Team Sketch Zoom Frame Loop
+            const sketchWrapper = document.getElementById('sketch-zoom-section');
+            const sketchImg = document.getElementById('sketch-bg-img');
+            
+            if (sketchWrapper && sketchImg) {
+                const sRect = sketchWrapper.getBoundingClientRect();
+                
+                if (sRect.top <= window.innerHeight && sRect.bottom >= 0) {
+                    // Normalize the active vertical progress purely linearly
+                    // It starts expanding slightly before it hits top: 0, tracking the entire 250vh scroll block natively
+                    const maxScroll = sRect.height - window.innerHeight;
+                    let scrollProgress = -sRect.top / Math.max(1, maxScroll);
+                    scrollProgress = Math.max(0, Math.min(1, scrollProgress));
+                    
+                    // Maps linearly from scale 1x to scale 1.06x for a stunningly subtle, premium parallax effect
+                    const scaleFactor = 1 + (scrollProgress * 0.06);
+                    sketchImg.style.transform = `scale(${scaleFactor})`;
+                }
+            }
+            
+            // Dynamic Timeline Logic
+            const timelineSection = document.getElementById('story-timeline-section');
+            const timelineTrack = document.getElementById('timeline-track');
+            const timelineFill = document.getElementById('timeline-fill');
+            const nodes = [document.getElementById('node-1'), document.getElementById('node-2'), document.getElementById('node-3')];
+            
+            if (timelineSection && timelineTrack && timelineFill && nodes[0]) {
+                const tlRect = timelineTrack.getBoundingClientRect();
+                const viewportCenter = window.innerHeight * 0.55; 
+                
+                if (tlRect.top <= viewportCenter) {
+                    const trackHeight = tlRect.height;
+                    const fillAmount = Math.max(0, Math.min(trackHeight, viewportCenter - tlRect.top));
+                    timelineFill.style.height = `${fillAmount}px`;
+                    
+                    nodes.forEach((node) => {
+                        const nodeTopRelTrack = node.getBoundingClientRect().top - tlRect.top; 
+                        const dist = fillAmount - nodeTopRelTrack;
+                        
+                        // Physics map: Native interpolation loading proportional exactly to scroll wheel! 
+                        if (dist > 0) { 
+                            const nodeProg = Math.min(1, dist / 150);
+                            node.style.opacity = nodeProg;
+                            node.style.transform = `translateY(${30 - (30 * nodeProg)}px)`;
+                            
+                            const dot = node.querySelector('.node-dot');
+                            dot.style.borderColor = `rgba(207, 168, 95, ${0.2 + (0.8 * nodeProg)})`;
+                            dot.style.backgroundColor = nodeProg > 0.8 ? `var(--gold)` : `transparent`;
+                            
+                            const year = node.querySelector('.node-year');
+                            if(year) year.style.color = `rgba(207, 168, 95, ${0.5 + (0.5 * nodeProg)})`;
+                        } else {
+                            node.style.opacity = 0;
+                            node.style.transform = `translateY(30px)`;
+                            
+                            const dot = node.querySelector('.node-dot');
+                            dot.style.borderColor = `rgba(255,255,255,0.2)`;
+                            dot.style.backgroundColor = `transparent`;
+                            
+                            const year = node.querySelector('.node-year');
+                            if(year) year.style.color = `rgba(255,255,255,0.5)`;
+                        }
+                    });
+                } else {
+                    timelineFill.style.height = '0px';
+                    nodes.forEach(node => {
+                        node.style.opacity = 0;
+                        node.style.transform = `translateY(30px)`;
+                        const dot = node.querySelector('.node-dot');
+                        if (dot) {
+                            dot.style.borderColor = `rgba(255,255,255,0.2)`;
+                            dot.style.backgroundColor = `transparent`;
+                        }
+                        const year = node.querySelector('.node-year');
+                        if(year) year.style.color = `rgba(255,255,255,0.5)`;
+                    });
+                }
+            }
+            
+            const navbar = document.getElementById('navbar');
+            const navLogo = document.getElementById('navbar-logo');
+
+            if (heroSection) {
+                // Dynamically intercept scroll mechanics specifically on the short 100vh viewport
+                const threshold = 80;
+
+                if (window.scrollY >= threshold) {
+                    if (navbar) navbar.classList.add('navbar-scrolled');
+                    if (navLogo && !navLogo.src.includes('72')) navLogo.src = 'logos/Untitled%20design%20(72).png';
+                } else {
+                    if (navbar) navbar.classList.remove('navbar-scrolled');
+                    if (navLogo && !navLogo.src.includes('73')) navLogo.src = 'logos/Untitled%20design%20(73).png';
+                }
+            }
+
+            if (!heroSection) return;
+            const heroRect = heroSection.getBoundingClientRect();
+            const scrollDistance = heroSection.offsetHeight - window.innerHeight;
+            let progress = -heroRect.top / Math.max(1, scrollDistance);
+            progress = Math.max(0, Math.min(1, progress));
+
+            const isMobile = window.innerWidth <= 900;
+
+            // Execute the precise layout math pushing the h1 explicitly out of the way
+            const targetY = isMobile ? -5 : -32;
+            const initialY = interpolate(progress, 0, 0.4, 0, targetY);
+
+            // Exit crossfade for the massive title at the very end of the hero sequence (0.7 to 0.95)
+            const exitTitleOp = interpolate(progress, 0.7, 0.95, 1, 0);
+
+            // Pure elegant vertical crossfade on mobile natively, Kenslow exit fade on desktop
+            const initialOp = isMobile ? interpolate(progress, 0, 0.25, 1, 0) : exitTitleOp;
+
+            heroInitial.style.transform = `translateY(${initialY}vh)`;
+            heroInitial.style.opacity = initialOp;
+
+            // Animate secondary elements progressively + Kenslow exit styling
+            animatedElements.forEach((el, index) => {
+                if (!el) return;
+                const startP = 0.15 + (index * 0.12);
+                const endP = startP + 0.25;
+
+                let elemOpacity = interpolate(progress, startP, endP, 0, 1);
+                const elemY = interpolate(progress, startP, endP, 40, 0);
+                let elemScale = 1;
+
+                // Apply the Kenslow-style unified exit mechanism
+                if (progress > 0.7) {
+                    elemOpacity = interpolate(progress, 0.7, 0.95, 1, 0); // Text washes out smoothly
+
+                    // Specifically target the founder image to actively shrink natively
+                    if (el.classList.contains('founder-img-placeholder')) {
+                        elemScale = interpolate(progress, 0.7, 0.95, 1, 0.85);
+                    }
+                }
+
+                el.style.opacity = elemOpacity;
+                el.style.transform = `translateY(${elemY}px) scale(${elemScale})`;
+            });
+
+            // Update the scroll progress bar
+            const heroProgressFill = document.getElementById('hero-progress');
+            if (heroProgressFill) {
+                heroProgressFill.style.width = `${progress * 100}%`;
+            }
+        });
+
+        // Setup Mission text scrub
+        const missionTextElem = document.getElementById('mission-text');
+        if (missionTextElem) {
+            const words = missionTextElem.innerText.split(' ');
+            missionTextElem.innerHTML = '';
+            words.forEach(word => {
+                const span = document.createElement('span');
+                span.className = 'mission-word';
+                span.innerText = word + ' ';
+                missionTextElem.appendChild(span);
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            const missionSection = document.getElementById('mission-scroll-section');
+            if (missionSection && missionTextElem) {
+                const rect = missionSection.getBoundingClientRect();
+                const scrollable = missionSection.offsetHeight - window.innerHeight;
+                let progress = -rect.top / Math.max(1, scrollable);
+
+                // Add a small buffer so it starts filling after 10% scroll and fully fills by 90%
+                let fillProgress = (progress - 0.1) / 0.8;
+                fillProgress = Math.max(0, Math.min(1, fillProgress));
+
+                const spans = missionTextElem.querySelectorAll('.mission-word');
+                const revealCount = Math.floor(fillProgress * spans.length);
+
+                spans.forEach((span, i) => {
+                    if (i < revealCount) {
+                        span.classList.add('active');
+                    } else {
+                        span.classList.remove('active');
+                    }
+                });
+
+                // Apply graceful upwards scroll to text as section is scrubbed
+                const clampedProgress = Math.max(0, Math.min(1, progress));
+                if (window.innerWidth > 900) {
+                    const textY = 100 - (200 * clampedProgress); // Moves from 100px to -100px
+                    missionTextElem.style.transform = `translateY(${textY}px)`;
+                } else {
+                    missionTextElem.style.transform = 'none'; // Prevent text overlapping the H2 label on mobile viewports
+                }
+            }
+        });
+
+        // Built on Principles - Arc Section Logic
+        const arcSection = document.getElementById('arc-section');
+        const arcCircle = document.getElementById('arc-circle');
+        const arcWord = document.getElementById('arc-word');
+        const arcDesc = document.getElementById('arc-desc');
+        const arcSpokes = document.querySelectorAll('.arc-spoke');
+
+        const arcData = [
+            { title: "People", desc: "Our diverse backgrounds and skillsets bring unique perspectives, fostering innovative solutions and creative problem-solving while sharing a commitment to hard work and excellence." },
+            { title: "Credentials", desc: "A proven history of consistently delivering superior risk-adjusted returns across fixed income and credit asset classes, demonstrating resilience through all economic environments." },
+            { title: "Deep Research", desc: "Combining data, technology and deep-rooted experience in financial markets, we uncover opportunities that others often overlook." },
+            { title: "Agility", desc: "With lean teams and niche, size-constrained strategies, we foster agility and adaptability — key attributes for delivering superior returns." }
+        ];
+
+        // Initialize values
+        if (arcSpokes.length > 0) {
+            arcSpokes.forEach(spoke => {
+                const angle = parseFloat(spoke.getAttribute('data-angle'));
+                spoke.style.transform = `rotate(${angle}deg)`;
+            });
+            const firstNode = arcSpokes[0].querySelector('.arc-node');
+            if (firstNode) {
+                firstNode.style.borderColor = 'var(--gold)';
+                firstNode.style.color = 'var(--gold)';
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            if (arcSection && arcCircle) {
+                const rect = arcSection.getBoundingClientRect();
+
+                // 1. Dynamic scrub expansion when scrolling INTO the section
+                const containerElem = document.querySelector('.arc-circle-container');
+                const contentElem = document.querySelector('.arc-content-wrapper');
+
+                if (rect.top > 0 && rect.top <= window.innerHeight) {
+                    let entryProgress = 1 - (rect.top / window.innerHeight);
+                    entryProgress = Math.max(0, Math.min(1, entryProgress));
+
+                    const circleScale = 0.5 + (0.5 * entryProgress);
+                    if (containerElem) {
+                        containerElem.style.transform = `translateX(-50%) scale(${circleScale})`;
+                        containerElem.style.opacity = entryProgress;
+                    }
+
+                    const contentScale = 0.8 + (0.2 * entryProgress);
+                    if (contentElem) {
+                        contentElem.style.transform = `translateX(-50%) scale(${contentScale})`;
+                        contentElem.style.opacity = entryProgress;
+                    }
+                } else if (rect.top <= 0) {
+                    // Fully visible
+                    if (containerElem) {
+                        containerElem.style.transform = `translateX(-50%) scale(1)`;
+                        containerElem.style.opacity = 1;
+                    }
+                    if (contentElem) {
+                        contentElem.style.transform = `translateX(-50%) scale(1)`;
+                        contentElem.style.opacity = 1;
+                    }
+                }
+
+                // 2. Wheel rotation logic
+                const scrollDistance = arcSection.offsetHeight - window.innerHeight;
+                let progress = -rect.top / Math.max(1, scrollDistance);
+                progress = Math.max(0, Math.min(1, progress));
+
+                // Determine active index based on scroll position safely snapped explicitly to 0, 1, 2, 3
+                let activeIndex = Math.floor(progress * 3.99);
+
+                // Directly snap only to exact milestone node angles (1, 2, 3, 4)
+                const targetAngles = [45, 15, -15, -45];
+                const arcRotation = targetAngles[activeIndex];
+
+                // Since the wheel element has `transition`, it spins smoothly to snap exactly into place natively
+                arcCircle.style.transform = `rotate(${arcRotation}deg)`;
+
+                // Counter-rotate the inner digits safely
+                arcSpokes.forEach(spoke => {
+                    const angle = parseFloat(spoke.getAttribute('data-angle'));
+                    const inner = spoke.querySelector('.arc-node-inner');
+                    const totalAngle = angle + arcRotation;
+                    if (inner) {
+                        inner.style.transform = `rotate(${-totalAngle}deg)`;
+                    }
+                });
+
+                // Update Text Content natively using existing activeIndex
+
+                if (arcWord.dataset.current !== activeIndex.toString()) {
+                    arcWord.style.opacity = '0';
+                    arcDesc.style.opacity = '0';
+
+                    setTimeout(() => {
+                        arcWord.innerText = arcData[activeIndex].title;
+                        arcDesc.innerText = arcData[activeIndex].desc;
+                        arcWord.style.opacity = '1';
+                        arcDesc.style.opacity = '1';
+                    }, 200);
+
+                    arcWord.dataset.current = activeIndex;
+
+                    // Highlight the active node's border
+                    arcSpokes.forEach((spoke, idx) => {
+                        const node = spoke.querySelector('.arc-node');
+                        if (node) {
+                            if (idx === activeIndex) {
+                                node.style.borderColor = 'var(--gold)';
+                                node.style.color = 'var(--gold)';
+                            } else {
+                                node.style.borderColor = 'rgba(255,255,255,0.2)';
+                                node.style.color = 'rgba(255,255,255,0.8)';
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
+        // Intersection Observer for fade-up animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
