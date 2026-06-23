@@ -864,7 +864,7 @@
         <div class="nav-links">
             <a href="#">About Us</a>
             <a href="#">Credit Opportunities</a>
-            <a href="#">Private Wealth</a>
+            <a href="#">Team</a>
             <a href="#">News</a>
         </div>
     </nav>
@@ -1054,7 +1054,7 @@
                     <div class="footer-column">
                         <h4>Strategies</h4>
                         <a href="#">Credit Opportunities</a>
-                        <a href="#">Private Wealth</a>
+                        <a href="#">Team</a>
                         <a href="#">Absolute Return</a>
                     </div>
                     <div class="footer-column">
@@ -1071,7 +1071,7 @@
                 <div class="legal-links">
                     <a href="privacy-policy.html">Privacy Policy</a>
                     <a href="terms-of-use.html">Terms of Use</a>
-                    <a href="#">Regulatory Disclosures</a>
+                    
                 </div>
             </div>
         </div>
