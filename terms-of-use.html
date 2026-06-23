@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Alba Investment Partners - Terms of Use</title>
+    <style>
+        :root {
+            --bg-color: #fcfcfc;
+            --text-main: #111111;
+            --text-secondary: #555555;
+            --accent: #1e362d;
+            --gold: #cfa85f;
+        }
+        @font-face {
+            font-family: "Aperto";
+            src: url("LinotypeAperto-Roman.ttf") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        body {
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: "Inter", sans-serif;
+            line-height: 1.6;
+        }
+        .content-container {
+            max-width: 800px;
+            margin: 150px auto 100px;
+            padding: 0 40px;
+        }
+        h3 {
+            font-family: "Aperto", serif;
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+        h6 {
+            font-family: "Aperto", serif;
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        ul {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            padding-left: 20px;
+        }
+        a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 60px;
+            height: 70px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(252, 252, 252, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        .logo { height: 45px; display: flex; align-items: center; }
+        .logo img { max-height: 100%; }
+        .nav-links { display: flex; gap: 40px; height: 100%; }
+        .nav-links a { display: flex; align-items: center; height: 100%; color: var(--text-main); text-decoration: none; font-size: 15px; font-family: "Aperto", serif; font-weight: 500; letter-spacing: 1px; }
+        .nav-links a:hover { color: var(--gold); }
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .navbar { padding: 10px 20px; }
+            .logo { height: 40px; }
+            .content-container { margin-top: 100px; padding: 0 20px; }
+            h3 { font-size: 2rem; }
+        }
+        
+        /* Modern Green Footer */
+        .alba-footer {
+            background-color: #1a3622;
+            color: #ffffff;
+            padding: 80px 10% 40px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .footer-container { max-width: 1400px; margin: 0 auto; }
+        .footer-top { display: flex; justify-content: space-between; gap: 60px; margin-bottom: 80px; }
+        .footer-brand { max-width: 300px; }
+        .footer-logo { height: 40px; margin-bottom: 25px; opacity: 0.9; }
+        .footer-mission { color: rgba(255, 255, 255, 0.6); font-size: 1.05rem; line-height: 1.6; font-weight: 300; margin: 0; }
+        .footer-links-grid { display: flex; gap: 80px; }
+        .footer-column h4 { color: #ffffff; font-size: 1.15rem; font-weight: 400; margin-bottom: 25px; font-family: "Aperto", serif; }
+        .footer-column a { display: block; color: rgba(255, 255, 255, 0.6); text-decoration: none; margin-bottom: 12px; font-size: 0.95rem; font-weight: 300; }
+        .footer-column a:hover { color: var(--gold); }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .copyright, .legal-links a { color: rgba(255, 255, 255, 0.4); font-size: 0.85rem; text-decoration: none; }
+        .legal-links { display: flex; gap: 20px; }
+        .legal-links a:hover { color: #ffffff; }
+        
+        @media (max-width: 900px) {
+            .footer-top { flex-direction: column; gap: 40px; }
+            .footer-links-grid { flex-direction: column; gap: 30px; }
+            .footer-bottom { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .alba-footer { padding: 50px 8% 30px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <a href="index.html" class="logo" style="text-decoration: none;">
+            <img src="logos/Untitled%20design%20(72).png" id="navbar-logo" alt="Alba Investment Partners">
+        </a>
+        <div class="nav-links">
+            <a href="about.html">About Us</a>
+            <a href="credit-opportunities.html">Credit Opportunities</a>
+            <a href="private-wealth.html">Private Wealth</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </nav>
+
+    <div class="content-container">
+        <h3 style=\"color: rgb(26, 26, 26); margin-bottom: 40px\">Terms and Conditions</h3><p class=\"body\" style=\"margin-bottom: 16px\">Welcome to Alba Investment Partners!</p><p class=\"body\" style=\"margin-bottom: 16px\">These terms and conditions outline the rules and regulations for the use of Alba Investment Partners SA's Website, located at <a href=\"https://saddlebrown-barracuda-djo5v3zwoghqxglz.builder-preview.com\">https://saddlebrown-barracuda-djo5v3zwoghqxglz.builder-preview.com</a>.</p><p class=\"body\" style=\"margin-bottom: 32px\">By accessing this website, we assume you accept these terms and conditions. Do not continue to use Alba Investment Partners if you do not agree to take all of the terms and conditions stated on this page.</p><h6>Cookies:</h6><p class=\"body\" style=\"margin-bottom: 16px\">The website uses cookies to help personalize your online experience. By accessing Alba Investment Partners, you agreed to use the required cookies.</p><p class=\"body\" style=\"margin-bottom: 16px\">A cookie is a text file that is placed on your hard disk by a web page server. Cookies cannot be used to run programs or deliver viruses to your computer. Cookies are uniquely assigned to you and can only be read by a web server in the domain that issued the cookie to you.</p><p class=\"body\">We may use cookies to collect, store, and track information for statistical or marketing purposes to operate our website. You have the ability to accept or decline optional Cookies. There are some required Cookies that are necessary for the operation of our website. These cookies do not require your consent as they always work. Please keep in mind that by accepting required Cookies, you also accept third-party Cookies, which might be used via third-party provided services if you use such services on our website, for example, a video display window provided by third parties and integrated into our website.</p><h6 style=\"margin-bottom: 16px\">License:</h6><p class=\"body\" style=\"margin-bottom: 16px\">Unless otherwise stated, Alba Investment Partners SA and/or its licensors own the intellectual property rights for all material on Alba Investment Partners. All intellectual property rights are reserved. You may access this from Alba Investment Partners for your own personal use subjected to restrictions set in these terms and conditions.</p><p class=\"body\" style=\"margin-bottom: 16px\">You must not:</p><ul><li><p class=\"body\" style=\"margin-bottom: 8px\">Copy or republish material from Alba Investment Partners</p></li><li><p class=\"body\" style=\"margin-bottom: 8px\">Sell, rent, or sub-license material from Alba Investment Partners</p></li><li><p class=\"body\" style=\"margin-bottom: 8px\">Reproduce, duplicate or copy material from Alba Investment Partners</p></li><li><p class=\"body\" style=\"margin-bottom: 16px\">Redistribute content from Alba Investment Partners</p></li></ul><p class=\"body\" style=\"margin-bottom: 16px\">This Agreement shall begin on the date hereof.</p><p class=\"body\" style=\"margin-bottom: 16px\">Parts of this website offer users an opportunity to post and exchange opinions and information in certain areas of the website. Alba Investment Partners SA does not filter, edit, publish or review Comments before their presence on the website. Comments do not reflect the views and opinions of Alba Investment Partners SA, its agents, and/or affiliates. Comments reflect the views and opinions of the person who posts their views and opinions. To the extent permitted by applicable laws, Alba Investment Partners SA shall not be liable for the Comments or any liability, damages, or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website.</p><p class=\"body\" style=\"margin-bottom: 16px\">Alba Investment Partners SA reserves the right to monitor all Comments and remove any Comments that can be considered inappropriate, offensive, or causes breach of these Terms and Conditions.</p><p class=\"body\" style=\"margin-bottom: 16px\">You warrant and represent that:</p><ul><li><p class=\"body\" style=\"margin-bottom: 8px\">You are entitled to post the Comments on our website and have all necessary licenses and consents to do so;</p></li><li><p class=\"body\" style=\"margin-bottom: 8px\">The Comments do not invade any intellectual property right, including without limitation copyright, patent, or trademark of any third party;</p></li><li><p class=\"body\" style=\"margin-bottom: 8px\">The Comments do not contain any defamatory, libelous, offensive, indecent, or otherwise unlawful material, which is an invasion of privacy.</p></li><li><p class=\"body\" style=\"margin-bottom: 16px\">The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity.</p></li></ul><p class=\"body\" style=\"margin-bottom: 32px\">You hereby grant Alba Investment Partners SA a non-exclusive license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats, or media.</p><h6 style=\"margin-bottom: 15px\">Hyperlinking to our Content:</h6><p class=\"body\" style=\"margin-bottom: 16px\">The following organizations may link to our Website without prior written approval:</p><ul><li><p class=\"body\" style=\"margin-bottom: 8px\">Government agencies;</p></li><li><p class=\"body\" style=\"margin-bottom: 8px\">Search engines;</p></li><li><p class=\"body\" style=\"margin-bottom: 8px\">News organizations;</p></li><li><p class=\"body\" style=\"margin-bottom: 8px\">Online directory distributors may link to our Website in the same manner as they hyperlink to the Websites of other listed businesses; and</p></li><li><p class=\"body\" style=\"margin-bottom: 16px\">System-wide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and charity fundraising groups which may not hyperlink to our Web site.</p></li></ul><p class=\"body\" style=\"margin-bottom: 16px\">These organizations may link to our home page, to publications, or to other Website information so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement, or approval of the linking party and its products and/or services; and (c) fits within the context of the linking party's site.</p><p class=\"body\" style=\"margin-bottom: 16px\">We may consider and approve other link requests from the following types of organizations:</p><ul><li><p class=\"body\" style=\"margin-bottom: 8px\">Commonly-known consumer and/or business information sources;</p></li><li><p class=\"body\" style=\"margin-bottom: 8px\"><a href=\"http://dot.com\">Dot.com</a> community sites;</p></li><li><p class=\"body\" style=\"margin-bottom: 8px\">Associations or other groups representing charities;</p></li><li><p class=\"body\" style=\"margin-bottom: 8px\">Online directory distributors;</p></li><li><p class=\"body\" style=\"margin-bottom: 8px\">Internet portals;</p></li><li><p class=\"body\" style=\"margin-bottom: 8px\">Accounting, law, and consulting firms; and</p></li><li><p class=\"body\" style=\"margin-bottom: 16px\">Educational institutions and trade associations.</p></li></ul><p class=\"body\" style=\"margin-bottom: 16px\">We will approve link requests from these organizations if we decide that: (a) the link would not make us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates the absence of Alba Investment Partners SA; and (d) the link is in the context of general resource information.</p><p class=\"body\" style=\"margin-bottom: 16px\">These organizations may link to our home page so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement, or approval of the linking party and its products or services; and (c) fits within the context of the linking party's site.</p><p class=\"body\" style=\"margin-bottom: 16px\">If you are one of the organizations listed in paragraph 2 above and are interested in linking to our website, you must inform us by sending an e-mail to Alba Investment Partners SA. Please include your name, your organization name, contact information as well as the URL of your site, a list of any URLs from which you intend to link to our Website, and a list of the URLs on our site to which you would like to link. Wait 2-3 weeks for a response.</p><p class=\"body\" style=\"margin-bottom: 16px\">Approved organizations may hyperlink to our Website as follows:</p><ul><li><p class=\"body\" style=\"margin-bottom: 8px\">By use of our corporate name; or</p></li><li><p class=\"body\" style=\"margin-bottom: 8px\">By use of the uniform resource locator being linked to; or</p></li><li><p class=\"body\" style=\"margin-bottom: 16px\">Using any other description of our Website being linked to that makes sense within the context and format of content on the linking party's site.</p></li></ul><p class=\"body\" style=\"margin-bottom: 32px\">No use of Alba Investment Partners SA's logo or other artwork will be allowed for linking absent a trademark license agreement.</p><h6>Content Liability:</h6><p class=\"body\" style=\"margin-bottom: 32px\">We shall not be held responsible for any content that appears on your Website. You agree to protect and defend us against all claims that are raised on your Website. No link(s) should appear on any Website that may be interpreted as libelous, obscene, or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.</p><h6>Reservation of Rights:</h6><p class=\"body\" style=\"margin-bottom: 32px\">We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amend these terms and conditions and its linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions.</p><h6 style=\"margin-bottom: 16px\">Removal of links from our website:</h6><p class=\"body\" style=\"margin-bottom: 16px\">If you find any link on our Website that is offensive for any reason, you are free to contact and inform us at any moment. We will consider requests to remove links, but we are not obligated to or so or to respond to you directly.</p><p class=\"body\" style=\"margin-bottom: 32px\">We do not ensure that the information on this website is correct. We do not warrant its completeness or accuracy, nor do we promise to ensure that the website remains available or that the material on the website is kept up to date.</p><h6 style=\"margin-bottom: 16px\">Disclaimer:</h6><p class=\"body\" style=\"margin-bottom: 16px\">To the maximum extent permitted by applicable law, we exclude all representations, warranties, and conditions relating to our website and the use of this website. Nothing in this disclaimer will:</p><ul><li><p class=\"body\" style=\"margin-bottom: 8px\">Limit or exclude our or your liability for death or personal injury;</p></li><li><p class=\"body\" style=\"margin-bottom: 8px\">Limit or exclude our or your liability for fraud or fraudulent misrepresentation;</p></li><li><p class=\"body\" style=\"margin-bottom: 8px\">Limit any of our or your liabilities in any way that is not permitted under applicable law; or</p></li><li><p class=\"body\" style=\"margin-bottom: 16px\">Exclude any of our or your liabilities that may not be excluded under applicable law.</p></li></ul><p class=\"body\" style=\"margin-bottom: 16px\">The limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including liabilities arising in contract, in tort, and for breach of statutory duty.</p><p class=\"body\">As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
+    </div>
+
+    <footer class="alba-footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="logos/Untitled%20design%20(73).png" alt="Alba Investment Partners" class="footer-logo">
+                    <p class="footer-mission">Alba Investment Partners SA is authorized and regulated by the FINMA as a Manager of collective assets.</p>
+                </div>
+                
+                <div class="footer-links-grid">
+                    <div class="footer-column">
+                        <h4>Firm</h4>
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About Us</a>
+                        <a href="index.html#insights-sequence">Insights</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Strategies</h4>
+                        <a href="credit-opportunities.html">Credit Opportunities</a>
+                        <a href="private-wealth.html">Private Wealth</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <a href="contact.html">Contact</a>
+                        <a href="#">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 Alba Investment Partners. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-use.html">Terms of Use</a>
+                    <a href="#">Regulatory Disclosures</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
