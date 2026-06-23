@@ -1041,7 +1041,7 @@
             <div class="footer-top">
                 <div class="footer-brand">
                     <img src="<?php echo get_template_directory_uri(); ?>/logos/Untitled%20design%20(73).png" alt="Alba Investment Partners" class="footer-logo">
-                    <p class="footer-mission">Preserving capital, ensuring enduring growth in fixed income and credit markets.</p>
+                    <p class="footer-mission">Alba Investment Partners SA is authorized and regulated by the FINMA as a Manager of collective assets.</p>
                 </div>
                 
                 <div class="footer-links-grid">
