@@ -40,7 +40,7 @@
         body {
             margin: 0;
             background-color: var(--bg-color);
-            color: #ffffff;
+            color: var(--text-main);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
@@ -131,7 +131,7 @@
         }
 
         .navbar.navbar-scrolled .nav-links a {
-            color: #ffffff;
+            color: var(--accent);
         }
         
         .navbar.navbar-scrolled .nav-links a::after {
@@ -391,7 +391,7 @@
 
         .section-desc {
             font-size: 1.15rem;
-            color: rgba(255,255,255,0.7);
+            color: var(--text-secondary);
             line-height: 1.8;
             max-width: 800px;
             margin-bottom: 40px;
@@ -1286,13 +1286,13 @@
 
 <body>
 
-        <nav class="navbar" id="navbar">
+    <nav class="navbar navbar-scrolled" id="navbar">
         <a href="index.html" class="logo" style="text-decoration: none;">
-            <img src="logos/Untitled%20design%20(73).png" id="navbar-logo" alt="Alba Investment Partners">
+            <img src="logos/Untitled%20design%20(72).png" id="navbar-logo" alt="Alba Investment Partners">
         </a>
         <div class="nav-links">
             <a href="about.html">About Us</a>
-            <a href="credit-opportunities.html">Credit Opportunities</a>
+            <a href="credit-opportunities.html" style="color: var(--gold)">Credit Opportunities</a>
             <a href="our-people.html">Our People</a>
             <a href="perspectives.html">Perspectives</a>
             <a href="contact.html">Contact</a>
@@ -1304,7 +1304,7 @@
     <!-- Cape-Capital Layout Custom Hero Section -->
     <style>
         .cc-hero {
-            background-color: var(--accent); /* Soft Alba off-white */
+            background-color: #f7f9f8; /* Soft Alba off-white */
             padding: 220px 60px 80px 60px;
             display: flex;
             justify-content: space-between;
