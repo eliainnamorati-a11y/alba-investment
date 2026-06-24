@@ -1552,23 +1552,7 @@
                 }
             }
             
-            const navbar = document.getElementById('navbar');
-            const navLogo = document.getElementById('navbar-logo');
-
-            if (heroSection) {
-                // Dynamically intercept scroll mechanics specifically on the short 100vh viewport
-                const threshold = 80;
-
-                if (window.scrollY >= threshold) {
-                    if (navbar) navbar.classList.add('navbar-scrolled');
-                    if (navLogo && !navLogo.src.includes('72')) navLogo.src = 'logos/Untitled%20design%20(72).png';
-                } else {
-                    if (navbar) navbar.classList.remove('navbar-scrolled');
-                    if (navLogo && !navLogo.src.includes('73')) navLogo.src = 'logos/Untitled%20design%20(73).png';
-                }
-            }
-
-            if (!heroSection) return;
+            
             const heroRect = heroSection.getBoundingClientRect();
             const scrollDistance = heroSection.offsetHeight - window.innerHeight;
             let progress = -heroRect.top / Math.max(1, scrollDistance);
@@ -1797,6 +1781,42 @@
 
         document.querySelectorAll('.fade-up, .zoom-in').forEach(el => observer.observe(el));
     </script>
+
+    <script>
+        // Universal Navbar Scroll Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const navbar = document.getElementById('navbar');
+            const navLogo = document.getElementById('navbar-logo');
+            const isLightPage = navbar && navbar.getAttribute('data-light-page') === 'true';
+
+            function updateNavbar() {
+                if (isLightPage) {
+                    navbar.classList.add('navbar-scrolled');
+                    if (navLogo && !navLogo.src.includes('72')) navLogo.src = 'logos/Untitled%20design%20(72).png';
+                    return;
+                }
+
+                let threshold = 80;
+                const hero = document.getElementById('hero-section');
+                if (hero) {
+                    threshold = hero.scrollHeight - window.innerHeight - 50;
+                    if (threshold < 80) threshold = 80;
+                }
+
+                if (window.scrollY >= threshold) {
+                    if (navbar) navbar.classList.add('navbar-scrolled');
+                    if (navLogo && !navLogo.src.includes('72')) navLogo.src = 'logos/Untitled%20design%20(72).png';
+                } else {
+                    if (navbar) navbar.classList.remove('navbar-scrolled');
+                    if (navLogo && !navLogo.src.includes('73')) navLogo.src = 'logos/Untitled%20design%20(73).png';
+                }
+            }
+
+            window.addEventListener('scroll', updateNavbar);
+            updateNavbar(); // Run on load
+        });
+    </script>
+
 </body>
 
 </html>
