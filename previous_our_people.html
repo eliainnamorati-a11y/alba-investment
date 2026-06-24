@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="preload" href="compressed.mp4" as="video" type="video/mp4">
-    <title>Alba Investment Partners - Andrea Cavalleri</title>
+    <title>Alba Investment Partners - About Us</title>
     <style>
         :root {
             --bg-color: #fcfcfc;
             --text-main: #111111;
             --text-secondary: #555555;
-            --accent: #1e362d; /* Alba deep green */
-            --gold: #cfa85f; /* Alba gold */
+            --accent: #1e362d;
+            /* Alba deep green */
+            --gold: #cfa85f;
+            /* Alba gold */
         }
 
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             box-sizing: border-box;
         }
 
@@ -32,7 +36,7 @@
         html {
             scroll-snap-type: y proximity;
         }
-        
+
         body {
             margin: 0;
             background-color: var(--bg-color);
@@ -40,9 +44,14 @@
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        h1, h2, h3, h4, .serif {
+        h1,
+        h2,
+        h3,
+        h4,
+        .serif {
             font-family: 'Aperto', "Georgia", "Times New Roman", serif;
             font-weight: 400;
         }
@@ -61,7 +70,6 @@
             align-items: center;
             z-index: 1000;
             transition: all 0.4s ease;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .navbar.navbar-scrolled {
@@ -167,21 +175,28 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.6; /* Slight darkening overlay to make text pop */
+            opacity: 0.6;
+            /* Slight darkening overlay to make text pop */
             pointer-events: none;
         }
 
         .hero-content {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100vh;
-            z-index: 2; pointer-events: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
             display: block;
         }
 
         .initial-content {
             position: absolute;
-            bottom: 12vh; /* Bottom load constraint */
-            left: 60px; /* Exactly matches navbar padding */
+            bottom: 12vh;
+            /* Bottom load constraint */
+            left: 60px;
+            /* Exactly matches navbar padding */
             width: calc(100% - 120px);
             transform-origin: top left;
             will-change: transform;
@@ -192,6 +207,7 @@
             0% {
                 opacity: 0;
             }
+
             100% {
                 opacity: 1;
             }
@@ -212,8 +228,10 @@
 
         .secondary-content {
             position: absolute;
-            bottom: 12vh; /* Same geometric baseline as title */
-            left: 60px; /* Exactly matches navbar padding */
+            bottom: 12vh;
+            /* Same geometric baseline as title */
+            left: 60px;
+            /* Exactly matches navbar padding */
             width: calc(100% - 120px);
             pointer-events: auto;
         }
@@ -241,7 +259,7 @@
         .founder-img-placeholder {
             width: 100%;
             height: 200px;
-            background: url('team-sketch.jpg') center/cover;
+            background: url('FINNEWS (1).jpg') center/cover;
             border-radius: 4px;
         }
 
@@ -276,7 +294,8 @@
             border-radius: 50%;
             background-color: var(--accent);
             border: 4px solid transparent;
-            box-shadow: 0 0 0 0.5px var(--accent); /* Hairline sub-pixel ring */
+            box-shadow: 0 0 0 0.5px var(--accent);
+            /* Hairline sub-pixel ring */
             background-clip: padding-box;
             box-sizing: content-box;
         }
@@ -296,7 +315,7 @@
         .stat-details .stat-label {
             font-size: 0.75rem;
             letter-spacing: 1px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
             font-family: sans-serif;
             text-transform: uppercase;
         }
@@ -307,7 +326,8 @@
             bottom: 30px;
             left: 0;
             width: 100%;
-            padding: 0 60px; /* Perfectly aligned with navigation bar / hero text */
+            padding: 0 60px;
+            /* Perfectly aligned with navigation bar / hero text */
             box-sizing: border-box;
             z-index: 3;
             display: flex;
@@ -317,7 +337,8 @@
 
         .progress-track {
             width: 100%;
-            height: 1px; /* Thinner */
+            height: 1px;
+            /* Thinner */
             background-color: rgba(255, 255, 255, 0.2);
             position: relative;
         }
@@ -328,16 +349,18 @@
             left: 0;
             height: 100%;
             width: 0%;
-            background-color: #ffffff; /* White line */
+            background-color: #ffffff;
+            /* White line */
         }
 
         /* Scrollytelling Section */
         .scrollytelling-wrapper {
             display: flex;
             position: relative;
-            background-color: #ffffff; /* Perfectly matched to the 'new bridge' pure white sequence */
-            border-top: 1px solid rgba(0,0,0,0.05);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            background-color: #ffffff;
+            /* Perfectly matched to the 'new bridge' pure white sequence */
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             transition: background-color 0.5s ease;
         }
 
@@ -397,7 +420,7 @@
         }
 
         #bridge-canvas-2 {
-            transform: scale(1.05); /* Reduced scale to make lighthouse smaller natively */
+            transform: scale(1.4);
             transform-origin: center center;
         }
 
@@ -450,13 +473,13 @@
             gap: 40px;
             margin-top: 40px;
         }
-        
+
         .stat-item h4 {
             font-size: 4rem;
             margin: 0;
             color: var(--accent);
         }
-        
+
         .stat-item p {
             font-family: sans-serif;
             text-transform: uppercase;
@@ -464,32 +487,6 @@
             font-size: 0.8rem;
             color: var(--text-secondary);
             margin-top: 5px;
-        }
-
-        .pill-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 40px;
-        }
-
-        .metric-pill {
-            padding: 10px 22px;
-            border: 1px solid rgba(0, 0, 0, 0.15);
-            border-radius: 40px;
-            font-size: 0.95rem;
-            font-family: 'Inter', sans-serif;
-            color: var(--accent);
-            background: rgba(0, 0, 0, 0.02);
-            white-space: nowrap;
-            transition: all 0.3s ease;
-            letter-spacing: 0.5px;
-        }
-        
-        .metric-pill:hover {
-            border-color: var(--gold);
-            background: rgba(207, 168, 95, 0.1); /* Alba gold tint */
-            color: #000;
         }
 
         /* Footer space */
@@ -505,12 +502,13 @@
 
         /* Scrollytelling Mission */
         .mission-scroll-section {
-            height: 180vh; /* Dramatically faster lighting curve */
+            height: 180vh;
+            /* Dramatically faster lighting curve */
             position: relative;
             background-color: var(--bg-color);
             z-index: 5;
         }
-        
+
         .mission-sticky {
             position: sticky;
             top: 0;
@@ -524,11 +522,12 @@
             padding: 0 10%;
             display: flex;
             justify-content: space-between;
-            align-items: center; /* Vertically center the title to exactly match the paragraph weight */
+            align-items: center;
+            gap: 100px; /* Expanded heavily for premium breathing room */
         }
 
         .mission-left {
-            flex: 0 0 35%;
+            flex: 0 0 30%; /* Shrunk title column footprint marginally giving text more volume */
         }
 
         .mission-left h2 {
@@ -547,15 +546,18 @@
             font-size: 2.2rem;
             line-height: 1.5;
             margin: 0;
-            color: rgba(17, 17, 17, 0.15); /* light grey base */
+            color: rgba(17, 17, 17, 0.15);
+            /* light grey base */
             font-weight: 400;
             will-change: transform;
-            transform: translateY(100px); /* Initial position */
+            transform: translateY(100px);
+            /* Initial position */
         }
 
         .mission-word {
             transition: color 0.1s;
         }
+
         .mission-word.active {
             color: var(--text-main);
         }
@@ -563,39 +565,70 @@
 
 
         /* Scroll Animations */
+        .zoom-in {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            will-change: opacity, transform;
+        }
+
+        .zoom-in.in-view {
+            opacity: 1;
+            transform: scale(1);
+        }
+
         .fade-up {
             opacity: 0;
             transform: translateY(40px);
             transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
             will-change: opacity, transform;
         }
+
         .fade-up.in-view {
             opacity: 1;
             transform: translateY(0);
         }
-        .delay-1 { transition-delay: 0.1s; }
+
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+        .delay-4 {
+            transition-delay: 0.4s;
+        }
 
         /* Built on Principles - Arc Section */
         .arc-section {
             height: 400vh;
-            background-color: #1a3622; /* Custom dark green background */
+            background-color: #1a3622;
+            /* Custom dark green background */
             color: #ffffff;
             position: relative;
             z-index: 10;
         }
-        
+
         .arc-snap-markers {
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            display: flex; flex-direction: column;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
             pointer-events: none;
         }
+
         .arc-snap-target {
-            flex: 1; /* Divides the section into exactly 4 blocks of 100vh each */
+            flex: 1;
+            /* Divides the section into exactly 4 blocks of 100vh each */
             scroll-snap-align: start;
         }
-        
+
         .arc-sticky {
             position: sticky;
             top: 0;
@@ -610,8 +643,9 @@
         .arc-title {
             position: absolute;
             top: 15vh;
-            left: 5vw;
-            font-size: 3.5rem; /* Matched to .normal-section h2 perfectly */
+            left: 10%;
+            font-size: 4rem;
+            /* Matched to .normal-section h2 perfectly */
             font-weight: 300;
             color: #ffffff;
             margin: 0;
@@ -621,11 +655,14 @@
             letter-spacing: -1px;
         }
 
-        .arc-mobile-list { display: none; }
+        .arc-mobile-list {
+            display: none;
+        }
 
         .arc-content-wrapper {
             position: absolute;
-            top: 60vh; /* Lowered significantly */
+            top: 60vh;
+            /* Lowered significantly */
             left: 50%;
             text-align: center;
             z-index: 20;
@@ -657,10 +694,11 @@
 
         .arc-circle-container {
             position: absolute;
-            top: 45vh; /* Lowered the wheel significantly */
+            top: 45vh;
+            /* Lowered the wheel significantly */
             left: 50%;
-            width: 140vw; 
-            height: 140vw; 
+            width: 140vw;
+            height: 140vw;
             pointer-events: none;
             opacity: 0;
             transform: translateX(-50%) scale(0.5);
@@ -674,44 +712,52 @@
             border: 1px solid rgba(255, 255, 255, 0.12);
             position: relative;
             will-change: transform;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Makes the snapping wheel spin buttery smooth */
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            /* Makes the snapping wheel spin buttery smooth */
         }
 
         .arc-spoke {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             transform-origin: center center;
             will-change: transform;
         }
 
         .arc-node {
             position: absolute;
-            top: -22px; /* Pull it exactly to center on the border line */
+            top: -22px;
+            /* Pull it exactly to center on the border line */
             left: 50%;
             width: 44px;
             height: 44px;
             margin-left: -22px;
             border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             background: #050505;
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 14px;
             transition: color 0.3s, border-color 0.3s;
         }
-        
+
         .arc-node-inner {
             will-change: transform;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Match wheel spin perfectly to stay upright */
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            /* Match wheel spin perfectly to stay upright */
         }
 
         .arc-apex-indicator {
             position: absolute;
-            top: 36px; /* Exactly dropping under the active node natively */
+            top: 36px;
+            /* Exactly dropping under the active node natively */
             left: 0;
-            width: 100%; /* Force absolutely perfect centering to overcome subpixel drift */
+            width: 100%;
+            /* Force absolutely perfect centering to overcome subpixel drift */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -743,10 +789,10 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             position: relative;
             z-index: 20;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            scroll-snap-align: end; 
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            scroll-snap-align: end;
         }
-        
+
         .footer-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -785,7 +831,8 @@
 
         .footer-column h4 {
             color: #ffffff;
-            font-size: 1.15rem; /* Scaled slightly for Aperto rendering */
+            font-size: 1.15rem;
+            /* Scaled slightly for Aperto rendering */
             font-weight: 400;
             margin-bottom: 25px;
             text-transform: capitalize;
@@ -839,109 +886,422 @@
 
         /* --- MASTER MOBILE RESPONSIVE BLOCK --- */
         @media (max-width: 900px) {
+
             /* General & Navbar */
-            .nav-links { display: none; }
+            .nav-links {
+                display: none;
+            }
+
         .navbar { padding: 15px 20px; height: 70px; }
+
             .navbar.navbar-scrolled {
             background: #ffffff;
             border-bottom: 1px solid rgba(0,0,0,0.1);
         }
-            .logo { height: 40px; }
+
+            .logo {
+                height: 40px;
+            }
 
             /* Hero section */
-            .hero-container { height: 250vh; } 
+            .hero-container {
+                height: 250vh;
+            }
+
             .hero-content {
-                height: 100vh; top: 0; left: 0; width: 100%; display: block;
+                height: 100vh;
+                top: 0;
+                left: 0;
+                width: 100%;
+                display: block;
             }
+
             .initial-content {
-                position: absolute; bottom: 8vh; width: 90%; left: 5%; text-align: left; transform-origin: left center;
+                position: absolute;
+                bottom: 8vh;
+                width: 90%;
+                left: 5%;
+                text-align: left;
+                transform-origin: left center;
             }
-            .initial-content h1 { font-size: 2.8rem; line-height: 1.05; text-align: left; }
+
+            .initial-content h1 {
+                font-size: 2.8rem;
+                line-height: 1.05;
+                text-align: left;
+            }
+
             .secondary-content {
-                position: absolute; bottom: 8vh; width: 90%; left: 5%;
+                position: absolute;
+                bottom: 8vh;
+                width: 90%;
+                left: 5%;
             }
-            .secondary-inner { flex-direction: column; gap: 20px; align-items: flex-start; }
-            .secondary-left { display: none !important; }
-            .founder-img-placeholder { display: none !important; }
-            .intro-text { font-size: 1.15rem; margin-bottom: 25px; text-align: left; }
-            .hero-stats { gap: 15px; flex-wrap: wrap; justify-content: flex-start; }
-            .stat-details .stat-num { font-size: 1.1rem; }
-            .hero-bottom-bar { display: none; } /* Clear screen clutter on load */
+
+            .secondary-inner {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+
+            .secondary-left {
+                display: none !important;
+            }
+
+            .founder-img-placeholder {
+                display: none !important;
+            }
+
+            .intro-text {
+                font-size: 1.15rem;
+                margin-bottom: 25px;
+                text-align: left;
+            }
+
+            .hero-stats {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+            }
+
+            .stat-details .stat-num {
+                font-size: 1.1rem;
+            }
+
+            .hero-bottom-bar {
+                display: none;
+            }
+
+            /* Clear screen clutter on load */
 
             /* Scrollytelling Bridge */
-            .scrollytelling-wrapper, .scrollytelling-wrapper.scrolly-reverse {
-                display: block; position: relative;
+            .scrollytelling-wrapper,
+            .scrollytelling-wrapper.scrolly-reverse {
+                display: block;
+                position: relative;
             }
+
             .canvas-column {
-                position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-                z-index: 10; pointer-events: none; padding: 0; overflow: hidden;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 10;
+                pointer-events: none;
+                padding: 0;
+                overflow: hidden;
             }
+
             .canvas-sticky {
-                position: sticky; top: 0; height: 45vh; border: none; align-items: stretch; justify-content: center; background: linear-gradient(to bottom, #ffffff 85%, rgba(255,255,255,0)); display: flex;
+                position: sticky;
+                top: 0;
+                height: 45vh;
+                border: none;
+                align-items: stretch;
+                justify-content: center;
+                background: linear-gradient(to bottom, #ffffff 85%, rgba(255, 255, 255, 0));
+                display: flex;
             }
-            canvas { max-width: 90%; max-height: 90%; mix-blend-mode: normal; margin-top: 5vh; }
+
+            canvas {
+                max-width: 90%;
+                max-height: 90%;
+                mix-blend-mode: normal;
+                margin-top: 5vh;
+            }
+
             .text-column {
-                position: relative; z-index: 5; width: 100%; padding: 45vh 5% 5vh; /* Prevents text colliding mathematically with top sticky container */
+                position: relative;
+                z-index: 5;
+                width: 100%;
+                padding: 45vh 5% 5vh;
+                /* Prevents text colliding mathematically with top sticky container */
             }
+
             .step {
-                min-height: 70vh; justify-content: center; padding-bottom: 15vh; text-align: left;
+                min-height: 70vh;
+                justify-content: center;
+                padding-bottom: 15vh;
+                text-align: left;
             }
-            
+
             /* Mission */
-            .mission-container { flex-direction: column; gap: 30px; padding-top: 80px; align-items: flex-start; }
-            .mission-left h2 { font-size: 2.2rem; text-align: left; }
-            #mission-text { font-size: 1.8rem; line-height: 1.4; text-align: left; }
-            .normal-section { padding: 60px 8%; text-align: left; }
-            .normal-section h2, .step h2 { font-size: 2.4rem; letter-spacing: -1px; }
-            .section-desc { font-size: 1.1rem; margin: 0 0 30px 0; }
-            .stats-grid, .features-grid { grid-template-columns: 1fr; gap: 30px; }
-            .stat-item h4 { font-size: 3.5rem; letter-spacing: -2px; }
+            .mission-container {
+                flex-direction: column;
+                gap: 30px;
+                padding-top: 80px;
+                align-items: flex-start;
+            }
+
+            .mission-left h2 {
+                font-size: 2.2rem;
+                text-align: left;
+            }
+
+            #mission-text {
+                font-size: 1.8rem;
+                line-height: 1.4;
+                text-align: left;
+            }
+
+            .normal-section {
+                padding: 60px 8%;
+                text-align: left;
+            }
+
+            .normal-section h2,
+            .step h2 {
+                font-size: 2.4rem;
+                letter-spacing: -1px;
+            }
+
+            .section-desc {
+                font-size: 1.1rem;
+                margin: 0 0 30px 0;
+            }
+
+            .stats-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .stat-item h4 {
+                font-size: 3.5rem;
+                letter-spacing: -2px;
+            }
 
             /* Arc "Built on Principles" - Brutally Simplified for Mobile */
-            .arc-section { height: auto !important; min-height: 100vh; padding: 100px 0 80px; }
-            .arc-snap-markers { display: none !important; }
-            .arc-sticky { position: relative !important; height: auto !important; padding: 0 8%; overflow: visible; align-items: flex-start; justify-content: flex-start; }
-            
-            .arc-title { position: relative; top: 0; left: 0; width: 100%; padding: 0; margin-bottom: 50px; font-size: 2.8rem; text-align: left; }
-            
-            .arc-content-wrapper, .arc-circle-container { display: none !important; }
-            
-            .arc-mobile-list { display: flex; flex-direction: column; gap: 40px; width: 100%; }
-            .arc-mobile-item { display: flex; gap: 20px; align-items: flex-start; }
-            .arc-mobile-num { flex: 0 0 36px; height: 36px; border-radius: 50%; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 1rem; font-family: sans-serif; }
-            .arc-mobile-text h3 { margin: 0 0 10px 0; font-size: 1.6rem; color: #ffffff; font-family: 'Aperto', "Georgia", serif; font-weight: 400; letter-spacing: -0.5px; }
-            .arc-mobile-text p { margin: 0; font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.5; font-family: sans-serif; }
+            .arc-section {
+                height: auto !important;
+                min-height: 100vh;
+                padding: 100px 0 80px;
+            }
+
+            .arc-snap-markers {
+                display: none !important;
+            }
+
+            .arc-sticky {
+                position: relative !important;
+                height: auto !important;
+                padding: 0 30px;
+                overflow: visible;
+                align-items: flex-start;
+                justify-content: flex-start;
+            }
+
+            .arc-title {
+                position: relative;
+                top: 0;
+                left: 0;
+                width: 100%;
+                padding: 0;
+                margin-bottom: 50px;
+                font-size: 2.8rem;
+                text-align: left;
+            }
+
+            .arc-content-wrapper,
+            .arc-circle-container {
+                display: none !important;
+            }
+
+            .arc-mobile-list {
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                width: 100%;
+            }
+
+            .arc-mobile-item {
+                display: flex;
+                gap: 20px;
+                align-items: flex-start;
+            }
+
+            .arc-mobile-num {
+                flex: 0 0 36px;
+                height: 36px;
+                border-radius: 50%;
+                border: 1px solid var(--gold);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--gold);
+                font-size: 1rem;
+                font-family: sans-serif;
+            }
+
+            .arc-mobile-text h3 {
+                margin: 0 0 10px 0;
+                font-size: 1.6rem;
+                color: #ffffff;
+                font-family: 'Aperto', "Georgia", serif;
+                font-weight: 400;
+                letter-spacing: -0.5px;
+            }
+
+            .arc-mobile-text p {
+                margin: 0;
+                font-size: 1rem;
+                color: rgba(255, 255, 255, 0.6);
+                line-height: 1.5;
+                font-family: sans-serif;
+            }
 
             /* Footer */
-            .footer-top { flex-direction: column; gap: 40px; text-align: left; align-items: flex-start; }
-            .footer-brand { display: flex; flex-direction: column; align-items: flex-start; }
-            .footer-links-grid { flex-wrap: wrap; gap: 30px; flex-direction: column; text-align: left; }
-            .footer-bottom { flex-direction: column; gap: 15px; align-items: flex-start; text-align: left; }
-            .alba-footer { padding: 50px 8% 30px; }
-        }
-    </style>
+            .footer-top {
+                flex-direction: column;
+                gap: 40px;
+                text-align: left;
+                align-items: flex-start;
+            }
 
-    <style>
-        .bio-container { display: flex; min-height: 100vh; padding-top: 108px; background: #fff; }
-        .bio-image-col { flex: 0 0 45%; position: relative; background: #f5f5f5; }
-        .bio-image-col img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
-        .bio-content-col { flex: 1; padding: 80px 8%; display: flex; flex-direction: column; justify-content: center; }
-        .bio-back { font-family: 'Inter', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-secondary); text-decoration: none; margin-bottom: 40px; display: inline-flex; align-items: center; gap: 10px; transition: color 0.3s ease; }
-        .bio-back:hover { color: var(--accent); }
-        .bio-name { font-family: 'Aperto', 'Georgia', serif; font-size: 3.5rem; color: #1e362d; margin: 0 0 15px 0; font-weight: 400; line-height: 1.1; }
-        .bio-title { font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 2.5px; color: #9b2226; margin-bottom: 50px; }
-        .bio-text p { font-family: 'Inter', sans-serif; font-size: 1.1rem; color: #333; line-height: 1.8; font-weight: 300; margin-bottom: 25px; }
-        @media (max-width: 991px) {
-            .bio-container { flex-direction: column; padding-top: 70px; }
-            .bio-image-col { height: 60vh; flex: none; }
-            .bio-content-col { padding: 60px 5%; }
-            .bio-name { font-size: 2.5rem; }
+            .footer-brand {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-links-grid {
+                flex-wrap: wrap;
+                gap: 30px;
+                flex-direction: column;
+                text-align: left;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            .alba-footer {
+                padding: 50px 8% 30px;
+            }
+        }
+        /* Team Sketch Parallax Zoom Matrix */
+        .sketch-zoom-wrapper {
+            height: 150vh; /* Reduced from 250vh to make the scroll sequence faster and punchier */
+            position: relative;
+            background: #fcfcfc;
+        }
+        
+        .sketch-zoom-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-color); /* Matches the main theme container seamlessly */
+        }
+        
+        .sketch-bg-img {
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            width: 90%;
+            height: 90%;
+            background: url('team-sketch.jpg') center/cover;
+            transform-origin: center center;
+            transform: scale(1);
+            will-change: transform;
+            border-radius: 8px; /* Clean edge aesthetic mapping to the clean layout */
+        }
+
+        /* Alba Timeline Section - Light Mode Editorial UI */
+        .timeline-container {
+            padding-left: 60px;
+            position: relative;
+        }
+        
+        .timeline-track {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            bottom: 20px;
+            width: 1px;
+            /* Changed from white to black alpha for light-mode contrast */
+            background-color: rgba(0,0,0,0.15); 
+            transform-origin: top;
+        }
+
+        .timeline-fill {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; /* Matches track width */
+            height: 0%;
+            background-color: var(--gold); 
+            border-radius: 4px;
+            transform-origin: top;
+            will-change: height;
+        }
+
+        .timeline-node {
+            position: relative;
+            margin-bottom: 25vh; 
+            opacity: 0; 
+            transform: translateY(30px); 
+            will-change: opacity, transform;
+            padding-right: 40px; /* Give the text room to breathe */
+        }
+
+        .timeline-node:last-child {
+            margin-bottom: 0;
+        }
+
+        .node-dot {
+            position: absolute;
+            left: -44px; /* Aligned precisely on the 1px rail */
+            top: 6px; 
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #fcfcfc; /* Matches Alba light background */
+            /* High contrast border */
+            border: 2px solid rgba(0,0,0,0.2);
+            z-index: 2;
+            transition: background-color 0.4s ease, border-color 0.4s ease;
+        }
+
+        .node-dot.active {
+            background-color: var(--gold);
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(207, 168, 95, 0.4);
+        }
+
+        .node-year {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 3px; 
+            color: var(--gold); /* Gold stands out beautifully against white */
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+        
+        .node-content .section-desc {
+            font-family: 'Aperto', serif;
+            font-size: 1.6rem;
+            font-weight: 300;
+            line-height: 1.4;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
         }
     </style>
+<style> .navbar { border-bottom: 1px solid rgba(255,255,255,0.2) !important; } </style>
 </head>
+
 <body>
 
-        <nav class="navbar" id="navbar" data-light-page="true" class="navbar-scrolled">
+        <nav class="navbar" id="navbar">
         <a href="index.html" class="logo" style="text-decoration: none;">
             <img src="logos/light.png" id="navbar-logo" alt="Alba Investment Partners">
         </a>
@@ -954,23 +1314,158 @@
         </div>
     </nav>
 
-    
-    <div class="bio-container">
-        <div class="bio-image-col">
-            <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/ac-website3-dOqX1P08NocZngG2.JPG" alt="Andrea Cavalleri">
-        </div>
-        <div class="bio-content-col">
-            <a href="our-people.html" class="bio-back">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                Back to Our People
+    <!-- Our People Hero Section -->
+    <div style="min-height: 45vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 180px 60px 80px 60px; background-color: var(--accent); color: #fff; box-sizing: border-box;">
+        <div style="width: 100%; display: flex; flex-wrap: wrap; gap: 60px; justify-content: space-between; align-items: flex-start;">
+            
+            <!-- Left Text -->
+            <div style="flex: 1; min-width: 300px; max-width: 600px;">
+                <p style="font-family: 'Aperto', 'Georgia', serif; font-size: 2.8rem; color: #fff; margin: 0; line-height: 1.2; letter-spacing: -0.5px;">
+                    We are a diverse and dynamic team that thrives on catering to our clients' evolving needs and goals.
+                </p>
             </a>
-            <h1 class="bio-name">Andrea Cavalleri</h1>
-            <div class="bio-title">Chairman</div>
-            <div class="bio-text">
-                <p>Andrea brings extensive leadership experience to our board, having served in executive and board-level roles across various industries. His strategic vision and corporate governance expertise guide our firm's long-term growth and success.</p><p>Andrea holds a degree in Economics and Commerce from the University of Genoa.</p>
-            </div>
+            
+            <!-- Right Text -->
+            <div style="flex: 0 0 350px; min-width: 300px;">
+                <h4 style="font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; font-weight: 600;">The Alba Team</h4>
+                <p style="font-family: 'Inter', sans-serif; font-size: 1.1rem; color: rgba(255,255,255,0.8); line-height: 1.6; margin: 0; font-weight: 300;">
+                    A group of highly skilled, diverse professionals, with an extensive global network
+                </p>
+            </a>
+            
         </div>
     </div>
+
+    <!-- Cape Capital Style Grid Section -->
+    <div style="min-height: 80vh; background-color: #ffffff; width: 100%;">
+        <div class="people-layout">
+            
+            <!-- Left Sidebar Navigation -->
+            <div class="people-sidebar hide-on-mobile">
+                <h2 style="font-family: 'Aperto', 'Georgia', serif; font-size: 2rem; color: var(--accent); margin-top: 0; margin-bottom: 30px; font-weight: 400;">Our People</h2>
+                <ul style="list-style: none; padding: 0; margin: 0; font-family: 'Inter', sans-serif; font-size: 1.05rem; color: #777;">
+                    <li style="margin-bottom: 15px; cursor: pointer; color: #9b2226; font-weight: 500;">All</li>
+                    <li style="margin-bottom: 15px; cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='#9b2226'" onmouseout="this.style.color='#777'">Executive Committee</li>
+                    <li style="margin-bottom: 15px; cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='#9b2226'" onmouseout="this.style.color='#777'">Non-Executive Directors</li>
+                </ul>
+            </div>
+
+            <!-- Right Grid -->
+            <div class="people-grid">
+                
+                <!-- Member 1: Stefano -->
+                <a href="stefano-tittarelli.html" style="display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit;" class="team-card">
+                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
+                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/st-website3-YKbEeE1PGbhDPkga.JPG" alt="Stefano Tittarelli, CFA" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #9b2226; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;">+</div>
+                    </div>
+                    <h3 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 6px 0; color: #000;">Stefano Tittarelli, CFA</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #9b2226; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;">Chief Executive Officer</p>
+                </a>
+
+                <!-- Member 2: Luigi -->
+                <a href="luigi-mantrino.html" style="display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit;" class="team-card">
+                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
+                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/lm-website-A3Qw5blJ31ClwGRg.JPG" alt="Luigi Mantrino, CFA" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #9b2226; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;">+</div>
+                    </div>
+                    <h3 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 6px 0; color: #000;">Luigi Mantrino, CFA</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #9b2226; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;">Chief Investment Officer</p>
+                </a>
+
+                <!-- Member 3: Guillaume -->
+                <a href="guillaume-di-liberatore.html" style="display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit;" class="team-card">
+                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
+                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/20240825_100107110_ios-dJo6vzZx9zcM27r9.jpg" alt="Guillaume Di Liberatore, CFA" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #9b2226; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;">+</div>
+                    </div>
+                    <h3 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 6px 0; color: #000;">Guillaume Di Liberatore, CFA</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #9b2226; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;">Chief Research Officer</p>
+                </a>
+
+                <!-- Member 4: Andrea -->
+                <a href="andrea-cavalleri.html" style="display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit;" class="team-card">
+                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
+                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/andrea_cavalleri_2019_04_email-mp8qPjNnJptrb39l.jpg" alt="Andrea Cavalleri" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #9b2226; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;">+</div>
+                    </div>
+                    <h3 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 6px 0; color: #000;">Andrea Cavalleri</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #9b2226; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;">Chairman</p>
+                </a>
+
+                <!-- Member 5: Henrik -->
+                <a href="henrik-hedman.html" style="display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit;" class="team-card">
+                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
+                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/henrik-hedman-AE0ae8xle0C62prZ.jpg" alt="Henrik Hedman" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #9b2226; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;">+</div>
+                    </div>
+                    <h3 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 6px 0; color: #000;">Henrik Hedman</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #9b2226; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;">Director</p>
+                </a>
+
+                <!-- Member 6: Balint -->
+                <a href="balint-botos.html" style="display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit;" class="team-card">
+                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
+                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/balint-square-Aq2q5qyN4Oi1NOz7.JPG" alt="Balint Botos, CFA" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #9b2226; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;">+</div>
+                    </div>
+                    <h3 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 6px 0; color: #000;">Balint Botos, CFA</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #9b2226; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;">Director</p>
+                </a>
+
+            </div>
+        </div>
+
+        <style>
+            @media (min-width: 901px) {
+                .people-layout {
+                    display: flex;
+                    gap: 8%;
+                    width: 100%;
+                    padding: 80px 60px 120px 60px;
+                    box-sizing: border-box;
+                }
+                .people-sidebar {
+                    flex: 0 0 25%;
+                }
+                .people-grid {
+                    flex: 1;
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 60px 40px;
+                    align-items: start;
+                }
+                .people-grid .team-card:first-child {
+                    grid-column: 2;
+                }
+            }
+            @media (max-width: 900px) {
+                .people-layout {
+                    display: block;
+                    padding: 60px 5% 100px 5%;
+                }
+                .hide-on-mobile {
+                    display: none;
+                }
+                .people-grid {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 40px 20px;
+                    align-items: start;
+                }
+                .people-grid .team-card:first-child {
+                    grid-column: auto;
+                }
+            }
+            @media (max-width: 600px) {
+                .people-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+
+    </div>
+    
     <!-- Modern Green Footer -->
     <footer class="alba-footer">
         <div class="footer-container">
@@ -978,19 +1473,19 @@
                 <div class="footer-brand">
                     <img src="logos/light.png" alt="Alba Investment Partners" class="footer-logo">
                     <p class="footer-mission">Alba Investment Partners SA is authorized and regulated by the FINMA as a Manager of collective assets.</p>
-                </div>
-                
+                </a>
+
                 <div class="footer-links-grid">
                     <div class="footer-column">
                         <h4>Firm</h4>
                         <a href="index.html">Home</a>
                         <a href="about.html">About Us</a>
-                        <a href="#case-studies">Perspectives</a>
+                        <a href="perspectives.html">Perspectives</a>
                     </div>
                     <div class="footer-column">
                         <h4>Strategies</h4>
                         <a href="credit-opportunities.html">Credit Opportunities</a>
-                        <a href="our-people.html">Our People</a>
+                        <a href="our-people.html" style="color: var(--gold)">Our People</a>
                     </div>
                     <div class="footer-column">
                         <h4>Connect</h4>
@@ -999,7 +1494,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
                 <p class="copyright">&copy; 2026 Alba Investment Partners. All rights reserved.</p>
                 <div class="legal-links">
@@ -1012,109 +1507,12 @@
     </footer>
 
     <script>
-        const bridgeFrameCount = 192;
-        const lighthouseFrameCount = 192;
-        const currentBridgeFrame = index => `new%20bridge/${index.toString().padStart(5, '0')}.png`;
-        const currentLighthouseFrame = index => `lighthouse/${index.toString().padStart(5, '0')}.png`;
-
-        const bridgeImages = [];
-        const lighthouseImages = [];
-
-        // Setup both canvases
-        const canvas1 = document.getElementById('bridge-canvas-1');
-        const ctx1 = canvas1.getContext('2d');
-        const scroll1 = document.getElementById('scroll-section-1');
-
-        const canvas2 = document.getElementById('bridge-canvas-2');
-        const ctx2 = canvas2.getContext('2d');
-        const scroll2 = document.getElementById('scroll-section-2');
-
-        // Load Bridge First Image
-        const firstBridge = new Image();
-        firstBridge.src = currentBridgeFrame(1);
-        firstBridge.onload = () => {
-            canvas1.width = firstBridge.naturalWidth;
-            canvas1.height = firstBridge.naturalHeight;
-            ctx1.drawImage(firstBridge, 0, 0);
-        };
-        bridgeImages[1] = firstBridge;
-
-        // Load Lighthouse First Image
-        const firstLighthouse = new Image();
-        firstLighthouse.src = currentLighthouseFrame(1);
-        firstLighthouse.onload = () => {
-            canvas2.width = firstLighthouse.naturalWidth;
-            canvas2.height = firstLighthouse.naturalHeight;
-            ctx2.drawImage(firstLighthouse, 0, 0);
-        };
-        lighthouseImages[1] = firstLighthouse;
-
-        // Preload rest of images
-        for (let i = 2; i <= bridgeFrameCount; i++) {
-            const img = new Image();
-            img.src = currentBridgeFrame(i);
-            bridgeImages[i] = img;
-        }
-        for (let i = 2; i <= lighthouseFrameCount; i++) {
-            const img = new Image();
-            img.src = currentLighthouseFrame(i);
-            lighthouseImages[i] = img;
-        }
-
-        function handleCanvasScroll(scrollElem, canvasElem, ctx, imgArray, fCount) {
-            if (!scrollElem || !canvasElem || !ctx) return;
-            if (window.innerWidth <= 900) return; // Disabled on mobile to favor auto-playing GIF mode
-            const sectionTop = scrollElem.offsetTop;
-            const scrollableDistance = scrollElem.scrollHeight - window.innerHeight;
-            let fraction = (window.scrollY - sectionTop) / scrollableDistance;
-            fraction = Math.max(0, Math.min(1, fraction));
-            const frameIndex = Math.min(fCount, Math.max(1, Math.ceil(fraction * fCount)));
-            
-            requestAnimationFrame(() => {
-                if (imgArray[frameIndex] && imgArray[frameIndex].complete) {
-                    ctx.clearRect(0, 0, canvasElem.width, canvasElem.height);
-                    ctx.drawImage(imgArray[frameIndex], 0, 0);
-                }
-            });
-        }
-
-        function playAsGifOnMobile(canvasElem, ctx, imgArray, fCount) {
-            let currentFrame = 1;
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && window.innerWidth <= 900) {
-                        // Automatically play sequence once like a non-looping GIF
-                        const interval = setInterval(() => {
-                            if (currentFrame > fCount) {
-                                clearInterval(interval);
-                                return;
-                            }
-                            if (imgArray[currentFrame] && imgArray[currentFrame].complete) {
-                                ctx.clearRect(0, 0, canvasElem.width, canvasElem.height);
-                                ctx.drawImage(imgArray[currentFrame], 0, 0);
-                                currentFrame += 2; // Faster sequential playback for mobile
-                            }
-                        }, 50); // ~20fps + skipping frames feels like 40fps snappy loader
-                        observer.unobserve(canvasElem); 
-                    }
-                });
-            }, { threshold: 0.25 });
-            observer.observe(canvasElem);
-        }
-
-        playAsGifOnMobile(canvas1, ctx1, bridgeImages, bridgeFrameCount);
-        playAsGifOnMobile(canvas2, ctx2, lighthouseImages, lighthouseFrameCount);
-
-
-        window.addEventListener('scroll', () => {
-            handleCanvasScroll(scroll1, canvas1, ctx1, bridgeImages, bridgeFrameCount);
-            handleCanvasScroll(scroll2, canvas2, ctx2, lighthouseImages, lighthouseFrameCount);
-        });
+        // Background canvas sequencers have been removed to reduce payload overhead on the About page
 
         // Hero animation logic
         const heroSection = document.getElementById('hero-section');
         const heroInitial = document.getElementById('hero-initial');
-        
+
         const animatedElements = [
             document.querySelector('.founder-img-placeholder'),
             document.querySelector('.intro-text'),
@@ -1128,6 +1526,85 @@
         }
 
         window.addEventListener('scroll', () => {
+            // Team Sketch Zoom Frame Loop
+            const sketchWrapper = document.getElementById('sketch-zoom-section');
+            const sketchImg = document.getElementById('sketch-bg-img');
+            
+            if (sketchWrapper && sketchImg) {
+                const sRect = sketchWrapper.getBoundingClientRect();
+                
+                if (sRect.top <= window.innerHeight && sRect.bottom >= 0) {
+                    // Normalize the active vertical progress purely linearly
+                    // It starts expanding slightly before it hits top: 0, tracking the entire 250vh scroll block natively
+                    const maxScroll = sRect.height - window.innerHeight;
+                    let scrollProgress = -sRect.top / Math.max(1, maxScroll);
+                    scrollProgress = Math.max(0, Math.min(1, scrollProgress));
+                    
+                    // Maps linearly from scale 1x to scale 1.06x for a stunningly subtle, premium parallax effect
+                    const scaleFactor = 1 + (scrollProgress * 0.06);
+                    sketchImg.style.transform = `scale(${scaleFactor})`;
+                }
+            }
+            
+            // Dynamic Timeline Logic
+            const timelineSection = document.getElementById('story-timeline-section');
+            const timelineTrack = document.getElementById('timeline-track');
+            const timelineFill = document.getElementById('timeline-fill');
+            const nodes = [document.getElementById('node-1'), document.getElementById('node-2'), document.getElementById('node-3')];
+            
+            if (timelineSection && timelineTrack && timelineFill && nodes[0]) {
+                const tlRect = timelineTrack.getBoundingClientRect();
+                const viewportCenter = window.innerHeight * 0.55; 
+                
+                if (tlRect.top <= viewportCenter) {
+                    const trackHeight = tlRect.height;
+                    const fillAmount = Math.max(0, Math.min(trackHeight, viewportCenter - tlRect.top));
+                    timelineFill.style.height = `${fillAmount}px`;
+                    
+                    nodes.forEach((node) => {
+                        const nodeTopRelTrack = node.getBoundingClientRect().top - tlRect.top; 
+                        const dist = fillAmount - nodeTopRelTrack;
+                        
+                        // Physics map: Native interpolation loading proportional exactly to scroll wheel! 
+                        if (dist > 0) { 
+                            const nodeProg = Math.min(1, dist / 150);
+                            node.style.opacity = nodeProg;
+                            node.style.transform = `translateY(${30 - (30 * nodeProg)}px)`;
+                            
+                            const dot = node.querySelector('.node-dot');
+                            dot.style.borderColor = `rgba(207, 168, 95, ${0.2 + (0.8 * nodeProg)})`;
+                            dot.style.backgroundColor = nodeProg > 0.8 ? `var(--gold)` : `transparent`;
+                            
+                            const year = node.querySelector('.node-year');
+                            if(year) year.style.color = `rgba(207, 168, 95, ${0.5 + (0.5 * nodeProg)})`;
+                        } else {
+                            node.style.opacity = 0;
+                            node.style.transform = `translateY(30px)`;
+                            
+                            const dot = node.querySelector('.node-dot');
+                            dot.style.borderColor = `rgba(255,255,255,0.2)`;
+                            dot.style.backgroundColor = `transparent`;
+                            
+                            const year = node.querySelector('.node-year');
+                            if(year) year.style.color = `rgba(255,255,255,0.5)`;
+                        }
+                    });
+                } else {
+                    timelineFill.style.height = '0px';
+                    nodes.forEach(node => {
+                        node.style.opacity = 0;
+                        node.style.transform = `translateY(30px)`;
+                        const dot = node.querySelector('.node-dot');
+                        if (dot) {
+                            dot.style.borderColor = `rgba(255,255,255,0.2)`;
+                            dot.style.backgroundColor = `transparent`;
+                        }
+                        const year = node.querySelector('.node-year');
+                        if(year) year.style.color = `rgba(255,255,255,0.5)`;
+                    });
+                }
+            }
+            
             
             const heroRect = heroSection.getBoundingClientRect();
             const scrollDistance = heroSection.offsetHeight - window.innerHeight;
@@ -1135,40 +1612,40 @@
             progress = Math.max(0, Math.min(1, progress));
 
             const isMobile = window.innerWidth <= 900;
-            
+
             // Execute the precise layout math pushing the h1 explicitly out of the way
-            const targetY = isMobile ? -5 : -32; 
-            const initialY = interpolate(progress, 0, 0.4, 0, targetY); 
-            
+            const targetY = isMobile ? -5 : -32;
+            const initialY = interpolate(progress, 0, 0.4, 0, targetY);
+
             // Exit crossfade for the massive title at the very end of the hero sequence (0.7 to 0.95)
             const exitTitleOp = interpolate(progress, 0.7, 0.95, 1, 0);
-            
+
             // Pure elegant vertical crossfade on mobile natively, Kenslow exit fade on desktop
-            const initialOp = isMobile ? interpolate(progress, 0, 0.25, 1, 0) : exitTitleOp; 
-            
+            const initialOp = isMobile ? interpolate(progress, 0, 0.25, 1, 0) : exitTitleOp;
+
             heroInitial.style.transform = `translateY(${initialY}vh)`;
             heroInitial.style.opacity = initialOp;
 
             // Animate secondary elements progressively + Kenslow exit styling
             animatedElements.forEach((el, index) => {
                 if (!el) return;
-                const startP = 0.15 + (index * 0.12); 
+                const startP = 0.15 + (index * 0.12);
                 const endP = startP + 0.25;
-                
+
                 let elemOpacity = interpolate(progress, startP, endP, 0, 1);
                 const elemY = interpolate(progress, startP, endP, 40, 0);
                 let elemScale = 1;
-                
+
                 // Apply the Kenslow-style unified exit mechanism
                 if (progress > 0.7) {
                     elemOpacity = interpolate(progress, 0.7, 0.95, 1, 0); // Text washes out smoothly
-                    
+
                     // Specifically target the founder image to actively shrink natively
                     if (el.classList.contains('founder-img-placeholder')) {
-                        elemScale = interpolate(progress, 0.7, 0.95, 1, 0.85); 
+                        elemScale = interpolate(progress, 0.7, 0.95, 1, 0.85);
                     }
                 }
-                
+
                 el.style.opacity = elemOpacity;
                 el.style.transform = `translateY(${elemY}px) scale(${elemScale})`;
             });
@@ -1199,14 +1676,14 @@
                 const rect = missionSection.getBoundingClientRect();
                 const scrollable = missionSection.offsetHeight - window.innerHeight;
                 let progress = -rect.top / Math.max(1, scrollable);
-                
+
                 // Add a small buffer so it starts filling after 10% scroll and fully fills by 90%
                 let fillProgress = (progress - 0.1) / 0.8;
                 fillProgress = Math.max(0, Math.min(1, fillProgress));
-                
+
                 const spans = missionTextElem.querySelectorAll('.mission-word');
                 const revealCount = Math.floor(fillProgress * spans.length);
-                
+
                 spans.forEach((span, i) => {
                     if (i < revealCount) {
                         span.classList.add('active');
@@ -1232,12 +1709,12 @@
         const arcWord = document.getElementById('arc-word');
         const arcDesc = document.getElementById('arc-desc');
         const arcSpokes = document.querySelectorAll('.arc-spoke');
-        
+
         const arcData = [
-            { title: "Analytical Rigour", desc: "We believe deep due diligence is the cornerstone of sustainable credit performance." },
-            { title: "Independence", desc: "Long-term relationships built on reliability and complete objectivity." },
-            { title: "Alignment", desc: "Founder capital is continually invested securely alongside yours." },
-            { title: "Long-Term Focus", desc: "Tailored market strategies designed to perform steadily through entire cycles." }
+            { title: "People", desc: "Our diverse backgrounds and skillsets bring unique perspectives, fostering innovative solutions and creative problem-solving while sharing a commitment to hard work and excellence." },
+            { title: "Credentials", desc: "A proven history of consistently delivering superior risk-adjusted returns across fixed income and credit asset classes, demonstrating resilience through all economic environments." },
+            { title: "Deep Research", desc: "Combining data, technology and deep-rooted experience in financial markets, we uncover opportunities that others often overlook." },
+            { title: "Agility", desc: "With lean teams and niche, size-constrained strategies, we foster agility and adaptability — key attributes for delivering superior returns." }
         ];
 
         // Initialize values
@@ -1256,21 +1733,21 @@
         window.addEventListener('scroll', () => {
             if (arcSection && arcCircle) {
                 const rect = arcSection.getBoundingClientRect();
-                
+
                 // 1. Dynamic scrub expansion when scrolling INTO the section
                 const containerElem = document.querySelector('.arc-circle-container');
                 const contentElem = document.querySelector('.arc-content-wrapper');
-                
+
                 if (rect.top > 0 && rect.top <= window.innerHeight) {
                     let entryProgress = 1 - (rect.top / window.innerHeight);
                     entryProgress = Math.max(0, Math.min(1, entryProgress));
-                    
+
                     const circleScale = 0.5 + (0.5 * entryProgress);
                     if (containerElem) {
                         containerElem.style.transform = `translateX(-50%) scale(${circleScale})`;
                         containerElem.style.opacity = entryProgress;
                     }
-                    
+
                     const contentScale = 0.8 + (0.2 * entryProgress);
                     if (contentElem) {
                         contentElem.style.transform = `translateX(-50%) scale(${contentScale})`;
@@ -1287,22 +1764,22 @@
                         contentElem.style.opacity = 1;
                     }
                 }
-                
+
                 // 2. Wheel rotation logic
                 const scrollDistance = arcSection.offsetHeight - window.innerHeight;
                 let progress = -rect.top / Math.max(1, scrollDistance);
                 progress = Math.max(0, Math.min(1, progress));
-                
+
                 // Determine active index based on scroll position safely snapped explicitly to 0, 1, 2, 3
-                let activeIndex = Math.floor(progress * 3.99); 
-                
+                let activeIndex = Math.floor(progress * 3.99);
+
                 // Directly snap only to exact milestone node angles (1, 2, 3, 4)
                 const targetAngles = [45, 15, -15, -45];
                 const arcRotation = targetAngles[activeIndex];
-                
+
                 // Since the wheel element has `transition`, it spins smoothly to snap exactly into place natively
                 arcCircle.style.transform = `rotate(${arcRotation}deg)`;
-                
+
                 // Counter-rotate the inner digits safely
                 arcSpokes.forEach(spoke => {
                     const angle = parseFloat(spoke.getAttribute('data-angle'));
@@ -1314,18 +1791,18 @@
                 });
 
                 // Update Text Content natively using existing activeIndex
-                
+
                 if (arcWord.dataset.current !== activeIndex.toString()) {
                     arcWord.style.opacity = '0';
                     arcDesc.style.opacity = '0';
-                    
+
                     setTimeout(() => {
                         arcWord.innerText = arcData[activeIndex].title;
                         arcDesc.innerText = arcData[activeIndex].desc;
                         arcWord.style.opacity = '1';
                         arcDesc.style.opacity = '1';
                     }, 200);
-                    
+
                     arcWord.dataset.current = activeIndex;
 
                     // Highlight the active node's border
@@ -1355,7 +1832,7 @@
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+        document.querySelectorAll('.fade-up, .zoom-in').forEach(el => observer.observe(el));
     </script>
 
     <script>
@@ -1526,4 +2003,5 @@
     </script>
 
 </body>
+
 </html>
