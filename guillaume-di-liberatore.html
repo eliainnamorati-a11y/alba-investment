@@ -1297,16 +1297,16 @@
         }
     </style>
 <style> .navbar { border-bottom: 1px solid rgba(255,255,255,0.2) !important; } </style>
-</head>
+<style> .navbar { border-bottom: 1px solid rgba(0,0,0,0.1) !important; background-color: #ffffff !important; } .navbar .nav-links a { color: var(--accent) !important; } </style></head>
 
 <body>
 
-        <nav class="navbar" id="navbar">
+    <nav class="navbar navbar-scrolled" id="navbar" data-light-page="true">
         <a href="index.html" class="logo" style="text-decoration: none;">
-            <img src="logos/light.png" id="navbar-logo" alt="Alba Investment Partners">
+            <img src="logos/dark.png" id="navbar-logo" alt="Alba Investment Partners">
         </a>
         <div class="nav-links">
-            <a href="about.html">About Us</a>
+            <a href="about.html" style="color: var(--gold)">About Us</a>
             <a href="credit-opportunities.html">Credit Opportunities</a>
             <a href="our-people.html">Our People</a>
             <a href="perspectives.html">Perspectives</a>
@@ -1314,164 +1314,367 @@
         </div>
     </nav>
 
-    <!-- Our People Hero Section -->
-    <div class="normal-section" style="min-height: 45vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 180px; padding-bottom: 80px; background-color: var(--accent); color: #fff;">
-        <div style="max-width: 1400px; width: 100%; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 60px; justify-content: space-between; align-items: flex-start;">
-            
-            <!-- Left Text -->
-            <div style="flex: 1; min-width: 300px; max-width: 600px;">
-                <p style="font-family: 'Aperto', 'Georgia', serif; font-size: 2.8rem; color: #fff; margin: 0; line-height: 1.2; letter-spacing: -0.5px;">
-                    We are a diverse and dynamic team that thrives on catering to our clients' evolving needs and goals.
-                </p>
+    <!-- Unified 95vh Premium Hero Section -->
+    <!-- Cape-Capital Layout Custom Hero Section -->
+    <style>
+        .cc-hero {
+            background-color: #f7f9f8; /* Soft Alba off-white */
+            padding: 220px 60px 80px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 100px;
+        }
+        .cc-hero-left { flex: 0 0 65%; }
+        .cc-hero-left h1 {
+            font-family: 'Aperto', serif;
+            font-size: clamp(2.8rem, 4.2vw, 4.5rem);
+            font-weight: 300;
+            color: var(--accent);
+            margin: 0;
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+        .cc-hero-right {
+            flex: 0 0 25%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-top: 15px;
+        }
+        .cc-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin: 0;
+        }
+        .cc-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        .cc-hero-media {
+            width: 100%;
+            height: 75vh;
+            overflow: hidden;
+            background-color: var(--bg-color);
+            position: relative;
+        }
+        .cc-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .cc-hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .nav-links a { color: var(--text-main) !important; }
+        .nav-links a::after { background-color: var(--accent) !important; }
+        
+
+        @media(max-width: 900px) {
+            .cc-hero { flex-direction: column; padding: 160px 30px 60px 30px; gap: 40px; }
+            .cc-hero-left h1 { font-size: 2.8rem; }
+            .cc-hero-right { padding-top: 0; }
+        }
+    </style>
+
+    <div class="cc-hero">
+        <div class="cc-hero-left">
+            <h1 class="fade-up delay-1">An independent investment management boutique dedicated to delivering superior risk-adjusted returns.</h1>
+        </div>
+        <div class="cc-hero-right">
+            <p class="cc-label fade-up delay-2">About Us</p>
+            <p class="cc-desc fade-up delay-3">Specializing in fixed income and sophisticated credit strategies, Alba is built on decades of institutional expertise and uncompromised excellence.</p>
+        </div>
+    </div>
+    <div class="cc-hero-media delay-4">
+        <img src="team-sketch.jpg" alt="Alba Team Sketch" class="zoom-in" style="filter: grayscale(10%);">
+    </div>
+
+    <!-- Alba's Timeline Section -->
+    <div class="normal-section" id="story-timeline-section" style="padding: 15vh 10%;">
+        <div style="display: flex; flex-direction: row; gap: 80px; align-items: flex-start; flex-wrap: wrap;">
+            <div style="flex: 1 1 30%; min-width: 300px;">
+                <h2 style="font-size: 3.5rem; position: sticky; top: 35vh; color: var(--accent); margin: 0;">Alba's<br>Story</h2>
             </div>
             
-            <!-- Right Text -->
-            <div style="flex: 0 0 350px; min-width: 300px;">
-                <h4 style="font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--gold); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; font-weight: 600;">The Alba Team</h4>
-                <p style="font-family: 'Inter', sans-serif; font-size: 1.1rem; color: rgba(255,255,255,0.8); line-height: 1.6; margin: 0; font-weight: 300;">
-                    A group of highly skilled, diverse professionals, with an extensive global network
-                </p>
+            <div class="timeline-container" style="flex: 2 1 60%; min-width: 300px;">
+                <div class="timeline-track" id="timeline-track">
+                    <div class="timeline-fill" id="timeline-fill"></div>
+                </div>
+
+                <div class="timeline-node" id="node-1">
+                    <div class="node-dot"></div>
+                    <div class="node-content">
+                        <h3 class="node-year">Origin</h3>
+                        <p class="section-desc" style="margin-bottom:0;">For nearly a decade, our Founding Partners have collaborated to manage the fixed income and credit allocation of a major European single family office, consistently delivering superior risk-adjusted returns.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-node" id="node-2">
+                    <div class="node-dot"></div>
+                    <div class="node-content">
+                        <h3 class="node-year">2024</h3>
+                        <p class="section-desc" style="margin-bottom:0;">Bringing their entrepreneurial vision to life, the Founding Partners established Alba in 2024 with the goal of opening their investment strategies to a broader range of professional and institutional investors.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-node" id="node-3">
+                    <div class="node-dot"></div>
+                    <div class="node-content">
+                        <h3 class="node-year">Present</h3>
+                        <p class="section-desc" style="margin-bottom:0;">Named after the Italian town of Alba, nestled in the heart of Piedmont, the firm pays homage to the place where the seed of their venture was sown. The name “Alba” also symbolizes a new dawn, marking the beginning of an exciting new chapter for the team.</p>
+                    </div>
+                </div>
             </div>
-            
         </div>
     </div>
 
-    <!-- Cape Capital Style Grid Section -->
-    <div class="normal-section" style="min-height: 80vh; background-color: #ffffff; padding-top: 80px; padding-bottom: 120px;">
-        <div class="people-layout">
-            
-            <!-- Left Sidebar Navigation -->
-            <div class="people-sidebar hide-on-mobile">
-                <h2 style="font-family: 'Aperto', 'Georgia', serif; font-size: 2rem; color: var(--accent); margin-top: 0; margin-bottom: 30px; font-weight: 400;">Our People</h2>
-                <ul style="list-style: none; padding: 0; margin: 0; font-family: 'Inter', sans-serif; font-size: 1.05rem; color: #777;">
-                    <li style="margin-bottom: 15px; cursor: pointer; color: #9b2226; font-weight: 500;">All</li>
-                    <li style="margin-bottom: 15px; cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='#9b2226'" onmouseout="this.style.color='#777'">Executive Committee</li>
-                    <li style="margin-bottom: 15px; cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='#9b2226'" onmouseout="this.style.color='#777'">Non-Executive Directors</li>
-                </ul>
+    <!-- Map Parallax Zoom Section -->
+    <div class="sketch-zoom-wrapper" id="sketch-zoom-section" style="overflow: hidden;">
+        <div class="sketch-zoom-sticky">
+            <div class="sketch-bg-img zoom-in" id="sketch-bg-img" style="background: url('alba.jpg') center/cover; transform-origin: center;"></div>
+        </div>
+    </div>
+
+    <!-- Replaced Static Approach Section with Staggered Scroll Triggers -->
+    <div class="normal-section" style="padding: 15vh 10%; background: #ffffff;">
+        <div style="display: flex; gap: 80px; flex-wrap: wrap; max-width: 1400px; margin: 0 auto; align-items: flex-start;">
+            <div style="flex: 1 1 350px;">
+                <h2 class="fade-up" style="font-size: 4rem; font-family: 'Aperto', serif; font-weight: 300; line-height: 1.1; margin: 0; color: var(--accent); letter-spacing: -1px;">The Alba<br>Approach</h2>
+                <div class="fade-up delay-1" style="width: 40px; height: 1px; background: var(--gold); margin-top: 30px;"></div>
             </div>
-
-            <!-- Right Grid -->
-            <div class="people-grid">
-                
-                <!-- Member 1: Stefano -->
-                <div style="display: flex; flex-direction: column; cursor: pointer;" class="team-card" onclick="window.location.href='stefano-tittarelli.html'">
-                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
-                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/st-website3-YKbEeE1PGbhDPkga.JPG" alt="Stefano Tittarelli, CFA" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <div style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #9b2226; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;">+</div>
-                    </div>
-                    <h3 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 6px 0; color: #000;">Stefano Tittarelli, CFA</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #9b2226; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;">Chief Executive Officer</p>
-                </div>
-
-                <!-- Member 2: Luigi -->
-                <div style="display: flex; flex-direction: column; cursor: pointer;" class="team-card" onclick="window.location.href='luigi-mantrino.html'">
-                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
-                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/lm-website-A3Qw5blJ31ClwGRg.JPG" alt="Luigi Mantrino, CFA" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <div style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #9b2226; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;">+</div>
-                    </div>
-                    <h3 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 6px 0; color: #000;">Luigi Mantrino, CFA</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #9b2226; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;">Chief Investment Officer</p>
-                </div>
-
-                <!-- Member 3: Guillaume -->
-                <div style="display: flex; flex-direction: column; cursor: pointer;" class="team-card" onclick="window.location.href='guillaume-di-liberatore.html'">
-                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
-                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/20240825_100107110_ios-dJo6vzZx9zcM27r9.jpg" alt="Guillaume Di Liberatore, CFA" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <div style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #9b2226; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;">+</div>
-                    </div>
-                    <h3 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 6px 0; color: #000;">Guillaume Di Liberatore, CFA</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #9b2226; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;">Chief Research Officer</p>
-                </div>
-
-                <!-- Member 4: Andrea -->
-                <div style="display: flex; flex-direction: column; cursor: pointer;" class="team-card" onclick="window.location.href='andrea-cavalleri.html'">
-                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
-                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/andrea_cavalleri_2019_04_email-mp8qPjNnJptrb39l.jpg" alt="Andrea Cavalleri" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <div style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #9b2226; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;">+</div>
-                    </div>
-                    <h3 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 6px 0; color: #000;">Andrea Cavalleri</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #9b2226; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;">Chairman</p>
-                </div>
-
-                <!-- Member 5: Henrik -->
-                <div style="display: flex; flex-direction: column; cursor: pointer;" class="team-card" onclick="window.location.href='henrik-hedman.html'">
-                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
-                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/henrik-hedman-AE0ae8xle0C62prZ.jpg" alt="Henrik Hedman" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <div style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #9b2226; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;">+</div>
-                    </div>
-                    <h3 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 6px 0; color: #000;">Henrik Hedman</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #9b2226; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;">Director</p>
-                </div>
-
-                <!-- Member 6: Balint -->
-                <div style="display: flex; flex-direction: column; cursor: pointer;" class="team-card" onclick="window.location.href='balint-botos.html'">
-                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
-                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/balint-square-Aq2q5qyN4Oi1NOz7.JPG" alt="Balint Botos, CFA" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <div style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #9b2226; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;">+</div>
-                    </div>
-                    <h3 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 6px 0; color: #000;">Balint Botos, CFA</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #9b2226; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;">Director</p>
-                </div>
-
+            <div style="flex: 2 1 600px;">
+                <p class="fade-up delay-1" style="font-family: 'Aperto', serif; font-size: 2rem; color: var(--text-main); line-height: 1.35; margin: 0 0 30px 0; font-weight: 300; letter-spacing: -0.5px;">
+                    Our investment philosophy integrates a research-driven, bottom-up approach to credit selection with a sophisticated top-down macro framework to actively manage risk.
+                </p>
+                <p class="fade-up delay-2" style="font-family: 'Inter', sans-serif; font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7; margin: 0; max-width: 800px;">
+                    Alba's portfolios are built strategically around the principle of <strong style="color: var(--accent); font-weight: 500;">diversified concentration</strong>: a rigid focus on a select number of high-conviction trades seamlessly mapped across multiple risk dimensions. This strategy powerfully enables the team to apply equity-level research rigor to complex credit investments. Complementing our human-led investment decisions, the team directly utilizes proprietary tools that harness real-time market data to identify dislocations and arbitrage opportunities.
+                </p>
             </div>
         </div>
-
-        <style>
-            @media (min-width: 901px) {
-                .people-layout {
-                    display: flex;
-                    gap: 8%;
-                    max-width: 1400px;
-                    margin: 0 auto;
-                    padding: 80px 5% 120px 5%;
-                }
-                .people-sidebar {
-                    flex: 0 0 25%;
-                }
-                .people-grid {
-                    flex: 1;
-                    display: grid;
-                    grid-template-columns: repeat(3, 1fr);
-                    gap: 60px 40px;
-                    align-items: start;
-                }
-                .people-grid .team-card:first-child {
-                    grid-column: 2;
-                }
-            }
-            @media (max-width: 900px) {
-                .people-layout {
-                    display: block;
-                    padding: 60px 5% 100px 5%;
-                }
-                .hide-on-mobile {
-                    display: none;
-                }
-                .people-grid {
-                    display: grid;
-                    grid-template-columns: repeat(2, 1fr);
-                    gap: 40px 20px;
-                    align-items: start;
-                }
-                .people-grid .team-card:first-child {
-                    grid-column: auto;
-                }
-            }
-            @media (max-width: 600px) {
-                .people-grid {
-                    grid-template-columns: 1fr;
-                }
-            }
-        </style>
-
     </div>
-    
+
+    <!-- Built on Principles -> Arc Section -->
+    <section class="arc-section" id="arc-section">
+        <!-- Invisible snap markers for perfect scrolling interpolation -->
+        <div class="arc-snap-markers">
+            <div class="arc-snap-target"></div>
+            <div class="arc-snap-target"></div>
+            <div class="arc-snap-target"></div>
+            <div class="arc-snap-target"></div>
+        </div>
+
+        <div class="arc-sticky">
+            <h2 class="arc-title">The Alba<br>Edge</h2>
+
+            <div class="arc-content-wrapper">
+                <div class="arc-active-word" id="arc-word">People</div>
+                <p class="arc-active-desc" id="arc-desc">Our diverse backgrounds and skillsets bring unique
+                    perspectives, fostering innovative solutions and creative problem-solving.</p>
+            </div>
+
+            <!-- Simplified Mobile List Fallback -->
+            <div class="arc-mobile-list">
+                <div class="arc-mobile-item">
+                    <div class="arc-mobile-num">1</div>
+                    <div class="arc-mobile-text">
+                        <h3>People</h3>
+                        <p>Our diverse backgrounds and skillsets bring unique perspectives, fostering innovative
+                            solutions and creative problem-solving while sharing a commitment to hard work and
+                            excellence.</p>
+                    </div>
+                </div>
+                <div class="arc-mobile-item">
+                    <div class="arc-mobile-num">2</div>
+                    <div class="arc-mobile-text">
+                        <h3>Credentials</h3>
+                        <p>A proven history of consistently delivering superior risk-adjusted returns across fixed
+                            income and credit asset classes, demonstrating resilience through all economic environments.
+                        </p>
+                    </div>
+                </div>
+                <div class="arc-mobile-item">
+                    <div class="arc-mobile-num">3</div>
+                    <div class="arc-mobile-text">
+                        <h3>Deep Research</h3>
+                        <p>Combining data, technology and deep-rooted experience in financial markets, we uncover
+                            opportunities that others often overlook.</p>
+                    </div>
+                </div>
+                <div class="arc-mobile-item">
+                    <div class="arc-mobile-num">4</div>
+                    <div class="arc-mobile-text">
+                        <h3>Agility</h3>
+                        <p>With lean teams and niche, size-constrained strategies, we foster agility and adaptability —
+                            key attributes for delivering superior returns.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="arc-circle-container">
+                <div class="arc-circle" id="arc-circle">
+                    <!-- Nodes orbit the circle via spokes strictly solving rotational pivot drift -->
+                    <div class="arc-spoke" data-angle="-45">
+                        <div class="arc-node">
+                            <div class="arc-node-inner">1</div>
+                        </div>
+                    </div>
+                    <div class="arc-spoke" data-angle="-15">
+                        <div class="arc-node">
+                            <div class="arc-node-inner">2</div>
+                        </div>
+                    </div>
+                    <div class="arc-spoke" data-angle="15">
+                        <div class="arc-node">
+                            <div class="arc-node-inner">3</div>
+                        </div>
+                    </div>
+                    <div class="arc-spoke" data-angle="45">
+                        <div class="arc-node">
+                            <div class="arc-node-inner">4</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Stationary Apex Indicator -->
+                <div class="arc-apex-indicator">
+                    <div class="apex-dot"></div>
+                    <div class="apex-line"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <style>
+        .newsletter-section {
+            background-color: var(--bg-color);
+            padding: 10vh 8%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .newsletter-container {
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 8px;
+            padding: 8vh 40px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+        }
+
+        .newsletter-container h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+            font-family: 'Aperto', "Georgia", serif;
+        }
+
+        .newsletter-container p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 15px;
+            max-width: 550px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            min-width: 250px;
+            padding: 18px 25px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 4px;
+            font-size: 1rem;
+            color: var(--text-main);
+            outline: none;
+            transition: border-color 0.3s ease;
+            font-family: 'Inter', "SF Pro Display", sans-serif;
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--gold);
+        }
+
+        .newsletter-btn {
+            background-color: var(--accent);
+            color: #ffffff;
+            border: none;
+            padding: 18px 40px;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-family: 'Inter', "SF Pro Display", sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .newsletter-btn:hover {
+            background-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .newsletter-disclaimer {
+            font-size: 0.85rem !important;
+            margin-top: 25px !important;
+            margin-bottom: 0 !important;
+            opacity: 0.6;
+        }
+        
+        @media (max-width: 600px) {
+            .newsletter-form { flex-direction: column; }
+            .newsletter-btn { width: 100%; }
+            .newsletter-container { padding: 40px 20px; }
+            .newsletter-container h2 { font-size: 2rem; }
+        }
+    </style>
+    <section class="newsletter-section">
+        <div class="newsletter-container fade-up delay-1">
+            <h2>Stay Informed</h2>
+            <p>Subscribe to receive Alba's latest macroeconomic perspectives and credit market updates securely to your inbox.</p>
+            
+            <!-- FORM ENDPOINT CONNECTION: Update the action="" URL to link specifically to Mailchimp, Formspree, or your WordPress logic! -->
+            <form action="https://formspree.io/f/YOUR_ENDPOINT_KEY" method="POST" class="newsletter-form">
+                <input type="email" name="email" placeholder="Enter your email address" required class="newsletter-input">
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+            
+            <p class="newsletter-disclaimer">We respect your privacy. No spam, ever.</p>
+        </div>
+    </section>
+
     <!-- Modern Green Footer -->
     <footer class="alba-footer">
         <div class="footer-container">
             <div class="footer-top">
                 <div class="footer-brand">
-                    <img src="logos/light.png" alt="Alba Investment Partners" class="footer-logo">
+                    <img src="logos/dark.png" alt="Alba Investment Partners" class="footer-logo">
                     <p class="footer-mission">Alba Investment Partners SA is authorized and regulated by the FINMA as a Manager of collective assets.</p>
                 </div>
 
@@ -1485,7 +1688,581 @@
                     <div class="footer-column">
                         <h4>Strategies</h4>
                         <a href="credit-opportunities.html">Credit Opportunities</a>
-                        <a href="our-people.html" style="color: var(--gold)">Our People</a>
+                        <a href="our-people.html">Our People</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <a href="contact.html">Contact</a>
+                        <a href="#">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 Alba Investment Partners. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-use.html">Terms of Use</a>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Background canvas sequencers have been removed to reduce payload overhead on the About page
+
+        // Hero animation logic
+        const heroSection = document.getElementById('hero-section');
+        const heroInitial = document.getElementById('hero-initial');
+
+        const animatedElements = [
+            document.querySelector('.founder-img-placeholder'),
+            document.querySelector('.intro-text'),
+            ...document.querySelectorAll('.hero-stat')
+        ];
+
+        function interpolate(progress, start, end, startVal, endVal) {
+            if (progress <= start) return startVal;
+            if (progress >= end) return endVal;
+            return startVal + ((progress - start) / (end - start)) * (endVal - startVal);
+        }
+
+        window.addEventListener('scroll', () => {
+            // Team Sketch Zoom Frame Loop
+            const sketchWrapper = document.getElementById('sketch-zoom-section');
+            const sketchImg = document.getElementById('sketch-bg-img');
+            
+            if (sketchWrapper && sketchImg) {
+                const sRect = sketchWrapper.getBoundingClientRect();
+                
+                if (sRect.top <= window.innerHeight && sRect.bottom >= 0) {
+                    // Normalize the active vertical progress purely linearly
+                    // It starts expanding slightly before it hits top: 0, tracking the entire 250vh scroll block natively
+                    const maxScroll = sRect.height - window.innerHeight;
+                    let scrollProgress = -sRect.top / Math.max(1, maxScroll);
+                    scrollProgress = Math.max(0, Math.min(1, scrollProgress));
+                    
+                    // Maps linearly from scale 1x to scale 1.06x for a stunningly subtle, premium parallax effect
+                    const scaleFactor = 1 + (scrollProgress * 0.06);
+                    sketchImg.style.transform = `scale(${scaleFactor})`;
+                }
+            }
+            
+            // Dynamic Timeline Logic
+            const timelineSection = document.getElementById('story-timeline-section');
+            const timelineTrack = document.getElementById('timeline-track');
+            const timelineFill = document.getElementById('timeline-fill');
+            const nodes = [document.getElementById('node-1'), document.getElementById('node-2'), document.getElementById('node-3')];
+            
+            if (timelineSection && timelineTrack && timelineFill && nodes[0]) {
+                const tlRect = timelineTrack.getBoundingClientRect();
+                const viewportCenter = window.innerHeight * 0.55; 
+                
+                if (tlRect.top <= viewportCenter) {
+                    const trackHeight = tlRect.height;
+                    const fillAmount = Math.max(0, Math.min(trackHeight, viewportCenter - tlRect.top));
+                    timelineFill.style.height = `${fillAmount}px`;
+                    
+                    nodes.forEach((node) => {
+                        const nodeTopRelTrack = node.getBoundingClientRect().top - tlRect.top; 
+                        const dist = fillAmount - nodeTopRelTrack;
+                        
+                        // Physics map: Native interpolation loading proportional exactly to scroll wheel! 
+                        if (dist > 0) { 
+                            const nodeProg = Math.min(1, dist / 150);
+                            node.style.opacity = nodeProg;
+                            node.style.transform = `translateY(${30 - (30 * nodeProg)}px)`;
+                            
+                            const dot = node.querySelector('.node-dot');
+                            dot.style.borderColor = `rgba(207, 168, 95, ${0.2 + (0.8 * nodeProg)})`;
+                            dot.style.backgroundColor = nodeProg > 0.8 ? `var(--gold)` : `transparent`;
+                            
+                            const year = node.querySelector('.node-year');
+                            if(year) year.style.color = `rgba(207, 168, 95, ${0.5 + (0.5 * nodeProg)})`;
+                        } else {
+                            node.style.opacity = 0;
+                            node.style.transform = `translateY(30px)`;
+                            
+                            const dot = node.querySelector('.node-dot');
+                            dot.style.borderColor = `rgba(255,255,255,0.2)`;
+                            dot.style.backgroundColor = `transparent`;
+                            
+                            const year = node.querySelector('.node-year');
+                            if(year) year.style.color = `rgba(255,255,255,0.5)`;
+                        }
+                    });
+                } else {
+                    timelineFill.style.height = '0px';
+                    nodes.forEach(node => {
+                        node.style.opacity = 0;
+                        node.style.transform = `translateY(30px)`;
+                        const dot = node.querySelector('.node-dot');
+                        if (dot) {
+                            dot.style.borderColor = `rgba(255,255,255,0.2)`;
+                            dot.style.backgroundColor = `transparent`;
+                        }
+                        const year = node.querySelector('.node-year');
+                        if(year) year.style.color = `rgba(255,255,255,0.5)`;
+                    });
+                }
+            }
+            
+            
+            const heroRect = heroSection.getBoundingClientRect();
+            const scrollDistance = heroSection.offsetHeight - window.innerHeight;
+            let progress = -heroRect.top / Math.max(1, scrollDistance);
+            progress = Math.max(0, Math.min(1, progress));
+
+            const isMobile = window.innerWidth <= 900;
+
+            // Execute the precise layout math pushing the h1 explicitly out of the way
+            const targetY = isMobile ? -5 : -32;
+            const initialY = interpolate(progress, 0, 0.4, 0, targetY);
+
+            // Exit crossfade for the massive title at the very end of the hero sequence (0.7 to 0.95)
+            const exitTitleOp = interpolate(progress, 0.7, 0.95, 1, 0);
+
+            // Pure elegant vertical crossfade on mobile natively, Kenslow exit fade on desktop
+            const initialOp = isMobile ? interpolate(progress, 0, 0.25, 1, 0) : exitTitleOp;
+
+            heroInitial.style.transform = `translateY(${initialY}vh)`;
+            heroInitial.style.opacity = initialOp;
+
+            // Animate secondary elements progressively + Kenslow exit styling
+            animatedElements.forEach((el, index) => {
+                if (!el) return;
+                const startP = 0.15 + (index * 0.12);
+                const endP = startP + 0.25;
+
+                let elemOpacity = interpolate(progress, startP, endP, 0, 1);
+                const elemY = interpolate(progress, startP, endP, 40, 0);
+                let elemScale = 1;
+
+                // Apply the Kenslow-style unified exit mechanism
+                if (progress > 0.7) {
+                    elemOpacity = interpolate(progress, 0.7, 0.95, 1, 0); // Text washes out smoothly
+
+                    // Specifically target the founder image to actively shrink natively
+                    if (el.classList.contains('founder-img-placeholder')) {
+                        elemScale = interpolate(progress, 0.7, 0.95, 1, 0.85);
+                    }
+                }
+
+                el.style.opacity = elemOpacity;
+                el.style.transform = `translateY(${elemY}px) scale(${elemScale})`;
+            });
+
+            // Update the scroll progress bar
+            const heroProgressFill = document.getElementById('hero-progress');
+            if (heroProgressFill) {
+                heroProgressFill.style.width = `${progress * 100}%`;
+            }
+        });
+
+        // Setup Mission text scrub
+        const missionTextElem = document.getElementById('mission-text');
+        if (missionTextElem) {
+            const words = missionTextElem.innerText.split(' ');
+            missionTextElem.innerHTML = '';
+            words.forEach(word => {
+                const span = document.createElement('span');
+                span.className = 'mission-word';
+                span.innerText = word + ' ';
+                missionTextElem.appendChild(span);
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            const missionSection = document.getElementById('mission-scroll-section');
+            if (missionSection && missionTextElem) {
+                const rect = missionSection.getBoundingClientRect();
+                const scrollable = missionSection.offsetHeight - window.innerHeight;
+                let progress = -rect.top / Math.max(1, scrollable);
+
+                // Add a small buffer so it starts filling after 10% scroll and fully fills by 90%
+                let fillProgress = (progress - 0.1) / 0.8;
+                fillProgress = Math.max(0, Math.min(1, fillProgress));
+
+                const spans = missionTextElem.querySelectorAll('.mission-word');
+                const revealCount = Math.floor(fillProgress * spans.length);
+
+                spans.forEach((span, i) => {
+                    if (i < revealCount) {
+                        span.classList.add('active');
+                    } else {
+                        span.classList.remove('active');
+                    }
+                });
+
+                // Apply graceful upwards scroll to text as section is scrubbed
+                const clampedProgress = Math.max(0, Math.min(1, progress));
+                if (window.innerWidth > 900) {
+                    const textY = 100 - (200 * clampedProgress); // Moves from 100px to -100px
+                    missionTextElem.style.transform = `translateY(${textY}px)`;
+                } else {
+                    missionTextElem.style.transform = 'none'; // Prevent text overlapping the H2 label on mobile viewports
+                }
+            }
+        });
+
+        // Built on Principles - Arc Section Logic
+        const arcSection = document.getElementById('arc-section');
+        const arcCircle = document.getElementById('arc-circle');
+        const arcWord = document.getElementById('arc-word');
+        const arcDesc = document.getElementById('arc-desc');
+        const arcSpokes = document.querySelectorAll('.arc-spoke');
+
+        const arcData = [
+            { title: "People", desc: "Our diverse backgrounds and skillsets bring unique perspectives, fostering innovative solutions and creative problem-solving while sharing a commitment to hard work and excellence." },
+            { title: "Credentials", desc: "A proven history of consistently delivering superior risk-adjusted returns across fixed income and credit asset classes, demonstrating resilience through all economic environments." },
+            { title: "Deep Research", desc: "Combining data, technology and deep-rooted experience in financial markets, we uncover opportunities that others often overlook." },
+            { title: "Agility", desc: "With lean teams and niche, size-constrained strategies, we foster agility and adaptability — key attributes for delivering superior returns." }
+        ];
+
+        // Initialize values
+        if (arcSpokes.length > 0) {
+            arcSpokes.forEach(spoke => {
+                const angle = parseFloat(spoke.getAttribute('data-angle'));
+                spoke.style.transform = `rotate(${angle}deg)`;
+            });
+            const firstNode = arcSpokes[0].querySelector('.arc-node');
+            if (firstNode) {
+                firstNode.style.borderColor = 'var(--gold)';
+                firstNode.style.color = 'var(--gold)';
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            if (arcSection && arcCircle) {
+                const rect = arcSection.getBoundingClientRect();
+
+                // 1. Dynamic scrub expansion when scrolling INTO the section
+                const containerElem = document.querySelector('.arc-circle-container');
+                const contentElem = document.querySelector('.arc-content-wrapper');
+
+                if (rect.top > 0 && rect.top <= window.innerHeight) {
+                    let entryProgress = 1 - (rect.top / window.innerHeight);
+                    entryProgress = Math.max(0, Math.min(1, entryProgress));
+
+                    const circleScale = 0.5 + (0.5 * entryProgress);
+                    if (containerElem) {
+                        containerElem.style.transform = `translateX(-50%) scale(${circleScale})`;
+                        containerElem.style.opacity = entryProgress;
+                    }
+
+                    const contentScale = 0.8 + (0.2 * entryProgress);
+                    if (contentElem) {
+                        contentElem.style.transform = `translateX(-50%) scale(${contentScale})`;
+                        contentElem.style.opacity = entryProgress;
+                    }
+                } else if (rect.top <= 0) {
+                    // Fully visible
+                    if (containerElem) {
+                        containerElem.style.transform = `translateX(-50%) scale(1)`;
+                        containerElem.style.opacity = 1;
+                    }
+                    if (contentElem) {
+                        contentElem.style.transform = `translateX(-50%) scale(1)`;
+                        contentElem.style.opacity = 1;
+                    }
+                }
+
+                // 2. Wheel rotation logic
+                const scrollDistance = arcSection.offsetHeight - window.innerHeight;
+                let progress = -rect.top / Math.max(1, scrollDistance);
+                progress = Math.max(0, Math.min(1, progress));
+
+                // Determine active index based on scroll position safely snapped explicitly to 0, 1, 2, 3
+                let activeIndex = Math.floor(progress * 3.99);
+
+                // Directly snap only to exact milestone node angles (1, 2, 3, 4)
+                const targetAngles = [45, 15, -15, -45];
+                const arcRotation = targetAngles[activeIndex];
+
+                // Since the wheel element has `transition`, it spins smoothly to snap exactly into place natively
+                arcCircle.style.transform = `rotate(${arcRotation}deg)`;
+
+                // Counter-rotate the inner digits safely
+                arcSpokes.forEach(spoke => {
+                    const angle = parseFloat(spoke.getAttribute('data-angle'));
+                    const inner = spoke.querySelector('.arc-node-inner');
+                    const totalAngle = angle + arcRotation;
+                    if (inner) {
+                        inner.style.transform = `rotate(${-totalAngle}deg)`;
+                    }
+                });
+
+                // Update Text Content natively using existing activeIndex
+
+                if (arcWord.dataset.current !== activeIndex.toString()) {
+                    arcWord.style.opacity = '0';
+                    arcDesc.style.opacity = '0';
+
+                    setTimeout(() => {
+                        arcWord.innerText = arcData[activeIndex].title;
+                        arcDesc.innerText = arcData[activeIndex].desc;
+                        arcWord.style.opacity = '1';
+                        arcDesc.style.opacity = '1';
+                    }, 200);
+
+                    arcWord.dataset.current = activeIndex;
+
+                    // Highlight the active node's border
+                    arcSpokes.forEach((spoke, idx) => {
+                        const node = spoke.querySelector('.arc-node');
+                        if (node) {
+                            if (idx === activeIndex) {
+                                node.style.borderColor = 'var(--gold)';
+                                node.style.color = 'var(--gold)';
+                            } else {
+                                node.style.borderColor = 'rgba(255,255,255,0.2)';
+                                node.style.color = 'rgba(255,255,255,0.8)';
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
+        // Intersection Observer for fade-up animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-up, .zoom-in').forEach(el => observer.observe(el));
+    </script>
+
+    <script>
+        // Universal Navbar Scroll Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const navbar = document.getElementById('navbar');
+            const navLogo = document.getElementById('navbar-logo');
+            const isLightPage = navbar && navbar.getAttribute('data-light-page') === 'true';
+
+            function updateNavbar() {
+                if (isLightPage) {
+                    navbar.classList.add('navbar-scrolled');
+                    if (navLogo && !navLogo.src.includes('dark')) navLogo.src = 'logos/dark.png';
+                    return;
+                }
+
+                let threshold = 80;
+                const hero = document.getElementById('hero-section');
+                if (hero) {
+                    threshold = hero.scrollHeight - window.innerHeight - 50;
+                    if (threshold < 80) threshold = 80;
+                }
+
+                if (window.scrollY >= threshold) {
+                    if (navbar) navbar.classList.add('navbar-scrolled');
+                    if (navLogo && !navLogo.src.includes('dark')) navLogo.src = 'logos/dark.png';
+                } else {
+                    if (navbar) navbar.classList.remove('navbar-scrolled');
+                    if (navLogo && !navLogo.src.includes('light')) navLogo.src = 'logos/light.png';
+                }
+            }
+
+            window.addEventListener('scroll', updateNavbar);
+            updateNavbar(); // Run on load
+        });
+    </script>
+
+
+    <!-- Alba Cookie Banner -->
+    <style>
+    .alba-cookie-banner {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        max-width: 420px;
+        background-color: #ffffff;
+        border: 1px solid rgba(0,0,0,0.08);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        padding: 30px;
+        z-index: 99999;
+        font-family: 'Inter', sans-serif;
+        border-radius: 2px;
+        display: none;
+        transform: translateY(20px);
+        opacity: 0;
+        transition: all 0.4s ease;
+    }
+    .alba-cookie-banner.show {
+        display: block;
+        transform: translateY(0);
+        opacity: 1;
+    }
+    .alba-cookie-tag {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--accent);
+        margin-bottom: 12px;
+        font-weight: 600;
+    }
+    .alba-cookie-text {
+        font-size: 0.95rem;
+        color: var(--text-main);
+        line-height: 1.6;
+        margin-bottom: 24px;
+    }
+    .alba-cookie-buttons {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .alba-cookie-btn {
+        padding: 12px 24px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        border: none;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        text-decoration: none;
+        letter-spacing: 0.5px;
+    }
+    .alba-cookie-btn.accept {
+        background-color: var(--accent);
+        color: #ffffff;
+    }
+    .alba-cookie-btn.accept:hover {
+        background-color: var(--gold);
+    }
+    .alba-cookie-btn.reject {
+        background-color: transparent;
+        color: var(--text-main);
+        border: 1px solid rgba(0,0,0,0.2);
+    }
+    .alba-cookie-btn.reject:hover {
+        border-color: var(--accent);
+    }
+    .alba-cookie-link {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        text-decoration: underline;
+        cursor: pointer;
+        margin-left: auto;
+    }
+    .alba-cookie-link:hover {
+        color: var(--accent);
+    }
+    @media(max-width: 600px) {
+        .alba-cookie-banner {
+            bottom: 0; left: 0; right: 0; max-width: 100%; border-radius: 0; padding: 20px;
+        }
+    }
+    </style>
+
+    <div class="alba-cookie-banner" id="alba-cookie-banner">
+        <div class="alba-cookie-tag">Cookies & Privacy</div>
+        <div class="alba-cookie-text">We use cookies to improve your experience and for website functionality. By continuing to use this site, you accept our use of cookies.</div>
+        <div class="alba-cookie-buttons">
+            <button class="alba-cookie-btn accept" id="cookie-accept">Accept Cookies</button>
+            <button class="alba-cookie-btn reject" id="cookie-reject">Reject</button>
+            <a href="#" class="alba-cookie-link">Privacy Policy</a>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const banner = document.getElementById('alba-cookie-banner');
+        const acceptBtn = document.getElementById('cookie-accept');
+        const rejectBtn = document.getElementById('cookie-reject');
+        
+        if (!localStorage.getItem('alba-cookie-consent')) {
+            setTimeout(() => {
+                banner.style.display = 'block';
+                // Trigger reflow for animation
+                void banner.offsetWidth;
+                banner.classList.add('show');
+            }, 1000);
+        }
+        
+        function hideBanner() {
+            banner.classList.remove('show');
+            setTimeout(() => banner.style.display = 'none', 400);
+        }
+        
+        if (acceptBtn) {
+            acceptBtn.addEventListener('click', () => {
+                localStorage.setItem('alba-cookie-consent', 'accepted');
+                hideBanner();
+            });
+        }
+        if (rejectBtn) {
+            rejectBtn.addEventListener('click', () => {
+                localStorage.setItem('alba-cookie-consent', 'rejected');
+                hideBanner();
+            });
+        }
+    });
+    </script>
+
+</body>
+
+</html>
+    <style>
+        body { background-color: #ffffff; color: var(--text-main); }
+        .bio-container { display: flex; min-height: 100vh; padding-top: 108px; }
+        .bio-image-col { flex: 0 0 45%; position: relative; background: #f5f5f5; }
+        .bio-image-col img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+        .bio-content-col { flex: 1; padding: 120px 8%; display: flex; flex-direction: column; justify-content: center; }
+        .bio-back { font-family: 'Inter', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-secondary); text-decoration: none; margin-bottom: 40px; display: inline-flex; align-items: center; gap: 10px; transition: color 0.3s ease; }
+        .bio-back:hover { color: var(--accent); }
+        .bio-name { font-family: 'Aperto', 'Georgia', serif; font-size: 4rem; color: var(--accent); margin: 0 0 10px 0; font-weight: 300; letter-spacing: -1px; line-height: 1.1; }
+        .bio-title { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); margin-bottom: 50px; }
+        .bio-text { font-family: 'Inter', sans-serif; font-size: 1.15rem; color: var(--text-main); line-height: 1.8; font-weight: 300; }
+        @media (max-width: 991px) {
+            .bio-container { flex-direction: column; }
+            .bio-image-col { height: 60vh; flex: none; }
+            .bio-content-col { padding: 60px 5%; }
+            .bio-name { font-size: 3rem; }
+        }
+    </style>
+
+    <div class="bio-container">
+        <div class="bio-image-col">
+            <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/20240825_100107110_ios-dJo6vzZx9zcM27r9.jpg" alt="Guillaume Di Liberatore, CFA">
+        </div>
+        <div class="bio-content-col">
+            <a href="our-people.html" class="bio-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back to Our People
+            </a>
+            <h1 class="bio-name">Guillaume Di Liberatore, CFA</h1>
+            <div class="bio-title">Chief Research Officer</div>
+            <div class="bio-text">
+                <p style="margin-bottom: 20px;">Guillaume brings significant expertise in credit research, quantitative analysis, and fixed-income strategies, providing Alba with robust proprietary research and analytical frameworks to navigate complex markets.</p><p style="margin-bottom: 20px;">He holds a Master’s degree in Finance and is a CFA charterholder.</p>
+            </div>
+        </div>
+    </div>
+<!-- Modern Green Footer -->
+    <footer class="alba-footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="logos/dark.png" alt="Alba Investment Partners" class="footer-logo">
+                    <p class="footer-mission">Alba Investment Partners SA is authorized and regulated by the FINMA as a Manager of collective assets.</p>
+                </div>
+
+                <div class="footer-links-grid">
+                    <div class="footer-column">
+                        <h4>Firm</h4>
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About Us</a>
+                        <a href="perspectives.html">Perspectives</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Strategies</h4>
+                        <a href="credit-opportunities.html">Credit Opportunities</a>
+                        <a href="our-people.html">Our People</a>
                     </div>
                     <div class="footer-column">
                         <h4>Connect</h4>
