@@ -1306,7 +1306,7 @@
 
         <nav class="navbar" id="navbar">
         <a href="index.html" class="logo" style="text-decoration: none;">
-            <img src="logos/Untitled%20design%20(73).png" id="navbar-logo" alt="Alba Investment Partners">
+            <img src="logos/light.png" id="navbar-logo" alt="Alba Investment Partners">
         </a>
         <div class="nav-links">
             <a href="about.html">About Us</a>
@@ -1361,7 +1361,7 @@
         <div class="footer-container">
             <div class="footer-top">
                 <div class="footer-brand">
-                    <img src="logos/Untitled%20design%20(73).png" alt="Alba Investment Partners" class="footer-logo">
+                    <img src="logos/light.png" alt="Alba Investment Partners" class="footer-logo">
                     <p class="footer-mission">Alba Investment Partners SA is authorized and regulated by the FINMA as a Manager of collective assets.</p>
                 </div>
 
@@ -1735,7 +1735,7 @@
             function updateNavbar() {
                 if (isLightPage) {
                     navbar.classList.add('navbar-scrolled');
-                    if (navLogo && !navLogo.src.includes('72')) navLogo.src = 'logos/Untitled%20design%20(72).png';
+                    if (navLogo && !navLogo.src.includes('dark')) navLogo.src = 'logos/dark.png';
                     return;
                 }
 
@@ -1748,10 +1748,10 @@
 
                 if (window.scrollY >= threshold) {
                     if (navbar) navbar.classList.add('navbar-scrolled');
-                    if (navLogo && !navLogo.src.includes('72')) navLogo.src = 'logos/Untitled%20design%20(72).png';
+                    if (navLogo && !navLogo.src.includes('dark')) navLogo.src = 'logos/dark.png';
                 } else {
                     if (navbar) navbar.classList.remove('navbar-scrolled');
-                    if (navLogo && !navLogo.src.includes('73')) navLogo.src = 'logos/Untitled%20design%20(73).png';
+                    if (navLogo && !navLogo.src.includes('light')) navLogo.src = 'logos/light.png';
                 }
             }
 
