@@ -1297,7 +1297,7 @@
             
             <div class="cs-bg-image active" id="bg-1"></div>
             <div class="cs-bg-image" id="bg-2"></div>
-            <div class="cs-bg-image" id="bg-3"></div>
+            
             
             <div class="cs-grid-lines">
                 <div class="cs-grid-line"></div>
@@ -1319,11 +1319,11 @@
                 <div class="cs-desc-wrapper">
                     <p class="cs-desc" id="insight-desc-text">Our latest insights highlight the depth of our expertise and the impact of our rigorous credit strategies.</p>
                     
-                    <a href="perspectives.html" class="cs-btn">
+                    <a href="aco-newsletter-subscription.html" class="cs-btn" id="insight-btn-link">
                         <div class="cs-btn-icon">
                             <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
                         </div>
-                        All perspectives
+                        <span id="insight-btn-text">Subscribe to the newsletter</span>
                     </a>
                 </div>
             </div>
@@ -1331,27 +1331,19 @@
             <div class="cs-bottom-bar">
                 <div class="cs-col">
                     <div class="cs-col-top">
-                        <span class="cs-year">Q1 2026</span>
-                        <span class="cs-name">MACRO DISLOCATIONS</span>
+                        <span class="cs-year">NEWSLETTER</span>
+                        <span class="cs-name">ALBA CREDIT OPPORTUNITIES</span>
                     </div>
                     <div class="cs-progress-bg"></div>
                     <div class="cs-progress-fill" id="prog-1"></div>
                 </div>
                 <div class="cs-col">
                     <div class="cs-col-top">
-                        <span class="cs-year">Q1 2026</span>
-                        <span class="cs-name">ACTIVE RISK MANAGEMENT</span>
+                        <span class="cs-year">NEWSLETTER</span>
+                        <span class="cs-name">THE ALBA ANGLE</span>
                     </div>
                     <div class="cs-progress-bg"></div>
                     <div class="cs-progress-fill" id="prog-2"></div>
-                </div>
-                <div class="cs-col">
-                    <div class="cs-col-top">
-                        <span class="cs-year">2025</span>
-                        <span class="cs-name">WEALTH PRESERVATION</span>
-                    </div>
-                    <div class="cs-progress-bg"></div>
-                    <div class="cs-progress-fill" id="prog-3"></div>
                 </div>
             </div>
         </section>
@@ -1363,14 +1355,15 @@
             const csTitle = document.querySelector('.cs-title');
             const csDescWrapper = document.querySelector('.cs-desc-wrapper');
             const csCols = document.querySelectorAll('.cs-col');
-            const bgs = [document.getElementById('bg-1'), document.getElementById('bg-2'), document.getElementById('bg-3')];
-            const progs = [document.getElementById('prog-1'), document.getElementById('prog-2'), document.getElementById('prog-3')];
+            const bgs = [document.getElementById('bg-1'), document.getElementById('bg-2')];
+            const progs = [document.getElementById('prog-1'), document.getElementById('prog-2')];
             const descText = document.getElementById('insight-desc-text');
+            const btnLink = document.getElementById('insight-btn-link');
+            const links = ["aco-newsletter-subscription.html", "alba-angle-subscription.html"];
 
             const descriptions = [
-                "Discover how our proprietary research identifies structural dislocations and asymmetric opportunities across global credit markets.",
-                "A deep dive into our proactive risk management and bottom-up credit selection that targets absolute capital retention.",
-                "Learn how our multi-family office advisory teams preserve long-term capital through tailored, open-architecture portfolios."
+                "Our quarterly investor newsletter delivers a comprehensive update on our flagship fund's performance, including market analysis, strategic positioning, and key portfolio metrics.",
+                "A curated perspective on global macroeconomic trends and their implications for fixed income markets. Stay ahead with deep, analytical commentary from our investment team."
             ];
 
             // Initial fade-up logic just for entry
@@ -1402,28 +1395,29 @@
                     const scrolled = Math.abs(rect.top);
                     
                     // Normalize scroll to 0.0 -> 3.0 (3 phases)
-                    const progress = Math.min(Math.max((scrolled / scrollableDistance) * 3, 0), 3);
+                    const progress = Math.min(Math.max((scrolled / scrollableDistance) * 2, 0), 2);
                     
                     // Phase logic
                     let activePhase = Math.floor(progress); // 0, 1, or 2
                     let phaseProgress = progress % 1; // 0.0 to 1.0 within the phase
                     
                     // Fix bounds where progress exactly equals 3.0 preventing arbitrary resets
-                    if (progress >= 3) {
-                        activePhase = 2;
+                    if (progress >= 2) {
+                        activePhase = 1;
                         phaseProgress = 1;
                     }
 
                     // Sync the text visibly perfectly mapped to the scroll progress frame execution
                     if (descText) {
                         descText.textContent = descriptions[activePhase];
+                        if (btnLink) btnLink.href = links[activePhase];
                         
                         let textAlpha = 1;
                         let textY = 0;
                         if (phaseProgress < 0.15 && activePhase > 0) {
                             textAlpha = phaseProgress / 0.15; // Smooth fade-in natively on initial 15% phase entry
                             textY = 10 * (1 - textAlpha); // Slide up subtly
-                        } else if (phaseProgress > 0.85 && activePhase < 2) {
+                        } else if (phaseProgress > 0.85 && activePhase < 1) {
                             textAlpha = (1.0 - phaseProgress) / 0.15; // Smooth fade-out natively on final 15% phase exit
                             textY = -10 * (1 - textAlpha);
                         }
