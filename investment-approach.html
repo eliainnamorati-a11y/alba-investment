@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>Alba Investment Partners - Contact</title>
+    <title>Alba Investment Partners - Investment Approach</title>
     <style>
         :root {
             --bg-color: #fcfcfc;
@@ -565,6 +565,7 @@
 
 
         /* Scroll Animations */
+        /* Scroll Animations */
         .zoom-in {
             opacity: 0;
             transform: scale(0.9);
@@ -643,8 +644,8 @@
         .arc-title {
             position: absolute;
             top: 15vh;
-            left: 10%;
-            font-size: 4rem;
+            left: 5vw;
+            font-size: 3.5rem;
             /* Matched to .normal-section h2 perfectly */
             font-weight: 300;
             color: #ffffff;
@@ -1086,7 +1087,7 @@
             .arc-sticky {
                 position: relative !important;
                 height: auto !important;
-                padding: 0 30px;
+                padding: 0 8%;
                 overflow: visible;
                 align-items: flex-start;
                 justify-content: flex-start;
@@ -1215,7 +1216,7 @@
             border-radius: 8px; /* Clean edge aesthetic mapping to the clean layout */
         }
 
-        /* Alba Timeline Section - Light Mode Editorial UI */
+        /* Alba Timeline Section */
         .timeline-container {
             padding-left: 60px;
             position: relative;
@@ -1227,17 +1228,16 @@
             top: 20px;
             bottom: 20px;
             width: 1px;
-            /* Changed from white to black alpha for light-mode contrast */
-            background-color: rgba(0,0,0,0.15); 
+            background-color: rgba(255,255,255, 0.1); 
             transform-origin: top;
         }
 
         .timeline-fill {
             position: absolute;
             top: 0; left: 0;
-            width: 100%; /* Matches track width */
+            width: 100%; /* Perfectly matches the 1px track without blooming */
             height: 0%;
-            background-color: var(--gold); 
+            background-color: var(--gold); /* Solid, clean flat color profile */
             border-radius: 4px;
             transform-origin: top;
             will-change: height;
@@ -1245,11 +1245,10 @@
 
         .timeline-node {
             position: relative;
-            margin-bottom: 25vh; 
+            margin-bottom: 25vh; /* Extremely tall immersive scroll gap */
             opacity: 0; 
-            transform: translateY(30px); 
+            transform: translateY(30px); /* Clean editorial upward lift */
             will-change: opacity, transform;
-            padding-right: 40px; /* Give the text room to breathe */
         }
 
         .timeline-node:last-child {
@@ -1258,142 +1257,682 @@
 
         .node-dot {
             position: absolute;
-            left: -44px; /* Aligned precisely on the 1px rail */
+            left: -44px; /* Perfectly centered on the 1px rail */
             top: 6px; 
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background-color: #fcfcfc; /* Matches Alba light background */
-            /* High contrast border */
-            border: 2px solid rgba(0,0,0,0.2);
+            background-color: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
             z-index: 2;
-            transition: background-color 0.4s ease, border-color 0.4s ease;
-        }
-
-        .node-dot.active {
-            background-color: var(--gold);
-            border-color: var(--gold);
-            box-shadow: 0 0 10px rgba(207, 168, 95, 0.4);
         }
 
         .node-year {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 3px; 
-            color: var(--gold); /* Gold stands out beautifully against white */
+            color: rgba(255,255,255,0.5); /* Muted initial state mapping to lighting tracker */
             margin-top: 0;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             font-family: 'Inter', sans-serif;
-            font-weight: 700;
-        }
-        
-        .node-content .section-desc {
-            font-family: 'Aperto', serif;
-            font-size: 1.6rem;
-            font-weight: 300;
-            line-height: 1.4;
-            color: var(--text-main);
-            letter-spacing: -0.5px;
+            font-weight: 500;
         }
     </style>
-
-    <!-- Map Removed -->
-
+<style> .navbar { border-bottom: 1px solid rgba(255,255,255,0.2) !important; } </style>
 </head>
 
 <body>
 
-        <nav class="navbar" id="navbar">
+    <nav class="navbar navbar-scrolled" id="navbar" data-light-page="true">
         <a href="index.html" class="logo" style="text-decoration: none;">
-            <img src="logos/light.png" id="navbar-logo" alt="Alba Investment Partners">
+            <img src="logos/dark.png" id="navbar-logo" alt="Alba Investment Partners">
         </a>
         <div class="nav-links">
             <a href="about.html">About Us</a>
-            <a href="investment-approach.html">Investment Approach</a>
-            <a href="credit-opportunities.html">Credit Opportunities</a>
+            <a href="credit-opportunities.html" style="color: var(--gold)">Credit Opportunities</a>
             <a href="our-people.html">Our People</a>
             <a href="perspectives.html">Perspectives</a>
             <a href="contact.html">Contact</a>
         </div>
     </nav>
 
+    <!-- Static Partial-Height Hero Section -->
+
+    <!-- Cape-Capital Layout Custom Hero Section -->
     <style>
-        .navbar { border-bottom: 1px solid rgba(255,255,255,0.3) !important; }
-        .navbar.navbar-scrolled { background-color: var(--accent) !important; border-bottom: 1px solid rgba(255,255,255,0.3) !important; }
-        .navbar .nav-links a { color: #ffffff !important; }
-        .navbar.navbar-scrolled .nav-links a { color: #ffffff !important; }
-        .navbar.navbar-scrolled .nav-links a::after { background-color: var(--gold) !important; }
+        .cc-hero {
+            background-color: #f7f9f8; /* Soft Alba off-white */
+            padding: 220px 60px 80px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 100px;
+        }
+        .cc-hero-left { flex: 0 0 65%; }
+        .cc-hero-left h1 {
+            font-family: 'Aperto', serif;
+            font-size: clamp(2.8rem, 4.2vw, 4.5rem);
+            font-weight: 300;
+            color: var(--accent);
+            margin: 0;
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+        .cc-hero-right {
+            flex: 0 0 25%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-top: 15px;
+        }
+        .cc-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin: 0;
+        }
+        .cc-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        .cc-hero-media {
+            width: 100%;
+            height: 75vh;
+            overflow: hidden;
+            background-color: var(--bg-color);
+            position: relative;
+        }
+        .cc-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .cc-hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .nav-links a { color: var(--text-main) !important; }
+        .nav-links a::after { background-color: var(--accent) !important; }
+        
+
+        @media(max-width: 900px) {
+            .cc-hero { flex-direction: column; padding: 160px 30px 60px 30px; gap: 40px; }
+            .cc-hero-left h1 { font-size: 2.8rem; }
+            .cc-hero-right { padding-top: 0; }
+        }
     </style>
 
-    <!-- Contact Section -->
-    <div class="normal-section" style="background-color: var(--accent); padding-top: 180px; padding-bottom: 120px; padding-left: 5%; padding-right: 5%;">
-        
-        <div style="max-width: 1400px; width: 100%; margin: 0 auto; display: flex; flex-direction: column; gap: 80px;">
-            
-            <!-- Top Text Section -->
-            <div style="display: flex; flex-direction: column; gap: 60px;">
-                <h1 class="fade-up delay-1" style="font-family: 'Aperto', 'Georgia', serif; font-size: 5.5rem; color: #ffffff; margin: 0; font-weight: 300; letter-spacing: -1px;">Where to find us</h1>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 60px;">
-                    <!-- Column 1: Contact Info -->
-                    <div class="fade-up delay-2">
-                        <h4 style="color: #ffffff; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px;">Contact Information</h4>
-                        <div style="display: flex; gap: 40px; flex-wrap: wrap;">
-                            <div>
-                                <div style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px;">Email</div>
-                                <a href="mailto:contact@albainvestments.ch" style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #ffffff; text-decoration: none; font-weight: 300; transition: color 0.3s ease;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='#ffffff'">info@albainvestments.ch</a>
-                            </div>
-                            <div>
-                                <div style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px;">Phone</div>
-                                <a href="tel:+41221234567" style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #ffffff; text-decoration: none; font-weight: 300; transition: color 0.3s ease;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='#ffffff'">+41 22 123 45 67</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Column 2: Headquarters -->
-                    <div class="fade-up delay-3">
-                        <h4 style="color: #ffffff; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px;">Headquarters</h4>
-                        <div style="font-family: 'Inter', sans-serif; font-size: 1rem; color: rgba(255,255,255,0.8); line-height: 1.6; font-weight: 300;">
-                            Alba Investment Partners SA<br>
-                            Rue du Perron 1<br>
-                            1204 Geneva<br>
-                            Switzerland
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Full Width Map with Overlay -->
-            <div style="position: relative; width: 100%; height: 60vh; min-height: 500px; overflow: hidden; background-color: #e5e3df; border-radius: 4px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
-                <iframe src="https://maps.google.com/maps?q=Rue%20du%20Perron%201%2C%201204%20Geneva%2C%20Switzerland&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0; filter: grayscale(20%) contrast(1.1);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                
-                <!-- Overlay Box -->
-                <div style="position: absolute; bottom: 0; left: 0; width: 350px; background-color: var(--accent); padding: 40px; border-top: 1px solid rgba(255,255,255,0.1); border-right: 1px solid rgba(255,255,255,0.1); box-sizing: border-box; z-index: 10;">
-                    <h4 style="color: #ffffff; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px;">Headquarters</h4>
-                    <div style="font-family: 'Inter', sans-serif; font-size: 1rem; color: rgba(255,255,255,0.9); line-height: 1.6; font-weight: 300; margin-bottom: 40px;">
-                        Rue du Perron 1<br>
-                        1204 Geneva<br>
-                        Switzerland
-                        <br><a href="tel:+41221234567" style="color: rgba(255,255,255,0.9); text-decoration: none;">+41 22 123 45 67</a>
-                    </div>
-                    <a href="https://maps.apple.com/?q=Rue+du+Perron+1,+1204+Geneva,+Switzerland" target="_blank" style="font-family: 'Inter', sans-serif; font-size: 0.85rem; color: #ffffff; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; display: inline-flex; align-items: center; gap: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='#ffffff'">
-                        Get Directions
-                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 5H9M9 5L5 1M9 5L5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            
+    <div class="cc-hero">
+        <div class="cc-hero-left">
+            <h1 class="fade-up delay-1">A disciplined, research-intensive investment process.</h1>
         </div>
+        <div class="cc-hero-right">
+            <p class="cc-label fade-up delay-2">Alba Credit</p>
+            <p class="cc-desc fade-up delay-3">We invest across the credit spectrum to intelligently capture mispricing, market dislocations, and catalyst-driven events.</p>
+        </div>
+    </div>
+    <div class="cc-hero-media delay-4">
+        <img src="map.jpg" alt="Credit Opportunities Map" class="zoom-in" style="object-position: center 25%;">
     </div>
 
 
-<footer class="alba-footer">
+    <!-- Strategy Overview Section -->
+    <div class="normal-section fade-up delay-1" style="padding: 15vh 10%;">
+        <div style="display: flex; gap: 80px; flex-wrap: wrap;">
+            <div style="flex: 1 1 350px;">
+                <h2 style="font-size: 3.5rem;">Strategy<br>Overview</h2>
+            </div>
+            <div style="flex: 2 1 600px;">
+                <p class="section-desc fade-up">Alba Investment Approach is a long/short credit strategy investing in liquid corporate and financial credit globally with a European bias. The strategy combines bottom-up fundamental credit analysis with top-down macro positioning to identify asymmetric risk-return opportunities across the capital structure.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Scroll-Based Approach Section -->
+    <style>
+        .scroll-approach-section {
+            background-color: var(--accent); /* Alba dark green */
+            color: #ffffff;
+            padding: 20vh 10%;
+            position: relative;
+        }
+        .sa-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            gap: 100px;
+            align-items: flex-start;
+        }
+        .sa-sticky {
+            flex: 1 1 400px;
+            position: sticky;
+            top: 25vh;
+        }
+        .sa-title {
+            font-size: 4.5rem;
+            font-weight: 300;
+            margin: 0 0 40px 0;
+            letter-spacing: -1px;
+            font-family: 'Aperto', serif;
+            line-height: 1.1;
+        }
+        .sa-list {
+            flex: 1.5 1 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 20vh; /* Massive spacing to force scroll engagement */
+            padding-top: 15vh;
+            padding-bottom: 25vh;
+        }
+        .sa-item {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        .sa-num {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin-top: 10px;
+            flex-shrink: 0;
+            width: 40px;
+        }
+        .sa-text-wrapper {
+            border-left: 1px solid rgba(255,255,255,0.15);
+            padding-left: 45px;
+            transition: border-color 0.4s ease;
+        }
+        .sa-item:hover .sa-text-wrapper {
+            border-left-color: var(--gold);
+        }
+        .sa-text {
+            margin: 0 0 25px 0;
+            font-family: 'Aperto', serif;
+            font-size: 3.2rem;
+            font-weight: 300;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+        }
+        .sa-desc {
+            font-family: 'Inter', sans-serif;
+            color: rgba(255,255,255,0.6);
+            font-size: 1.25rem;
+            line-height: 1.6;
+            margin: 0;
+            max-width: 550px;
+            font-weight: 300;
+        }
+        @media (max-width: 1024px) {
+            .sa-container { flex-direction: column; gap: 60px; }
+            .sa-sticky { position: static; }
+            .sa-list { gap: 100px; padding-top: 0; padding-bottom: 0; }
+            .sa-text { font-size: 2.2rem; }
+            .sa-text-wrapper { padding-left: 25px; }
+            .sa-item { gap: 20px; }
+        }
+    </style>
+
+    <div class="scroll-approach-section">
+        <div class="sa-container">
+            <div class="sa-sticky fade-up">
+                <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px;">Methodology</p>
+                <h2 class="sa-title">Investment<br>Approach</h2>
+                <div style="width: 60px; height: 1px; background: rgba(255,255,255,0.2);"></div>
+            </div>
+            
+            <div class="sa-list">
+                <div class="sa-item fade-up">
+                    <span class="sa-num">01</span>
+                    <div class="sa-text-wrapper">
+                        <h3 class="sa-text">Bottom-up fundamental credit research</h3>
+                        <p class="sa-desc">We conduct deep-dive institutional analysis into complex capital structures, rigorously identifying asymmetric risk-return profiles safely prior to macro sizing.</p>
+                    </div>
+                </div>
+
+                <div class="sa-item fade-up">
+                    <span class="sa-num">02</span>
+                    <div class="sa-text-wrapper">
+                        <h3 class="sa-text">Top-down macro positioning</h3>
+                        <p class="sa-desc">Translating thematic macroeconomic indicators into strategic sector flows and duration shifts to flawlessly navigate systemic global volatility.</p>
+                    </div>
+                </div>
+
+                <div class="sa-item fade-up">
+                    <span class="sa-num">03</span>
+                    <div class="sa-text-wrapper">
+                        <h3 class="sa-text">Relative value & dislocation opportunities</h3>
+                        <p class="sa-desc">Exploiting temporary pricing inefficiencies and deeply misunderstood capital tranche dynamics across geographically fragmented European markets.</p>
+                    </div>
+                </div>
+
+                <div class="sa-item fade-up">
+                    <span class="sa-num">04</span>
+                    <div class="sa-text-wrapper">
+                        <h3 class="sa-text">Catalyst-driven investments</h3>
+                        <p class="sa-desc">Executing high-conviction momentum plays anchored to concrete corporate events, restructuring narratives, and M&A liquidity triggers.</p>
+                    </div>
+                </div>
+
+                <div class="sa-item fade-up">
+                    <span class="sa-num">05</span>
+                    <div class="sa-text-wrapper">
+                        <h3 class="sa-text">Active risk management</h3>
+                        <p class="sa-desc">Employing aggressive daily portfolio monitoring, downside modeling, and absolute loss barriers mathematically ensuring capital preservation.</p>
+                    </div>
+                </div>
+
+                <div class="sa-item fade-up">
+                    <span class="sa-num">06</span>
+                    <div class="sa-text-wrapper">
+                        <h3 class="sa-text">FX & interest rate hedging</h3>
+                        <p class="sa-desc">Systematically stripping out unintended cross-border currency drag and interest rate delta via institutional swap and forward overlays.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Construction & Key Characteristics Sections -->
+    <div class="normal-section" style="padding: 15vh 10%;">
+        <div style="display: flex; gap: 80px; flex-wrap: wrap; margin-bottom: 15vh;">
+            <div style="flex: 1 1 350px;">
+                <h2 style="font-size: 3.5rem;">Portfolio<br>Construction</h2>
+            </div>
+            <div style="flex: 2 1 600px;">
+                <p class="section-desc" style="opacity:1; transform:none;">The portfolio is built around a concentrated set of high-conviction positions, typically across 25–35 capital structures. The strategy focuses on diversification across issuers, sectors, and risk factors while maintaining flexibility to adjust exposure through derivatives.</p>
+            </div>
+        </div>
+        
+    </div> <!-- Close previous normal-section early to allow full viewport dark mode -->
+
+    <!-- Compass Key Characteristics Section -->
+    <style>
+        .compass-section {
+            position: relative;
+            background-color: var(--accent); /* Switched to Alba signature deep green */
+            color: #ffffff;
+            z-index: 10;
+            width: 100%;
+        }
+        .compass-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10%;
+            overflow: hidden;
+        }
+        .compass-side {
+            width: 35%;
+            z-index: 5;
+        }
+        .compass-side h2 {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            color: #ffffff;
+            font-family: 'Aperto', "Georgia", serif;
+            font-weight: 300;
+        }
+        .compass-side p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+            font-family: -apple-system, sans-serif;
+            max-width: 90%;
+        }
+        .compass-container {
+            position: relative;
+            width: 70vh;
+            height: 70vh;
+            max-width: 750px;
+            max-height: 750px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1; /* fills remaining space smoothly */
+        }
+        .compass-svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            transform: translate(-50%, -50%) rotate(-90deg); /* Start 12 o'clock */
+        }
+        .tick-line {
+            stroke: rgba(255,255,255,0.15);
+            stroke-linecap: round;
+            transition: stroke 0.3s;
+        }
+        .ring-bg {
+            fill: none;
+            stroke: rgba(255,255,255,0.08); 
+            stroke-width: 1;
+        }
+        .ring-progress {
+            fill: none;
+            stroke: var(--gold);
+            stroke-width: 2; 
+            stroke-dasharray: 1068; /* will be dynamically updated by JS if needed, but 2*PI*170 is safe */
+            stroke-dashoffset: 1068;
+            stroke-linecap: round;
+            will-change: stroke-dashoffset;
+        }
+        .compass-content {
+            text-align: center;
+            width: 60%;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .compass-step {
+            background: #ffffff;
+            color: #000000;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            font-family: 'Inter', -apple-system, sans-serif;
+            letter-spacing: 2px;
+        }
+        .compass-title {
+            font-size: 2.8rem;
+            font-weight: 400;
+            margin: 0 0 20px 0;
+            font-family: 'Aperto', "Georgia", serif;
+            color: #ffffff;
+            opacity: 1;
+            transition: opacity 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            letter-spacing: -1px;
+        }
+        .compass-desc {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin: 0;
+            font-family: 'Inter', -apple-system, sans-serif;
+            opacity: 1;
+            transition: opacity 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            max-width: 80%;
+        }
+
+        /* Mobile overrides logic */
+        @media (max-width: 900px) {
+            .compass-sticky {
+                flex-direction: column;
+                justify-content: center;
+                padding: 10% 5%;
+            }
+            .compass-side {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 40px;
+            }
+            .compass-side h2 { font-size: 2.5rem; }
+            .compass-side p { display: none; } /* Hide heavy text on mobile overlap */
+            .compass-container {
+                width: 100vw;
+                height: 100vw;
+            }
+            .compass-content { width: 80%; }
+            .compass-title { font-size: 2rem; }
+            .compass-desc { font-size: 1rem; }
+        }
+    </style>
+
+    <div class="compass-section" id="compass-section">
+        <div class="compass-sticky">
+            <div class="compass-side">
+                <h2>Key<br>Characteristics</h2>
+                <p>Alba Investment Approach relies on a concentrated setup to deliver asymmetric risk-return metrics across the capital structure.</p>
+            </div>
+            
+            <div class="compass-container" id="compass-wrapper">
+                <svg class="compass-svg" viewBox="0 0 400 400" id="compass-svg-graphic"></svg>
+                
+                <div class="compass-content">
+                    <div class="compass-step" id="compass-step">1 / 7</div>
+                    <h3 class="compass-title" id="compass-title">Strategy</h3>
+                    <p class="compass-desc" id="compass-desc">Long / Short Credit Strategy</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 7 items = 700vh height to trigger massive scrub distance mapping seamlessly -->
+        <div style="height: 700vh;"></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const compassSection = document.getElementById("compass-section");
+            const svgGraphic = document.getElementById("compass-svg-graphic");
+            const titleEl = document.getElementById("compass-title");
+            const descEl = document.getElementById("compass-desc");
+            const stepEl = document.getElementById("compass-step");
+            
+            if(!compassSection || !svgGraphic) return;
+
+            const characteristics = [
+                { label: "Strategy", value: "Long / Short Credit Strategy" },
+                { label: "Focus", value: "Global Liquid Credit" },
+                { label: "Bias", value: "European Bias" },
+                { label: "Leverage", value: "Moderate Leverage" },
+                { label: "Management", value: "Active Risk Management" },
+                { label: "Returns", value: "Target Returns: Low Teens" },
+                { label: "Volatility", value: "Controlled Volatility" }
+            ];
+            
+            const cx = 200, cy = 200, rTicks = 160, rProgress = 180;
+            const totalTicks = 84; 
+            
+            let svgHTML = `<circle cx="${cx}" cy="${cy}" r="${rProgress}" class="ring-bg"></circle>`;
+            
+            // Build dial layout
+            for(let i=0; i<totalTicks; i++) {
+                const angle = (i / totalTicks) * Math.PI * 2;
+                const isMajor = (i % 12 === 0);
+                const innerR = isMajor ? rTicks - 16 : rTicks - 6;
+                const x1 = cx + innerR * Math.cos(angle);
+                const y1 = cy + innerR * Math.sin(angle);
+                const x2 = cx + rTicks * Math.cos(angle);
+                const y2 = cy + rTicks * Math.sin(angle);
+                const strokeW = isMajor ? 2 : 1;
+                svgHTML += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="tick-line" id="tick-${i}" stroke-width="${strokeW}"></line>`;
+            }
+            
+            const circumference = 2 * Math.PI * rProgress;
+            svgHTML += `<circle cx="${cx}" cy="${cy}" r="${rProgress}" class="ring-progress" id="compass-progress" style="stroke-dasharray: ${circumference}; stroke-dashoffset: ${circumference};"></circle>`; 
+            
+            svgGraphic.innerHTML = svgHTML;
+            const progressRing = document.getElementById("compass-progress");
+            
+            let lastIndex = -1;
+            
+            window.addEventListener('scroll', () => {
+                const rect = compassSection.getBoundingClientRect();
+                const scrollDistance = compassSection.offsetHeight - window.innerHeight;
+                
+                let progress = -rect.top / Math.max(1, scrollDistance);
+                progress = Math.max(0, Math.min(1, progress));
+                if(progress < 0) progress = 0;
+                
+                // Advance the progress ring beautifully mapping directly to scroll mechanics
+                const offset = circumference - (progress * circumference);
+                if(progressRing) progressRing.style.strokeDashoffset = offset;
+                
+                // Color the ticks passed
+                const currentTick = Math.floor(progress * totalTicks);
+                for(let i=0; i<totalTicks; i++) {
+                    const tk = document.getElementById(`tick-${i}`);
+                    if(tk) {
+                        if (i <= currentTick && progress > 0.01) {
+                            tk.style.stroke = "var(--gold)";
+                        } else {
+                            tk.style.stroke = "rgba(255,255,255,0.15)";
+                        }
+                    }
+                }
+                
+                // Advance the payload content (7 items)
+                let activeIndex = Math.floor(progress * characteristics.length);
+                if(activeIndex >= characteristics.length) activeIndex = characteristics.length - 1;
+                if(activeIndex < 0) activeIndex = 0;
+                
+                if(activeIndex !== lastIndex) {
+                    titleEl.style.opacity = 0;
+                    descEl.style.opacity = 0;
+                    
+                    setTimeout(() => {
+                        titleEl.innerText = characteristics[activeIndex].label;
+                        descEl.innerText = characteristics[activeIndex].value;
+                        stepEl.innerText = `${activeIndex + 1} / ${characteristics.length}`;
+                        titleEl.style.opacity = 1;
+                        descEl.style.opacity = 1;
+                    }, 150); // Fast crisp switch mimicking native crossfade
+                    lastIndex = activeIndex;
+                }
+            });
+        });
+    </script>
+
+    <!-- Stay Informed Section -->
+    <style>
+        .newsletter-section {
+            background-color: #f7f9f8; /* Alba off-white background */
+            padding: 15vh 8%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .newsletter-container {
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 8px;
+            padding: 8vh 40px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+            margin: 0 auto;
+        }
+
+        .newsletter-container h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+            font-family: 'Aperto', "Georgia", serif;
+        }
+
+        .newsletter-container p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 15px;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex-grow: 1;
+            padding: 18px 25px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 4px;
+            font-size: 1rem;
+            background: #fdfdfd;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            color: var(--accent);
+            font-family: inherit;
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(207, 168, 95, 0.1);
+        }
+
+        .newsletter-btn-submit {
+            background-color: var(--accent);
+            color: #ffffff;
+            border: none;
+            padding: 0 35px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            white-space: nowrap;
+        }
+
+        .newsletter-btn-submit:hover {
+            background-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .newsletter-disclaimer {
+            font-size: 0.85rem !important;
+            margin-bottom: 0 !important;
+            margin-top: 20px !important;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 600px) {
+            .newsletter-form { flex-direction: column; }
+            .newsletter-btn-submit { padding: 18px; }
+            .newsletter-container h2 { font-size: 2.2rem; }
+        }
+    </style>
+
+    <section class="newsletter-section">
+        <div class="newsletter-container fade-up delay-1">
+            <h2>Stay Informed</h2>
+            <p>Subscribe to receive Alba's latest macroeconomic perspectives and credit market updates securely to your inbox.</p>
+            
+            <form action="https://formspree.io/f/YOUR_ENDPOINT_KEY" method="POST" class="newsletter-form">
+                <input type="email" name="email" placeholder="Enter your email address" required class="newsletter-input">
+                <button type="submit" class="newsletter-btn-submit">Subscribe</button>
+            </form>
+            
+            <p class="newsletter-disclaimer">We respect your privacy. No spam, ever.</p>
+        </div>
+    </section>
+
+    <!-- Modern Green Footer -->
+    <footer class="alba-footer">
         <div class="footer-container">
             <div class="footer-top">
                 <div class="footer-brand">
-                    <img src="logos/light.png" alt="Alba Investment Partners" class="footer-logo">
+                    <img src="logos/dark.png" alt="Alba Investment Partners" class="footer-logo">
                     <p class="footer-mission">Alba Investment Partners SA is authorized and regulated by the FINMA as a Manager of collective assets.</p>
                 </div>
 
@@ -1449,85 +1988,6 @@
         }
 
         window.addEventListener('scroll', () => {
-            // Team Sketch Zoom Frame Loop
-            const sketchWrapper = document.getElementById('sketch-zoom-section');
-            const sketchImg = document.getElementById('sketch-bg-img');
-            
-            if (sketchWrapper && sketchImg) {
-                const sRect = sketchWrapper.getBoundingClientRect();
-                
-                if (sRect.top <= window.innerHeight && sRect.bottom >= 0) {
-                    // Normalize the active vertical progress purely linearly
-                    // It starts expanding slightly before it hits top: 0, tracking the entire 250vh scroll block natively
-                    const maxScroll = sRect.height - window.innerHeight;
-                    let scrollProgress = -sRect.top / Math.max(1, maxScroll);
-                    scrollProgress = Math.max(0, Math.min(1, scrollProgress));
-                    
-                    // Maps linearly from scale 1x to scale 1.06x for a stunningly subtle, premium parallax effect
-                    const scaleFactor = 1 + (scrollProgress * 0.06);
-                    sketchImg.style.transform = `scale(${scaleFactor})`;
-                }
-            }
-            
-            // Dynamic Timeline Logic
-            const timelineSection = document.getElementById('story-timeline-section');
-            const timelineTrack = document.getElementById('timeline-track');
-            const timelineFill = document.getElementById('timeline-fill');
-            const nodes = [document.getElementById('node-1'), document.getElementById('node-2'), document.getElementById('node-3')];
-            
-            if (timelineSection && timelineTrack && timelineFill && nodes[0]) {
-                const tlRect = timelineTrack.getBoundingClientRect();
-                const viewportCenter = window.innerHeight * 0.55; 
-                
-                if (tlRect.top <= viewportCenter) {
-                    const trackHeight = tlRect.height;
-                    const fillAmount = Math.max(0, Math.min(trackHeight, viewportCenter - tlRect.top));
-                    timelineFill.style.height = `${fillAmount}px`;
-                    
-                    nodes.forEach((node) => {
-                        const nodeTopRelTrack = node.getBoundingClientRect().top - tlRect.top; 
-                        const dist = fillAmount - nodeTopRelTrack;
-                        
-                        // Physics map: Native interpolation loading proportional exactly to scroll wheel! 
-                        if (dist > 0) { 
-                            const nodeProg = Math.min(1, dist / 150);
-                            node.style.opacity = nodeProg;
-                            node.style.transform = `translateY(${30 - (30 * nodeProg)}px)`;
-                            
-                            const dot = node.querySelector('.node-dot');
-                            dot.style.borderColor = `rgba(207, 168, 95, ${0.2 + (0.8 * nodeProg)})`;
-                            dot.style.backgroundColor = nodeProg > 0.8 ? `var(--gold)` : `transparent`;
-                            
-                            const year = node.querySelector('.node-year');
-                            if(year) year.style.color = `rgba(207, 168, 95, ${0.5 + (0.5 * nodeProg)})`;
-                        } else {
-                            node.style.opacity = 0;
-                            node.style.transform = `translateY(30px)`;
-                            
-                            const dot = node.querySelector('.node-dot');
-                            dot.style.borderColor = `rgba(255,255,255,0.2)`;
-                            dot.style.backgroundColor = `transparent`;
-                            
-                            const year = node.querySelector('.node-year');
-                            if(year) year.style.color = `rgba(255,255,255,0.5)`;
-                        }
-                    });
-                } else {
-                    timelineFill.style.height = '0px';
-                    nodes.forEach(node => {
-                        node.style.opacity = 0;
-                        node.style.transform = `translateY(30px)`;
-                        const dot = node.querySelector('.node-dot');
-                        if (dot) {
-                            dot.style.borderColor = `rgba(255,255,255,0.2)`;
-                            dot.style.backgroundColor = `transparent`;
-                        }
-                        const year = node.querySelector('.node-year');
-                        if(year) year.style.color = `rgba(255,255,255,0.5)`;
-                    });
-                }
-            }
-            
             
             const heroRect = heroSection.getBoundingClientRect();
             const scrollDistance = heroSection.offsetHeight - window.innerHeight;
@@ -1759,16 +2219,6 @@
     </script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            
-            
-            
-    // Mapbox removed
-        });
-    </script>
-
-
-    <script>
         // Universal Navbar Scroll Logic
         document.addEventListener('DOMContentLoaded', () => {
             const navbar = document.getElementById('navbar');
@@ -1778,19 +2228,20 @@
             function updateNavbar() {
                 if (isLightPage) {
                     navbar.classList.add('navbar-scrolled');
-                    if (navLogo && !navLogo.src.includes('light')) navLogo.src = 'logos/light.png';
+                    if (navLogo && !navLogo.src.includes('dark')) navLogo.src = 'logos/dark.png';
                     return;
                 }
 
                 let threshold = 80;
                 const hero = document.getElementById('hero-section');
                 if (hero) {
-                    threshold = hero.offsetHeight - 80; // switch navbar when scrolling past hero
+                    threshold = hero.scrollHeight - window.innerHeight - 50;
+                    if (threshold < 80) threshold = 80;
                 }
 
                 if (window.scrollY >= threshold) {
                     if (navbar) navbar.classList.add('navbar-scrolled');
-                    if (navLogo && !navLogo.src.includes('light')) navLogo.src = 'logos/light.png';
+                    if (navLogo && !navLogo.src.includes('dark')) navLogo.src = 'logos/dark.png';
                 } else {
                     if (navbar) navbar.classList.remove('navbar-scrolled');
                     if (navLogo && !navLogo.src.includes('light')) navLogo.src = 'logos/light.png';
