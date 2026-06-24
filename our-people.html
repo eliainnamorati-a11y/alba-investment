@@ -1326,136 +1326,94 @@
     </div>
 
     <!-- Cape Capital Style Grid Section -->
-    <div class="normal-section" style="min-height: 80vh; background-color: #f7f9f8; padding-top: 80px; padding-bottom: 120px;">
-        <div style="max-width: 1300px; margin: 0 auto; padding: 0 5%;">
+    <div class="normal-section" style="min-height: 80vh; background-color: #ffffff; padding-top: 80px; padding-bottom: 120px;">
+        <div style="max-width: 1400px; margin: 0 auto; padding: 0 5%; display: flex; gap: 80px;">
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
+            <!-- Left Sidebar Navigation -->
+            <div style="flex: 0 0 250px;" class="hide-on-mobile">
+                <h2 style="font-family: 'Aperto', 'Georgia', serif; font-size: 2rem; color: var(--accent); margin-top: 0; margin-bottom: 30px; font-weight: 400;">Our People</h2>
+                <ul style="list-style: none; padding: 0; margin: 0; font-family: 'Inter', sans-serif; font-size: 1.05rem; color: #777;">
+                    <li style="margin-bottom: 15px; cursor: pointer; color: #9b2226; font-weight: 500;">All</li>
+                    <li style="margin-bottom: 15px; cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='#9b2226'" onmouseout="this.style.color='#777'">Executive Committee</li>
+                    <li style="margin-bottom: 15px; cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='#9b2226'" onmouseout="this.style.color='#777'">Non-Executive Directors</li>
+                </ul>
+            </div>
+
+            <!-- Right Grid -->
+            <div style="flex: 1; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 50px 30px; align-items: start;">
                 
-                <!-- Member 1: Andrea Cavalleri -->
-                <div class="cc-person-card">
-                    <div class="cc-person-image" style="background-image: url('https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/andrea_cavalleri_2019_04_email-mp8qPjNnJptrb39l.jpg'); background-position: center 20%;"></div>
-                    <h3 class="cc-person-name">Andrea Cavalleri</h3>
-                    <p class="cc-person-title">Founding Partner, Portfolio Manager</p>
-                    <div class="cc-person-bio-toggle" onclick="this.nextElementSibling.classList.toggle('expanded'); this.innerText = this.innerText === 'Read Bio' ? 'Close Bio' : 'Read Bio';">Read Bio</div>
-                    <div class="cc-person-bio">
-                        Andrea manages the Alba Credit Opportunities strategy. Previously, he co-founded and served as CEO of AQA Capital, an independent asset manager with €1.5bn in AUM, where he launched and managed the AQA Credit Strategies Fund (2015-2022). Prior to this, he was Head of Special Situations at Method Investments & Advisory in London (2009-2015). Andrea brings over 18 years of experience in fixed income, credit analysis, and portfolio management.
+                <!-- Member 1: Stefano -->
+                <div style="display: flex; flex-direction: column; cursor: pointer;" class="team-card">
+                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
+                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/st-website3-YKbEeE1PGbhDPkga.JPG" alt="Stefano Tittarelli, CFA" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #9b2226; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;">+</div>
                     </div>
+                    <h3 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 6px 0; color: #000;">Stefano Tittarelli, CFA</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #9b2226; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;">Chief Executive Officer</p>
                 </div>
 
-                <!-- Member 2: Luigi Mantrino -->
-                <div class="cc-person-card">
-                    <div class="cc-person-image" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600');"></div> <!-- Placeholder for Luigi until we have his photo -->
-                    <h3 class="cc-person-name">Luigi Mantrino, CFA</h3>
-                    <p class="cc-person-title">Chief Research Officer, Partner</p>
-                    <div class="cc-person-bio-toggle" onclick="this.nextElementSibling.classList.toggle('expanded'); this.innerText = this.innerText === 'Read Bio' ? 'Close Bio' : 'Read Bio';">Read Bio</div>
-                    <div class="cc-person-bio">
-                        With nearly two decades of experience, Luigi has developed deep expertise across a broad range of asset classes, with a particular focus on fixed income and credit. He has successfully managed a wide range of credit portfolios, including investment-grade and high-yield corporate bonds, distressed debt, and structured products. Luigi graduated from Frankfurt School of Finance & Management in Business Administration, is a CFA charterholder and PLDA at Harvard Business School.
+                <!-- Member 2: Luigi -->
+                <div style="display: flex; flex-direction: column; cursor: pointer;" class="team-card">
+                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
+                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/lm-website-A3Qw5blJ31ClwGRg.JPG" alt="Luigi Mantrino, CFA" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #9b2226; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;">+</div>
                     </div>
+                    <h3 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 6px 0; color: #000;">Luigi Mantrino, CFA</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #9b2226; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;">Chief Investment Officer</p>
                 </div>
 
-                <!-- Member 3: Henrik Hedman -->
-                <div class="cc-person-card">
-                    <div class="cc-person-image" style="background-image: url('https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/henrik-hedman-AE0ae8xle0C62prZ.jpg');"></div>
-                    <h3 class="cc-person-name">Henrik Hedman</h3>
-                    <p class="cc-person-title">Director</p>
-                    <div class="cc-person-bio-toggle" onclick="this.nextElementSibling.classList.toggle('expanded'); this.innerText = this.innerText === 'Read Bio' ? 'Close Bio' : 'Read Bio';">Read Bio</div>
-                    <div class="cc-person-bio">
-                        Henrik brings over 30 years of banking and wealth management experience to Alba, including more than two decades in the Swiss financial market. As a partner and board member of BHA Partners AG, he played a key role in the firm's portfolio growth and FINMA license acquisition. Henrik's knowledge of the Swiss market will be key in helping Alba navigate the local regulatory environment. Henrik holds a degree in Business Administration from the University of Lund in Sweden.
+                <!-- Member 3: Guillaume -->
+                <div style="display: flex; flex-direction: column; cursor: pointer;" class="team-card">
+                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
+                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/20240825_100107110_ios-dJo6vzZx9zcM27r9.jpg" alt="Guillaume Di Liberatore, CFA" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #9b2226; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;">+</div>
                     </div>
+                    <h3 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 6px 0; color: #000;">Guillaume Di Liberatore, CFA</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #9b2226; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;">Chief Research Officer</p>
                 </div>
 
-                <!-- Member 4: Balint -->
-                <div class="cc-person-card">
-                    <div class="cc-person-image" style="background-image: url('https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/balint-square-Aq2q5qyN4Oi1NOz7.JPG');"></div>
-                    <h3 class="cc-person-name">Balint</h3>
-                    <p class="cc-person-title">Partner</p>
-                    <div class="cc-person-bio-toggle" onclick="this.nextElementSibling.classList.toggle('expanded'); this.innerText = this.innerText === 'Read Bio' ? 'Close Bio' : 'Read Bio';">Read Bio</div>
-                    <div class="cc-person-bio">
-                        Balint brings nearly two decades of asset management experience to Alba. As the founding and managing partner of Forestay Group since 2011, he oversees a fund management company with significant assets under management in an EU-regulated structure. A successful entrepreneur, Balint's experience building a company from the ground up will be invaluable in helping Alba navigate the challenges of its early stages. Balint holds a degree in Business and Management from Budapest University, is a CFA charterholder, and PLDA at Harvard Business School.
+                <!-- Member 4: Andrea -->
+                <div style="display: flex; flex-direction: column; cursor: pointer;" class="team-card">
+                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
+                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/andrea_cavalleri_2019_04_email-mp8qPjNnJptrb39l.jpg" alt="Andrea Cavalleri" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #9b2226; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;">+</div>
                     </div>
+                    <h3 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 6px 0; color: #000;">Andrea Cavalleri</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #9b2226; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;">Chairman</p>
                 </div>
-                
+
+                <!-- Member 5: Henrik -->
+                <div style="display: flex; flex-direction: column; cursor: pointer;" class="team-card">
+                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
+                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/henrik-hedman-AE0ae8xle0C62prZ.jpg" alt="Henrik Hedman" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #9b2226; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;">+</div>
+                    </div>
+                    <h3 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 6px 0; color: #000;">Henrik Hedman</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #9b2226; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;">Director</p>
+                </div>
+
+                <!-- Member 6: Balint -->
+                <div style="display: flex; flex-direction: column; cursor: pointer;" class="team-card">
+                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
+                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/balint-square-Aq2q5qyN4Oi1NOz7.JPG" alt="Balint Botos, CFA" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        <div style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #9b2226; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;">+</div>
+                    </div>
+                    <h3 style="font-family: 'Inter', sans-serif; font-size: 1.1rem; font-weight: 600; margin: 0 0 6px 0; color: #000;">Balint Botos, CFA</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #9b2226; margin: 0; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 500;">Director</p>
+                </div>
+
             </div>
         </div>
+        <style>
+            @media (max-width: 900px) {
+                .hide-on-mobile {
+                    display: none;
+                }
+            }
+        </style>
     </div>
     
-    <style>
-        /* Cape Capital Aesthetic */
-        .cc-person-card {
-            display: flex;
-            flex-direction: column;
-            background: transparent;
-            cursor: pointer;
-        }
-        
-        .cc-person-image {
-            width: 100%;
-            aspect-ratio: 4/5;
-            background-size: cover;
-            background-position: center top;
-            filter: grayscale(100%);
-            transition: filter 0.5s ease, transform 0.5s ease;
-            margin-bottom: 20px;
-            border-radius: 2px;
-        }
-        
-        .cc-person-card:hover .cc-person-image {
-            filter: grayscale(0%);
-        }
-        
-        .cc-person-name {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-main);
-            margin-bottom: 5px;
-            letter-spacing: -0.3px;
-        }
-        
-        .cc-person-title {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            color: rgba(0,0,0,0.5);
-            font-weight: 400;
-            margin-bottom: 15px;
-        }
-        
-        .cc-person-bio-toggle {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            cursor: pointer;
-            margin-bottom: 15px;
-            display: inline-block;
-            transition: color 0.3s;
-        }
-        
-        .cc-person-bio-toggle:hover {
-            color: var(--gold);
-        }
-        
-        .cc-person-bio {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
-            opacity: 0;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: var(--text-secondary);
-        }
-        
-        .cc-person-bio.expanded {
-            max-height: 800px;
-            opacity: 1;
-            padding-bottom: 20px;
-        }
-    </style>
-
-<!-- Modern Green Footer -->
+    <!-- Modern Green Footer -->
     <footer class="alba-footer">
         <div class="footer-container">
             <div class="footer-top">
