@@ -68,10 +68,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 100;
-            background: transparent;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(255,255,255,0.15); /* Continuous thin baseline */
+            z-index: 1000;
+            transition: all 0.4s ease;
         }
 
         .navbar.navbar-scrolled {
@@ -894,9 +892,7 @@
                 display: none;
             }
 
-            .navbar {
-                padding: 15px 20px;
-            }
+        .navbar { padding: 15px 20px; height: 70px; }
 
             .navbar.navbar-scrolled {
             background: #ffffff;
@@ -1321,7 +1317,7 @@
         <h1 style="font-family: 'Aperto', 'Georgia', serif; font-size: 4rem; color: #fff; margin-bottom: 1rem; text-align: center; letter-spacing: -1px;">Subscribe to The Alba Angle</h1>
     </div>
     <style>
-        .navbar { border-bottom: 1px solid rgba(0,0,0,0.1) !important; background: #f7f9f8 !important; }
+        .navbar { padding: 15px 20px; height: 70px; }
         .nav-links a { color: var(--text-main) !important; }
         .nav-links a::after { background-color: var(--accent) !important; }
         .logo img { filter: brightness(0); }

@@ -68,10 +68,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 100;
-            background: transparent;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(255,255,255,0.15); /* Continuous thin baseline */
+            z-index: 1000;
+            transition: all 0.4s ease;
         }
 
         .navbar.navbar-scrolled {
@@ -894,9 +892,7 @@
                 display: none;
             }
 
-            .navbar {
-                padding: 15px 20px;
-            }
+        .navbar { padding: 15px 20px; height: 70px; }
 
             .navbar.navbar-scrolled {
             background: #ffffff;
@@ -1327,10 +1323,10 @@
 
     <!-- Cape Capital Style Grid Section -->
     <div class="normal-section" style="min-height: 80vh; background-color: #ffffff; padding-top: 80px; padding-bottom: 120px;">
-        <div style="max-width: 1400px; margin: 0 auto; padding: 0 5%; display: flex; gap: 80px;">
+        <div class="people-layout">
             
             <!-- Left Sidebar Navigation -->
-            <div style="flex: 0 0 250px;" class="hide-on-mobile">
+            <div class="people-sidebar hide-on-mobile">
                 <h2 style="font-family: 'Aperto', 'Georgia', serif; font-size: 2rem; color: var(--accent); margin-top: 0; margin-bottom: 30px; font-weight: 400;">Our People</h2>
                 <ul style="list-style: none; padding: 0; margin: 0; font-family: 'Inter', sans-serif; font-size: 1.05rem; color: #777;">
                     <li style="margin-bottom: 15px; cursor: pointer; color: #9b2226; font-weight: 500;">All</li>
@@ -1340,7 +1336,7 @@
             </div>
 
             <!-- Right Grid -->
-            <div style="flex: 1; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 50px 30px; align-items: start;">
+            <div class="people-grid">
                 
                 <!-- Member 1: Stefano -->
                 <div style="display: flex; flex-direction: column; cursor: pointer;" class="team-card">
@@ -1404,13 +1400,55 @@
 
             </div>
         </div>
+
         <style>
+            @media (min-width: 901px) {
+                .people-layout {
+                    display: flex;
+                    gap: 8%;
+                    max-width: 1400px;
+                    margin: 0 auto;
+                    padding: 80px 5% 120px 5%;
+                }
+                .people-sidebar {
+                    flex: 0 0 25%;
+                }
+                .people-grid {
+                    flex: 1;
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 60px 40px;
+                    align-items: start;
+                }
+                .people-grid .team-card:first-child {
+                    grid-column: 2;
+                }
+            }
             @media (max-width: 900px) {
+                .people-layout {
+                    display: block;
+                    padding: 60px 5% 100px 5%;
+                }
                 .hide-on-mobile {
                     display: none;
                 }
+                .people-grid {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 40px 20px;
+                    align-items: start;
+                }
+                .people-grid .team-card:first-child {
+                    grid-column: auto;
+                }
+            }
+            @media (max-width: 600px) {
+                .people-grid {
+                    grid-template-columns: 1fr;
+                }
             }
         </style>
+
     </div>
     
     <!-- Modern Green Footer -->
