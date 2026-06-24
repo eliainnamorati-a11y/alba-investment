@@ -1332,35 +1332,59 @@
 
 
     <!-- Contact Section -->
-    <div class="normal-section" style="min-height: 80vh; display: flex; flex-direction: column; align-items: center; padding-top: 80px; padding-bottom: 120px; padding-left: 5%; padding-right: 5%;">
+    <!-- Contact Section -->
+    <div class="normal-section" style="background-color: var(--accent); padding-top: 60px; padding-bottom: 120px; padding-left: 5%; padding-right: 5%;">
         
-        <div style="max-width: 1400px; width: 100%; display: flex; flex-wrap: wrap; gap: 100px; align-items: flex-start;">
+        <div style="max-width: 1400px; width: 100%; margin: 0 auto; display: flex; flex-direction: column; gap: 80px;">
             
-            <!-- Contact Info Sidebar -->
-            <div style="flex: 0 0 350px; min-width: 300px;">
-                <h2 style="font-family: 'Aperto', 'Georgia', serif; font-size: 3rem; color: var(--accent); margin-top: 0; margin-bottom: 40px; font-weight: 300;">Where to find us</h2>
+            <!-- Top Text Section -->
+            <div style="display: flex; flex-direction: column; gap: 60px;">
+                <h1 style="font-family: 'Aperto', 'Georgia', serif; font-size: 5.5rem; color: #ffffff; margin: 0; font-weight: 300; letter-spacing: -1px;">Where to find us</h1>
                 
-                <h4 style="color: var(--text-secondary); margin-bottom: 30px; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;">Contact information</h4>
-                
-                <div style="margin-bottom: 40px;">
-                    <div style="font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Email</div>
-                    <a href="mailto:contact@albainvestments.ch" style="font-family: 'Inter', sans-serif; font-size: 1.15rem; color: var(--accent); text-decoration: none; font-weight: 400; transition: color 0.3s ease;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--accent)'">contact@albainvestments.ch</a>
-                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 60px;">
+                    <!-- Column 1: Contact Info -->
+                    <div>
+                        <h4 style="color: #ffffff; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px;">Contact Information</h4>
+                        <div style="display: flex; gap: 40px;">
+                            <div>
+                                <div style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px;">Email</div>
+                                <a href="mailto:contact@albainvestments.ch" style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #ffffff; text-decoration: none; font-weight: 300; transition: color 0.3s ease;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='#ffffff'">info@albainvestments.ch</a>
+                            </div>
+                        </div>
+                    </div>
 
-                <div style="margin-bottom: 40px;">
-                    <div style="font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Headquarters</div>
-                    <div style="font-family: 'Inter', sans-serif; font-size: 1.15rem; color: var(--accent); line-height: 1.6; font-weight: 400;">
-                        Alba Investment Partners SA<br>
-                        Rue du Perron 1<br>
-                        1204 Geneva<br>
-                        Switzerland
+                    <!-- Column 2: Headquarters -->
+                    <div>
+                        <h4 style="color: #ffffff; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px;">Headquarters</h4>
+                        <div style="font-family: 'Inter', sans-serif; font-size: 1rem; color: rgba(255,255,255,0.8); line-height: 1.6; font-weight: 300;">
+                            Alba Investment Partners SA<br>
+                            Rue du Perron 1<br>
+                            1204 Geneva<br>
+                            Switzerland
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Large Map View -->
-            <div style="flex: 1; min-width: 400px; height: 600px; position: relative; overflow: hidden; border-radius: 4px; box-shadow: 0 20px 60px rgba(0,0,0,0.05);">
-                <img src="map.jpg" alt="Alba Investment Partners Map Location" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+            <!-- Full Width Map with Overlay -->
+            <div style="position: relative; width: 100%; height: 60vh; min-height: 500px; overflow: hidden; background-color: #e5e3df;">
+                <img src="map.jpg" alt="Map Location" style="width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(1.05) contrast(1.1);">
+                
+                <!-- Overlay Box -->
+                <div style="position: absolute; bottom: 0; left: 0; width: 350px; background-color: var(--accent); padding: 40px; border-top: 1px solid rgba(255,255,255,0.1); border-right: 1px solid rgba(255,255,255,0.1); box-sizing: border-box;">
+                    <h4 style="color: #ffffff; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px;">Headquarters</h4>
+                    <div style="font-family: 'Inter', sans-serif; font-size: 1rem; color: rgba(255,255,255,0.9); line-height: 1.6; font-weight: 300; margin-bottom: 40px;">
+                        Rue du Perron 1<br>
+                        1204 Geneva<br>
+                        Switzerland
+                    </div>
+                    <a href="https://maps.apple.com/?q=Rue+du+Perron+1,+1204+Geneva,+Switzerland" target="_blank" style="font-family: 'Inter', sans-serif; font-size: 0.85rem; color: #ffffff; text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; display: inline-flex; align-items: center; gap: 10px; transition: color 0.3s ease;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='#ffffff'">
+                        Get Directions
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 5H9M9 5L5 1M9 5L5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
             
         </div>
