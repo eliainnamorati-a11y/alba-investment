@@ -66,15 +66,11 @@
         }
 
         .navbar.navbar-scrolled {
-            background: rgba(252, 252, 252, 0.95);
-            backdrop-filter: blur(10px);
+            background: #ffffff;
             border-bottom: 1px solid rgba(0,0,0,0.1);
-            height: 70px;
         }
 
-        .navbar.navbar-scrolled .logo {
-            height: 45px;
-        }
+        
 
         .logo {
             cursor: pointer;
@@ -126,7 +122,7 @@
         }
 
         .navbar.navbar-scrolled .nav-links a {
-            color: var(--text-main);
+            color: var(--accent);
         }
         
         .navbar.navbar-scrolled .nav-links a::after {
@@ -847,7 +843,10 @@
             /* General & Navbar */
             .nav-links { display: none; }
             .navbar { padding: 15px 20px; }
-            .navbar.navbar-scrolled { padding: 10px 20px; }
+            .navbar.navbar-scrolled {
+            background: #ffffff;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
             .logo { height: 40px; }
 
             /* Hero section */
@@ -933,7 +932,7 @@
             <a href="about.html">About Us</a>
             <a href="credit-opportunities.html">Credit Opportunities</a>
             <a href="our-people.html">Our People</a>
-            <a href="insights.html">Insights</a>
+            <a href="perspectives.html">Perspectives</a>
             <a href="contact.html">Contact</a>
         </div>
     </nav>
@@ -1052,16 +1051,16 @@
             </div>
         </div>
     </div>
-    <!-- Case Studies Section (Kenslow Latest Insights Style) -->
-    <!-- Latest Insights Section (Kenslow 300vh Scroll Sequence) -->
+    <!-- Case Studies Section (Kenslow Perspectives Style) -->
+    <!-- Perspectives Section (Kenslow 300vh Scroll Sequence) -->
     <style>
-        .insights-scroll-wrapper {
+        .perspectives-scroll-wrapper {
             height: 400vh; /* scrollable duration - precisely 100vh per insight slide for fluid pacing */
             position: relative;
             z-index: 10;
         }
 
-        .insights-sticky-container {
+        .perspectives-sticky-container {
             position: sticky;
             top: 0;
             height: 100vh;
@@ -1281,8 +1280,8 @@
         }
 
         @media(max-width: 900px) {
-            .insights-scroll-wrapper { height: auto; }
-            .insights-sticky-container { position: relative; height: auto; padding: 80px 30px 60px; top: 0; display: block; }
+            .perspectives-scroll-wrapper { height: auto; }
+            .perspectives-sticky-container { position: relative; height: auto; padding: 80px 30px 60px; top: 0; display: block; }
             .cs-top-bar { padding: 0; margin-bottom: 50px; }
             .cs-middle { position: relative; top: 0; transform: none; padding: 0; flex-direction: column; align-items: flex-start; margin-bottom: 70px; gap: 30px; }
             .cs-bottom-bar { position: relative; padding: 0; flex-direction: column; gap: 50px; }
@@ -1293,8 +1292,8 @@
         }
     </style>
 
-    <div class="insights-scroll-wrapper" id="insights-sequence">
-        <section class="insights-sticky-container">
+    <div class="perspectives-scroll-wrapper" id="perspectives-sequence">
+        <section class="perspectives-sticky-container">
             
             <div class="cs-bg-image active" id="bg-1"></div>
             <div class="cs-bg-image" id="bg-2"></div>
@@ -1309,50 +1308,42 @@
             </div>
 
             <div class="cs-top-bar">
-                <span>Insights & News</span>
+                <span>Perspectives & News</span>
                 <span>2026</span>
             </div>
 
             <div class="cs-middle">
                 <div class="cs-title-wrapper">
-                    <h2 class="cs-title">Latest Insights</h2>
+                    <h2 class="cs-title">Perspectives</h2>
                 </div>
                 <div class="cs-desc-wrapper">
-                    <p class="cs-desc" id="insight-desc-text">Our latest insights highlight the depth of our expertise and the impact of our rigorous credit strategies.</p>
+                    <p class="cs-desc" id="insight-desc-text">Our latest perspectives highlight the depth of our expertise and the impact of our rigorous credit strategies.</p>
                     
-                    <a href="insights.html" class="cs-btn">
+                    <a href="perspectives.html" class="cs-btn">
                         <div class="cs-btn-icon">
                             <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
                         </div>
-                        All insights
+                        All perspectives
                     </a>
                 </div>
             </div>
 
-            <div class="cs-bottom-bar">
-                <div class="cs-col">
-                    <div class="cs-col-top">
-                        <span class="cs-year">Q1 2026</span>
-                        <span class="cs-name">MACRO DISLOCATIONS</span>
+            <div class="cs-bottom-bar" style="grid-template-columns: 1fr 1fr; gap: 40px;">
+                <div class="cs-col" style="cursor: pointer; border: 1px solid rgba(255,255,255,0.1); padding: 30px; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'" onclick="window.location.href='aco-newsletter-subscription.html'">
+                    <div class="cs-col-top" style="flex-direction: column; align-items: flex-start; gap: 10px;">
+                        <span class="cs-year" style="color: var(--gold);">Quarterly Update</span>
+                        <span class="cs-name" style="font-size: 1.4rem;">Alba Credit Opportunities</span>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem; color: rgba(255,255,255,0.7); text-transform: none; letter-spacing: 0; line-height: 1.5; margin-top: 10px;">Our investor newsletter delivers a comprehensive update on our flagship fund's performance, strategic positioning, and portfolio metrics.</p>
+                        <span style="display: inline-block; margin-top: 15px; color: #fff; font-size: 0.85rem; border-bottom: 1px solid var(--gold); padding-bottom: 2px;">Subscribe &rarr;</span>
                     </div>
-                    <div class="cs-progress-bg"></div>
-                    <div class="cs-progress-fill" id="prog-1"></div>
                 </div>
-                <div class="cs-col">
-                    <div class="cs-col-top">
-                        <span class="cs-year">Q1 2026</span>
-                        <span class="cs-name">ACTIVE RISK MANAGEMENT</span>
+                <div class="cs-col" style="cursor: pointer; border: 1px solid rgba(255,255,255,0.1); padding: 30px; transition: background 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'" onclick="window.location.href='alba-angle-subscription.html'">
+                    <div class="cs-col-top" style="flex-direction: column; align-items: flex-start; gap: 10px;">
+                        <span class="cs-year" style="color: var(--gold);">Macro Commentary</span>
+                        <span class="cs-name" style="font-size: 1.4rem;">The Alba Angle</span>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem; color: rgba(255,255,255,0.7); text-transform: none; letter-spacing: 0; line-height: 1.5; margin-top: 10px;">A curated perspective on global macroeconomic trends and their implications for fixed income markets from our investment team.</p>
+                        <span style="display: inline-block; margin-top: 15px; color: #fff; font-size: 0.85rem; border-bottom: 1px solid var(--gold); padding-bottom: 2px;">Subscribe &rarr;</span>
                     </div>
-                    <div class="cs-progress-bg"></div>
-                    <div class="cs-progress-fill" id="prog-2"></div>
-                </div>
-                <div class="cs-col">
-                    <div class="cs-col-top">
-                        <span class="cs-year">2025</span>
-                        <span class="cs-name">WEALTH PRESERVATION</span>
-                    </div>
-                    <div class="cs-progress-bg"></div>
-                    <div class="cs-progress-fill" id="prog-3"></div>
                 </div>
             </div>
         </section>
@@ -1360,7 +1351,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const wrapper = document.getElementById('insights-sequence');
+            const wrapper = document.getElementById('perspectives-sequence');
             const csTitle = document.querySelector('.cs-title');
             const csDescWrapper = document.querySelector('.cs-desc-wrapper');
             const csCols = document.querySelectorAll('.cs-col');
@@ -1473,7 +1464,7 @@
                         <h4>Firm</h4>
                         <a href="index.html">Home</a>
                         <a href="about.html">About Us</a>
-                        <a href="#case-studies">Insights</a>
+                        <a href="#case-studies">Perspectives</a>
                     </div>
                     <div class="footer-column">
                         <h4>Strategies</h4>
