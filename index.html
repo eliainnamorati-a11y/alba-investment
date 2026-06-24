@@ -544,8 +544,8 @@
         }
 
         #mission-text {
-            font-size: 2.2rem;
-            line-height: 1.5;
+            font-size: 1.7rem;
+            line-height: 1.6;
             margin: 0;
             color: rgba(17, 17, 17, 0.15); /* light grey base */
             font-weight: 400;
@@ -890,7 +890,7 @@
             /* Mission */
             .mission-container { flex-direction: column; gap: 30px; padding-top: 80px; align-items: flex-start; }
             .mission-left h2 { font-size: 2.2rem; text-align: left; }
-            #mission-text { font-size: 1.8rem; line-height: 1.4; text-align: left; }
+            #mission-text { font-size: 1.3rem; line-height: 1.4; text-align: left; }
             .normal-section { padding: 60px 8%; text-align: left; }
             .normal-section h2, .step h2 { font-size: 2.4rem; letter-spacing: -1px; }
             .section-desc { font-size: 1.1rem; margin: 0 0 30px 0; }
@@ -1174,39 +1174,28 @@
         .cs-btn {
             display: inline-flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
             color: #fff;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 0.85rem;
             font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 500;
             transition: opacity 0.3s ease;
         }
         
         .cs-btn:hover {
-            opacity: 0.8;
+            opacity: 0.7;
         }
 
-        .cs-btn-icon {
-            width: 45px;
-            height: 45px;
-            background-color: rgba(207, 168, 95, 0.4); /* Alba gold tint */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px;
-        }
-
-        .cs-btn-icon svg {
-            width: 20px;
-            height: 20px;
-            fill: none;
-            stroke: #fff;
-            stroke-width: 1.5;
+        .cs-btn-arrow {
+            font-size: 0.6rem;
             transition: transform 0.3s ease;
         }
         
-        .cs-btn:hover .cs-btn-icon svg {
-            transform: translate(3px, 3px);
+        .cs-btn:hover .cs-btn-arrow {
+            transform: translateX(5px);
         }
 
         .cs-bottom-bar {
@@ -1319,10 +1308,8 @@
                     <p class="cs-desc" id="insight-desc-text">Our latest insights highlight the depth of our expertise and the impact of our rigorous credit strategies.</p>
                     
                     <a href="aco-newsletter-subscription.html" class="cs-btn" id="insight-btn-link">
-                        <div class="cs-btn-icon">
-                            <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-                        </div>
                         <span id="insight-btn-text">Subscribe to the newsletter</span>
+                        <span class="cs-btn-arrow">&#9654;</span>
                     </a>
                 </div>
             </div>

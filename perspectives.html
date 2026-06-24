@@ -1315,7 +1315,7 @@
     </nav>
 
     <!-- Perspectives Hero Section -->
-    <div class="normal-section" style="min-height: 45vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 180px; padding-bottom: 60px; background-color: var(--accent); color: #fff;">
+    <div id="hero-section" class="normal-section" style="min-height: 45vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 180px; padding-bottom: 60px; background-color: var(--accent); color: #fff;">
         <h1 class="fade-up delay-1" style="font-family: 'Aperto', 'Georgia', serif; font-size: 4rem; color: #fff; margin-bottom: 1rem; text-align: center; letter-spacing: -1px;">Perspectives</h1>
         <p class="fade-up delay-2" style="font-family: 'Inter', sans-serif; font-size: 1.15rem; color: rgba(255,255,255,0.8); text-align: center; max-width: 800px; line-height: 1.6;">
             Subscribe to Alba Investment Partners' Newsletters
@@ -1739,8 +1739,7 @@
                 let threshold = 80;
                 const hero = document.getElementById('hero-section');
                 if (hero) {
-                    threshold = hero.scrollHeight - window.innerHeight - 50;
-                    if (threshold < 80) threshold = 80;
+                    threshold = hero.offsetHeight - 80; // switch navbar when scrolling past hero
                 }
 
                 if (window.scrollY >= threshold) {

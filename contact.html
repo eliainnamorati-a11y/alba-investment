@@ -1335,7 +1335,7 @@
                 
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 60px;">
                     <!-- Column 1: Contact Info -->
-                    <div>
+                    <div class="fade-up delay-2">
                         <h4 style="color: #ffffff; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px;">Contact Information</h4>
                         <div style="display: flex; gap: 40px; flex-wrap: wrap;">
                             <div>
@@ -1350,7 +1350,7 @@
                     </div>
 
                     <!-- Column 2: Headquarters -->
-                    <div>
+                    <div class="fade-up delay-3">
                         <h4 style="color: #ffffff; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px;">Headquarters</h4>
                         <div style="font-family: 'Inter', sans-serif; font-size: 1rem; color: rgba(255,255,255,0.8); line-height: 1.6; font-weight: 300;">
                             Alba Investment Partners SA<br>
@@ -1783,8 +1783,7 @@
                 let threshold = 80;
                 const hero = document.getElementById('hero-section');
                 if (hero) {
-                    threshold = hero.scrollHeight - window.innerHeight - 50;
-                    if (threshold < 80) threshold = 80;
+                    threshold = hero.offsetHeight - 80; // switch navbar when scrolling past hero
                 }
 
                 if (window.scrollY >= threshold) {
