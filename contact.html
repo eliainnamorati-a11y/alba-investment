@@ -1330,63 +1330,37 @@
 
 
     <!-- Contact Section -->
-    <div class="normal-section" style="min-height: 80vh; display: flex; flex-direction: column; align-items: center; padding-top: 60px; padding-bottom: 100px; padding-left: 5%; padding-right: 5%;">
+    <div class="normal-section" style="min-height: 80vh; display: flex; flex-direction: column; align-items: center; padding-top: 80px; padding-bottom: 120px; padding-left: 5%; padding-right: 5%;">
         
-        
-        <div style="max-width: 1200px; width: 100%; display: flex; flex-wrap: wrap; gap: 60px;">
+        <div style="max-width: 1400px; width: 100%; display: flex; flex-wrap: wrap; gap: 100px; align-items: flex-start;">
             
-            <!-- Contact Info -->
-            <div style="flex: 1; min-width: 300px; padding-top: 20px;">
-                <h1 style="font-family: 'Aperto', 'Georgia', serif; font-size: 3.5rem; color: var(--accent); margin-bottom: 2rem;">Get in touch</h1>
+            <!-- Contact Info Sidebar -->
+            <div style="flex: 0 0 350px; min-width: 300px;">
+                <h2 style="font-family: 'Aperto', 'Georgia', serif; font-size: 3rem; color: var(--accent); margin-top: 0; margin-bottom: 40px; font-weight: 300;">Where to find us</h2>
                 
-                <h4 style="color: var(--gold); margin-bottom: 8px; font-family: 'Inter', sans-serif; font-size: 1.2rem; font-weight: 600;">Switzerland</h4>
+                <h4 style="color: var(--text-secondary); margin-bottom: 30px; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;">Contact information</h4>
                 
-                <p style="color: var(--accent); font-family: 'Inter', sans-serif; margin-bottom: 25px; line-height: 1.6;">
-                    <strong style="font-size: 1.8rem; display: block; margin-bottom: 10px;">Geneva</strong>
-                    <span style="font-size: 1.2rem; color: var(--text-main);">
+                <div style="margin-bottom: 40px;">
+                    <div style="font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Email</div>
+                    <a href="mailto:contact@albainvestments.ch" style="font-family: 'Inter', sans-serif; font-size: 1.15rem; color: var(--accent); text-decoration: none; font-weight: 400; transition: color 0.3s ease;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--accent)'">contact@albainvestments.ch</a>
+                </div>
+
+                <div style="margin-bottom: 40px;">
+                    <div style="font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Headquarters</div>
+                    <div style="font-family: 'Inter', sans-serif; font-size: 1.15rem; color: var(--accent); line-height: 1.6; font-weight: 400;">
                         Alba Investment Partners SA<br>
                         Rue du Perron 1<br>
-                        1204 Geneva
-                    </span>
-                </p>
-                
-                <p style="color: var(--accent); font-family: 'Inter', sans-serif; font-size: 1.1rem;">
-                    <strong>E: <a href="mailto:contact@albainvestments.ch" style="color: var(--accent); text-decoration: underline;">contact@albainvestments.ch</a></strong>
-                </p>
-                
-                <!-- Static Map Alternative -->
-                <div style="margin-top: 40px; width: 100%; max-width: 450px; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
-                    <img src="map.jpg" alt="Alba Investment Partners Map Location" style="width: 100%; height: auto; display: block; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                        1204 Geneva<br>
+                        Switzerland
+                    </div>
                 </div>
             </div>
             
-            <!-- Contact Form -->
-            <div style="flex: 1.5; min-width: 300px;">
-                <form style="width: 100%; display: flex; flex-direction: column; gap: 25px; background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.05);">
-                    <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-                        <div style="flex: 1; min-width: 200px; display: flex; flex-direction: column; gap: 8px;">
-                            <label style="font-size: 0.95rem; color: var(--text-secondary); font-weight: 500;">Name*</label>
-                            <input type="text" placeholder="Your name" required style="padding: 15px; border: 1px solid rgba(0,0,0,0.15); border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 1rem; background: #fafafa; outline: none; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(0,0,0,0.15)'">
-                        </div>
-                        <div style="flex: 1; min-width: 200px; display: flex; flex-direction: column; gap: 8px;">
-                            <label style="font-size: 0.95rem; color: var(--text-secondary); font-weight: 500;">Last name*</label>
-                            <input type="text" placeholder="Your last name" required style="padding: 15px; border: 1px solid rgba(0,0,0,0.15); border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 1rem; background: #fafafa; outline: none; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(0,0,0,0.15)'">
-                        </div>
-                    </div>
-                    
-                    <div style="display: flex; flex-direction: column; gap: 8px;">
-                        <label style="font-size: 0.95rem; color: var(--text-secondary); font-weight: 500;">Email*</label>
-                        <input type="email" placeholder="Your email address" required style="padding: 15px; border: 1px solid rgba(0,0,0,0.15); border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 1rem; background: #fafafa; outline: none; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(0,0,0,0.15)'">
-                    </div>
-                    
-                    <div style="display: flex; flex-direction: column; gap: 8px;">
-                        <label style="font-size: 0.95rem; color: var(--text-secondary); font-weight: 500;">Message*</label>
-                        <textarea placeholder="Enter your message" required rows="6" style="padding: 15px; border: 1px solid rgba(0,0,0,0.15); border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 1rem; background: #fafafa; outline: none; resize: vertical; transition: border-color 0.3s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='rgba(0,0,0,0.15)'"></textarea>
-                    </div>
-                    
-                    <button type="submit" style="margin-top: 15px; padding: 18px 40px; background-color: var(--accent); color: #ffffff; border: none; border-radius: 40px; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 500; cursor: pointer; transition: background-color 0.3s; align-self: flex-start; letter-spacing: 0.5px;" onmouseover="this.style.backgroundColor='var(--gold)'; this.style.color='#000';" onmouseout="this.style.backgroundColor='var(--accent)'; this.style.color='#fff';">Submit</button>
-                </form>
+            <!-- Large Map View -->
+            <div style="flex: 1; min-width: 400px; height: 600px; position: relative; overflow: hidden; border-radius: 4px; box-shadow: 0 20px 60px rgba(0,0,0,0.05);">
+                <img src="map.jpg" alt="Alba Investment Partners Map Location" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
             </div>
+            
         </div>
     </div>
 
