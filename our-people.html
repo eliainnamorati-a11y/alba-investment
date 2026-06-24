@@ -1314,7 +1314,7 @@
         <div class="nav-links">
             <a href="about.html" style="color: var(--gold)">About Us</a>
             <a href="credit-opportunities.html">Credit Opportunities</a>
-            <a href="team.html">Team</a>
+            <a href="our-people.html">Our People</a>
             <a href="insights.html">Insights</a>
             <a href="contact.html">Contact</a>
         </div>
@@ -1414,7 +1414,524 @@
                     <div class="footer-column">
                         <h4>Strategies</h4>
                         <a href="credit-opportunities.html">Credit Opportunities</a>
-                        <a href="team.html">Team</a>
+                        <a href="our-people.html">Our People</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <a href="contact.html">Contact</a>
+                        <a href="#">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 Alba Investment Partners. All rights reserved.</p>
+                <div class="legal-links">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-use.html">Terms of Use</a>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Background canvas sequencers have been removed to reduce payload overhead on the About page
+
+        // Hero animation logic
+        const heroSection = document.getElementById('hero-section');
+        const heroInitial = document.getElementById('hero-initial');
+
+        const animatedElements = [
+            document.querySelector('.founder-img-placeholder'),
+            document.querySelector('.intro-text'),
+            ...document.querySelectorAll('.hero-stat')
+        ];
+
+        function interpolate(progress, start, end, startVal, endVal) {
+            if (progress <= start) return startVal;
+            if (progress >= end) return endVal;
+            return startVal + ((progress - start) / (end - start)) * (endVal - startVal);
+        }
+
+        window.addEventListener('scroll', () => {
+            // Team Sketch Zoom Frame Loop
+            const sketchWrapper = document.getElementById('sketch-zoom-section');
+            const sketchImg = document.getElementById('sketch-bg-img');
+            
+            if (sketchWrapper && sketchImg) {
+                const sRect = sketchWrapper.getBoundingClientRect();
+                
+                if (sRect.top <= window.innerHeight && sRect.bottom >= 0) {
+                    // Normalize the active vertical progress purely linearly
+                    // It starts expanding slightly before it hits top: 0, tracking the entire 250vh scroll block natively
+                    const maxScroll = sRect.height - window.innerHeight;
+                    let scrollProgress = -sRect.top / Math.max(1, maxScroll);
+                    scrollProgress = Math.max(0, Math.min(1, scrollProgress));
+                    
+                    // Maps linearly from scale 1x to scale 1.06x for a stunningly subtle, premium parallax effect
+                    const scaleFactor = 1 + (scrollProgress * 0.06);
+                    sketchImg.style.transform = `scale(${scaleFactor})`;
+                }
+            }
+            
+            // Dynamic Timeline Logic
+            const timelineSection = document.getElementById('story-timeline-section');
+            const timelineTrack = document.getElementById('timeline-track');
+            const timelineFill = document.getElementById('timeline-fill');
+            const nodes = [document.getElementById('node-1'), document.getElementById('node-2'), document.getElementById('node-3')];
+            
+            if (timelineSection && timelineTrack && timelineFill && nodes[0]) {
+                const tlRect = timelineTrack.getBoundingClientRect();
+                const viewportCenter = window.innerHeight * 0.55; 
+                
+                if (tlRect.top <= viewportCenter) {
+                    const trackHeight = tlRect.height;
+                    const fillAmount = Math.max(0, Math.min(trackHeight, viewportCenter - tlRect.top));
+                    timelineFill.style.height = `${fillAmount}px`;
+                    
+                    nodes.forEach((node) => {
+                        const nodeTopRelTrack = node.getBoundingClientRect().top - tlRect.top; 
+                        const dist = fillAmount - nodeTopRelTrack;
+                        
+                        // Physics map: Native interpolation loading proportional exactly to scroll wheel! 
+                        if (dist > 0) { 
+                            const nodeProg = Math.min(1, dist / 150);
+                            node.style.opacity = nodeProg;
+                            node.style.transform = `translateY(${30 - (30 * nodeProg)}px)`;
+                            
+                            const dot = node.querySelector('.node-dot');
+                            dot.style.borderColor = `rgba(207, 168, 95, ${0.2 + (0.8 * nodeProg)})`;
+                            dot.style.backgroundColor = nodeProg > 0.8 ? `var(--gold)` : `transparent`;
+                            
+                            const year = node.querySelector('.node-year');
+                            if(year) year.style.color = `rgba(207, 168, 95, ${0.5 + (0.5 * nodeProg)})`;
+                        } else {
+                            node.style.opacity = 0;
+                            node.style.transform = `translateY(30px)`;
+                            
+                            const dot = node.querySelector('.node-dot');
+                            dot.style.borderColor = `rgba(255,255,255,0.2)`;
+                            dot.style.backgroundColor = `transparent`;
+                            
+                            const year = node.querySelector('.node-year');
+                            if(year) year.style.color = `rgba(255,255,255,0.5)`;
+                        }
+                    });
+                } else {
+                    timelineFill.style.height = '0px';
+                    nodes.forEach(node => {
+                        node.style.opacity = 0;
+                        node.style.transform = `translateY(30px)`;
+                        const dot = node.querySelector('.node-dot');
+                        if (dot) {
+                            dot.style.borderColor = `rgba(255,255,255,0.2)`;
+                            dot.style.backgroundColor = `transparent`;
+                        }
+                        const year = node.querySelector('.node-year');
+                        if(year) year.style.color = `rgba(255,255,255,0.5)`;
+                    });
+                }
+            }
+            
+            const navbar = document.getElementById('navbar');
+            const navLogo = document.getElementById('navbar-logo');
+
+            if (heroSection) {
+                // Dynamically intercept scroll mechanics specifically on the short 100vh viewport
+                const threshold = 80;
+
+                if (window.scrollY >= threshold) {
+                    if (navbar) navbar.classList.add('navbar-scrolled');
+                    if (navLogo && !navLogo.src.includes('72')) navLogo.src = 'logos/Untitled%20design%20(72).png';
+                } else {
+                    if (navbar) navbar.classList.remove('navbar-scrolled');
+                    if (navLogo && !navLogo.src.includes('73')) navLogo.src = 'logos/Untitled%20design%20(73).png';
+                }
+            }
+
+            if (!heroSection) return;
+            const heroRect = heroSection.getBoundingClientRect();
+            const scrollDistance = heroSection.offsetHeight - window.innerHeight;
+            let progress = -heroRect.top / Math.max(1, scrollDistance);
+            progress = Math.max(0, Math.min(1, progress));
+
+            const isMobile = window.innerWidth <= 900;
+
+            // Execute the precise layout math pushing the h1 explicitly out of the way
+            const targetY = isMobile ? -5 : -32;
+            const initialY = interpolate(progress, 0, 0.4, 0, targetY);
+
+            // Exit crossfade for the massive title at the very end of the hero sequence (0.7 to 0.95)
+            const exitTitleOp = interpolate(progress, 0.7, 0.95, 1, 0);
+
+            // Pure elegant vertical crossfade on mobile natively, Kenslow exit fade on desktop
+            const initialOp = isMobile ? interpolate(progress, 0, 0.25, 1, 0) : exitTitleOp;
+
+            heroInitial.style.transform = `translateY(${initialY}vh)`;
+            heroInitial.style.opacity = initialOp;
+
+            // Animate secondary elements progressively + Kenslow exit styling
+            animatedElements.forEach((el, index) => {
+                if (!el) return;
+                const startP = 0.15 + (index * 0.12);
+                const endP = startP + 0.25;
+
+                let elemOpacity = interpolate(progress, startP, endP, 0, 1);
+                const elemY = interpolate(progress, startP, endP, 40, 0);
+                let elemScale = 1;
+
+                // Apply the Kenslow-style unified exit mechanism
+                if (progress > 0.7) {
+                    elemOpacity = interpolate(progress, 0.7, 0.95, 1, 0); // Text washes out smoothly
+
+                    // Specifically target the founder image to actively shrink natively
+                    if (el.classList.contains('founder-img-placeholder')) {
+                        elemScale = interpolate(progress, 0.7, 0.95, 1, 0.85);
+                    }
+                }
+
+                el.style.opacity = elemOpacity;
+                el.style.transform = `translateY(${elemY}px) scale(${elemScale})`;
+            });
+
+            // Update the scroll progress bar
+            const heroProgressFill = document.getElementById('hero-progress');
+            if (heroProgressFill) {
+                heroProgressFill.style.width = `${progress * 100}%`;
+            }
+        });
+
+        // Setup Mission text scrub
+        const missionTextElem = document.getElementById('mission-text');
+        if (missionTextElem) {
+            const words = missionTextElem.innerText.split(' ');
+            missionTextElem.innerHTML = '';
+            words.forEach(word => {
+                const span = document.createElement('span');
+                span.className = 'mission-word';
+                span.innerText = word + ' ';
+                missionTextElem.appendChild(span);
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            const missionSection = document.getElementById('mission-scroll-section');
+            if (missionSection && missionTextElem) {
+                const rect = missionSection.getBoundingClientRect();
+                const scrollable = missionSection.offsetHeight - window.innerHeight;
+                let progress = -rect.top / Math.max(1, scrollable);
+
+                // Add a small buffer so it starts filling after 10% scroll and fully fills by 90%
+                let fillProgress = (progress - 0.1) / 0.8;
+                fillProgress = Math.max(0, Math.min(1, fillProgress));
+
+                const spans = missionTextElem.querySelectorAll('.mission-word');
+                const revealCount = Math.floor(fillProgress * spans.length);
+
+                spans.forEach((span, i) => {
+                    if (i < revealCount) {
+                        span.classList.add('active');
+                    } else {
+                        span.classList.remove('active');
+                    }
+                });
+
+                // Apply graceful upwards scroll to text as section is scrubbed
+                const clampedProgress = Math.max(0, Math.min(1, progress));
+                if (window.innerWidth > 900) {
+                    const textY = 100 - (200 * clampedProgress); // Moves from 100px to -100px
+                    missionTextElem.style.transform = `translateY(${textY}px)`;
+                } else {
+                    missionTextElem.style.transform = 'none'; // Prevent text overlapping the H2 label on mobile viewports
+                }
+            }
+        });
+
+        // Built on Principles - Arc Section Logic
+        const arcSection = document.getElementById('arc-section');
+        const arcCircle = document.getElementById('arc-circle');
+        const arcWord = document.getElementById('arc-word');
+        const arcDesc = document.getElementById('arc-desc');
+        const arcSpokes = document.querySelectorAll('.arc-spoke');
+
+        const arcData = [
+            { title: "People", desc: "Our diverse backgrounds and skillsets bring unique perspectives, fostering innovative solutions and creative problem-solving while sharing a commitment to hard work and excellence." },
+            { title: "Credentials", desc: "A proven history of consistently delivering superior risk-adjusted returns across fixed income and credit asset classes, demonstrating resilience through all economic environments." },
+            { title: "Deep Research", desc: "Combining data, technology and deep-rooted experience in financial markets, we uncover opportunities that others often overlook." },
+            { title: "Agility", desc: "With lean teams and niche, size-constrained strategies, we foster agility and adaptability — key attributes for delivering superior returns." }
+        ];
+
+        // Initialize values
+        if (arcSpokes.length > 0) {
+            arcSpokes.forEach(spoke => {
+                const angle = parseFloat(spoke.getAttribute('data-angle'));
+                spoke.style.transform = `rotate(${angle}deg)`;
+            });
+            const firstNode = arcSpokes[0].querySelector('.arc-node');
+            if (firstNode) {
+                firstNode.style.borderColor = 'var(--gold)';
+                firstNode.style.color = 'var(--gold)';
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            if (arcSection && arcCircle) {
+                const rect = arcSection.getBoundingClientRect();
+
+                // 1. Dynamic scrub expansion when scrolling INTO the section
+                const containerElem = document.querySelector('.arc-circle-container');
+                const contentElem = document.querySelector('.arc-content-wrapper');
+
+                if (rect.top > 0 && rect.top <= window.innerHeight) {
+                    let entryProgress = 1 - (rect.top / window.innerHeight);
+                    entryProgress = Math.max(0, Math.min(1, entryProgress));
+
+                    const circleScale = 0.5 + (0.5 * entryProgress);
+                    if (containerElem) {
+                        containerElem.style.transform = `translateX(-50%) scale(${circleScale})`;
+                        containerElem.style.opacity = entryProgress;
+                    }
+
+                    const contentScale = 0.8 + (0.2 * entryProgress);
+                    if (contentElem) {
+                        contentElem.style.transform = `translateX(-50%) scale(${contentScale})`;
+                        contentElem.style.opacity = entryProgress;
+                    }
+                } else if (rect.top <= 0) {
+                    // Fully visible
+                    if (containerElem) {
+                        containerElem.style.transform = `translateX(-50%) scale(1)`;
+                        containerElem.style.opacity = 1;
+                    }
+                    if (contentElem) {
+                        contentElem.style.transform = `translateX(-50%) scale(1)`;
+                        contentElem.style.opacity = 1;
+                    }
+                }
+
+                // 2. Wheel rotation logic
+                const scrollDistance = arcSection.offsetHeight - window.innerHeight;
+                let progress = -rect.top / Math.max(1, scrollDistance);
+                progress = Math.max(0, Math.min(1, progress));
+
+                // Determine active index based on scroll position safely snapped explicitly to 0, 1, 2, 3
+                let activeIndex = Math.floor(progress * 3.99);
+
+                // Directly snap only to exact milestone node angles (1, 2, 3, 4)
+                const targetAngles = [45, 15, -15, -45];
+                const arcRotation = targetAngles[activeIndex];
+
+                // Since the wheel element has `transition`, it spins smoothly to snap exactly into place natively
+                arcCircle.style.transform = `rotate(${arcRotation}deg)`;
+
+                // Counter-rotate the inner digits safely
+                arcSpokes.forEach(spoke => {
+                    const angle = parseFloat(spoke.getAttribute('data-angle'));
+                    const inner = spoke.querySelector('.arc-node-inner');
+                    const totalAngle = angle + arcRotation;
+                    if (inner) {
+                        inner.style.transform = `rotate(${-totalAngle}deg)`;
+                    }
+                });
+
+                // Update Text Content natively using existing activeIndex
+
+                if (arcWord.dataset.current !== activeIndex.toString()) {
+                    arcWord.style.opacity = '0';
+                    arcDesc.style.opacity = '0';
+
+                    setTimeout(() => {
+                        arcWord.innerText = arcData[activeIndex].title;
+                        arcDesc.innerText = arcData[activeIndex].desc;
+                        arcWord.style.opacity = '1';
+                        arcDesc.style.opacity = '1';
+                    }, 200);
+
+                    arcWord.dataset.current = activeIndex;
+
+                    // Highlight the active node's border
+                    arcSpokes.forEach((spoke, idx) => {
+                        const node = spoke.querySelector('.arc-node');
+                        if (node) {
+                            if (idx === activeIndex) {
+                                node.style.borderColor = 'var(--gold)';
+                                node.style.color = 'var(--gold)';
+                            } else {
+                                node.style.borderColor = 'rgba(255,255,255,0.2)';
+                                node.style.color = 'rgba(255,255,255,0.8)';
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
+        // Intersection Observer for fade-up animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-up, .zoom-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html
+    <!-- Our People Section - Cape Capital Style -->
+    <div class="normal-section" style="min-height: 80vh; background-color: #f7f9f8; padding-top: 150px; padding-bottom: 120px;">
+        <div style="max-width: 1300px; margin: 0 auto; padding: 0 5%;">
+            <h1 style="font-family: 'Aperto', 'Georgia', serif; font-size: 4.5rem; color: var(--accent); margin-bottom: 4rem; letter-spacing: -1px;">Our People</h1>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;">
+                
+                <!-- Member 1: Andrea Cavalleri -->
+                <div class="cc-person-card">
+                    <div class="cc-person-image" style="background-image: url('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,h=650,fit=crop,f=jpeg/YD0B9Plo46iLw9Z8/screenshot-2024-11-26-at-12.01.55-dJo5p6D4lDhnEyyy.png');"></div>
+                    <h3 class="cc-person-name">Andrea Cavalleri</h3>
+                    <p class="cc-person-title">Founding Partner, Portfolio Manager</p>
+                    <div class="cc-person-bio-toggle" onclick="this.nextElementSibling.classList.toggle('expanded'); this.innerText = this.innerText === 'Read Bio' ? 'Close Bio' : 'Read Bio';">Read Bio</div>
+                    <div class="cc-person-bio">
+                        Andrea manages the Alba Credit Opportunities strategy. Previously, he co-founded and served as CEO of AQA Capital, an independent asset manager with €1.5bn in AUM, where he launched and managed the AQA Credit Strategies Fund (2015-2022). Prior to this, he was Head of Special Situations at Method Investments & Advisory in London (2009-2015). Andrea brings over 18 years of experience in fixed income, credit analysis, and portfolio management.
+                    </div>
+                </div>
+
+                <!-- Member 2: Luigi Mantrino -->
+                <div class="cc-person-card">
+                    <div class="cc-person-image" style="background-image: url('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,h=650,fit=crop,f=jpeg/YD0B9Plo46iLw9Z8/screenshot-2024-11-26-at-12.00.04-ALpnB4895EH2n0l2.png');"></div>
+                    <h3 class="cc-person-name">Luigi Mantrino, CFA</h3>
+                    <p class="cc-person-title">Chief Research Officer, Partner</p>
+                    <div class="cc-person-bio-toggle" onclick="this.nextElementSibling.classList.toggle('expanded'); this.innerText = this.innerText === 'Read Bio' ? 'Close Bio' : 'Read Bio';">Read Bio</div>
+                    <div class="cc-person-bio">
+                        Luigi brings extensive expertise in credit research, gained through a long-standing collaboration with Andrea at AQA Capital, where he supported the AQA Credit Strategies Fund. Over his 20+ years in the industry, he has cultivated deep relationships with key market participants across European credit markets, primarily covering the Financials, Real Estate, and Utilities sectors.
+                    </div>
+                </div>
+
+                <!-- Member 3: Henrik Hedman -->
+                <div class="cc-person-card">
+                    <div class="cc-person-image" style="background-image: url('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,h=650,fit=crop,f=jpeg/YD0B9Plo46iLw9Z8/screenshot-2024-11-26-at-12.01.20-YZ9Jv493MxcL6L79.png');"></div>
+                    <h3 class="cc-person-name">Henrik Hedman</h3>
+                    <p class="cc-person-title">Director, Head of Investor Relations</p>
+                    <div class="cc-person-bio-toggle" onclick="this.nextElementSibling.classList.toggle('expanded'); this.innerText = this.innerText === 'Read Bio' ? 'Close Bio' : 'Read Bio';">Read Bio</div>
+                    <div class="cc-person-bio">
+                        Henrik leads Alba's capital-raising and investor relations. He previously served as Head of Operations for the Nordic Region at Method Investments & Advisory in London and has over 20 years of experience distributing private equity and hedge funds globally to institutional clients.
+                    </div>
+                </div>
+
+                <!-- Member 4: Balint -->
+                <div class="cc-person-card">
+                    <div class="cc-person-image" style="background-image: url('https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,h=650,fit=crop,f=jpeg/YD0B9Plo46iLw9Z8/screenshot-2024-11-26-at-12.02.16-AwvWbjD34wFk7R6n.png');"></div>
+                    <h3 class="cc-person-name">Balint</h3>
+                    <p class="cc-person-title">Risk & Compliance</p>
+                    <div class="cc-person-bio-toggle" onclick="this.nextElementSibling.classList.toggle('expanded'); this.innerText = this.innerText === 'Read Bio' ? 'Close Bio' : 'Read Bio';">Read Bio</div>
+                    <div class="cc-person-bio">
+                        Balint brings over 18 years of experience in the banking and asset management industry, predominantly focusing on internal controls (Risk and Compliance) and business management functions. During his career, he worked with leading institutions such as KPMG, Lombard Odier, Bank Syz, and Rothschild & Co. in London, Dubai, and Geneva.
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <style>
+        /* Cape Capital Aesthetic */
+        .cc-person-card {
+            display: flex;
+            flex-direction: column;
+            background: transparent;
+            cursor: pointer;
+        }
+        
+        .cc-person-image {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background-size: cover;
+            background-position: center top;
+            filter: grayscale(100%);
+            transition: filter 0.5s ease, transform 0.5s ease;
+            margin-bottom: 20px;
+            border-radius: 2px;
+        }
+        
+        .cc-person-card:hover .cc-person-image {
+            filter: grayscale(0%);
+        }
+        
+        .cc-person-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 5px;
+            letter-spacing: -0.3px;
+        }
+        
+        .cc-person-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: rgba(0,0,0,0.5);
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+        
+        .cc-person-bio-toggle {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            display: inline-block;
+            transition: color 0.3s;
+        }
+        
+        .cc-person-bio-toggle:hover {
+            color: var(--gold);
+        }
+        
+        .cc-person-bio {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+            opacity: 0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+        
+        .cc-person-bio.expanded {
+            max-height: 800px;
+            opacity: 1;
+            padding-bottom: 20px;
+        }
+    </style>
+<!-- Modern Green Footer -->
+    <footer class="alba-footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="logos/Untitled%20design%20(73).png" alt="Alba Investment Partners" class="footer-logo">
+                    <p class="footer-mission">Alba Investment Partners SA is authorized and regulated by the FINMA as a Manager of collective assets.</p>
+                </div>
+
+                <div class="footer-links-grid">
+                    <div class="footer-column">
+                        <h4>Firm</h4>
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About Us</a>
+                        <a href="insights.html">Insights</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Strategies</h4>
+                        <a href="credit-opportunities.html">Credit Opportunities</a>
+                        <a href="our-people.html">Our People</a>
                     </div>
                     <div class="footer-column">
                         <h4>Connect</h4>
