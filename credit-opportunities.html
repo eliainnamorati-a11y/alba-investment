@@ -1544,100 +1544,120 @@
         
         <style>
             .bond-diagram-container {
-                max-width: 1100px; 
-                margin: 0 auto; 
+                max-width: 1000px; 
+                margin: 40px 0 0 0; 
+                background-color: #fdfaf3; 
+                border: 1px solid #e2d5bc; 
+                border-radius: 8px; 
+                overflow: hidden; 
                 display: flex; 
-                align-items: stretch; 
-                gap: 0;
+                flex-direction: column;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.03);
             }
-            @media (max-width: 1000px) {
-                .bond-diagram-container {
+            .bond-diagram-header {
+                background-color: #f2ebd9; 
+                padding: 20px 30px; 
+                display: flex; 
+                align-items: center; 
+                gap: 15px; 
+                border-bottom: 1px solid #e2d5bc;
+            }
+            .bond-diagram-body {
+                padding: 40px; 
+                display: flex; 
+                gap: 50px;
+                align-items: stretch;
+            }
+            .bond-diagram-blocks {
+                display: flex; 
+                gap: 4px; 
+                width: 300px; 
+                flex-shrink: 0;
+            }
+            .bond-diagram-text {
+                flex: 1; 
+                display: flex; 
+                flex-direction: column; 
+                justify-content: space-between; 
+                padding: 10px 0;
+                gap: 20px;
+            }
+            @media (max-width: 900px) {
+                .bond-diagram-body {
                     flex-direction: column;
-                    gap: 40px;
+                    padding: 30px 20px;
                 }
-                .bond-diagram-arrows {
-                    position: relative !important;
-                    margin-left: 20px;
-                }
-                .bond-diagram-arrow-row {
-                    position: relative !important;
-                    top: auto !important;
-                    margin-bottom: 25px;
-                }
-                .bond-diagram-line {
-                    display: none; /* Hide lines on mobile, just show text with colors */
+                .bond-diagram-blocks {
+                    width: 100%;
+                    height: 250px;
                 }
             }
         </style>
 
         <div class="bond-diagram-container fade-up">
             
-            <!-- Left Box -->
-            <div style="width: 450px; min-width: 450px; background-color: #fdfaf3; border: 3px dashed #d5c4a1; padding: 30px; position: relative;">
-                <!-- Header -->
-                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
-                    <svg width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <circle cx="10" cy="12" r="2"></circle>
-                        <path d="M10 14v2"></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                    </svg>
-                    <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; font-weight: 600; color: #111; margin: 0;">Components of a Bond</h3>
-                </div>
+            <!-- Header -->
+            <div class="bond-diagram-header">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <h3 style="font-family: 'Inter', sans-serif; font-size: 1.15rem; font-weight: 600; color: #111; margin: 0;">Components of a Bond</h3>
+            </div>
 
-                <!-- Blocks -->
-                <div style="display: flex; gap: 4px; height: 340px;">
+            <!-- Body -->
+            <div class="bond-diagram-body">
+                
+                <!-- The Blocks -->
+                <div class="bond-diagram-blocks">
+                    <!-- Left Stack -->
                     <div style="display: flex; flex-direction: column; gap: 4px; flex: 1;">
-                        <div style="background-color: #1e293b; color: #fff; height: 90px; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 1rem;">Optionality</div>
-                        <div style="background-color: var(--gold); color: #fff; flex: 1; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 1rem;">Credit spread</div>
-                        <div style="background-color: var(--accent); color: #fff; height: 90px; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 1rem;">Risk-free rate</div>
+                        <div style="background-color: #1e293b; color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 1rem; border-radius: 4px 0 0 4px; flex: 1;">Optionality</div>
+                        <div style="background-color: var(--gold); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 1rem; border-radius: 4px 0 0 4px; flex: 1.5;">Credit spread</div>
+                        <div style="background-color: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 1rem; border-radius: 4px 0 0 4px; flex: 1;">Risk-free rate</div>
                     </div>
-                    <div style="background-color: #3b82f6; width: 50px; display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 1rem;">
+                    <!-- Right Vertical Bar -->
+                    <div style="background-color: #3b82f6; width: 60px; color: #fff; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 1rem; border-radius: 0 4px 4px 0; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; text-orientation: mixed;">
                         FX
                     </div>
                 </div>
-            </div>
 
-            <!-- Connecting Arrows & Text -->
-            <div class="bond-diagram-arrows" style="flex: 1; position: relative; display: flex; flex-direction: column;">
-                
-                <!-- Arrow 1 (FX / Top) -->
-                <div class="bond-diagram-arrow-row" style="position: absolute; top: 120px; left: 0; right: 0; display: flex; align-items: center;">
-                    <div class="bond-diagram-line" style="width: 100px; height: 2px; background-color: #3b82f6; position: relative; margin-left: -15px;">
-                        <div style="position: absolute; right: 0; top: -4px; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 6px solid #3b82f6;"></div>
+                <!-- The Text Descriptions (Legend Style) -->
+                <div class="bond-diagram-text">
+                    <!-- Text 1 (FX) -->
+                    <div style="display: flex; gap: 15px; align-items: flex-start;">
+                        <div style="width: 14px; height: 14px; border-radius: 50%; background-color: #3b82f6; margin-top: 5px; flex-shrink: 0;"></div>
+                        <div>
+                            <h4 style="margin: 0 0 5px 0; color: #3b82f6; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">FX Component</h4>
+                            <p style="margin: 0; color: #444; font-family: 'Inter', sans-serif; font-size: 1.05rem; line-height: 1.5;">Managed independently to exploit arbitrage opportunities.</p>
+                        </div>
                     </div>
-                    <div style="color: #3b82f6; font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 500; padding-left: 15px; line-height: 1.4; max-width: 400px;">
-                        Managed independently to exploit arbitrage opportunities
+                    <!-- Text 2 (Optionality) -->
+                    <div style="display: flex; gap: 15px; align-items: flex-start;">
+                        <div style="width: 14px; height: 14px; border-radius: 50%; background-color: #1e293b; margin-top: 5px; flex-shrink: 0;"></div>
+                        <div>
+                            <h4 style="margin: 0 0 5px 0; color: #1e293b; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Optionality</h4>
+                            <p style="margin: 0; color: #444; font-family: 'Inter', sans-serif; font-size: 1.05rem; line-height: 1.5;">Maximized to create asymmetric payout profiles.</p>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Arrow 2 (Optionality) -->
-                <div class="bond-diagram-arrow-row" style="position: absolute; top: 175px; left: 0; right: 0; display: flex; align-items: center;">
-                    <div class="bond-diagram-line" style="width: 100px; height: 2px; background-color: #1e293b; position: relative; margin-left: -65px; z-index: 2;">
-                        <div style="position: absolute; right: 0; top: -4px; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 6px solid #1e293b;"></div>
+                    <!-- Text 3 (Credit Spread) -->
+                    <div style="display: flex; gap: 15px; align-items: flex-start;">
+                        <div style="width: 14px; height: 14px; border-radius: 50%; background-color: var(--gold); margin-top: 5px; flex-shrink: 0;"></div>
+                        <div>
+                            <h4 style="margin: 0 0 5px 0; color: var(--gold); font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Credit Spread</h4>
+                            <p style="margin: 0; color: #444; font-family: 'Inter', sans-serif; font-size: 1.05rem; line-height: 1.5;">Optimized for best return over risk, roll-down and spread tightening potential.</p>
+                        </div>
                     </div>
-                    <div style="color: #1e293b; font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 500; padding-left: 15px; line-height: 1.4; max-width: 400px;">
-                        Maximized to create asymmetric payout profiles
-                    </div>
-                </div>
-
-                <!-- Arrow 3 (Credit Spread) -->
-                <div class="bond-diagram-arrow-row" style="position: absolute; top: 280px; left: 0; right: 0; display: flex; align-items: center;">
-                    <div class="bond-diagram-line" style="width: 100px; height: 2px; background-color: #b5904a; position: relative; margin-left: -65px; z-index: 2;">
-                        <div style="position: absolute; right: 0; top: -4px; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 6px solid #b5904a;"></div>
-                    </div>
-                    <div style="color: #b5904a; font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 600; padding-left: 15px; line-height: 1.4; max-width: 450px;">
-                        Optimized for best return over risk, roll-down and spread tightening potential
-                    </div>
-                </div>
-
-                <!-- Arrow 4 (Risk-free rate) -->
-                <div class="bond-diagram-arrow-row" style="position: absolute; top: 400px; left: 0; right: 0; display: flex; align-items: center;">
-                    <div class="bond-diagram-line" style="width: 100px; height: 2px; background-color: var(--accent); position: relative; margin-left: -65px; z-index: 2;">
-                        <div style="position: absolute; right: 0; top: -4px; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 6px solid var(--accent);"></div>
-                    </div>
-                    <div style="color: var(--accent); font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 600; padding-left: 15px; line-height: 1.4; max-width: 400px;">
-                        Managed independently using top-down portfolio approach
+                    <!-- Text 4 (Risk-free Rate) -->
+                    <div style="display: flex; gap: 15px; align-items: flex-start;">
+                        <div style="width: 14px; height: 14px; border-radius: 50%; background-color: var(--accent); margin-top: 5px; flex-shrink: 0;"></div>
+                        <div>
+                            <h4 style="margin: 0 0 5px 0; color: var(--accent); font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Risk-free Rate</h4>
+                            <p style="margin: 0; color: #444; font-family: 'Inter', sans-serif; font-size: 1.05rem; line-height: 1.5;">Managed independently using top-down portfolio approach.</p>
+                        </div>
                     </div>
                 </div>
 
