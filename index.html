@@ -1013,8 +1013,8 @@
     <!-- Scrollytelling Section 1 (Image Left) -->
     <div class="scrollytelling-wrapper scrolly-reverse" id="scroll-section-1">
         <div class="canvas-column">
-            <div class="canvas-sticky">
-                <canvas id="bridge-canvas-1"></canvas>
+            <div class="canvas-sticky" style="display: flex; align-items: center; justify-content: center; background-color: var(--bg-color);">
+                <img src="jet deau.jpeg" alt="Jet d'Eau Geneva" style="width: 100%; height: auto; max-height: 90vh; object-fit: contain; border-radius: 4px;">
             </div>
         </div>
         
@@ -1046,8 +1046,8 @@
         </div>
 
         <div class="canvas-column">
-            <div class="canvas-sticky">
-                <canvas id="bridge-canvas-2"></canvas>
+            <div class="canvas-sticky" style="display: flex; align-items: center; justify-content: center; background-color: var(--bg-color);">
+                <img src="cathedral.jpeg" alt="Cathedral" style="width: 100%; height: auto; max-height: 90vh; object-fit: contain; border-radius: 4px;">
             </div>
         </div>
     </div>
@@ -1481,6 +1481,7 @@
     </footer>
 
     <script>
+        /* --- CANVAS SCROLLYTELLING DISABLED (Replaced with static images) ---
         const bridgeFrameCount = 192;
         const lighthouseFrameCount = 192;
         const currentBridgeFrame = index => `new%20bridge/${index.toString().padStart(5, '0')}.png`;
@@ -1578,6 +1579,7 @@
         window.addEventListener('scroll', () => {
             handleCanvasScroll(scroll1, canvas1, ctx1, bridgeImages, bridgeFrameCount);
             handleCanvasScroll(scroll2, canvas2, ctx2, lighthouseImages, lighthouseFrameCount);
+        */
         });
 
         // Hero animation logic
