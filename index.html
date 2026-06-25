@@ -1014,7 +1014,7 @@
     <div class="scrollytelling-wrapper scrolly-reverse" id="scroll-section-1">
         <div class="canvas-column">
             <div class="canvas-sticky" style="display: flex; align-items: center; justify-content: center; background-color: #ffffff;">
-                <img src="jet deau.jpeg" alt="Jet d'Eau Geneva" style="width: 100%; height: auto; max-height: 90vh; object-fit: contain; border-radius: 4px;">
+                <img src="jet deau.jpeg" class="fade-up" alt="Jet d'Eau Geneva" style="width: 100%; height: auto; max-height: 90vh; object-fit: contain; border-radius: 4px; transition-delay: 0.2s;">
             </div>
         </div>
         
@@ -1047,7 +1047,7 @@
 
         <div class="canvas-column">
             <div class="canvas-sticky" style="display: flex; align-items: center; justify-content: center; background-color: #ffffff;">
-                <img src="cathedral.jpeg" alt="Cathedral" style="width: 100%; height: auto; max-height: 90vh; object-fit: contain; border-radius: 4px;">
+                <img src="cathedral.jpeg" class="fade-up" alt="Cathedral" style="width: 100%; height: auto; max-height: 90vh; object-fit: contain; border-radius: 4px; transition-delay: 0.2s;">
             </div>
         </div>
     </div>
@@ -1579,8 +1579,8 @@
         window.addEventListener('scroll', () => {
             handleCanvasScroll(scroll1, canvas1, ctx1, bridgeImages, bridgeFrameCount);
             handleCanvasScroll(scroll2, canvas2, ctx2, lighthouseImages, lighthouseFrameCount);
-        */
         });
+        */
 
         // Hero animation logic
         const heroSection = document.getElementById('hero-section');
