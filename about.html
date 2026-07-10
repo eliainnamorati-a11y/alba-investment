@@ -810,7 +810,7 @@
         }
 
         .footer-logo {
-            height: 40px;
+            height: 65px;
             margin-bottom: 25px;
             object-fit: contain;
             opacity: 0.9;
@@ -1185,7 +1185,7 @@
         }
         /* Team Sketch Parallax Zoom Matrix */
         .sketch-zoom-wrapper {
-            height: 150vh; /* Reduced from 250vh to make the scroll sequence faster and punchier */
+            height: 120vh; /* Tightened back to 120vh to eliminate the massive empty scroll space below the image */
             position: relative;
             background: #fcfcfc;
         }
@@ -1213,6 +1213,11 @@
             transform: scale(1);
             will-change: transform;
             border-radius: 8px; /* Clean edge aesthetic mapping to the clean layout */
+            --p: 0;
+            -webkit-mask-image: linear-gradient(to right, black calc(var(--p) * 120% - 20%), transparent calc(var(--p) * 120%));
+            mask-image: linear-gradient(to right, black calc(var(--p) * 120% - 20%), transparent calc(var(--p) * 120%));
+            filter: grayscale(calc(100% - (var(--p) * 100%))) sepia(calc(30% - (var(--p) * 30%)));
+            -webkit-filter: grayscale(calc(100% - (var(--p) * 100%))) sepia(calc(30% - (var(--p) * 30%)));
         }
 
         /* Alba Timeline Section - Light Mode Editorial UI */
@@ -1308,9 +1313,8 @@
         <div class="nav-links">
             <a href="about.html" style="color: var(--gold)">About Us</a>
             <a href="investment-approach.html">Investment Approach</a>
-            <a href="credit-opportunities.html">Credit Opportunities</a>
             <a href="our-people.html">Our People</a>
-            <a href="perspectives.html">Perspectives</a>
+            <a href="insights.html">Insights</a>
             <a href="contact.html">Contact</a>
         </div>
     </nav>
@@ -1451,7 +1455,7 @@
     </div>
 
     <!-- Replaced Static Approach Section with Staggered Scroll Triggers -->
-    <div class="normal-section" style="padding: 15vh 10%; background: #ffffff;">
+    <div class="normal-section" style="padding: 5vh 10% 15vh; background: #ffffff;">
         <div style="display: flex; gap: 80px; flex-wrap: wrap; max-width: 1400px; margin: 0 auto; align-items: flex-start;">
             <div style="flex: 1 1 350px;">
                 <h2 class="fade-up" style="font-size: 4rem; font-family: 'Aperto', serif; font-weight: 300; line-height: 1.1; margin: 0; color: var(--accent); letter-spacing: -1px;">The Alba<br>Approach</h2>
@@ -1559,137 +1563,136 @@
     </section>
 
     <!-- Newsletter Section -->
-    <style>
-        .newsletter-section {
-            background-color: var(--bg-color);
-            padding: 10vh 8%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .newsletter-container {
-            background: #ffffff;
-            border: 1px solid rgba(0,0,0,0.05);
-            border-radius: 8px;
-            padding: 8vh 40px;
-            max-width: 800px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
-        }
-
-        .newsletter-container h2 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            color: var(--accent);
-            font-family: 'Aperto', "Georgia", serif;
-        }
-
-        .newsletter-container p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.5;
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 15px;
-            max-width: 550px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-        }
-
-        .newsletter-input {
-            flex: 1;
-            min-width: 250px;
-            padding: 18px 25px;
-            border: 1px solid rgba(0,0,0,0.1);
-            border-radius: 4px;
-            font-size: 1rem;
-            color: var(--text-main);
-            outline: none;
-            transition: border-color 0.3s ease;
-            font-family: 'Inter', "SF Pro Display", sans-serif;
-        }
-
-        .newsletter-input:focus {
-            border-color: var(--gold);
-        }
-
-        .newsletter-btn {
-            background-color: var(--accent);
-            color: #ffffff;
-            border: none;
-            padding: 18px 40px;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            font-family: 'Inter', "SF Pro Display", sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .newsletter-btn:hover {
-            background-color: var(--gold);
-            transform: translateY(-2px);
-        }
-
-        .newsletter-disclaimer {
-            font-size: 0.85rem !important;
-            margin-top: 25px !important;
-            margin-bottom: 0 !important;
-            opacity: 0.6;
-        }
-        
-        @media (max-width: 600px) {
-            .newsletter-form { flex-direction: column; }
-            .newsletter-btn { width: 100%; }
-            .newsletter-container { padding: 40px 20px; }
-            .newsletter-container h2 { font-size: 2rem; }
-        }
-    </style>
-    <section class="newsletter-section">
-        <div class="newsletter-container fade-up delay-1">
-            <h2>Stay Informed</h2>
-            <p>Subscribe to receive Alba's latest macroeconomic perspectives and credit market updates securely to your inbox.</p>
-            
-            <!-- FORM ENDPOINT CONNECTION: Update the action="" URL to link specifically to Mailchimp, Formspree, or your WordPress logic! -->
-            <form action="https://formspree.io/f/YOUR_ENDPOINT_KEY" method="POST" class="newsletter-form">
-                <input type="email" name="email" placeholder="Enter your email address" required class="newsletter-input">
-                <button type="submit" class="newsletter-btn">Subscribe</button>
-            </form>
-            
-            <p class="newsletter-disclaimer">We respect your privacy. No spam, ever.</p>
-        </div>
-    </section>
 
     <!-- Modern Green Footer -->
+    <style>
+        /* Modern Green Footer */
+        .alba-footer {
+            background-color: #1a3622;
+            color: #ffffff;
+            padding: 80px 10% 40px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            position: relative;
+            z-index: 20;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            scroll-snap-align: end; 
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            height: 65px;
+            margin-bottom: 25px;
+            object-fit: contain;
+            opacity: 0.9;
+        }
+
+        .footer-mission {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .footer-links-grid {
+            display: flex;
+            gap: 80px;
+        }
+
+        .footer-column h4 {
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: 400;
+            margin-bottom: 25px;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            font-family: 'Aperto', "Georgia", "Times New Roman", serif;
+        }
+
+        .footer-column a {
+            display: block;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            font-weight: 300;
+        }
+
+        .footer-column a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .legal-links a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .legal-links a:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 900px) {
+            .footer-top { flex-direction: column; gap: 40px; margin-bottom: 40px; }
+            .footer-links-grid { flex-direction: column; gap: 40px; }
+            .alba-footer { padding: 60px 8% 30px; }
+            .footer-bottom { flex-direction: column; gap: 20px; align-items: flex-start; }
+        }
+    </style>
+
     <footer class="alba-footer">
         <div class="footer-container">
             <div class="footer-top">
                 <div class="footer-brand">
-                    <img src="logos/dark.png" alt="Alba Investment Partners" class="footer-logo">
-                    <p class="footer-mission">Alba Investment Partners SA is authorized and regulated by the FINMA as a Manager of collective assets.</p>
+                    <img src="logos/light.png" alt="Alba Investment Partners" class="footer-logo">
                 </div>
-
+                
                 <div class="footer-links-grid">
                     <div class="footer-column">
                         <h4>Firm</h4>
                         <a href="index.html">Home</a>
                         <a href="about.html">About Us</a>
-                        <a href="perspectives.html">Perspectives</a>
+                        <a href="insights.html">Insights</a>
                     </div>
                     <div class="footer-column">
                         <h4>Strategies</h4>
                         <a href="investment-approach.html">Investment Approach</a>
-            <a href="credit-opportunities.html">Credit Opportunities</a>
                         <a href="our-people.html">Our People</a>
                     </div>
                     <div class="footer-column">
@@ -1699,17 +1702,18 @@
                     </div>
                 </div>
             </div>
-
+            
             <div class="footer-bottom">
                 <p class="copyright">&copy; 2026 Alba Investment Partners. All rights reserved.</p>
                 <div class="legal-links">
                     <a href="privacy-policy.html">Privacy Policy</a>
                     <a href="terms-of-use.html">Terms of Use</a>
-                    
                 </div>
             </div>
         </div>
     </footer>
+
+
 
     <script>
         // Background canvas sequencers have been removed to reduce payload overhead on the About page
@@ -1748,6 +1752,11 @@
                     // Maps linearly from scale 1x to scale 1.06x for a stunningly subtle, premium parallax effect
                     const scaleFactor = 1 + (scrollProgress * 0.06);
                     sketchImg.style.transform = `scale(${scaleFactor})`;
+                    sketchImg.style.setProperty('--p', scrollProgress);
+                } else if (sRect.top > 0) {
+                    sketchImg.style.setProperty('--p', 0);
+                } else if (sRect.bottom < window.innerHeight) {
+                    sketchImg.style.setProperty('--p', 1);
                 }
             }
             

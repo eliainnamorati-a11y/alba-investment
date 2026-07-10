@@ -810,7 +810,7 @@
         }
 
         .footer-logo {
-            height: 40px;
+            height: 65px;
             margin-bottom: 25px;
             object-fit: contain;
             opacity: 0.9;
@@ -1295,6 +1295,143 @@
             color: var(--text-main);
             letter-spacing: -0.5px;
         }
+
+        .cs-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+        
+        .cs-btn:hover {
+            opacity: 0.7;
+        }
+
+        .cs-btn-arrow {
+            font-size: 0.6rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .cs-btn:hover .cs-btn-arrow {
+            transform: translateX(5px);
+        }
+
+        /* Contact Form Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: var(--bg-color);
+            padding: 40px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--text-main);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-form h3 {
+            margin: 0 0 10px 0;
+            color: var(--accent);
+            font-size: 2rem;
+            font-family: 'Aperto', serif;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            background: #ffffff;
+            color: var(--text-main);
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--gold);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form button {
+            background: var(--accent);
+            color: #ffffff;
+            border: none;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background: var(--gold);
+        }
     </style>
 
     <!-- Map Removed -->
@@ -1310,9 +1447,8 @@
         <div class="nav-links">
             <a href="about.html">About Us</a>
             <a href="investment-approach.html">Investment Approach</a>
-            <a href="credit-opportunities.html">Credit Opportunities</a>
             <a href="our-people.html">Our People</a>
-            <a href="perspectives.html">Perspectives</a>
+            <a href="insights.html">Insights</a>
             <a href="contact.html">Contact</a>
         </div>
     </nav>
@@ -1347,6 +1483,12 @@
                                 <div style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px;">Phone</div>
                                 <a href="tel:+41221234567" style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #ffffff; text-decoration: none; font-weight: 300; transition: color 0.3s ease;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='#ffffff'">+41 22 123 45 67</a>
                             </div>
+                        </div>
+                        <div style="margin-top: 30px;">
+                            <a href="#" id="open-contact-form" class="cs-btn" style="color: var(--gold);">
+                                <span>Connect via form</span>
+                                <span class="cs-btn-arrow" style="color: var(--gold);">&#9654;</span>
+                            </a>
                         </div>
                     </div>
 
@@ -1387,27 +1529,134 @@
             
         </div>
     </div>
+    <style>
+        /* Modern Green Footer */
+        .alba-footer {
+            background-color: #1a3622;
+            color: #ffffff;
+            padding: 80px 10% 40px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            position: relative;
+            z-index: 20;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            scroll-snap-align: end; 
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
 
-<footer class="alba-footer">
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            height: 65px;
+            margin-bottom: 25px;
+            object-fit: contain;
+            opacity: 0.9;
+        }
+
+        .footer-mission {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .footer-links-grid {
+            display: flex;
+            gap: 80px;
+        }
+
+        .footer-column h4 {
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: 400;
+            margin-bottom: 25px;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            font-family: 'Aperto', "Georgia", "Times New Roman", serif;
+        }
+
+        .footer-column a {
+            display: block;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            font-weight: 300;
+        }
+
+        .footer-column a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .legal-links a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .legal-links a:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 900px) {
+            .footer-top { flex-direction: column; gap: 40px; margin-bottom: 40px; }
+            .footer-links-grid { flex-direction: column; gap: 40px; }
+            .alba-footer { padding: 60px 8% 30px; }
+            .footer-bottom { flex-direction: column; gap: 20px; align-items: flex-start; }
+        }
+    </style>
+
+    <footer class="alba-footer">
         <div class="footer-container">
             <div class="footer-top">
                 <div class="footer-brand">
                     <img src="logos/light.png" alt="Alba Investment Partners" class="footer-logo">
-                    <p class="footer-mission">Alba Investment Partners SA is authorized and regulated by the FINMA as a Manager of collective assets.</p>
                 </div>
-
+                
                 <div class="footer-links-grid">
                     <div class="footer-column">
                         <h4>Firm</h4>
                         <a href="index.html">Home</a>
                         <a href="about.html">About Us</a>
-                        <a href="perspectives.html">Perspectives</a>
+                        <a href="insights.html">Insights</a>
                     </div>
                     <div class="footer-column">
                         <h4>Strategies</h4>
                         <a href="investment-approach.html">Investment Approach</a>
-            <a href="credit-opportunities.html">Credit Opportunities</a>
                         <a href="our-people.html">Our People</a>
                     </div>
                     <div class="footer-column">
@@ -1417,17 +1666,18 @@
                     </div>
                 </div>
             </div>
-
+            
             <div class="footer-bottom">
                 <p class="copyright">&copy; 2026 Alba Investment Partners. All rights reserved.</p>
                 <div class="legal-links">
                     <a href="privacy-policy.html">Privacy Policy</a>
                     <a href="terms-of-use.html">Terms of Use</a>
-                    
                 </div>
             </div>
         </div>
     </footer>
+
+
 
     <script>
         // Background canvas sequencers have been removed to reduce payload overhead on the About page
@@ -1634,7 +1884,7 @@
         const arcSpokes = document.querySelectorAll('.arc-spoke');
 
         const arcData = [
-            { title: "People", desc: "Our diverse backgrounds and skillsets bring unique perspectives, fostering innovative solutions and creative problem-solving while sharing a commitment to hard work and excellence." },
+            { title: "People", desc: "Our diverse backgrounds and skillsets bring unique insights, fostering innovative solutions and creative problem-solving while sharing a commitment to hard work and excellence." },
             { title: "Credentials", desc: "A proven history of consistently delivering superior risk-adjusted returns across fixed income and credit asset classes, demonstrating resilience through all economic environments." },
             { title: "Deep Research", desc: "Combining data, technology and deep-rooted experience in financial markets, we uncover opportunities that others often overlook." },
             { title: "Agility", desc: "With lean teams and niche, size-constrained strategies, we foster agility and adaptability — key attributes for delivering superior returns." }
@@ -1931,8 +2181,43 @@
                 hideBanner();
             });
         }
+        // Modal Logic
+        const openModalBtn = document.getElementById('open-contact-form');
+        const closeModalBtn = document.getElementById('close-modal');
+        const modalOverlay = document.getElementById('contact-modal');
+
+        if (openModalBtn && closeModalBtn && modalOverlay) {
+            openModalBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                modalOverlay.classList.add('active');
+            });
+
+            closeModalBtn.addEventListener('click', () => {
+                modalOverlay.classList.remove('active');
+            });
+
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    modalOverlay.classList.remove('active');
+                }
+            });
+        }
     });
     </script>
+
+    <!-- Contact Form Modal -->
+    <div class="modal-overlay" id="contact-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="close-modal">&times;</button>
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you for reaching out. We will get back to you shortly.'); document.getElementById('close-modal').click();">
+                <h3>Connect with Us</h3>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
 
 </body>
 

@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=block" rel="stylesheet">
-    <title>Alba Investment Partners - Credit Opportunities</title>
+    <title>Alba Investment Partners - About Us</title>
     <style>
         :root {
             --bg-color: #fcfcfc;
@@ -565,7 +565,6 @@
 
 
         /* Scroll Animations */
-        /* Scroll Animations */
         .zoom-in {
             opacity: 0;
             transform: scale(0.9);
@@ -644,8 +643,8 @@
         .arc-title {
             position: absolute;
             top: 15vh;
-            left: 5vw;
-            font-size: 3.5rem;
+            left: 10%;
+            font-size: 4rem;
             /* Matched to .normal-section h2 perfectly */
             font-weight: 300;
             color: #ffffff;
@@ -811,7 +810,7 @@
         }
 
         .footer-logo {
-            height: 40px;
+            height: 65px;
             margin-bottom: 25px;
             object-fit: contain;
             opacity: 0.9;
@@ -1087,7 +1086,7 @@
             .arc-sticky {
                 position: relative !important;
                 height: auto !important;
-                padding: 0 8%;
+                padding: 0 30px;
                 overflow: visible;
                 align-items: flex-start;
                 justify-content: flex-start;
@@ -1216,7 +1215,7 @@
             border-radius: 8px; /* Clean edge aesthetic mapping to the clean layout */
         }
 
-        /* Alba Timeline Section */
+        /* Alba Timeline Section - Light Mode Editorial UI */
         .timeline-container {
             padding-left: 60px;
             position: relative;
@@ -1228,16 +1227,17 @@
             top: 20px;
             bottom: 20px;
             width: 1px;
-            background-color: rgba(255,255,255, 0.1); 
+            /* Changed from white to black alpha for light-mode contrast */
+            background-color: rgba(0,0,0,0.15); 
             transform-origin: top;
         }
 
         .timeline-fill {
             position: absolute;
             top: 0; left: 0;
-            width: 100%; /* Perfectly matches the 1px track without blooming */
+            width: 100%; /* Matches track width */
             height: 0%;
-            background-color: var(--gold); /* Solid, clean flat color profile */
+            background-color: var(--gold); 
             border-radius: 4px;
             transform-origin: top;
             will-change: height;
@@ -1245,10 +1245,11 @@
 
         .timeline-node {
             position: relative;
-            margin-bottom: 25vh; /* Extremely tall immersive scroll gap */
+            margin-bottom: 25vh; 
             opacity: 0; 
-            transform: translateY(30px); /* Clean editorial upward lift */
+            transform: translateY(30px); 
             will-change: opacity, transform;
+            padding-right: 40px; /* Give the text room to breathe */
         }
 
         .timeline-node:last-child {
@@ -1257,25 +1258,42 @@
 
         .node-dot {
             position: absolute;
-            left: -44px; /* Perfectly centered on the 1px rail */
+            left: -44px; /* Aligned precisely on the 1px rail */
             top: 6px; 
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background-color: transparent;
-            border: 1px solid rgba(255,255,255,0.2);
+            background-color: #fcfcfc; /* Matches Alba light background */
+            /* High contrast border */
+            border: 2px solid rgba(0,0,0,0.2);
             z-index: 2;
+            transition: background-color 0.4s ease, border-color 0.4s ease;
+        }
+
+        .node-dot.active {
+            background-color: var(--gold);
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(207, 168, 95, 0.4);
         }
 
         .node-year {
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             text-transform: uppercase;
             letter-spacing: 3px; 
-            color: rgba(255,255,255,0.5); /* Muted initial state mapping to lighting tracker */
+            color: var(--gold); /* Gold stands out beautifully against white */
             margin-top: 0;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             font-family: 'Inter', sans-serif;
-            font-weight: 500;
+            font-weight: 700;
+        }
+        
+        .node-content .section-desc {
+            font-family: 'Aperto', serif;
+            font-size: 1.6rem;
+            font-weight: 300;
+            line-height: 1.4;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
         }
     </style>
 <style> .navbar { border-bottom: 1px solid rgba(255,255,255,0.2) !important; } </style>
@@ -1283,695 +1301,187 @@
 
 <body>
 
-    <nav class="navbar navbar-scrolled" id="navbar" data-light-page="true">
+        <nav class="navbar" id="navbar">
         <a href="index.html" class="logo" style="text-decoration: none;">
-            <img src="logos/dark.png" id="navbar-logo" alt="Alba Investment Partners">
+            <img src="logos/light.png" id="navbar-logo" alt="Alba Investment Partners">
         </a>
         <div class="nav-links">
             <a href="about.html">About Us</a>
             <a href="investment-approach.html">Investment Approach</a>
-            <a href="credit-opportunities.html" style="color: var(--gold)">Credit Opportunities</a>
             <a href="our-people.html">Our People</a>
-            <a href="perspectives.html">Perspectives</a>
+            <a href="insights.html">Insights</a>
             <a href="contact.html">Contact</a>
         </div>
     </nav>
 
-    <!-- Static Partial-Height Hero Section -->
-
-    <!-- Cape-Capital Layout Custom Hero Section -->
-    <style>
-        .cc-hero {
-            background-color: #f7f9f8; /* Soft Alba off-white */
-            padding: 220px 60px 80px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 100px;
-        }
-        .cc-hero-left { flex: 0 0 65%; }
-        .cc-hero-left h1 {
-            font-family: 'Aperto', serif;
-            font-size: clamp(2.8rem, 4.2vw, 4.5rem);
-            font-weight: 300;
-            color: var(--accent);
-            margin: 0;
-            line-height: 1.15;
-            letter-spacing: -1px;
-        }
-        .cc-hero-right {
-            flex: 0 0 25%;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            padding-top: 15px;
-        }
-        .cc-label {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.8rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--text-secondary);
-            font-weight: 600;
-            margin: 0;
-        }
-        .cc-desc {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: var(--text-secondary);
-            margin: 0;
-        }
-        .cc-hero-media {
-            width: 100%;
-            height: 75vh;
-            overflow: hidden;
-            background-color: var(--bg-color);
-            position: relative;
-        }
-        .cc-hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        .cc-hero-bg img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-        .nav-links a { color: var(--text-main) !important; }
-        .nav-links a::after { background-color: var(--accent) !important; }
-        
-
-        @media(max-width: 900px) {
-            .cc-hero { flex-direction: column; padding: 160px 30px 60px 30px; gap: 40px; }
-            .cc-hero-left h1 { font-size: 2.8rem; }
-            .cc-hero-right { padding-top: 0; }
-        }
-    </style>
-
-    <div class="cc-hero">
-        <div class="cc-hero-left">
-            <h1 class="fade-up delay-1">Capturing Opportunity Across Global Credit Markets</h1>
-        </div>
-        <div class="cc-hero-right">
-            <p class="cc-label fade-up delay-2">Alba Credit</p>
-            <p class="cc-desc fade-up delay-3">Alba Credit is a long/short credit strategy focused on liquid global opportunities, investing across the credit spectrum to capture mispricing, market dislocations, and catalyst-driven events.</p>
-        </div>
-    </div>
-    <div class="cc-hero-media delay-4">
-        <img src="map.jpg" alt="Credit Opportunities Map" class="zoom-in" style="object-position: center 25%;">
+    <!-- Insights Hero Section -->
+    <div id="hero-section" class="normal-section" style="min-height: 45vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 180px; padding-bottom: 60px; background-color: var(--accent); color: #fff;">
+        <h1 class="fade-up delay-1" style="font-family: 'Aperto', 'Georgia', serif; font-size: 4rem; color: #fff; margin-bottom: 1rem; text-align: center; letter-spacing: -1px;">Insights</h1>
+        <p class="fade-up delay-2" style="font-family: 'Inter', sans-serif; font-size: 1.15rem; color: rgba(255,255,255,0.8); text-align: center; max-width: 800px; line-height: 1.6;">
+            Subscribe to Alba Investment Partners' Newsletters
+        </p>
     </div>
 
-
-    <!-- Strategy Overview Section -->
-    <div class="normal-section fade-up delay-1" style="padding: 15vh 10%;">
-        <div style="display: flex; gap: 80px; flex-wrap: wrap;">
-            <div style="flex: 1 1 350px;">
-                <h2 style="font-size: 3.5rem; line-height: 1.1;">Redefining<br>Credit Investing</h2>
+    <!-- Subscriptions Section -->
+    <div class="normal-section" style="padding: 100px 5% 150px; max-width: 1200px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 60px;">
+            
+            <!-- Alba Credit Opportunities -->
+            <div style="background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; padding: 50px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 20px 40px rgba(0,0,0,0.03);">
+                <div>
+                    <div style="width: 100%; aspect-ratio: 16/9; background: url('https://images.unsplash.com/photo-1587124318790-ad54e29fec80?auto=format&fit=crop&w=1200') center/cover; border-radius: 4px; margin-bottom: 30px;"></div>
+                    <h3 style="font-family: 'Aperto', 'Georgia', serif; font-size: 2rem; color: var(--accent); margin-bottom: 20px; letter-spacing: -0.5px;">Alba Credit Opportunities</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 40px;">
+                        Our quarterly investor newsletter delivers a comprehensive update on our flagship fund's performance, including market analysis, strategic positioning, and key portfolio metrics.
+                    </p>
+                </div>
+                <a href="aco-newsletter-subscription.html" style="display: inline-block; padding: 18px 20px; background-color: var(--accent); color: #fff; text-decoration: none; text-align: center; border-radius: 0; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; white-space: nowrap; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Subscribe to ACO Newsletter</a>
             </div>
-            <div style="flex: 2 1 600px;">
-                <p class="section-desc fade-up" style="margin-bottom: 20px;">Traditional credit strategies are often constrained by benchmarks, duration targets, or long-only mandates, limiting their ability to respond to changing market conditions. ACO takes a fundamentally different approach.</p>
-                <p class="section-desc fade-up">Our strategy is unconstrained, opportunistic, and actively managed. We invest across global liquid credit markets, seeking value wherever it emerges—across issuers, sectors, capital structures, and geographies. By combining high-conviction security selection with dynamic portfolio construction, we aim to capture asymmetric opportunities while limiting downside risk.</p>
+
+            <!-- The Alba Angle -->
+            <div style="background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; padding: 50px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 20px 40px rgba(0,0,0,0.03);">
+                <div>
+                    <div style="width: 100%; aspect-ratio: 16/9; background: url('alba-angle-image.jpeg') center/cover; border-radius: 4px; margin-bottom: 30px;"></div>
+                    <h3 style="font-family: 'Aperto', 'Georgia', serif; font-size: 2rem; color: var(--accent); margin-bottom: 20px; letter-spacing: -0.5px;">The Alba Angle</h3>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 40px;">
+                        A curated perspective on global macroeconomic trends and their implications for fixed income markets. Stay ahead with deep, analytical commentary from our investment team.
+                    </p>
+                </div>
+                <a href="alba-angle-subscription.html" style="display: inline-block; padding: 18px 20px; background-color: var(--accent); color: #fff; text-decoration: none; text-align: center; border-radius: 0; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; white-space: nowrap; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Subscribe to the Alba Angle</a>
             </div>
+
         </div>
     </div>
-
-    <!-- Interactive Scroll-Based Approach Section -->
+    
+<!-- Modern Green Footer -->
     <style>
-        .scroll-approach-section {
-            background-color: var(--accent); /* Alba dark green */
+        /* Modern Green Footer */
+        .alba-footer {
+            background-color: #1a3622;
             color: #ffffff;
-            padding: 20vh 10%;
+            padding: 80px 10% 40px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             position: relative;
+            z-index: 20;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            scroll-snap-align: end; 
         }
-        .sa-container {
+        
+        .footer-container {
             max-width: 1400px;
             margin: 0 auto;
+        }
+
+        .footer-top {
             display: flex;
-            gap: 100px;
-            align-items: flex-start;
-        }
-        .sa-sticky {
-            flex: 1 1 400px;
-            position: sticky;
-            top: 25vh;
-        }
-        .sa-title {
-            font-size: 4.5rem;
-            font-weight: 300;
-            margin: 0 0 40px 0;
-            letter-spacing: -1px;
-            font-family: 'Aperto', serif;
-            line-height: 1.1;
-        }
-        .sa-list {
-            flex: 1.5 1 600px;
-            display: flex;
-            flex-direction: column;
-            gap: 20vh; /* Massive spacing to force scroll engagement */
-            padding-top: 15vh;
-            padding-bottom: 25vh;
-        }
-        .sa-item {
-            display: flex;
-            gap: 40px;
-            align-items: flex-start;
-        }
-        .sa-num {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--gold);
-            letter-spacing: 2px;
-            margin-top: 10px;
-            flex-shrink: 0;
-            width: 40px;
-        }
-        .sa-text-wrapper {
-            border-left: 1px solid rgba(255,255,255,0.15);
-            padding-left: 45px;
-            transition: border-color 0.4s ease;
-        }
-        .sa-item:hover .sa-text-wrapper {
-            border-left-color: var(--gold);
-        }
-        .sa-text {
-            margin: 0 0 25px 0;
-            font-family: 'Aperto', serif;
-            font-size: 3.2rem;
-            font-weight: 300;
-            line-height: 1.15;
-            letter-spacing: -0.5px;
-        }
-        .sa-desc {
-            font-family: 'Inter', sans-serif;
-            color: rgba(255,255,255,0.6);
-            font-size: 1.25rem;
-            line-height: 1.6;
-            margin: 0;
-            max-width: 550px;
-            font-weight: 300;
-        }
-        @media (max-width: 1024px) {
-            .sa-container { flex-direction: column; gap: 60px; }
-            .sa-sticky { position: static; }
-            .sa-list { gap: 100px; padding-top: 0; padding-bottom: 0; }
-            .sa-text { font-size: 2.2rem; }
-            .sa-text-wrapper { padding-left: 25px; }
-            .sa-item { gap: 20px; }
-        }
-    </style>
-
-    <div class="scroll-approach-section">
-        <div class="sa-container">
-            <div class="sa-sticky fade-up">
-                <p style="font-family: 'Inter', sans-serif; font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px;">Methodology</p>
-                <h2 class="sa-title">Differentiated<br>by Design</h2>
-                <div style="width: 60px; height: 1px; background: rgba(255,255,255,0.2);"></div>
-            </div>
-            
-            <div class="sa-list">
-                <div class="sa-item fade-up">
-                    <span class="sa-num">01</span>
-                    <div class="sa-text-wrapper">
-                        <h3 class="sa-text">Differentiated Investment Framework</h3>
-                        <p class="sa-desc">The strategy occupies a distinct position between traditional long-only credit and opportunistic hedge fund investing, combining deep fundamental underwriting with a broad and flexible investment toolkit.</p>
-                    </div>
-                </div>
-
-                <div class="sa-item fade-up">
-                    <span class="sa-num">02</span>
-                    <div class="sa-text-wrapper">
-                        <h3 class="sa-text">Independent Risk Factor Management</h3>
-                        <p class="sa-desc">Credit, interest rate, and foreign exchange exposures are assessed and managed as distinct sources of risk and return, enhancing portfolio resilience and improving risk-adjusted outcomes.</p>
-                    </div>
-                </div>
-
-                <div class="sa-item fade-up">
-                    <span class="sa-num">03</span>
-                    <div class="sa-text-wrapper">
-                        <h3 class="sa-text">Concentrated Yet Diversified Portfolio Construction</h3>
-                        <p class="sa-desc">Capital is allocated to a select number of high-conviction opportunities, enabling deep underwriting while maintaining disciplined diversification across issuers, sectors, and risk factors.</p>
-                    </div>
-                </div>
-
-                <div class="sa-item fade-up">
-                    <span class="sa-num">04</span>
-                    <div class="sa-text-wrapper">
-                        <h3 class="sa-text">Designed for Multiple Market Regimes</h3>
-                        <p class="sa-desc">The strategy is built to perform across varying market environments, seeking to generate differentiated returns with reduced reliance on broader market direction.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Portfolio Construction & Key Characteristics Sections -->
-    <div class="normal-section" style="padding: 15vh 10%;">
-        <div style="display: flex; gap: 80px; flex-wrap: wrap; margin-bottom: 8vh;">
-            <div style="flex: 1 1 350px;">
-                <h2 style="font-size: 3.5rem;">Portfolio<br>Construction</h2>
-            </div>
-            <div style="flex: 2 1 600px;">
-                <p class="section-desc" style="opacity:1; transform:none;">The portfolio is built around a concentrated set of high-conviction positions, typically across 25–35 capital structures. The strategy focuses on diversification across issuers, sectors, and risk factors while maintaining flexibility to adjust exposure through derivatives.</p>
-            </div>
-        </div>
-        
-        <div class="bond-components-wrap fade-up" style="max-width: 1000px; margin: 60px 0 20px 0; border-top: 1px solid #d5c4a1; padding-top: 40px;">
-            <h3 style="font-family: 'Inter', sans-serif; font-size: 1.3rem; font-weight: 500; color: #111; margin-bottom: 40px; display: flex; align-items: center; gap: 12px;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                    <line x1="3" y1="9" x2="21" y2="9"></line>
-                    <line x1="9" y1="21" x2="9" y2="9"></line>
-                </svg>
-                Components of a Bond
-            </h3>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px;">
-                
-                <!-- Risk-free Rate -->
-                <div style="border-left: 2px solid var(--accent); padding-left: 20px;">
-                    <h4 style="font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 15px;">Risk-free Rate</h4>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 1.05rem; line-height: 1.6; color: #444; margin: 0;">Managed independently using top-down portfolio approach.</p>
-                </div>
-
-                <!-- Credit Spread -->
-                <div style="border-left: 2px solid var(--gold); padding-left: 20px;">
-                    <h4 style="font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #b5904a; margin-bottom: 15px;">Credit Spread</h4>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 1.05rem; line-height: 1.6; color: #444; margin: 0;">Optimized for best return over risk, roll-down and spread tightening potential.</p>
-                </div>
-
-                <!-- Optionality -->
-                <div style="border-left: 2px solid #111; padding-left: 20px;">
-                    <h4 style="font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #111; margin-bottom: 15px;">Optionality</h4>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 1.05rem; line-height: 1.6; color: #444; margin: 0;">Maximized to create asymmetric payout profiles.</p>
-                </div>
-
-                <!-- FX Component -->
-                <div style="border-left: 2px solid #666; padding-left: 20px;">
-                    <h4 style="font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #666; margin-bottom: 15px;">FX Component</h4>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 1.05rem; line-height: 1.6; color: #444; margin: 0;">Managed independently to exploit arbitrage opportunities.</p>
-                </div>
-
-            </div>
-        </div>
-
-    </div> <!-- Close previous normal-section early to allow full viewport dark mode -->
-
-    <!-- Compass Key Characteristics Section -->
-    <style>
-        .compass-section {
-            position: relative;
-            background-color: var(--accent); /* Switched to Alba signature deep green */
-            color: #ffffff;
-            z-index: 10;
-            width: 100%;
-        }
-        .compass-sticky {
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            display: flex;
-            align-items: center;
             justify-content: space-between;
-            padding: 0 10%;
-            overflow: hidden;
+            gap: 60px;
+            margin-bottom: 80px;
         }
-        .compass-side {
-            width: 35%;
-            z-index: 5;
+
+        .footer-brand {
+            max-width: 300px;
         }
-        .compass-side h2 {
-            font-size: 3.5rem;
+
+        .footer-logo {
+            height: 65px;
             margin-bottom: 25px;
-            line-height: 1.1;
-            color: #ffffff;
-            font-family: 'Aperto', "Georgia", serif;
-            font-weight: 300;
+            object-fit: contain;
+            opacity: 0.9;
         }
-        .compass-side p {
-            font-size: 1.15rem;
+
+        .footer-mission {
             color: rgba(255, 255, 255, 0.6);
-            line-height: 1.6;
-            font-family: -apple-system, sans-serif;
-            max-width: 90%;
-        }
-        .compass-container {
-            position: relative;
-            width: 70vh;
-            height: 70vh;
-            max-width: 750px;
-            max-height: 750px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex: 1; /* fills remaining space smoothly */
-        }
-        .compass-svg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            height: 100%;
-            transform: translate(-50%, -50%) rotate(-90deg); /* Start 12 o'clock */
-        }
-        .tick-line {
-            stroke: rgba(255,255,255,0.15);
-            stroke-linecap: round;
-            transition: stroke 0.3s;
-        }
-        .ring-bg {
-            fill: none;
-            stroke: rgba(255,255,255,0.08); 
-            stroke-width: 1;
-        }
-        .ring-progress {
-            fill: none;
-            stroke: var(--gold);
-            stroke-width: 2; 
-            stroke-dasharray: 1068; /* will be dynamically updated by JS if needed, but 2*PI*170 is safe */
-            stroke-dashoffset: 1068;
-            stroke-linecap: round;
-            will-change: stroke-dashoffset;
-        }
-        .compass-content {
-            text-align: center;
-            width: 60%;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .compass-step {
-            background: #ffffff;
-            color: #000000;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 30px;
-            font-family: 'Inter', -apple-system, sans-serif;
-            letter-spacing: 2px;
-        }
-        .compass-title {
-            font-size: 2.8rem;
-            font-weight: 400;
-            margin: 0 0 20px 0;
-            font-family: 'Aperto', "Georgia", serif;
-            color: #ffffff;
-            opacity: 1;
-            transition: opacity 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            letter-spacing: -1px;
-        }
-        .compass-desc {
-            font-size: 1.15rem;
-            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.05rem;
             line-height: 1.6;
             margin: 0;
-            font-family: 'Inter', -apple-system, sans-serif;
-            opacity: 1;
-            transition: opacity 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            max-width: 80%;
+            font-weight: 300;
         }
 
-        /* Mobile overrides logic */
-        @media (max-width: 900px) {
-            .compass-sticky {
-                flex-direction: column;
-                justify-content: center;
-                padding: 10% 5%;
-            }
-            .compass-side {
-                width: 100%;
-                text-align: center;
-                margin-bottom: 40px;
-            }
-            .compass-side h2 { font-size: 2.5rem; }
-            .compass-side p { display: none; } /* Hide heavy text on mobile overlap */
-            .compass-container {
-                width: 100vw;
-                height: 100vw;
-            }
-            .compass-content { width: 80%; }
-            .compass-title { font-size: 2rem; }
-            .compass-desc { font-size: 1rem; }
-        }
-    </style>
-
-    <div class="compass-section" id="compass-section">
-        <div class="compass-sticky">
-            <div class="compass-side">
-                <h2>Key<br>Characteristics</h2>
-                <p>Alba Credit Opportunities relies on a concentrated setup to deliver asymmetric risk-return metrics across the capital structure.</p>
-            </div>
-            
-            <div class="compass-container" id="compass-wrapper">
-                <svg class="compass-svg" viewBox="0 0 400 400" id="compass-svg-graphic"></svg>
-                
-                <div class="compass-content">
-                    <div class="compass-step" id="compass-step">1 / 7</div>
-                    <h3 class="compass-title" id="compass-title">Strategy</h3>
-                    <p class="compass-desc" id="compass-desc">Long / Short Credit Strategy</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 7 items = 700vh height to trigger massive scrub distance mapping seamlessly -->
-        <div style="height: 700vh;"></div>
-    </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const compassSection = document.getElementById("compass-section");
-            const svgGraphic = document.getElementById("compass-svg-graphic");
-            const titleEl = document.getElementById("compass-title");
-            const descEl = document.getElementById("compass-desc");
-            const stepEl = document.getElementById("compass-step");
-            
-            if(!compassSection || !svgGraphic) return;
-
-            const characteristics = [
-                { label: "Strategy", value: "Long / Short Credit Strategy" },
-                { label: "Focus", value: "Global Liquid Credit" },
-                { label: "Bias", value: "European Bias" },
-                { label: "Leverage", value: "Moderate Leverage" },
-                { label: "Management", value: "Active Risk Management" },
-                { label: "Returns", value: "Target Returns: Low Teens" },
-                { label: "Volatility", value: "Controlled Volatility" }
-            ];
-            
-            const cx = 200, cy = 200, rTicks = 160, rProgress = 180;
-            const totalTicks = 84; 
-            
-            let svgHTML = `<circle cx="${cx}" cy="${cy}" r="${rProgress}" class="ring-bg"></circle>`;
-            
-            // Build dial layout
-            for(let i=0; i<totalTicks; i++) {
-                const angle = (i / totalTicks) * Math.PI * 2;
-                const isMajor = (i % 12 === 0);
-                const innerR = isMajor ? rTicks - 16 : rTicks - 6;
-                const x1 = cx + innerR * Math.cos(angle);
-                const y1 = cy + innerR * Math.sin(angle);
-                const x2 = cx + rTicks * Math.cos(angle);
-                const y2 = cy + rTicks * Math.sin(angle);
-                const strokeW = isMajor ? 2 : 1;
-                svgHTML += `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="tick-line" id="tick-${i}" stroke-width="${strokeW}"></line>`;
-            }
-            
-            const circumference = 2 * Math.PI * rProgress;
-            svgHTML += `<circle cx="${cx}" cy="${cy}" r="${rProgress}" class="ring-progress" id="compass-progress" style="stroke-dasharray: ${circumference}; stroke-dashoffset: ${circumference};"></circle>`; 
-            
-            svgGraphic.innerHTML = svgHTML;
-            const progressRing = document.getElementById("compass-progress");
-            
-            let lastIndex = -1;
-            
-            window.addEventListener('scroll', () => {
-                const rect = compassSection.getBoundingClientRect();
-                const scrollDistance = compassSection.offsetHeight - window.innerHeight;
-                
-                let progress = -rect.top / Math.max(1, scrollDistance);
-                progress = Math.max(0, Math.min(1, progress));
-                if(progress < 0) progress = 0;
-                
-                // Advance the progress ring beautifully mapping directly to scroll mechanics
-                const offset = circumference - (progress * circumference);
-                if(progressRing) progressRing.style.strokeDashoffset = offset;
-                
-                // Color the ticks passed
-                const currentTick = Math.floor(progress * totalTicks);
-                for(let i=0; i<totalTicks; i++) {
-                    const tk = document.getElementById(`tick-${i}`);
-                    if(tk) {
-                        if (i <= currentTick && progress > 0.01) {
-                            tk.style.stroke = "var(--gold)";
-                        } else {
-                            tk.style.stroke = "rgba(255,255,255,0.15)";
-                        }
-                    }
-                }
-                
-                // Advance the payload content (7 items)
-                let activeIndex = Math.floor(progress * characteristics.length);
-                if(activeIndex >= characteristics.length) activeIndex = characteristics.length - 1;
-                if(activeIndex < 0) activeIndex = 0;
-                
-                if(activeIndex !== lastIndex) {
-                    titleEl.style.opacity = 0;
-                    descEl.style.opacity = 0;
-                    
-                    setTimeout(() => {
-                        titleEl.innerText = characteristics[activeIndex].label;
-                        descEl.innerText = characteristics[activeIndex].value;
-                        stepEl.innerText = `${activeIndex + 1} / ${characteristics.length}`;
-                        titleEl.style.opacity = 1;
-                        descEl.style.opacity = 1;
-                    }, 150); // Fast crisp switch mimicking native crossfade
-                    lastIndex = activeIndex;
-                }
-            });
-        });
-    </script>
-
-    <!-- Stay Informed Section -->
-    <style>
-        .newsletter-section {
-            background-color: #f7f9f8; /* Alba off-white background */
-            padding: 15vh 8%;
+        .footer-links-grid {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            border-top: 1px solid rgba(0,0,0,0.05);
-        }
-        
-        .newsletter-container {
-            background: #ffffff;
-            border: 1px solid rgba(0,0,0,0.05);
-            border-radius: 8px;
-            padding: 8vh 40px;
-            max-width: 800px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
-            margin: 0 auto;
+            gap: 80px;
         }
 
-        .newsletter-container h2 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            color: var(--accent);
-            font-family: 'Aperto', "Georgia", serif;
-        }
-
-        .newsletter-container p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.5;
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 15px;
-            max-width: 550px;
-            margin: 0 auto;
-        }
-
-        .newsletter-input {
-            flex-grow: 1;
-            padding: 18px 25px;
-            border: 1px solid rgba(0,0,0,0.1);
-            border-radius: 4px;
-            font-size: 1rem;
-            background: #fdfdfd;
-            outline: none;
-            transition: border-color 0.3s, box-shadow 0.3s;
-            color: var(--accent);
-            font-family: inherit;
-        }
-
-        .newsletter-input:focus {
-            border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(207, 168, 95, 0.1);
-        }
-
-        .newsletter-btn-submit {
-            background-color: var(--accent);
+        .footer-column h4 {
             color: #ffffff;
-            border: none;
-            padding: 0 35px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 1.15rem;
+            font-weight: 400;
+            margin-bottom: 25px;
+            text-transform: capitalize;
             letter-spacing: 1px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-            white-space: nowrap;
+            font-family: 'Aperto', "Georgia", "Times New Roman", serif;
         }
 
-        .newsletter-btn-submit:hover {
-            background-color: var(--gold);
-            transform: translateY(-2px);
+        .footer-column a {
+            display: block;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            font-weight: 300;
         }
 
-        .newsletter-disclaimer {
-            font-size: 0.85rem !important;
-            margin-bottom: 0 !important;
-            margin-top: 20px !important;
-            opacity: 0.6;
+        .footer-column a:hover {
+            color: var(--gold);
         }
 
-        @media (max-width: 600px) {
-            .newsletter-form { flex-direction: column; }
-            .newsletter-btn-submit { padding: 18px; }
-            .newsletter-container h2 { font-size: 2.2rem; }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .legal-links a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .legal-links a:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 900px) {
+            .footer-top { flex-direction: column; gap: 40px; margin-bottom: 40px; }
+            .footer-links-grid { flex-direction: column; gap: 40px; }
+            .alba-footer { padding: 60px 8% 30px; }
+            .footer-bottom { flex-direction: column; gap: 20px; align-items: flex-start; }
         }
     </style>
 
-    <section class="newsletter-section">
-        <div class="newsletter-container fade-up delay-1">
-            <h2>Stay Informed</h2>
-            <p>Subscribe to receive Alba's latest macroeconomic perspectives and credit market updates securely to your inbox.</p>
-            
-            <form action="https://formspree.io/f/YOUR_ENDPOINT_KEY" method="POST" class="newsletter-form">
-                <input type="email" name="email" placeholder="Enter your email address" required class="newsletter-input">
-                <button type="submit" class="newsletter-btn-submit">Subscribe</button>
-            </form>
-            
-            <p class="newsletter-disclaimer">We respect your privacy. No spam, ever.</p>
-        </div>
-    </section>
-
-    <!-- Modern Green Footer -->
     <footer class="alba-footer">
         <div class="footer-container">
             <div class="footer-top">
                 <div class="footer-brand">
-                    <img src="logos/dark.png" alt="Alba Investment Partners" class="footer-logo">
-                    <p class="footer-mission">Alba Investment Partners SA is authorized and regulated by the FINMA as a Manager of collective assets.</p>
+                    <img src="logos/light.png" alt="Alba Investment Partners" class="footer-logo">
                 </div>
-
+                
                 <div class="footer-links-grid">
                     <div class="footer-column">
                         <h4>Firm</h4>
                         <a href="index.html">Home</a>
                         <a href="about.html">About Us</a>
-                        <a href="perspectives.html">Perspectives</a>
+                        <a href="insights.html">Insights</a>
                     </div>
                     <div class="footer-column">
                         <h4>Strategies</h4>
                         <a href="investment-approach.html">Investment Approach</a>
-            <a href="credit-opportunities.html">Credit Opportunities</a>
                         <a href="our-people.html">Our People</a>
                     </div>
                     <div class="footer-column">
@@ -1981,17 +1491,18 @@
                     </div>
                 </div>
             </div>
-
+            
             <div class="footer-bottom">
                 <p class="copyright">&copy; 2026 Alba Investment Partners. All rights reserved.</p>
                 <div class="legal-links">
                     <a href="privacy-policy.html">Privacy Policy</a>
                     <a href="terms-of-use.html">Terms of Use</a>
-                    
                 </div>
             </div>
         </div>
     </footer>
+
+
 
     <script>
         // Background canvas sequencers have been removed to reduce payload overhead on the About page
@@ -2013,6 +1524,85 @@
         }
 
         window.addEventListener('scroll', () => {
+            // Team Sketch Zoom Frame Loop
+            const sketchWrapper = document.getElementById('sketch-zoom-section');
+            const sketchImg = document.getElementById('sketch-bg-img');
+            
+            if (sketchWrapper && sketchImg) {
+                const sRect = sketchWrapper.getBoundingClientRect();
+                
+                if (sRect.top <= window.innerHeight && sRect.bottom >= 0) {
+                    // Normalize the active vertical progress purely linearly
+                    // It starts expanding slightly before it hits top: 0, tracking the entire 250vh scroll block natively
+                    const maxScroll = sRect.height - window.innerHeight;
+                    let scrollProgress = -sRect.top / Math.max(1, maxScroll);
+                    scrollProgress = Math.max(0, Math.min(1, scrollProgress));
+                    
+                    // Maps linearly from scale 1x to scale 1.06x for a stunningly subtle, premium parallax effect
+                    const scaleFactor = 1 + (scrollProgress * 0.06);
+                    sketchImg.style.transform = `scale(${scaleFactor})`;
+                }
+            }
+            
+            // Dynamic Timeline Logic
+            const timelineSection = document.getElementById('story-timeline-section');
+            const timelineTrack = document.getElementById('timeline-track');
+            const timelineFill = document.getElementById('timeline-fill');
+            const nodes = [document.getElementById('node-1'), document.getElementById('node-2'), document.getElementById('node-3')];
+            
+            if (timelineSection && timelineTrack && timelineFill && nodes[0]) {
+                const tlRect = timelineTrack.getBoundingClientRect();
+                const viewportCenter = window.innerHeight * 0.55; 
+                
+                if (tlRect.top <= viewportCenter) {
+                    const trackHeight = tlRect.height;
+                    const fillAmount = Math.max(0, Math.min(trackHeight, viewportCenter - tlRect.top));
+                    timelineFill.style.height = `${fillAmount}px`;
+                    
+                    nodes.forEach((node) => {
+                        const nodeTopRelTrack = node.getBoundingClientRect().top - tlRect.top; 
+                        const dist = fillAmount - nodeTopRelTrack;
+                        
+                        // Physics map: Native interpolation loading proportional exactly to scroll wheel! 
+                        if (dist > 0) { 
+                            const nodeProg = Math.min(1, dist / 150);
+                            node.style.opacity = nodeProg;
+                            node.style.transform = `translateY(${30 - (30 * nodeProg)}px)`;
+                            
+                            const dot = node.querySelector('.node-dot');
+                            dot.style.borderColor = `rgba(207, 168, 95, ${0.2 + (0.8 * nodeProg)})`;
+                            dot.style.backgroundColor = nodeProg > 0.8 ? `var(--gold)` : `transparent`;
+                            
+                            const year = node.querySelector('.node-year');
+                            if(year) year.style.color = `rgba(207, 168, 95, ${0.5 + (0.5 * nodeProg)})`;
+                        } else {
+                            node.style.opacity = 0;
+                            node.style.transform = `translateY(30px)`;
+                            
+                            const dot = node.querySelector('.node-dot');
+                            dot.style.borderColor = `rgba(255,255,255,0.2)`;
+                            dot.style.backgroundColor = `transparent`;
+                            
+                            const year = node.querySelector('.node-year');
+                            if(year) year.style.color = `rgba(255,255,255,0.5)`;
+                        }
+                    });
+                } else {
+                    timelineFill.style.height = '0px';
+                    nodes.forEach(node => {
+                        node.style.opacity = 0;
+                        node.style.transform = `translateY(30px)`;
+                        const dot = node.querySelector('.node-dot');
+                        if (dot) {
+                            dot.style.borderColor = `rgba(255,255,255,0.2)`;
+                            dot.style.backgroundColor = `transparent`;
+                        }
+                        const year = node.querySelector('.node-year');
+                        if(year) year.style.color = `rgba(255,255,255,0.5)`;
+                    });
+                }
+            }
+            
             
             const heroRect = heroSection.getBoundingClientRect();
             const scrollDistance = heroSection.offsetHeight - window.innerHeight;
@@ -2119,7 +1709,7 @@
         const arcSpokes = document.querySelectorAll('.arc-spoke');
 
         const arcData = [
-            { title: "People", desc: "Our diverse backgrounds and skillsets bring unique perspectives, fostering innovative solutions and creative problem-solving while sharing a commitment to hard work and excellence." },
+            { title: "People", desc: "Our diverse backgrounds and skillsets bring unique insights, fostering innovative solutions and creative problem-solving while sharing a commitment to hard work and excellence." },
             { title: "Credentials", desc: "A proven history of consistently delivering superior risk-adjusted returns across fixed income and credit asset classes, demonstrating resilience through all economic environments." },
             { title: "Deep Research", desc: "Combining data, technology and deep-rooted experience in financial markets, we uncover opportunities that others often overlook." },
             { title: "Agility", desc: "With lean teams and niche, size-constrained strategies, we foster agility and adaptability — key attributes for delivering superior returns." }
@@ -2260,8 +1850,7 @@
                 let threshold = 80;
                 const hero = document.getElementById('hero-section');
                 if (hero) {
-                    threshold = hero.scrollHeight - window.innerHeight - 50;
-                    if (threshold < 80) threshold = 80;
+                    threshold = hero.offsetHeight - 80; // switch navbar when scrolling past hero
                 }
 
                 if (window.scrollY >= threshold) {

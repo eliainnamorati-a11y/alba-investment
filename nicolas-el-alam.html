@@ -1,27 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=block" rel="stylesheet">
-    <title>Alba Investment Partners - About Us</title>
+    <link rel="preload" href="compressed.mp4" as="video" type="video/mp4">
+    <title>Alba Investment Partners - Nicolas El Alam</title>
     <style>
         :root {
             --bg-color: #fcfcfc;
             --text-main: #111111;
             --text-secondary: #555555;
-            --accent: #1e362d;
-            /* Alba deep green */
-            --gold: #cfa85f;
-            /* Alba gold */
+            --accent: #1e362d; /* Alba deep green */
+            --gold: #cfa85f; /* Alba gold */
         }
 
-        *,
-        *::before,
-        *::after {
+        *, *::before, *::after {
             box-sizing: border-box;
         }
 
@@ -36,7 +32,7 @@
         html {
             scroll-snap-type: y proximity;
         }
-
+        
         body {
             margin: 0;
             background-color: var(--bg-color);
@@ -44,14 +40,9 @@
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        .serif {
+        h1, h2, h3, h4, .serif {
             font-family: 'Aperto', "Georgia", "Times New Roman", serif;
             font-weight: 400;
         }
@@ -70,6 +61,7 @@
             align-items: center;
             z-index: 1000;
             transition: all 0.4s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .navbar.navbar-scrolled {
@@ -175,28 +167,21 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.6;
-            /* Slight darkening overlay to make text pop */
+            opacity: 0.6; /* Slight darkening overlay to make text pop */
             pointer-events: none;
         }
 
         .hero-content {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-            pointer-events: none;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: 2; pointer-events: none;
             display: block;
         }
 
         .initial-content {
             position: absolute;
-            bottom: 12vh;
-            /* Bottom load constraint */
-            left: 60px;
-            /* Exactly matches navbar padding */
+            bottom: 12vh; /* Bottom load constraint */
+            left: 60px; /* Exactly matches navbar padding */
             width: calc(100% - 120px);
             transform-origin: top left;
             will-change: transform;
@@ -207,7 +192,6 @@
             0% {
                 opacity: 0;
             }
-
             100% {
                 opacity: 1;
             }
@@ -228,10 +212,8 @@
 
         .secondary-content {
             position: absolute;
-            bottom: 12vh;
-            /* Same geometric baseline as title */
-            left: 60px;
-            /* Exactly matches navbar padding */
+            bottom: 12vh; /* Same geometric baseline as title */
+            left: 60px; /* Exactly matches navbar padding */
             width: calc(100% - 120px);
             pointer-events: auto;
         }
@@ -259,7 +241,7 @@
         .founder-img-placeholder {
             width: 100%;
             height: 200px;
-            background: url('FINNEWS (1).jpg') center/cover;
+            background: url('team-sketch.jpg') center/cover;
             border-radius: 4px;
         }
 
@@ -294,8 +276,7 @@
             border-radius: 50%;
             background-color: var(--accent);
             border: 4px solid transparent;
-            box-shadow: 0 0 0 0.5px var(--accent);
-            /* Hairline sub-pixel ring */
+            box-shadow: 0 0 0 0.5px var(--accent); /* Hairline sub-pixel ring */
             background-clip: padding-box;
             box-sizing: content-box;
         }
@@ -315,7 +296,7 @@
         .stat-details .stat-label {
             font-size: 0.75rem;
             letter-spacing: 1px;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255,255,255,0.7);
             font-family: sans-serif;
             text-transform: uppercase;
         }
@@ -326,8 +307,7 @@
             bottom: 30px;
             left: 0;
             width: 100%;
-            padding: 0 60px;
-            /* Perfectly aligned with navigation bar / hero text */
+            padding: 0 60px; /* Perfectly aligned with navigation bar / hero text */
             box-sizing: border-box;
             z-index: 3;
             display: flex;
@@ -337,8 +317,7 @@
 
         .progress-track {
             width: 100%;
-            height: 1px;
-            /* Thinner */
+            height: 1px; /* Thinner */
             background-color: rgba(255, 255, 255, 0.2);
             position: relative;
         }
@@ -349,18 +328,16 @@
             left: 0;
             height: 100%;
             width: 0%;
-            background-color: #ffffff;
-            /* White line */
+            background-color: #ffffff; /* White line */
         }
 
         /* Scrollytelling Section */
         .scrollytelling-wrapper {
             display: flex;
             position: relative;
-            background-color: #ffffff;
-            /* Perfectly matched to the 'new bridge' pure white sequence */
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            background-color: #ffffff; /* Perfectly matched to the 'new bridge' pure white sequence */
+            border-top: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
             transition: background-color 0.5s ease;
         }
 
@@ -420,7 +397,7 @@
         }
 
         #bridge-canvas-2 {
-            transform: scale(1.4);
+            transform: scale(1.05); /* Reduced scale to make lighthouse smaller natively */
             transform-origin: center center;
         }
 
@@ -473,13 +450,13 @@
             gap: 40px;
             margin-top: 40px;
         }
-
+        
         .stat-item h4 {
             font-size: 4rem;
             margin: 0;
             color: var(--accent);
         }
-
+        
         .stat-item p {
             font-family: sans-serif;
             text-transform: uppercase;
@@ -487,6 +464,32 @@
             font-size: 0.8rem;
             color: var(--text-secondary);
             margin-top: 5px;
+        }
+
+        .pill-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 40px;
+        }
+
+        .metric-pill {
+            padding: 10px 22px;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 40px;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            color: var(--accent);
+            background: rgba(0, 0, 0, 0.02);
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+        
+        .metric-pill:hover {
+            border-color: var(--gold);
+            background: rgba(207, 168, 95, 0.1); /* Alba gold tint */
+            color: #000;
         }
 
         /* Footer space */
@@ -502,13 +505,12 @@
 
         /* Scrollytelling Mission */
         .mission-scroll-section {
-            height: 180vh;
-            /* Dramatically faster lighting curve */
+            height: 180vh; /* Dramatically faster lighting curve */
             position: relative;
             background-color: var(--bg-color);
             z-index: 5;
         }
-
+        
         .mission-sticky {
             position: sticky;
             top: 0;
@@ -522,12 +524,11 @@
             padding: 0 10%;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            gap: 100px; /* Expanded heavily for premium breathing room */
+            align-items: center; /* Vertically center the title to exactly match the paragraph weight */
         }
 
         .mission-left {
-            flex: 0 0 30%; /* Shrunk title column footprint marginally giving text more volume */
+            flex: 0 0 35%;
         }
 
         .mission-left h2 {
@@ -546,18 +547,15 @@
             font-size: 2.2rem;
             line-height: 1.5;
             margin: 0;
-            color: rgba(17, 17, 17, 0.15);
-            /* light grey base */
+            color: rgba(17, 17, 17, 0.15); /* light grey base */
             font-weight: 400;
             will-change: transform;
-            transform: translateY(100px);
-            /* Initial position */
+            transform: translateY(100px); /* Initial position */
         }
 
         .mission-word {
             transition: color 0.1s;
         }
-
         .mission-word.active {
             color: var(--text-main);
         }
@@ -565,70 +563,39 @@
 
 
         /* Scroll Animations */
-        .zoom-in {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-            will-change: opacity, transform;
-        }
-
-        .zoom-in.in-view {
-            opacity: 1;
-            transform: scale(1);
-        }
-
         .fade-up {
             opacity: 0;
             transform: translateY(40px);
             transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
             will-change: opacity, transform;
         }
-
         .fade-up.in-view {
             opacity: 1;
             transform: translateY(0);
         }
-
-        .delay-1 {
-            transition-delay: 0.1s;
-        }
-        .delay-2 {
-            transition-delay: 0.2s;
-        }
-        .delay-3 {
-            transition-delay: 0.3s;
-        }
-        .delay-4 {
-            transition-delay: 0.4s;
-        }
+        .delay-1 { transition-delay: 0.1s; }
 
         /* Built on Principles - Arc Section */
         .arc-section {
             height: 400vh;
-            background-color: #1a3622;
-            /* Custom dark green background */
+            background-color: #1a3622; /* Custom dark green background */
             color: #ffffff;
             position: relative;
             z-index: 10;
         }
-
+        
         .arc-snap-markers {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            display: flex; flex-direction: column;
             pointer-events: none;
         }
-
         .arc-snap-target {
-            flex: 1;
-            /* Divides the section into exactly 4 blocks of 100vh each */
+            flex: 1; /* Divides the section into exactly 4 blocks of 100vh each */
             scroll-snap-align: start;
         }
-
+        
         .arc-sticky {
             position: sticky;
             top: 0;
@@ -643,9 +610,8 @@
         .arc-title {
             position: absolute;
             top: 15vh;
-            left: 10%;
-            font-size: 4rem;
-            /* Matched to .normal-section h2 perfectly */
+            left: 5vw;
+            font-size: 3.5rem; /* Matched to .normal-section h2 perfectly */
             font-weight: 300;
             color: #ffffff;
             margin: 0;
@@ -655,14 +621,11 @@
             letter-spacing: -1px;
         }
 
-        .arc-mobile-list {
-            display: none;
-        }
+        .arc-mobile-list { display: none; }
 
         .arc-content-wrapper {
             position: absolute;
-            top: 60vh;
-            /* Lowered significantly */
+            top: 60vh; /* Lowered significantly */
             left: 50%;
             text-align: center;
             z-index: 20;
@@ -694,11 +657,10 @@
 
         .arc-circle-container {
             position: absolute;
-            top: 45vh;
-            /* Lowered the wheel significantly */
+            top: 45vh; /* Lowered the wheel significantly */
             left: 50%;
-            width: 140vw;
-            height: 140vw;
+            width: 140vw; 
+            height: 140vw; 
             pointer-events: none;
             opacity: 0;
             transform: translateX(-50%) scale(0.5);
@@ -712,52 +674,44 @@
             border: 1px solid rgba(255, 255, 255, 0.12);
             position: relative;
             will-change: transform;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-            /* Makes the snapping wheel spin buttery smooth */
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Makes the snapping wheel spin buttery smooth */
         }
 
         .arc-spoke {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             transform-origin: center center;
             will-change: transform;
         }
 
         .arc-node {
             position: absolute;
-            top: -22px;
-            /* Pull it exactly to center on the border line */
+            top: -22px; /* Pull it exactly to center on the border line */
             left: 50%;
             width: 44px;
             height: 44px;
             margin-left: -22px;
             border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255,255,255,0.2);
             background: #050505;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255,255,255,0.8);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 14px;
             transition: color 0.3s, border-color 0.3s;
         }
-
+        
         .arc-node-inner {
             will-change: transform;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-            /* Match wheel spin perfectly to stay upright */
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Match wheel spin perfectly to stay upright */
         }
 
         .arc-apex-indicator {
             position: absolute;
-            top: 36px;
-            /* Exactly dropping under the active node natively */
+            top: 36px; /* Exactly dropping under the active node natively */
             left: 0;
-            width: 100%;
-            /* Force absolutely perfect centering to overcome subpixel drift */
+            width: 100%; /* Force absolutely perfect centering to overcome subpixel drift */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -789,10 +743,10 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             position: relative;
             z-index: 20;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            scroll-snap-align: end;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            scroll-snap-align: end; 
         }
-
+        
         .footer-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -810,7 +764,7 @@
         }
 
         .footer-logo {
-            height: 40px;
+            height: 65px;
             margin-bottom: 25px;
             object-fit: contain;
             opacity: 0.9;
@@ -831,8 +785,7 @@
 
         .footer-column h4 {
             color: #ffffff;
-            font-size: 1.15rem;
-            /* Scaled slightly for Aperto rendering */
+            font-size: 1.15rem; /* Scaled slightly for Aperto rendering */
             font-weight: 400;
             margin-bottom: 25px;
             text-transform: capitalize;
@@ -886,494 +839,370 @@
 
         /* --- MASTER MOBILE RESPONSIVE BLOCK --- */
         @media (max-width: 900px) {
-
             /* General & Navbar */
-            .nav-links {
-                display: none;
-            }
-
+            .nav-links { display: none; }
         .navbar { padding: 15px 20px; height: 70px; }
-
             .navbar.navbar-scrolled {
             background: #ffffff;
             border-bottom: 1px solid rgba(0,0,0,0.1);
         }
-
-            .logo {
-                height: 40px;
-            }
+            .logo { height: 40px; }
 
             /* Hero section */
-            .hero-container {
-                height: 250vh;
-            }
-
+            .hero-container { height: 250vh; } 
             .hero-content {
-                height: 100vh;
-                top: 0;
-                left: 0;
-                width: 100%;
-                display: block;
+                height: 100vh; top: 0; left: 0; width: 100%; display: block;
             }
-
             .initial-content {
-                position: absolute;
-                bottom: 8vh;
-                width: 90%;
-                left: 5%;
-                text-align: left;
-                transform-origin: left center;
+                position: absolute; bottom: 8vh; width: 90%; left: 5%; text-align: left; transform-origin: left center;
             }
-
-            .initial-content h1 {
-                font-size: 2.8rem;
-                line-height: 1.05;
-                text-align: left;
-            }
-
+            .initial-content h1 { font-size: 2.8rem; line-height: 1.05; text-align: left; }
             .secondary-content {
-                position: absolute;
-                bottom: 8vh;
-                width: 90%;
-                left: 5%;
+                position: absolute; bottom: 8vh; width: 90%; left: 5%;
             }
-
-            .secondary-inner {
-                flex-direction: column;
-                gap: 20px;
-                align-items: flex-start;
-            }
-
-            .secondary-left {
-                display: none !important;
-            }
-
-            .founder-img-placeholder {
-                display: none !important;
-            }
-
-            .intro-text {
-                font-size: 1.15rem;
-                margin-bottom: 25px;
-                text-align: left;
-            }
-
-            .hero-stats {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: flex-start;
-            }
-
-            .stat-details .stat-num {
-                font-size: 1.1rem;
-            }
-
-            .hero-bottom-bar {
-                display: none;
-            }
-
-            /* Clear screen clutter on load */
+            .secondary-inner { flex-direction: column; gap: 20px; align-items: flex-start; }
+            .secondary-left { display: none !important; }
+            .founder-img-placeholder { display: none !important; }
+            .intro-text { font-size: 1.15rem; margin-bottom: 25px; text-align: left; }
+            .hero-stats { gap: 15px; flex-wrap: wrap; justify-content: flex-start; }
+            .stat-details .stat-num { font-size: 1.1rem; }
+            .hero-bottom-bar { display: none; } /* Clear screen clutter on load */
 
             /* Scrollytelling Bridge */
-            .scrollytelling-wrapper,
-            .scrollytelling-wrapper.scrolly-reverse {
-                display: block;
-                position: relative;
+            .scrollytelling-wrapper, .scrollytelling-wrapper.scrolly-reverse {
+                display: block; position: relative;
             }
-
             .canvas-column {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 10;
-                pointer-events: none;
-                padding: 0;
-                overflow: hidden;
+                position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+                z-index: 10; pointer-events: none; padding: 0; overflow: hidden;
             }
-
             .canvas-sticky {
-                position: sticky;
-                top: 0;
-                height: 45vh;
-                border: none;
-                align-items: stretch;
-                justify-content: center;
-                background: linear-gradient(to bottom, #ffffff 85%, rgba(255, 255, 255, 0));
-                display: flex;
+                position: sticky; top: 0; height: 45vh; border: none; align-items: stretch; justify-content: center; background: linear-gradient(to bottom, #ffffff 85%, rgba(255,255,255,0)); display: flex;
             }
-
-            canvas {
-                max-width: 90%;
-                max-height: 90%;
-                mix-blend-mode: normal;
-                margin-top: 5vh;
-            }
-
+            canvas { max-width: 90%; max-height: 90%; mix-blend-mode: normal; margin-top: 5vh; }
             .text-column {
-                position: relative;
-                z-index: 5;
-                width: 100%;
-                padding: 45vh 5% 5vh;
-                /* Prevents text colliding mathematically with top sticky container */
+                position: relative; z-index: 5; width: 100%; padding: 45vh 5% 5vh; /* Prevents text colliding mathematically with top sticky container */
             }
-
             .step {
-                min-height: 70vh;
-                justify-content: center;
-                padding-bottom: 15vh;
-                text-align: left;
+                min-height: 70vh; justify-content: center; padding-bottom: 15vh; text-align: left;
             }
-
+            
             /* Mission */
-            .mission-container {
-                flex-direction: column;
-                gap: 30px;
-                padding-top: 80px;
-                align-items: flex-start;
-            }
-
-            .mission-left h2 {
-                font-size: 2.2rem;
-                text-align: left;
-            }
-
-            #mission-text {
-                font-size: 1.8rem;
-                line-height: 1.4;
-                text-align: left;
-            }
-
-            .normal-section {
-                padding: 60px 8%;
-                text-align: left;
-            }
-
-            .normal-section h2,
-            .step h2 {
-                font-size: 2.4rem;
-                letter-spacing: -1px;
-            }
-
-            .section-desc {
-                font-size: 1.1rem;
-                margin: 0 0 30px 0;
-            }
-
-            .stats-grid,
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .stat-item h4 {
-                font-size: 3.5rem;
-                letter-spacing: -2px;
-            }
+            .mission-container { flex-direction: column; gap: 30px; padding-top: 80px; align-items: flex-start; }
+            .mission-left h2 { font-size: 2.2rem; text-align: left; }
+            #mission-text { font-size: 1.8rem; line-height: 1.4; text-align: left; }
+            .normal-section { padding: 60px 8%; text-align: left; }
+            .normal-section h2, .step h2 { font-size: 2.4rem; letter-spacing: -1px; }
+            .section-desc { font-size: 1.1rem; margin: 0 0 30px 0; }
+            .stats-grid, .features-grid { grid-template-columns: 1fr; gap: 30px; }
+            .stat-item h4 { font-size: 3.5rem; letter-spacing: -2px; }
 
             /* Arc "Built on Principles" - Brutally Simplified for Mobile */
-            .arc-section {
-                height: auto !important;
-                min-height: 100vh;
-                padding: 100px 0 80px;
-            }
-
-            .arc-snap-markers {
-                display: none !important;
-            }
-
-            .arc-sticky {
-                position: relative !important;
-                height: auto !important;
-                padding: 0 30px;
-                overflow: visible;
-                align-items: flex-start;
-                justify-content: flex-start;
-            }
-
-            .arc-title {
-                position: relative;
-                top: 0;
-                left: 0;
-                width: 100%;
-                padding: 0;
-                margin-bottom: 50px;
-                font-size: 2.8rem;
-                text-align: left;
-            }
-
-            .arc-content-wrapper,
-            .arc-circle-container {
-                display: none !important;
-            }
-
-            .arc-mobile-list {
-                display: flex;
-                flex-direction: column;
-                gap: 40px;
-                width: 100%;
-            }
-
-            .arc-mobile-item {
-                display: flex;
-                gap: 20px;
-                align-items: flex-start;
-            }
-
-            .arc-mobile-num {
-                flex: 0 0 36px;
-                height: 36px;
-                border-radius: 50%;
-                border: 1px solid var(--gold);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: var(--gold);
-                font-size: 1rem;
-                font-family: sans-serif;
-            }
-
-            .arc-mobile-text h3 {
-                margin: 0 0 10px 0;
-                font-size: 1.6rem;
-                color: #ffffff;
-                font-family: 'Aperto', "Georgia", serif;
-                font-weight: 400;
-                letter-spacing: -0.5px;
-            }
-
-            .arc-mobile-text p {
-                margin: 0;
-                font-size: 1rem;
-                color: rgba(255, 255, 255, 0.6);
-                line-height: 1.5;
-                font-family: sans-serif;
-            }
+            .arc-section { height: auto !important; min-height: 100vh; padding: 100px 0 80px; }
+            .arc-snap-markers { display: none !important; }
+            .arc-sticky { position: relative !important; height: auto !important; padding: 0 8%; overflow: visible; align-items: flex-start; justify-content: flex-start; }
+            
+            .arc-title { position: relative; top: 0; left: 0; width: 100%; padding: 0; margin-bottom: 50px; font-size: 2.8rem; text-align: left; }
+            
+            .arc-content-wrapper, .arc-circle-container { display: none !important; }
+            
+            .arc-mobile-list { display: flex; flex-direction: column; gap: 40px; width: 100%; }
+            .arc-mobile-item { display: flex; gap: 20px; align-items: flex-start; }
+            .arc-mobile-num { flex: 0 0 36px; height: 36px; border-radius: 50%; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 1rem; font-family: sans-serif; }
+            .arc-mobile-text h3 { margin: 0 0 10px 0; font-size: 1.6rem; color: #ffffff; font-family: 'Aperto', "Georgia", serif; font-weight: 400; letter-spacing: -0.5px; }
+            .arc-mobile-text p { margin: 0; font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.5; font-family: sans-serif; }
 
             /* Footer */
-            .footer-top {
-                flex-direction: column;
-                gap: 40px;
-                text-align: left;
-                align-items: flex-start;
-            }
-
-            .footer-brand {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .footer-links-grid {
-                flex-wrap: wrap;
-                gap: 30px;
-                flex-direction: column;
-                text-align: left;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 15px;
-                align-items: flex-start;
-                text-align: left;
-            }
-
-            .alba-footer {
-                padding: 50px 8% 30px;
-            }
-        }
-        /* Team Sketch Parallax Zoom Matrix */
-        .sketch-zoom-wrapper {
-            height: 150vh; /* Reduced from 250vh to make the scroll sequence faster and punchier */
-            position: relative;
-            background: #fcfcfc;
-        }
-        
-        .sketch-zoom-sticky {
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            width: 100%;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--bg-color); /* Matches the main theme container seamlessly */
-        }
-        
-        .sketch-bg-img {
-            position: absolute;
-            top: 5%;
-            left: 5%;
-            width: 90%;
-            height: 90%;
-            background: url('team-sketch.jpg') center/cover;
-            transform-origin: center center;
-            transform: scale(1);
-            will-change: transform;
-            border-radius: 8px; /* Clean edge aesthetic mapping to the clean layout */
-        }
-
-        /* Alba Timeline Section - Light Mode Editorial UI */
-        .timeline-container {
-            padding-left: 60px;
-            position: relative;
-        }
-        
-        .timeline-track {
-            position: absolute;
-            left: 20px;
-            top: 20px;
-            bottom: 20px;
-            width: 1px;
-            /* Changed from white to black alpha for light-mode contrast */
-            background-color: rgba(0,0,0,0.15); 
-            transform-origin: top;
-        }
-
-        .timeline-fill {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; /* Matches track width */
-            height: 0%;
-            background-color: var(--gold); 
-            border-radius: 4px;
-            transform-origin: top;
-            will-change: height;
-        }
-
-        .timeline-node {
-            position: relative;
-            margin-bottom: 25vh; 
-            opacity: 0; 
-            transform: translateY(30px); 
-            will-change: opacity, transform;
-            padding-right: 40px; /* Give the text room to breathe */
-        }
-
-        .timeline-node:last-child {
-            margin-bottom: 0;
-        }
-
-        .node-dot {
-            position: absolute;
-            left: -44px; /* Aligned precisely on the 1px rail */
-            top: 6px; 
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: #fcfcfc; /* Matches Alba light background */
-            /* High contrast border */
-            border: 2px solid rgba(0,0,0,0.2);
-            z-index: 2;
-            transition: background-color 0.4s ease, border-color 0.4s ease;
-        }
-
-        .node-dot.active {
-            background-color: var(--gold);
-            border-color: var(--gold);
-            box-shadow: 0 0 10px rgba(207, 168, 95, 0.4);
-        }
-
-        .node-year {
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 3px; 
-            color: var(--gold); /* Gold stands out beautifully against white */
-            margin-top: 0;
-            margin-bottom: 15px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-        }
-        
-        .node-content .section-desc {
-            font-family: 'Aperto', serif;
-            font-size: 1.6rem;
-            font-weight: 300;
-            line-height: 1.4;
-            color: var(--text-main);
-            letter-spacing: -0.5px;
+            .footer-top { flex-direction: column; gap: 40px; text-align: left; align-items: flex-start; }
+            .footer-brand { display: flex; flex-direction: column; align-items: flex-start; }
+            .footer-links-grid { flex-wrap: wrap; gap: 30px; flex-direction: column; text-align: left; }
+            .footer-bottom { flex-direction: column; gap: 15px; align-items: flex-start; text-align: left; }
+            .alba-footer { padding: 50px 8% 30px; }
         }
     </style>
-<style> .navbar { border-bottom: 1px solid rgba(255,255,255,0.2) !important; } </style>
-</head>
 
+    <style>
+        .bio-container { display: flex; min-height: 100vh; background: #fff; position: relative; padding-top: 100px; }
+        
+        .bio-image-col { flex: 0 0 50%; height: calc(100vh - 100px); position: sticky; top: 100px; background: #f5f5f5; overflow: hidden; }
+        
+        .bio-image-col img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover;
+            transition: transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        
+        .bio-container.active .bio-image-col img {
+            transform: scale(1.05);
+        }
+
+        .bio-content-col { 
+            flex: 1; 
+            padding: 160px 10% 100px;
+            display: flex; 
+            flex-direction: column; 
+            background: white;
+        }
+        
+        .bio-back { 
+            font-family: 'Inter', sans-serif; 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2.5px; 
+            color: var(--text-secondary); 
+            text-decoration: none; 
+            margin-bottom: 60px; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 12px; 
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        
+        .bio-container.active .bio-back {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.2s;
+        }
+
+        .bio-back:hover { 
+            color: var(--accent); 
+            gap: 18px;
+        }
+        
+        .bio-name { 
+            font-family: 'Aperto', 'Georgia', serif; 
+            font-size: 4.5rem; 
+            color: var(--accent); 
+            margin: 0 0 20px 0; 
+            font-weight: 300; 
+            line-height: 1.1;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .bio-container.active .bio-name {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition-delay: 0.4s;
+        }
+
+        .bio-title { 
+            font-family: 'Inter', sans-serif; 
+            font-size: 0.8rem; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            color: var(--gold); 
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .bio-container.active .bio-title {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition-delay: 0.6s;
+        }
+
+        .bio-text {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .bio-container.active .bio-text {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition-delay: 0.8s;
+        }
+
+        .bio-text p { 
+            font-family: 'Inter', sans-serif; 
+            font-size: 1.15rem; 
+            color: #333; 
+            line-height: 1.9; 
+            font-weight: 300; 
+            margin-bottom: 30px; 
+        }
+
+        @media (max-width: 1100px) {
+            .bio-name { font-size: 3.5rem; }
+        }
+
+        @media (max-width: 991px) {
+            .bio-container { flex-direction: column; }
+            .bio-image-col { height: 70vh; flex: none; position: relative; top: 0; }
+            .bio-content-col { padding: 60px 8%; }
+            .bio-name { font-size: 3rem; }
+        }
+    </style>
+</head>
 <body>
 
-        <nav class="navbar" id="navbar">
+        <nav class="navbar" id="navbar" data-light-page="true" class="navbar-scrolled">
         <a href="index.html" class="logo" style="text-decoration: none;">
             <img src="logos/light.png" id="navbar-logo" alt="Alba Investment Partners">
         </a>
         <div class="nav-links">
             <a href="about.html">About Us</a>
             <a href="investment-approach.html">Investment Approach</a>
-            <a href="credit-opportunities.html">Credit Opportunities</a>
             <a href="our-people.html">Our People</a>
-            <a href="perspectives.html">Perspectives</a>
+            <a href="insights.html">Insights</a>
             <a href="contact.html">Contact</a>
         </div>
     </nav>
 
-    <!-- Perspectives Hero Section -->
-    <div id="hero-section" class="normal-section" style="min-height: 45vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 180px; padding-bottom: 60px; background-color: var(--accent); color: #fff;">
-        <h1 class="fade-up delay-1" style="font-family: 'Aperto', 'Georgia', serif; font-size: 4rem; color: #fff; margin-bottom: 1rem; text-align: center; letter-spacing: -1px;">Perspectives</h1>
-        <p class="fade-up delay-2" style="font-family: 'Inter', sans-serif; font-size: 1.15rem; color: rgba(255,255,255,0.8); text-align: center; max-width: 800px; line-height: 1.6;">
-            Subscribe to Alba Investment Partners' Newsletters
-        </p>
-    </div>
-
-    <!-- Subscriptions Section -->
-    <div class="normal-section" style="padding: 100px 5% 150px; max-width: 1200px; margin: 0 auto;">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 60px;">
-            
-            <!-- Alba Credit Opportunities -->
-            <div style="background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; padding: 50px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 20px 40px rgba(0,0,0,0.03);">
-                <div>
-                    <div style="width: 100%; aspect-ratio: 16/9; background: url('https://images.unsplash.com/photo-1587124318790-ad54e29fec80?auto=format&fit=crop&w=1200') center/cover; border-radius: 4px; margin-bottom: 30px;"></div>
-                    <h3 style="font-family: 'Aperto', 'Georgia', serif; font-size: 2rem; color: var(--accent); margin-bottom: 20px; letter-spacing: -0.5px;">Alba Credit Opportunities</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 40px;">
-                        Our quarterly investor newsletter delivers a comprehensive update on our flagship fund's performance, including market analysis, strategic positioning, and key portfolio metrics.
-                    </p>
-                </div>
-                <a href="aco-newsletter-subscription.html" style="display: inline-block; padding: 18px 20px; background-color: var(--accent); color: #fff; text-decoration: none; text-align: center; border-radius: 0; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; white-space: nowrap; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Subscribe to ACO Newsletter</a>
+    
+    <div class="bio-container">
+        <div class="bio-image-col">
+            <img src="nicolas.png" alt="Nicolas El Alam">
+        </div>
+        <div class="bio-content-col">
+            <a href="our-people.html" class="bio-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back to Our People
+            </a>
+            <h1 class="bio-name">Nicolas El Alam</h1>
+            <div class="bio-title">Team Member</div>
+            <div class="bio-text">
+                <p>Nicolas has over 15 years of experience in credit research, specializing in European high-yield and investment-grade corporate bonds. His analytical rigor and deep understanding of credit fundamentals are invaluable assets to our investment team.</p><p>Nicolas holds a Master in Finance from Edhec Business School and is a CFA charterholder.</p>
             </div>
-
-            <!-- The Alba Angle -->
-            <div style="background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; padding: 50px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 20px 40px rgba(0,0,0,0.03);">
-                <div>
-                    <div style="width: 100%; aspect-ratio: 16/9; background: url('https://images.unsplash.com/photo-1496096265110-f83ad7f96608?auto=format&fit=crop&w=1200') center/cover; border-radius: 4px; margin-bottom: 30px; opacity: 0.8; filter: grayscale(50%);"></div>
-                    <h3 style="font-family: 'Aperto', 'Georgia', serif; font-size: 2rem; color: var(--accent); margin-bottom: 20px; letter-spacing: -0.5px;">The Alba Angle</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 40px;">
-                        A curated perspective on global macroeconomic trends and their implications for fixed income markets. Stay ahead with deep, analytical commentary from our investment team.
-                    </p>
-                </div>
-                <a href="alba-angle-subscription.html" style="display: inline-block; padding: 18px 20px; background-color: var(--accent); color: #fff; text-decoration: none; text-align: center; border-radius: 0; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; white-space: nowrap; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Subscribe to the Alba Angle</a>
-            </div>
-
         </div>
     </div>
-    
-<!-- Modern Green Footer -->
+    <!-- Modern Green Footer -->
+    <style>
+        /* Modern Green Footer */
+        .alba-footer {
+            background-color: #1a3622;
+            color: #ffffff;
+            padding: 80px 10% 40px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            position: relative;
+            z-index: 20;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            scroll-snap-align: end; 
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            height: 65px;
+            margin-bottom: 25px;
+            object-fit: contain;
+            opacity: 0.9;
+        }
+
+        .footer-mission {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .footer-links-grid {
+            display: flex;
+            gap: 80px;
+        }
+
+        .footer-column h4 {
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: 400;
+            margin-bottom: 25px;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            font-family: 'Aperto', "Georgia", "Times New Roman", serif;
+        }
+
+        .footer-column a {
+            display: block;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            font-weight: 300;
+        }
+
+        .footer-column a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .legal-links a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .legal-links a:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 900px) {
+            .footer-top { flex-direction: column; gap: 40px; margin-bottom: 40px; }
+            .footer-links-grid { flex-direction: column; gap: 40px; }
+            .alba-footer { padding: 60px 8% 30px; }
+            .footer-bottom { flex-direction: column; gap: 20px; align-items: flex-start; }
+        }
+    </style>
+
     <footer class="alba-footer">
         <div class="footer-container">
             <div class="footer-top">
                 <div class="footer-brand">
                     <img src="logos/light.png" alt="Alba Investment Partners" class="footer-logo">
-                    <p class="footer-mission">Alba Investment Partners SA is authorized and regulated by the FINMA as a Manager of collective assets.</p>
                 </div>
-
+                
                 <div class="footer-links-grid">
                     <div class="footer-column">
                         <h4>Firm</h4>
                         <a href="index.html">Home</a>
                         <a href="about.html">About Us</a>
-                        <a href="perspectives.html">Perspectives</a>
+                        <a href="insights.html">Insights</a>
                     </div>
                     <div class="footer-column">
                         <h4>Strategies</h4>
                         <a href="investment-approach.html">Investment Approach</a>
-            <a href="credit-opportunities.html">Credit Opportunities</a>
                         <a href="our-people.html">Our People</a>
                     </div>
                     <div class="footer-column">
@@ -1383,25 +1212,123 @@
                     </div>
                 </div>
             </div>
-
+            
             <div class="footer-bottom">
                 <p class="copyright">&copy; 2026 Alba Investment Partners. All rights reserved.</p>
                 <div class="legal-links">
                     <a href="privacy-policy.html">Privacy Policy</a>
                     <a href="terms-of-use.html">Terms of Use</a>
-                    
                 </div>
             </div>
         </div>
     </footer>
 
+
+
     <script>
-        // Background canvas sequencers have been removed to reduce payload overhead on the About page
+        const bridgeFrameCount = 192;
+        const lighthouseFrameCount = 192;
+        const currentBridgeFrame = index => `new%20bridge/${index.toString().padStart(5, '0')}.png`;
+        const currentLighthouseFrame = index => `lighthouse/${index.toString().padStart(5, '0')}.png`;
+
+        const bridgeImages = [];
+        const lighthouseImages = [];
+
+        // Setup both canvases
+        const canvas1 = document.getElementById('bridge-canvas-1');
+        const ctx1 = canvas1.getContext('2d');
+        const scroll1 = document.getElementById('scroll-section-1');
+
+        const canvas2 = document.getElementById('bridge-canvas-2');
+        const ctx2 = canvas2.getContext('2d');
+        const scroll2 = document.getElementById('scroll-section-2');
+
+        // Load Bridge First Image
+        const firstBridge = new Image();
+        firstBridge.src = currentBridgeFrame(1);
+        firstBridge.onload = () => {
+            canvas1.width = firstBridge.naturalWidth;
+            canvas1.height = firstBridge.naturalHeight;
+            ctx1.drawImage(firstBridge, 0, 0);
+        };
+        bridgeImages[1] = firstBridge;
+
+        // Load Lighthouse First Image
+        const firstLighthouse = new Image();
+        firstLighthouse.src = currentLighthouseFrame(1);
+        firstLighthouse.onload = () => {
+            canvas2.width = firstLighthouse.naturalWidth;
+            canvas2.height = firstLighthouse.naturalHeight;
+            ctx2.drawImage(firstLighthouse, 0, 0);
+        };
+        lighthouseImages[1] = firstLighthouse;
+
+        // Preload rest of images
+        for (let i = 2; i <= bridgeFrameCount; i++) {
+            const img = new Image();
+            img.src = currentBridgeFrame(i);
+            bridgeImages[i] = img;
+        }
+        for (let i = 2; i <= lighthouseFrameCount; i++) {
+            const img = new Image();
+            img.src = currentLighthouseFrame(i);
+            lighthouseImages[i] = img;
+        }
+
+        function handleCanvasScroll(scrollElem, canvasElem, ctx, imgArray, fCount) {
+            if (!scrollElem || !canvasElem || !ctx) return;
+            if (window.innerWidth <= 900) return; // Disabled on mobile to favor auto-playing GIF mode
+            const sectionTop = scrollElem.offsetTop;
+            const scrollableDistance = scrollElem.scrollHeight - window.innerHeight;
+            let fraction = (window.scrollY - sectionTop) / scrollableDistance;
+            fraction = Math.max(0, Math.min(1, fraction));
+            const frameIndex = Math.min(fCount, Math.max(1, Math.ceil(fraction * fCount)));
+            
+            requestAnimationFrame(() => {
+                if (imgArray[frameIndex] && imgArray[frameIndex].complete) {
+                    ctx.clearRect(0, 0, canvasElem.width, canvasElem.height);
+                    ctx.drawImage(imgArray[frameIndex], 0, 0);
+                }
+            });
+        }
+
+        function playAsGifOnMobile(canvasElem, ctx, imgArray, fCount) {
+            let currentFrame = 1;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && window.innerWidth <= 900) {
+                        // Automatically play sequence once like a non-looping GIF
+                        const interval = setInterval(() => {
+                            if (currentFrame > fCount) {
+                                clearInterval(interval);
+                                return;
+                            }
+                            if (imgArray[currentFrame] && imgArray[currentFrame].complete) {
+                                ctx.clearRect(0, 0, canvasElem.width, canvasElem.height);
+                                ctx.drawImage(imgArray[currentFrame], 0, 0);
+                                currentFrame += 2; // Faster sequential playback for mobile
+                            }
+                        }, 50); // ~20fps + skipping frames feels like 40fps snappy loader
+                        observer.unobserve(canvasElem); 
+                    }
+                });
+            }, { threshold: 0.25 });
+            observer.observe(canvasElem);
+        }
+
+        playAsGifOnMobile(canvas1, ctx1, bridgeImages, bridgeFrameCount);
+        playAsGifOnMobile(canvas2, ctx2, lighthouseImages, lighthouseFrameCount);
+
+
+        window.addEventListener('scroll', () => {
+            handleCanvasScroll(scroll1, canvas1, ctx1, bridgeImages, bridgeFrameCount);
+            handleCanvasScroll(scroll2, canvas2, ctx2, lighthouseImages, lighthouseFrameCount);
+        });
 
         // Hero animation logic
         const heroSection = document.getElementById('hero-section');
         const heroInitial = document.getElementById('hero-initial');
-
+        
         const animatedElements = [
             document.querySelector('.founder-img-placeholder'),
             document.querySelector('.intro-text'),
@@ -1415,85 +1342,6 @@
         }
 
         window.addEventListener('scroll', () => {
-            // Team Sketch Zoom Frame Loop
-            const sketchWrapper = document.getElementById('sketch-zoom-section');
-            const sketchImg = document.getElementById('sketch-bg-img');
-            
-            if (sketchWrapper && sketchImg) {
-                const sRect = sketchWrapper.getBoundingClientRect();
-                
-                if (sRect.top <= window.innerHeight && sRect.bottom >= 0) {
-                    // Normalize the active vertical progress purely linearly
-                    // It starts expanding slightly before it hits top: 0, tracking the entire 250vh scroll block natively
-                    const maxScroll = sRect.height - window.innerHeight;
-                    let scrollProgress = -sRect.top / Math.max(1, maxScroll);
-                    scrollProgress = Math.max(0, Math.min(1, scrollProgress));
-                    
-                    // Maps linearly from scale 1x to scale 1.06x for a stunningly subtle, premium parallax effect
-                    const scaleFactor = 1 + (scrollProgress * 0.06);
-                    sketchImg.style.transform = `scale(${scaleFactor})`;
-                }
-            }
-            
-            // Dynamic Timeline Logic
-            const timelineSection = document.getElementById('story-timeline-section');
-            const timelineTrack = document.getElementById('timeline-track');
-            const timelineFill = document.getElementById('timeline-fill');
-            const nodes = [document.getElementById('node-1'), document.getElementById('node-2'), document.getElementById('node-3')];
-            
-            if (timelineSection && timelineTrack && timelineFill && nodes[0]) {
-                const tlRect = timelineTrack.getBoundingClientRect();
-                const viewportCenter = window.innerHeight * 0.55; 
-                
-                if (tlRect.top <= viewportCenter) {
-                    const trackHeight = tlRect.height;
-                    const fillAmount = Math.max(0, Math.min(trackHeight, viewportCenter - tlRect.top));
-                    timelineFill.style.height = `${fillAmount}px`;
-                    
-                    nodes.forEach((node) => {
-                        const nodeTopRelTrack = node.getBoundingClientRect().top - tlRect.top; 
-                        const dist = fillAmount - nodeTopRelTrack;
-                        
-                        // Physics map: Native interpolation loading proportional exactly to scroll wheel! 
-                        if (dist > 0) { 
-                            const nodeProg = Math.min(1, dist / 150);
-                            node.style.opacity = nodeProg;
-                            node.style.transform = `translateY(${30 - (30 * nodeProg)}px)`;
-                            
-                            const dot = node.querySelector('.node-dot');
-                            dot.style.borderColor = `rgba(207, 168, 95, ${0.2 + (0.8 * nodeProg)})`;
-                            dot.style.backgroundColor = nodeProg > 0.8 ? `var(--gold)` : `transparent`;
-                            
-                            const year = node.querySelector('.node-year');
-                            if(year) year.style.color = `rgba(207, 168, 95, ${0.5 + (0.5 * nodeProg)})`;
-                        } else {
-                            node.style.opacity = 0;
-                            node.style.transform = `translateY(30px)`;
-                            
-                            const dot = node.querySelector('.node-dot');
-                            dot.style.borderColor = `rgba(255,255,255,0.2)`;
-                            dot.style.backgroundColor = `transparent`;
-                            
-                            const year = node.querySelector('.node-year');
-                            if(year) year.style.color = `rgba(255,255,255,0.5)`;
-                        }
-                    });
-                } else {
-                    timelineFill.style.height = '0px';
-                    nodes.forEach(node => {
-                        node.style.opacity = 0;
-                        node.style.transform = `translateY(30px)`;
-                        const dot = node.querySelector('.node-dot');
-                        if (dot) {
-                            dot.style.borderColor = `rgba(255,255,255,0.2)`;
-                            dot.style.backgroundColor = `transparent`;
-                        }
-                        const year = node.querySelector('.node-year');
-                        if(year) year.style.color = `rgba(255,255,255,0.5)`;
-                    });
-                }
-            }
-            
             
             const heroRect = heroSection.getBoundingClientRect();
             const scrollDistance = heroSection.offsetHeight - window.innerHeight;
@@ -1501,40 +1349,40 @@
             progress = Math.max(0, Math.min(1, progress));
 
             const isMobile = window.innerWidth <= 900;
-
+            
             // Execute the precise layout math pushing the h1 explicitly out of the way
-            const targetY = isMobile ? -5 : -32;
-            const initialY = interpolate(progress, 0, 0.4, 0, targetY);
-
+            const targetY = isMobile ? -5 : -32; 
+            const initialY = interpolate(progress, 0, 0.4, 0, targetY); 
+            
             // Exit crossfade for the massive title at the very end of the hero sequence (0.7 to 0.95)
             const exitTitleOp = interpolate(progress, 0.7, 0.95, 1, 0);
-
+            
             // Pure elegant vertical crossfade on mobile natively, Kenslow exit fade on desktop
-            const initialOp = isMobile ? interpolate(progress, 0, 0.25, 1, 0) : exitTitleOp;
-
+            const initialOp = isMobile ? interpolate(progress, 0, 0.25, 1, 0) : exitTitleOp; 
+            
             heroInitial.style.transform = `translateY(${initialY}vh)`;
             heroInitial.style.opacity = initialOp;
 
             // Animate secondary elements progressively + Kenslow exit styling
             animatedElements.forEach((el, index) => {
                 if (!el) return;
-                const startP = 0.15 + (index * 0.12);
+                const startP = 0.15 + (index * 0.12); 
                 const endP = startP + 0.25;
-
+                
                 let elemOpacity = interpolate(progress, startP, endP, 0, 1);
                 const elemY = interpolate(progress, startP, endP, 40, 0);
                 let elemScale = 1;
-
+                
                 // Apply the Kenslow-style unified exit mechanism
                 if (progress > 0.7) {
                     elemOpacity = interpolate(progress, 0.7, 0.95, 1, 0); // Text washes out smoothly
-
+                    
                     // Specifically target the founder image to actively shrink natively
                     if (el.classList.contains('founder-img-placeholder')) {
-                        elemScale = interpolate(progress, 0.7, 0.95, 1, 0.85);
+                        elemScale = interpolate(progress, 0.7, 0.95, 1, 0.85); 
                     }
                 }
-
+                
                 el.style.opacity = elemOpacity;
                 el.style.transform = `translateY(${elemY}px) scale(${elemScale})`;
             });
@@ -1565,14 +1413,14 @@
                 const rect = missionSection.getBoundingClientRect();
                 const scrollable = missionSection.offsetHeight - window.innerHeight;
                 let progress = -rect.top / Math.max(1, scrollable);
-
+                
                 // Add a small buffer so it starts filling after 10% scroll and fully fills by 90%
                 let fillProgress = (progress - 0.1) / 0.8;
                 fillProgress = Math.max(0, Math.min(1, fillProgress));
-
+                
                 const spans = missionTextElem.querySelectorAll('.mission-word');
                 const revealCount = Math.floor(fillProgress * spans.length);
-
+                
                 spans.forEach((span, i) => {
                     if (i < revealCount) {
                         span.classList.add('active');
@@ -1598,12 +1446,12 @@
         const arcWord = document.getElementById('arc-word');
         const arcDesc = document.getElementById('arc-desc');
         const arcSpokes = document.querySelectorAll('.arc-spoke');
-
+        
         const arcData = [
-            { title: "People", desc: "Our diverse backgrounds and skillsets bring unique perspectives, fostering innovative solutions and creative problem-solving while sharing a commitment to hard work and excellence." },
-            { title: "Credentials", desc: "A proven history of consistently delivering superior risk-adjusted returns across fixed income and credit asset classes, demonstrating resilience through all economic environments." },
-            { title: "Deep Research", desc: "Combining data, technology and deep-rooted experience in financial markets, we uncover opportunities that others often overlook." },
-            { title: "Agility", desc: "With lean teams and niche, size-constrained strategies, we foster agility and adaptability — key attributes for delivering superior returns." }
+            { title: "Analytical Rigour", desc: "We believe deep due diligence is the cornerstone of sustainable credit performance." },
+            { title: "Independence", desc: "Long-term relationships built on reliability and complete objectivity." },
+            { title: "Alignment", desc: "Founder capital is continually invested securely alongside yours." },
+            { title: "Long-Term Focus", desc: "Tailored market strategies designed to perform steadily through entire cycles." }
         ];
 
         // Initialize values
@@ -1622,21 +1470,21 @@
         window.addEventListener('scroll', () => {
             if (arcSection && arcCircle) {
                 const rect = arcSection.getBoundingClientRect();
-
+                
                 // 1. Dynamic scrub expansion when scrolling INTO the section
                 const containerElem = document.querySelector('.arc-circle-container');
                 const contentElem = document.querySelector('.arc-content-wrapper');
-
+                
                 if (rect.top > 0 && rect.top <= window.innerHeight) {
                     let entryProgress = 1 - (rect.top / window.innerHeight);
                     entryProgress = Math.max(0, Math.min(1, entryProgress));
-
+                    
                     const circleScale = 0.5 + (0.5 * entryProgress);
                     if (containerElem) {
                         containerElem.style.transform = `translateX(-50%) scale(${circleScale})`;
                         containerElem.style.opacity = entryProgress;
                     }
-
+                    
                     const contentScale = 0.8 + (0.2 * entryProgress);
                     if (contentElem) {
                         contentElem.style.transform = `translateX(-50%) scale(${contentScale})`;
@@ -1653,22 +1501,22 @@
                         contentElem.style.opacity = 1;
                     }
                 }
-
+                
                 // 2. Wheel rotation logic
                 const scrollDistance = arcSection.offsetHeight - window.innerHeight;
                 let progress = -rect.top / Math.max(1, scrollDistance);
                 progress = Math.max(0, Math.min(1, progress));
-
+                
                 // Determine active index based on scroll position safely snapped explicitly to 0, 1, 2, 3
-                let activeIndex = Math.floor(progress * 3.99);
-
+                let activeIndex = Math.floor(progress * 3.99); 
+                
                 // Directly snap only to exact milestone node angles (1, 2, 3, 4)
                 const targetAngles = [45, 15, -15, -45];
                 const arcRotation = targetAngles[activeIndex];
-
+                
                 // Since the wheel element has `transition`, it spins smoothly to snap exactly into place natively
                 arcCircle.style.transform = `rotate(${arcRotation}deg)`;
-
+                
                 // Counter-rotate the inner digits safely
                 arcSpokes.forEach(spoke => {
                     const angle = parseFloat(spoke.getAttribute('data-angle'));
@@ -1680,18 +1528,18 @@
                 });
 
                 // Update Text Content natively using existing activeIndex
-
+                
                 if (arcWord.dataset.current !== activeIndex.toString()) {
                     arcWord.style.opacity = '0';
                     arcDesc.style.opacity = '0';
-
+                    
                     setTimeout(() => {
                         arcWord.innerText = arcData[activeIndex].title;
                         arcDesc.innerText = arcData[activeIndex].desc;
                         arcWord.style.opacity = '1';
                         arcDesc.style.opacity = '1';
                     }, 200);
-
+                    
                     arcWord.dataset.current = activeIndex;
 
                     // Highlight the active node's border
@@ -1721,7 +1569,7 @@
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.fade-up, .zoom-in').forEach(el => observer.observe(el));
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
     </script>
 
     <script>
@@ -1741,7 +1589,8 @@
                 let threshold = 80;
                 const hero = document.getElementById('hero-section');
                 if (hero) {
-                    threshold = hero.offsetHeight - 80; // switch navbar when scrolling past hero
+                    threshold = hero.scrollHeight - window.innerHeight - 50;
+                    if (threshold < 80) threshold = 80;
                 }
 
                 if (window.scrollY >= threshold) {
@@ -1755,6 +1604,12 @@
 
             window.addEventListener('scroll', updateNavbar);
             updateNavbar(); // Run on load
+            
+            // Trigger bio animations
+            setTimeout(() => {
+                const bioContainer = document.querySelector('.bio-container');
+                if (bioContainer) bioContainer.classList.add('active');
+            }, 100);
         });
     </script>
 
@@ -1891,5 +1746,4 @@
     </script>
 
 </body>
-
 </html>

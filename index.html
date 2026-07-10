@@ -8,7 +8,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=block" rel="stylesheet">
     <link rel="preload" href="compressed.mp4" as="video" type="video/mp4">
     <title>Alba Investment Partners</title>
+    
     <style>
+        .watercolor-reveal {
+            --p: 0;
+            /* A soft gradient sweep from left to right simulating a brush/drawing reveal */
+            -webkit-mask-image: linear-gradient(to right, black calc(var(--p) * 120% - 20%), transparent calc(var(--p) * 120%));
+            mask-image: linear-gradient(to right, black calc(var(--p) * 120% - 20%), transparent calc(var(--p) * 120%));
+            
+            /* Fades from a sepia sketch into a full-color photo */
+            filter: grayscale(calc(100% - (var(--p) * 100%))) sepia(calc(30% - (var(--p) * 30%)));
+            -webkit-filter: grayscale(calc(100% - (var(--p) * 100%))) sepia(calc(30% - (var(--p) * 30%)));
+        }
+    </style>
+<style>
         :root {
             --bg-color: #fcfcfc;
             --text-main: #111111;
@@ -259,7 +272,7 @@
 
         .hero-stats {
             display: flex;
-            gap: 50px;
+            gap: 80px;
         }
 
         .hero-stat {
@@ -764,7 +777,7 @@
         }
 
         .footer-logo {
-            height: 40px;
+            height: 65px;
             margin-bottom: 25px;
             object-fit: contain;
             opacity: 0.9;
@@ -932,9 +945,8 @@
         <div class="nav-links">
             <a href="about.html">About Us</a>
             <a href="investment-approach.html">Investment Approach</a>
-            <a href="credit-opportunities.html">Credit Opportunities</a>
             <a href="our-people.html">Our People</a>
-            <a href="perspectives.html">Perspectives</a>
+            <a href="insights.html">Insights</a>
             <a href="contact.html">Contact</a>
         </div>
     </nav>
@@ -965,19 +977,19 @@
                             <div class="hero-stats">
                                 <div class="hero-stat">
                                     <div class="stat-details">
-                                        <span class="stat-num">30+</span>
+                                        <span class="stat-num" data-target="30">0</span><span class="stat-suffix">+</span>
                                         <span class="stat-label">INVESTMENT EXPERIENCE</span>
                                     </div>
                                 </div>
                                 <div class="hero-stat">
                                     <div class="stat-details">
-                                        <span class="stat-num">1</span>
+                                        <span class="stat-num" data-target="1">0</span><span class="stat-suffix"></span>
                                         <span class="stat-label">FLAGSHIP FUND</span>
                                     </div>
                                 </div>
                                 <div class="hero-stat">
                                     <div class="stat-details">
-                                        <span class="stat-num">2024</span>
+                                        <span class="stat-num" data-target="2024">0</span><span class="stat-suffix"></span>
                                         <span class="stat-label">FIRM FOUNDED</span>
                                     </div>
                                 </div>
@@ -1014,16 +1026,18 @@
     <div class="scrollytelling-wrapper scrolly-reverse" id="scroll-section-1">
         <div class="canvas-column">
             <div class="canvas-sticky" style="display: flex; align-items: center; justify-content: center; background-color: #ffffff;">
-                <img src="jet deau.jpeg" class="fade-up" alt="Jet d'Eau Geneva" style="width: 100%; height: auto; max-height: 90vh; object-fit: contain; border-radius: 4px; transition-delay: 0.2s;">
+                <img src="jet deau.jpeg" class="watercolor-reveal" alt="Jet d\'Eau Geneva" style="width: 100%; height: auto; max-height: 90vh; object-fit: contain; border-radius: 4px; transition-delay: 0.2s;">
             </div>
         </div>
         
         <div class="text-column">
-            <div class="step" style="min-height: 150vh; justify-content: flex-start; padding-top: 20vh;">
+            <div class="step" style="min-height: 150vh; justify-content: flex-start; padding-top: 45vh;">
                 <h2>Our Approach</h2>
-                <p style="font-size: 1.25rem; line-height: 1.6; max-width: 700px; text-align: left;">Our approach combines rigorous bottom-up credit research with dynamic top-down macro positioning to identify differentiated opportunities across global credit markets. We focus on market dislocations, structural inefficiencies, and catalyst-driven situations where fundamental analysis uncovers asymmetric risk-reward profiles. Through disciplined portfolio construction, active risk management, and selective hedging, we seek to generate consistent alpha while preserving capital across market cycles.</p>
-                <a href="investment-approach.html" class="cs-btn" style="color: #111; margin-top: 20px;">
-                    <span>Discover Our Approach</span>
+                <p class="fade-up" style="font-size: 2.2rem; line-height: 1.3; max-width: 850px; text-align: left; font-family: 'Aperto', serif; margin: 30px 0; font-weight: 400; letter-spacing: -0.5px; color: #111;">
+                    Alba's investment philosophy combines a research-driven, bottom-up approach to credit selection with a top-down macro framework to manage risk.
+                </p>
+                <a href="about.html" class="cs-btn" style="color: #111; margin-top: 20px;">
+                    <span>Learn More About Us</span>
                     <span class="cs-btn-arrow" style="color: #111;">&#9654;</span>
                 </a>
 
@@ -1034,12 +1048,12 @@
     <!-- Scrollytelling Section 2 (Image Right) -->
     <div class="scrollytelling-wrapper" id="scroll-section-2" style="background-color: #ffffff;">
         <div class="text-column">
-            <div class="step" style="min-height: 150vh; justify-content: flex-start; padding-top: 20vh;">
+            <div class="step" style="min-height: 150vh; justify-content: flex-start; padding-top: 45vh;">
                 <h2>Our Flagship Strategy</h2>
                 <h3 style="font-family: 'Inter', sans-serif; font-size: 1.3rem; color: var(--accent); margin-bottom: 15px; font-weight: 500; max-width: 700px; text-align: left; line-height: 1.5;">Alba Credit Opportunities — A differentiated approach to global credit investing.</h3>
                 <p style="font-size: 1.25rem; line-height: 1.6; max-width: 700px; text-align: left;">Alba Credit Opportunities (ACO) is Alba Investment Partners’ flagship fund, designed to deliver superior risk-adjusted returns through an opportunistic and differentiated approach to liquid credit investing. Positioned between traditional long-only credit and opportunistic hedge fund strategies, ACO combines flexibility, selectivity, and active portfolio management to capture opportunities across market cycles.</p>
-                <a href="credit-opportunities.html" class="cs-btn" style="color: #111; margin-top: 20px;">
-                    <span>Explore Strategy</span>
+                <a href="investment-approach.html" class="cs-btn fade-up" style="color: #111; margin-top: 30px;">
+                    <span>Learn About Investment Approach</span>
                     <span class="cs-btn-arrow" style="color: #111;">&#9654;</span>
                 </a>
             </div>
@@ -1047,12 +1061,12 @@
 
         <div class="canvas-column">
             <div class="canvas-sticky" style="display: flex; align-items: center; justify-content: center; background-color: #ffffff;">
-                <img src="cathedral.jpeg" class="fade-up" alt="Cathedral" style="width: 100%; height: auto; max-height: 90vh; object-fit: contain; border-radius: 4px; transition-delay: 0.2s;">
+                <img src="cathedral.jpeg" class="watercolor-reveal" alt="Cathedral" style="width: 100%; height: auto; max-height: 85vh; object-fit: contain; border-radius: 4px; padding: 0 5%; transition-delay: 0.2s;">
             </div>
         </div>
     </div>
-    <!-- Case Studies Section (Kenslow Perspectives Style) -->
-    <!-- Perspectives Section (Kenslow 300vh Scroll Sequence) -->
+    <!-- Case Studies Section (Kenslow Insights Style) -->
+    <!-- Insights Section (Kenslow 300vh Scroll Sequence) -->
     <style>
         .insights-scroll-wrapper {
             height: 400vh; /* scrollable duration - precisely 100vh per insight slide for fluid pacing */
@@ -1087,12 +1101,12 @@
 
         /* Unique high-quality stock photography for each insight phase */
         #bg-1 { 
-            background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop') center/cover;
-            filter: blur(2px) brightness(0.2); 
+            background: url('alba credit.webp') center/cover;
+            filter: brightness(0.4); 
         }
         #bg-2 { 
-            background: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop') center/cover;
-            filter: blur(2px) brightness(0.25); 
+            background: linear-gradient(rgba(30, 54, 45, 0.4), rgba(30, 54, 45, 0.4)), url('alba angle.JPG') center 20%/120% no-repeat;
+            filter: brightness(0.7); 
         }
         #bg-3 { 
             background: url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2070&auto=format&fit=crop') center/cover;
@@ -1284,8 +1298,8 @@
     <div class="insights-scroll-wrapper" id="insights-sequence">
         <section class="insights-sticky-container">
             
-            <div class="cs-bg-image active" id="bg-1"></div>
-            <div class="cs-bg-image" id="bg-2"></div>
+            <div class="cs-bg-image active" id="bg-1" style="background: linear-gradient(rgba(30, 54, 45, 0.4), rgba(30, 54, 45, 0.4)), url('alba angle.JPG') center 20%/120% no-repeat;"></div>
+            <div class="cs-bg-image" id="bg-2" style="background: linear-gradient(rgba(30, 54, 45, 0.4), rgba(30, 54, 45, 0.4)), url('alba credit.webp') center/cover;"></div>
             
             
             <div class="cs-grid-lines">
@@ -1297,13 +1311,13 @@
             </div>
 
             <div class="cs-top-bar">
-                <span>Perspectives</span>
+                <span>Insights</span>
                 <span>2026</span>
             </div>
 
             <div class="cs-middle">
                 <div class="cs-title-wrapper">
-                    <h2 class="cs-title">Perspectives</h2>
+                    <h2 class="cs-title">Insights</h2>
                 </div>
                 <div class="cs-desc-wrapper">
                     <p class="cs-desc" id="insight-desc-text">Our latest insights highlight the depth of our expertise and the impact of our rigorous credit strategies.</p>
@@ -1319,7 +1333,7 @@
                 <div class="cs-col">
                     <div class="cs-col-top">
                         <span class="cs-year">NEWSLETTER</span>
-                        <span class="cs-name">ALBA CREDIT OPPORTUNITIES</span>
+                        <span class="cs-name">THE ALBA ANGLE</span>
                     </div>
                     <div class="cs-progress-bg"></div>
                     <div class="cs-progress-fill" id="prog-1"></div>
@@ -1327,7 +1341,7 @@
                 <div class="cs-col">
                     <div class="cs-col-top">
                         <span class="cs-year">NEWSLETTER</span>
-                        <span class="cs-name">THE ALBA ANGLE</span>
+                        <span class="cs-name">ALBA CREDIT OPPORTUNITIES</span>
                     </div>
                     <div class="cs-progress-bg"></div>
                     <div class="cs-progress-fill" id="prog-2"></div>
@@ -1346,11 +1360,11 @@
             const progs = [document.getElementById('prog-1'), document.getElementById('prog-2')];
             const descText = document.getElementById('insight-desc-text');
             const btnLink = document.getElementById('insight-btn-link');
-            const links = ["aco-newsletter-subscription.html", "alba-angle-subscription.html"];
+            const links = ["alba-angle-subscription.html", "aco-newsletter-subscription.html"];
 
             const descriptions = [
-                "Our quarterly investor newsletter delivers a comprehensive update on our flagship fund's performance, including market analysis, strategic positioning, and key portfolio metrics.",
-                "A curated perspective on global macroeconomic trends and their implications for fixed income markets. Stay ahead with deep, analytical commentary from our investment team."
+                "A curated perspective on global macroeconomic trends and their implications for fixed income markets. Stay ahead with deep, analytical commentary from our investment team.",
+                "Our quarterly investor newsletter delivers a comprehensive update on our flagship fund's performance, including market analysis, strategic positioning, and key portfolio metrics."
             ];
 
             // Initial fade-up logic just for entry
@@ -1440,12 +1454,122 @@
 
 
     <!-- Modern Green Footer -->
+    <style>
+        /* Modern Green Footer */
+        .alba-footer {
+            background-color: #1a3622;
+            color: #ffffff;
+            padding: 80px 10% 40px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            position: relative;
+            z-index: 20;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            scroll-snap-align: end; 
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            height: 65px;
+            margin-bottom: 25px;
+            object-fit: contain;
+            opacity: 0.9;
+        }
+
+        .footer-mission {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .footer-links-grid {
+            display: flex;
+            gap: 80px;
+        }
+
+        .footer-column h4 {
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: 400;
+            margin-bottom: 25px;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            font-family: 'Aperto', "Georgia", "Times New Roman", serif;
+        }
+
+        .footer-column a {
+            display: block;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            font-weight: 300;
+        }
+
+        .footer-column a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .legal-links a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .legal-links a:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 900px) {
+            .footer-top { flex-direction: column; gap: 40px; margin-bottom: 40px; }
+            .footer-links-grid { flex-direction: column; gap: 40px; }
+            .alba-footer { padding: 60px 8% 30px; }
+            .footer-bottom { flex-direction: column; gap: 20px; align-items: flex-start; }
+        }
+    </style>
+
     <footer class="alba-footer">
         <div class="footer-container">
             <div class="footer-top">
                 <div class="footer-brand">
                     <img src="logos/light.png" alt="Alba Investment Partners" class="footer-logo">
-                    <p class="footer-mission">Alba Investment Partners SA is authorized and regulated by the FINMA as a Manager of collective assets.</p>
                 </div>
                 
                 <div class="footer-links-grid">
@@ -1453,12 +1577,11 @@
                         <h4>Firm</h4>
                         <a href="index.html">Home</a>
                         <a href="about.html">About Us</a>
-                        <a href="#case-studies">Perspectives</a>
+                        <a href="insights.html">Insights</a>
                     </div>
                     <div class="footer-column">
                         <h4>Strategies</h4>
                         <a href="investment-approach.html">Investment Approach</a>
-            <a href="credit-opportunities.html">Credit Opportunities</a>
                         <a href="our-people.html">Our People</a>
                     </div>
                     <div class="footer-column">
@@ -1474,11 +1597,12 @@
                 <div class="legal-links">
                     <a href="privacy-policy.html">Privacy Policy</a>
                     <a href="terms-of-use.html">Terms of Use</a>
-                    
                 </div>
             </div>
         </div>
     </footer>
+
+
 
     <script>
         /* --- CANVAS SCROLLYTELLING DISABLED (Replaced with static images) ---
@@ -1649,6 +1773,27 @@
             if (heroProgressFill) {
                 heroProgressFill.style.width = `${progress * 100}%`;
             }
+
+            // Scrollytelling sketch reveal images
+            const scrollSections = [
+                { wrapper: document.getElementById('scroll-section-1'), img: document.querySelector('#scroll-section-1 .watercolor-reveal') },
+                { wrapper: document.getElementById('scroll-section-2'), img: document.querySelector('#scroll-section-2 .watercolor-reveal') }
+            ];
+
+            scrollSections.forEach(sec => {
+                if(!sec.wrapper || !sec.img) return;
+                const rect = sec.wrapper.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                const startReveal = windowHeight * 0.85;
+                const endReveal = windowHeight * 0.15;
+                
+                let p = 0;
+                if (rect.top <= startReveal) {
+                    p = (startReveal - rect.top) / (startReveal - endReveal);
+                }
+                p = Math.max(0, Math.min(1, p));
+                sec.img.style.setProperty('--p', p);
+            });
         });
 
         // Setup Mission text scrub
@@ -1826,7 +1971,42 @@
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+        document.querySelectorAll('.fade-up, .watercolor-reveal').forEach(el => observer.observe(el));
+
+        // Count-up animation for stats
+        const statNums = document.querySelectorAll('.stat-num');
+        const countObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseFloat(el.getAttribute('data-target'));
+                    const duration = 2000;
+                    const decimals = parseInt(el.getAttribute('data-decimals') || "0");
+                    const prefix = el.getAttribute('data-prefix') || "";
+                    
+                    let start = 0;
+                    const startTime = performance.now();
+                    
+                    function update(currentTime) {
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                        
+                        const current = (easeOutQuart * target).toFixed(decimals);
+                        el.innerText = prefix + current;
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(update);
+                        }
+                    }
+                    
+                    requestAnimationFrame(update);
+                    countObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        statNums.forEach(num => countObserver.observe(num));
     </script>
 
     <script>

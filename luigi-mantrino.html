@@ -764,7 +764,7 @@
         }
 
         .footer-logo {
-            height: 40px;
+            height: 65px;
             margin-bottom: 25px;
             object-fit: contain;
             opacity: 0.9;
@@ -922,20 +922,123 @@
     </style>
 
     <style>
-        .bio-container { display: flex; min-height: 100vh; padding-top: 108px; background: #fff; }
-        .bio-image-col { flex: 0 0 45%; position: relative; background: #f5f5f5; }
-        .bio-image-col img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
-        .bio-content-col { flex: 1; padding: 80px 8%; display: flex; flex-direction: column; justify-content: center; }
-        .bio-back { font-family: 'Inter', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-secondary); text-decoration: none; margin-bottom: 40px; display: inline-flex; align-items: center; gap: 10px; transition: color 0.3s ease; }
-        .bio-back:hover { color: var(--accent); }
-        .bio-name { font-family: 'Aperto', 'Georgia', serif; font-size: 3.5rem; color: #1e362d; margin: 0 0 15px 0; font-weight: 400; line-height: 1.1; }
-        .bio-title { font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 2.5px; color: #1e362d; margin-bottom: 50px; }
-        .bio-text p { font-family: 'Inter', sans-serif; font-size: 1.1rem; color: #333; line-height: 1.8; font-weight: 300; margin-bottom: 25px; }
+        .bio-container { display: flex; min-height: 100vh; background: #fff; position: relative; padding-top: 100px; }
+        
+        .bio-image-col { flex: 0 0 50%; height: calc(100vh - 100px); position: sticky; top: 100px; background: #f5f5f5; overflow: hidden; }
+        
+        .bio-image-col img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover;
+            transition: transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        
+        .bio-container.active .bio-image-col img {
+            transform: scale(1.05);
+        }
+
+        .bio-content-col { 
+            flex: 1; 
+            padding: 160px 10% 100px;
+            display: flex; 
+            flex-direction: column; 
+            background: white;
+        }
+        
+        .bio-back { 
+            font-family: 'Inter', sans-serif; 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2.5px; 
+            color: var(--text-secondary); 
+            text-decoration: none; 
+            margin-bottom: 60px; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 12px; 
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        
+        .bio-container.active .bio-back {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.2s;
+        }
+
+        .bio-back:hover { 
+            color: var(--accent); 
+            gap: 18px;
+        }
+        
+        .bio-name { 
+            font-family: 'Aperto', 'Georgia', serif; 
+            font-size: 4.5rem; 
+            color: var(--accent); 
+            margin: 0 0 20px 0; 
+            font-weight: 300; 
+            line-height: 1.1;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .bio-container.active .bio-name {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition-delay: 0.4s;
+        }
+
+        .bio-title { 
+            font-family: 'Inter', sans-serif; 
+            font-size: 0.8rem; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            color: var(--gold); 
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .bio-container.active .bio-title {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition-delay: 0.6s;
+        }
+
+        .bio-text {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .bio-container.active .bio-text {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transition-delay: 0.8s;
+        }
+
+        .bio-text p { 
+            font-family: 'Inter', sans-serif; 
+            font-size: 1.15rem; 
+            color: #333; 
+            line-height: 1.9; 
+            font-weight: 300; 
+            margin-bottom: 30px; 
+        }
+
+        @media (max-width: 1100px) {
+            .bio-name { font-size: 3.5rem; }
+        }
+
         @media (max-width: 991px) {
-            .bio-container { flex-direction: column; padding-top: 70px; }
-            .bio-image-col { height: 60vh; flex: none; }
-            .bio-content-col { padding: 60px 5%; }
-            .bio-name { font-size: 2.5rem; }
+            .bio-container { flex-direction: column; }
+            .bio-image-col { height: 70vh; flex: none; position: relative; top: 0; }
+            .bio-content-col { padding: 60px 8%; }
+            .bio-name { font-size: 3rem; }
         }
     </style>
 </head>
@@ -948,9 +1051,8 @@
         <div class="nav-links">
             <a href="about.html">About Us</a>
             <a href="investment-approach.html">Investment Approach</a>
-            <a href="credit-opportunities.html">Credit Opportunities</a>
             <a href="our-people.html">Our People</a>
-            <a href="perspectives.html">Perspectives</a>
+            <a href="insights.html">Insights</a>
             <a href="contact.html">Contact</a>
         </div>
     </nav>
@@ -958,7 +1060,7 @@
     
     <div class="bio-container">
         <div class="bio-image-col">
-            <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/lm-website2-mp81XvDqG8T9yLWa.JPG" alt="Luigi Mantrino, CFA">
+            <img src="luigi.png" alt="Luigi Mantrino, CFA">
         </div>
         <div class="bio-content-col">
             <a href="our-people.html" class="bio-back">
@@ -973,12 +1075,122 @@
         </div>
     </div>
     <!-- Modern Green Footer -->
+    <style>
+        /* Modern Green Footer */
+        .alba-footer {
+            background-color: #1a3622;
+            color: #ffffff;
+            padding: 80px 10% 40px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            position: relative;
+            z-index: 20;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            scroll-snap-align: end; 
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            height: 65px;
+            margin-bottom: 25px;
+            object-fit: contain;
+            opacity: 0.9;
+        }
+
+        .footer-mission {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .footer-links-grid {
+            display: flex;
+            gap: 80px;
+        }
+
+        .footer-column h4 {
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: 400;
+            margin-bottom: 25px;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            font-family: 'Aperto', "Georgia", "Times New Roman", serif;
+        }
+
+        .footer-column a {
+            display: block;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            font-weight: 300;
+        }
+
+        .footer-column a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .legal-links a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .legal-links a:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 900px) {
+            .footer-top { flex-direction: column; gap: 40px; margin-bottom: 40px; }
+            .footer-links-grid { flex-direction: column; gap: 40px; }
+            .alba-footer { padding: 60px 8% 30px; }
+            .footer-bottom { flex-direction: column; gap: 20px; align-items: flex-start; }
+        }
+    </style>
+
     <footer class="alba-footer">
         <div class="footer-container">
             <div class="footer-top">
                 <div class="footer-brand">
                     <img src="logos/light.png" alt="Alba Investment Partners" class="footer-logo">
-                    <p class="footer-mission">Alba Investment Partners SA is authorized and regulated by the FINMA as a Manager of collective assets.</p>
                 </div>
                 
                 <div class="footer-links-grid">
@@ -986,12 +1198,11 @@
                         <h4>Firm</h4>
                         <a href="index.html">Home</a>
                         <a href="about.html">About Us</a>
-                        <a href="#case-studies">Perspectives</a>
+                        <a href="insights.html">Insights</a>
                     </div>
                     <div class="footer-column">
                         <h4>Strategies</h4>
                         <a href="investment-approach.html">Investment Approach</a>
-            <a href="credit-opportunities.html">Credit Opportunities</a>
                         <a href="our-people.html">Our People</a>
                     </div>
                     <div class="footer-column">
@@ -1007,11 +1218,12 @@
                 <div class="legal-links">
                     <a href="privacy-policy.html">Privacy Policy</a>
                     <a href="terms-of-use.html">Terms of Use</a>
-                    
                 </div>
             </div>
         </div>
     </footer>
+
+
 
     <script>
         const bridgeFrameCount = 192;
@@ -1392,6 +1604,12 @@
 
             window.addEventListener('scroll', updateNavbar);
             updateNavbar(); // Run on load
+            
+            // Trigger bio animations
+            setTimeout(() => {
+                const bioContainer = document.querySelector('.bio-container');
+                if (bioContainer) bioContainer.classList.add('active');
+            }, 100);
         });
     </script>
 

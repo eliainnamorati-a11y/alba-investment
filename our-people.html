@@ -810,7 +810,7 @@
         }
 
         .footer-logo {
-            height: 40px;
+            height: 65px;
             margin-bottom: 25px;
             object-fit: contain;
             opacity: 0.9;
@@ -1295,6 +1295,131 @@
             color: var(--text-main);
             letter-spacing: -0.5px;
         }
+
+        /* Team Scrollytelling Hero CSS */
+        .team-hero-container {
+            height: 250vh;
+            position: relative;
+            background-color: #0b110e;
+            color: #ffffff;
+        }
+
+        .team-hero-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .team-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease;
+            z-index: 1;
+            transform: scale(1.05);
+        }
+
+        .team-hero-bg.active {
+            opacity: 1;
+        }
+
+        .team-bg-1 {
+            background-image: url('team 2.JPG');
+        }
+
+        .team-bg-2 {
+            background-image: url('team 3.JPG');
+        }
+
+        .team-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(30, 54, 45, 0.5); /* Slight green overlay */
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .team-hero-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+            display: block;
+        }
+
+        .team-initial-content {
+            position: absolute;
+            bottom: 12vh;
+            left: 60px;
+            width: calc(100% - 120px);
+            transform-origin: top left;
+            will-change: transform;
+            pointer-events: auto;
+        }
+
+        .team-hero-main-text {
+            font-size: 4vw;
+            line-height: 1.1;
+            max-width: 80%;
+            margin: 0;
+            color: #ffffff;
+            font-family: 'Aperto', "Georgia", "Times New Roman", serif;
+            font-weight: 300;
+            opacity: 0;
+            animation: heroTextReveal 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            animation-delay: 0.2s;
+        }
+
+        .team-secondary-content {
+            position: absolute;
+            bottom: 12vh;
+            left: 60px;
+            width: calc(100% - 120px);
+            opacity: 0;
+            transform: translateY(40px);
+            will-change: opacity, transform;
+        }
+
+        .team-hero-sub-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .team-hero-sub-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.6;
+            margin: 0;
+            font-weight: 300;
+            max-width: 500px;
+        }
+        
+        @media (max-width: 900px) {
+            .team-secondary-content {
+                left: 30px;
+                width: calc(100% - 60px);
+            }
+        }
     </style>
 <style> .navbar { border-bottom: 1px solid rgba(255,255,255,0.2) !important; } </style>
 </head>
@@ -1308,32 +1433,35 @@
         <div class="nav-links">
             <a href="about.html">About Us</a>
             <a href="investment-approach.html">Investment Approach</a>
-            <a href="credit-opportunities.html">Credit Opportunities</a>
             <a href="our-people.html">Our People</a>
-            <a href="perspectives.html">Perspectives</a>
+            <a href="insights.html">Insights</a>
             <a href="contact.html">Contact</a>
         </div>
     </nav>
 
-    <!-- Our People Hero Section -->
-    <div class="normal-section" style="min-height: 45vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 180px; padding-bottom: 80px; background-color: var(--accent); color: #fff;">
-        <div style="width: 100%; padding: 0 60px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 60px; justify-content: space-between; align-items: flex-start;">
+    <!-- Team Scrollytelling Hero Section -->
+    <div class="team-hero-container" id="team-hero-section">
+        <div class="team-hero-sticky">
+            <div class="team-hero-bg team-bg-1 active"></div>
+            <div class="team-hero-bg team-bg-2"></div>
             
-            <!-- Left Text -->
-            <div style="flex: 1; min-width: 300px; max-width: 800px;">
-                <p class="fade-up delay-1" style="font-family: 'Aperto', 'Georgia', serif; font-size: 2.8rem; color: #fff; margin: 0; line-height: 1.4; letter-spacing: 0px;">
-                    We are a diverse and dynamic team that thrives on catering to our clients' evolving needs and goals.
-                </p>
+            <div class="team-hero-overlay"></div>
+            
+            <!-- Hero Content -->
+            <div class="team-hero-content">
+                <div class="team-initial-content" id="team-hero-initial">
+                    <h1 class="team-hero-main-text">
+                        We are a diverse and dynamic team that thrives on catering to our clients' evolving needs and goals.
+                    </h1>
+                </div>
+                
+                <div class="team-secondary-content" id="team-hero-secondary">
+                    <h4 class="team-hero-sub-title">The Alba Team</h4>
+                    <p class="team-hero-sub-text">
+                        A group of highly skilled, diverse professionals, with an extensive global network
+                    </p>
+                </div>
             </div>
-            
-            <!-- Right Text -->
-            <div style="flex: 0 0 350px; min-width: 300px;">
-                <h4 class="fade-up delay-2" style="font-family: 'Inter', sans-serif; font-size: 0.85rem; color: #ffffff; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; font-weight: 600;">The Alba Team</h4>
-                <p class="fade-up delay-3" style="font-family: 'Inter', sans-serif; font-size: 1.1rem; color: rgba(255,255,255,0.8); line-height: 1.6; margin: 0; font-weight: 300;">
-                    A group of highly skilled, diverse professionals, with an extensive global network
-                </p>
-            </div>
-            
         </div>
     </div>
 
@@ -1345,74 +1473,93 @@
             <div class="people-sidebar hide-on-mobile">
                 <h2 class="fade-up delay-2" style="font-family: 'Aperto', 'Georgia', serif; font-size: 2rem; color: var(--accent); margin-top: 0; margin-bottom: 30px; font-weight: 400;">Our People</h2>
                 <ul style="list-style: none; padding: 0; margin: 0; font-family: 'Inter', sans-serif; font-size: 1.05rem; color: #777;">
-                    <li style="margin-bottom: 15px; cursor: pointer; color: #1e362d; font-weight: 500;">All</li>
-                    <li style="margin-bottom: 15px; cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='#1e362d'" onmouseout="this.style.color='#777'">Executive Committee</li>
-                    <li style="margin-bottom: 15px; cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='#1e362d'" onmouseout="this.style.color='#777'">Non-Executive Directors</li>
                 </ul>
             </div>
 
-            <!-- Right Grid -->
-            <div class="people-grid">
+            <!-- Right Content Area -->
+            <div class="people-content">
                 
-                <!-- Member 1: Stefano -->
-                <a href="stefano-tittarelli.html" style="display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit;" class="team-card fade-up">
-                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
-                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/st-website3-YKbEeE1PGbhDPkga.JPG" alt="Stefano Tittarelli, CFA" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <div class="plus-box" style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #1e362d; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;"><span class="plus-icon">+</span></div>
-                    </div>
-                    <h3 style="font-family: 'Aperto', 'Georgia', serif; font-size: 1.7rem; font-weight: 400; margin: 5px 0 8px 0; color: #333;">Stefano Tittarelli, CFA</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #1e362d; margin: 0; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 500;">Chief Executive Officer</p>
-                </a>
+                <div class="people-section-header fade-up">
+                </div>
+                
+                <div class="people-grid">
+                    <!-- Member 1: Stefano -->
+                    <a href="stefano-tittarelli.html" style="display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit;" class="team-card fade-up">
+                        <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
+                            <img src="stefano.png" alt="Stefano Tittarelli, CFA" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            <div class="plus-box" style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #1e362d; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;"><span class="plus-icon">+</span></div>
+                        </div>
+                        <h3 style="font-family: 'Aperto', 'Georgia', serif; font-size: 1.7rem; font-weight: 400; margin: 5px 0 8px 0; color: #333;">Stefano Tittarelli, CFA</h3>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #1e362d; margin: 0; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 500;">Chief Executive Officer</p>
+                    </a>
 
-                <!-- Member 2: Luigi -->
-                <a href="luigi-mantrino.html" style="display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit;" class="team-card fade-up">
-                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
-                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/lm-website-A3Qw5blJ31ClwGRg.JPG" alt="Luigi Mantrino, CFA" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <div class="plus-box" style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #1e362d; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;"><span class="plus-icon">+</span></div>
-                    </div>
-                    <h3 style="font-family: 'Aperto', 'Georgia', serif; font-size: 1.7rem; font-weight: 400; margin: 5px 0 8px 0; color: #333;">Luigi Mantrino, CFA</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #1e362d; margin: 0; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 500;">Chief Investment Officer</p>
-                </a>
+                    <!-- Member 2: Luigi -->
+                    <a href="luigi-mantrino.html" style="display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit;" class="team-card fade-up">
+                        <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
+                            <img src="luigi.png" alt="Luigi Mantrino, CFA" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            <div class="plus-box" style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #1e362d; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;"><span class="plus-icon">+</span></div>
+                        </div>
+                        <h3 style="font-family: 'Aperto', 'Georgia', serif; font-size: 1.7rem; font-weight: 400; margin: 5px 0 8px 0; color: #333;">Luigi Mantrino, CFA</h3>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #1e362d; margin: 0; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 500;">Chief Investment Officer</p>
+                    </a>
 
-                <!-- Member 3: Guillaume -->
-                <a href="guillaume-di-liberatore.html" style="display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit;" class="team-card fade-up">
-                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
-                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/20240825_100107110_ios-dJo6vzZx9zcM27r9.jpg" alt="Guillaume Di Liberatore, CFA" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <div class="plus-box" style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #1e362d; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;"><span class="plus-icon">+</span></div>
-                    </div>
-                    <h3 style="font-family: 'Aperto', 'Georgia', serif; font-size: 1.7rem; font-weight: 400; margin: 5px 0 8px 0; color: #333;">Guillaume Di Liberatore, CFA</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #1e362d; margin: 0; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 500;">Chief Research Officer</p>
-                </a>
+                    <!-- Member 3: Guillaume -->
+                    <a href="guillaume-di-liberatore.html" style="display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit;" class="team-card fade-up">
+                        <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
+                            <img src="guillaume.png" alt="Guillaume Di Liberatore, CFA" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            <div class="plus-box" style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #1e362d; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;"><span class="plus-icon">+</span></div>
+                        </div>
+                        <h3 style="font-family: 'Aperto', 'Georgia', serif; font-size: 1.7rem; font-weight: 400; margin: 5px 0 8px 0; color: #333;">Guillaume Di Liberatore, CFA</h3>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #1e362d; margin: 0; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 500;">Chief Research Officer</p>
+                    </a>
 
-                <!-- Member 4: Andrea -->
-                <a href="andrea-cavalleri.html" style="display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit;" class="team-card fade-up">
-                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
-                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/andrea_cavalleri_2019_04_email-mp8qPjNnJptrb39l.jpg" alt="Andrea Cavalleri" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <div class="plus-box" style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #1e362d; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;"><span class="plus-icon">+</span></div>
-                    </div>
-                    <h3 style="font-family: 'Aperto', 'Georgia', serif; font-size: 1.7rem; font-weight: 400; margin: 5px 0 8px 0; color: #333;">Andrea Cavalleri</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #1e362d; margin: 0; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 500;">Chairman</p>
-                </a>
+                    <!-- Member 3b: Nicolas -->
+                    <a href="nicolas-el-alam.html" style="display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit;" class="team-card fade-up">
+                        <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
+                            <img src="nicolas.png" alt="Nicolas El Alam" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            <div class="plus-box" style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #1e362d; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;"><span class="plus-icon">+</span></div>
+                        </div>
+                        <h3 style="font-family: 'Aperto', 'Georgia', serif; font-size: 1.7rem; font-weight: 400; margin: 5px 0 8px 0; color: #333;">Nicolas El Alam</h3>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #1e362d; margin: 0; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 500;">Team Member</p>
+                    </a>
+                </div>
 
-                <!-- Member 5: Henrik -->
-                <a href="henrik-hedman.html" style="display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit;" class="team-card fade-up">
-                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
-                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/henrik-hedman-AE0ae8xle0C62prZ.jpg" alt="Henrik Hedman" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <div class="plus-box" style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #1e362d; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;"><span class="plus-icon">+</span></div>
-                    </div>
-                    <h3 style="font-family: 'Aperto', 'Georgia', serif; font-size: 1.7rem; font-weight: 400; margin: 5px 0 8px 0; color: #333;">Henrik Hedman</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #1e362d; margin: 0; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 500;">Director</p>
-                </a>
+                <!-- Section 2: Board of Directors -->
+                <div class="people-section-header fade-up" style="margin-top: 100px;">
+                    <h2 style="font-family: 'Aperto', 'Georgia', serif; font-size: 2.2rem; color: var(--accent); margin-bottom: 40px; font-weight: 400;">Board of Directors</h2>
+                </div>
 
-                <!-- Member 6: Balint -->
-                <a href="balint-botos.html" style="display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit;" class="team-card fade-up">
-                    <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
-                        <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/balint-square-Aq2q5qyN4Oi1NOz7.JPG" alt="Balint Botos, CFA" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-                        <div class="plus-box" style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #1e362d; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;"><span class="plus-icon">+</span></div>
-                    </div>
-                    <h3 style="font-family: 'Aperto', 'Georgia', serif; font-size: 1.7rem; font-weight: 400; margin: 5px 0 8px 0; color: #333;">Balint Botos, CFA</h3>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #1e362d; margin: 0; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 500;">Director</p>
-                </a>
+                <div class="people-grid">
+                    <!-- Member 4: Andrea -->
+                    <a href="andrea-cavalleri.html" style="display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit;" class="team-card fade-up">
+                        <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
+                            <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/andrea_cavalleri_2019_04_email-mp8qPjNnJptrb39l.jpg" alt="Andrea Cavalleri" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            <div class="plus-box" style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #1e362d; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;"><span class="plus-icon">+</span></div>
+                        </div>
+                        <h3 style="font-family: 'Aperto', 'Georgia', serif; font-size: 1.7rem; font-weight: 400; margin: 5px 0 8px 0; color: #333;">Andrea Cavalleri</h3>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #1e362d; margin: 0; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 500;">Chairman</p>
+                    </a>
+
+                    <!-- Member 5: Henrik -->
+                    <a href="henrik-hedman.html" style="display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit;" class="team-card fade-up">
+                        <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
+                            <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/henrik-hedman-AE0ae8xle0C62prZ.jpg" alt="Henrik Hedman" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            <div class="plus-box" style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #1e362d; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;"><span class="plus-icon">+</span></div>
+                        </div>
+                        <h3 style="font-family: 'Aperto', 'Georgia', serif; font-size: 1.7rem; font-weight: 400; margin: 5px 0 8px 0; color: #333;">Henrik Hedman</h3>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #1e362d; margin: 0; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 500;">Director</p>
+                    </a>
+
+                    <!-- Member 6: Balint -->
+                    <a href="balint-botos.html" style="display: flex; flex-direction: column; cursor: pointer; text-decoration: none; color: inherit;" class="team-card fade-up">
+                        <div style="position: relative; width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 15px;">
+                            <img src="https://assets.zyrosite.com/YD0B9Plo46iLw9Z8/balint-square-Aq2q5qyN4Oi1NOz7.JPG" alt="Balint Botos, CFA" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            <div class="plus-box" style="position: absolute; bottom: 0; right: 0; width: 32px; height: 32px; background-color: #1e362d; color: #fff; display: flex; justify-content: center; align-items: center; font-size: 18px;"><span class="plus-icon">+</span></div>
+                        </div>
+                        <h3 style="font-family: 'Aperto', 'Georgia', serif; font-size: 1.7rem; font-weight: 400; margin: 5px 0 8px 0; color: #333;">Balint Botos, CFA</h3>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #1e362d; margin: 0; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 500;">Director</p>
+                    </a>
+                </div>
 
             </div>
         </div>
@@ -1428,6 +1575,9 @@
                 }
                 .people-sidebar {
                     flex: 0 0 25%;
+                }
+                .people-content {
+                    flex: 1;
                 }
                 .plus-icon {
                     display: inline-block;
@@ -1473,26 +1623,135 @@
     </div>
     
     <!-- Modern Green Footer -->
+    <style>
+        /* Modern Green Footer */
+        .alba-footer {
+            background-color: #1a3622;
+            color: #ffffff;
+            padding: 80px 10% 40px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            position: relative;
+            z-index: 20;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            scroll-snap-align: end; 
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            height: 65px;
+            margin-bottom: 25px;
+            object-fit: contain;
+            opacity: 0.9;
+        }
+
+        .footer-mission {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .footer-links-grid {
+            display: flex;
+            gap: 80px;
+        }
+
+        .footer-column h4 {
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: 400;
+            margin-bottom: 25px;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+            font-family: 'Aperto', "Georgia", "Times New Roman", serif;
+        }
+
+        .footer-column a {
+            display: block;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            font-weight: 300;
+        }
+
+        .footer-column a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .legal-links a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+        }
+
+        .legal-links a:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 900px) {
+            .footer-top { flex-direction: column; gap: 40px; margin-bottom: 40px; }
+            .footer-links-grid { flex-direction: column; gap: 40px; }
+            .alba-footer { padding: 60px 8% 30px; }
+            .footer-bottom { flex-direction: column; gap: 20px; align-items: flex-start; }
+        }
+    </style>
+
     <footer class="alba-footer">
         <div class="footer-container">
             <div class="footer-top">
                 <div class="footer-brand">
                     <img src="logos/light.png" alt="Alba Investment Partners" class="footer-logo">
-                    <p class="footer-mission">Alba Investment Partners SA is authorized and regulated by the FINMA as a Manager of collective assets.</p>
                 </div>
-
+                
                 <div class="footer-links-grid">
                     <div class="footer-column">
                         <h4>Firm</h4>
                         <a href="index.html">Home</a>
                         <a href="about.html">About Us</a>
-                        <a href="perspectives.html">Perspectives</a>
+                        <a href="insights.html">Insights</a>
                     </div>
                     <div class="footer-column">
                         <h4>Strategies</h4>
                         <a href="investment-approach.html">Investment Approach</a>
-            <a href="credit-opportunities.html">Credit Opportunities</a>
-                        <a href="our-people.html" style="color: var(--gold)">Our People</a>
+                        <a href="our-people.html">Our People</a>
                     </div>
                     <div class="footer-column">
                         <h4>Connect</h4>
@@ -1501,17 +1760,18 @@
                     </div>
                 </div>
             </div>
-
+            
             <div class="footer-bottom">
                 <p class="copyright">&copy; 2026 Alba Investment Partners. All rights reserved.</p>
                 <div class="legal-links">
                     <a href="privacy-policy.html">Privacy Policy</a>
                     <a href="terms-of-use.html">Terms of Use</a>
-                    
                 </div>
             </div>
         </div>
     </footer>
+
+
 
     <script>
         // Background canvas sequencers have been removed to reduce payload overhead on the About page
@@ -1718,7 +1978,7 @@
         const arcSpokes = document.querySelectorAll('.arc-spoke');
 
         const arcData = [
-            { title: "People", desc: "Our diverse backgrounds and skillsets bring unique perspectives, fostering innovative solutions and creative problem-solving while sharing a commitment to hard work and excellence." },
+            { title: "People", desc: "Our diverse backgrounds and skillsets bring unique insights, fostering innovative solutions and creative problem-solving while sharing a commitment to hard work and excellence." },
             { title: "Credentials", desc: "A proven history of consistently delivering superior risk-adjusted returns across fixed income and credit asset classes, demonstrating resilience through all economic environments." },
             { title: "Deep Research", desc: "Combining data, technology and deep-rooted experience in financial markets, we uncover opportunities that others often overlook." },
             { title: "Agility", desc: "With lean teams and niche, size-constrained strategies, we foster agility and adaptability — key attributes for delivering superior returns." }
@@ -1858,8 +2118,13 @@
 
                 let threshold = 80;
                 const hero = document.getElementById('hero-section');
-                if (hero) {
-                    threshold = hero.offsetHeight - 80; // switch navbar when scrolling past hero
+                const teamHero = document.getElementById('team-hero-section');
+                
+                if (teamHero) {
+                    // Stay transparent until roughly after the second team image transition
+                    threshold = teamHero.offsetHeight * 0.8;
+                } else if (hero) {
+                    threshold = hero.offsetHeight - 80;
                 }
 
                 if (window.scrollY >= threshold) {
@@ -2006,6 +2271,62 @@
             });
         }
     });
+    </script>
+
+    <!-- Team Hero Animation Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const teamHeroSection = document.getElementById('team-hero-section');
+            const teamInitial = document.getElementById('team-hero-initial');
+            const teamSecondary = document.getElementById('team-hero-secondary');
+            const teamBgs = [
+                document.querySelector('.team-bg-1'),
+                document.querySelector('.team-bg-2')
+            ];
+
+            if (teamHeroSection) {
+                window.addEventListener('scroll', () => {
+                    const heroRect = teamHeroSection.getBoundingClientRect();
+                    const scrollDistance = teamHeroSection.offsetHeight - window.innerHeight;
+                    let progress = -heroRect.top / Math.max(1, scrollDistance);
+                    progress = Math.max(0, Math.min(1, progress));
+
+                    // Interpolation helper
+                    const interpolate = (p, start, end, startVal, endVal) => {
+                        if (p <= start) return startVal;
+                        if (p >= end) return endVal;
+                        return startVal + ((p - start) / (end - start)) * (endVal - startVal);
+                    };
+
+                    // Initial Text Fades out and moves up from 0 to 0.4
+                    const initialOp = interpolate(progress, 0, 0.4, 1, 0);
+                    const initialY = interpolate(progress, 0, 0.4, 0, -30); // pixels from bottom-left
+                    
+                    if (teamInitial) {
+                        teamInitial.style.opacity = initialOp;
+                        teamInitial.style.transform = `translateY(${initialY}px)`;
+                    }
+
+                    // Secondary text fades in and moves up from 0.4 to 0.8
+                    const secondaryOp = interpolate(progress, 0.4, 0.8, 0, 1);
+                    const secondaryY = interpolate(progress, 0.4, 0.8, 40, 0); // pixels
+                    
+                    if (teamSecondary) {
+                        teamSecondary.style.opacity = secondaryOp;
+                        teamSecondary.style.transform = `translateY(${secondaryY}px)`;
+                    }
+
+                    // Crossfade backgrounds at progress 0.45
+                    if (progress > 0.45) {
+                        if (teamBgs[0]) teamBgs[0].classList.remove('active');
+                        if (teamBgs[1]) teamBgs[1].classList.add('active');
+                    } else {
+                        if (teamBgs[1]) teamBgs[1].classList.remove('active');
+                        if (teamBgs[0]) teamBgs[0].classList.add('active');
+                    }
+                });
+            }
+        });
     </script>
 
 </body>
