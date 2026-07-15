@@ -12,13 +12,10 @@
     <style>
         .watercolor-reveal {
             --p: 0;
-            /* A soft gradient sweep from left to right simulating a brush/drawing reveal */
-            -webkit-mask-image: linear-gradient(to right, black calc(var(--p) * 120% - 20%), transparent calc(var(--p) * 120%));
-            mask-image: linear-gradient(to right, black calc(var(--p) * 120% - 20%), transparent calc(var(--p) * 120%));
-            
-            /* Fades from a sepia sketch into a full-color photo */
-            filter: grayscale(calc(100% - (var(--p) * 100%))) sepia(calc(30% - (var(--p) * 30%)));
-            -webkit-filter: grayscale(calc(100% - (var(--p) * 100%))) sepia(calc(30% - (var(--p) * 30%)));
+            /* A sharp left-to-right wipe simulating the image being drawn on */
+            clip-path: polygon(0 0, calc(var(--p) * 100%) 0, calc(var(--p) * 100%) 100%, 0 100%);
+            -webkit-clip-path: polygon(0 0, calc(var(--p) * 100%) 0, calc(var(--p) * 100%) 100%, 0 100%);
+            transition: none; /* Make sure it strictly follows the scroll without lag */
         }
     </style>
 <style>
@@ -935,9 +932,118 @@
     </style>
     <!-- Preload Hero Video for optimal performance -->
     <link rel="preload" as="video" href="compressed.mp4" type="video/mp4">
+    <style>
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background-color: var(--accent);
+            z-index: 999999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 1.2s cubic-bezier(0.7, 0, 0.3, 1);
+        }
+        #preloader.slide-up {
+            transform: translateY(-100%);
+        }
+        .preloader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            width: 80%;
+            max-width: 450px;
+        }
+        .preloader-logo {
+            height: 60px; 
+            width: auto;
+            opacity: 0;
+            animation: preloaderFadeIn 4.0s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+        .preloader-divider {
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.15);
+            opacity: 0;
+            position: relative;
+            overflow: hidden;
+            animation: preloaderFadeIn 4.0s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+        .preloader-divider::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            animation: preloaderLoadBar 4.0s cubic-bezier(0.4, 0.0, 0.2, 1) forwards;
+        }
+        .preloader-text {
+            color: #ffffff; /* User requested white font */
+            font-family: 'Aperto', "Georgia", serif;
+            font-size: 1.15rem;
+            letter-spacing: 0.15em;
+            text-align: center;
+            position: relative;
+            height: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .preloader-line {
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            white-space: nowrap;
+        }
+        .preloader-line:nth-child(1) {
+            animation: textOneSequence 4.0s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+        .preloader-line:nth-child(2) {
+            animation: textTwoSequence 4.0s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+        @keyframes textOneSequence {
+            0% { opacity: 0; transform: translateY(10px); }
+            10% { opacity: 1; transform: translateY(0); }
+            40% { opacity: 1; transform: translateY(0); }
+            50% { opacity: 0; transform: translateY(-10px); }
+            100% { opacity: 0; transform: translateY(-10px); }
+        }
+        @keyframes textTwoSequence {
+            0% { opacity: 0; transform: translateY(10px); }
+            45% { opacity: 0; transform: translateY(10px); }
+            55% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-10px); }
+        }
+        @keyframes preloaderFadeIn {
+            0% { opacity: 0; }
+            15% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        @keyframes preloaderLoadBar {
+            0% { width: 0; }
+            10% { width: 0; }
+            80% { width: 100%; }
+            100% { width: 100%; }
+        }
+    </style>
 </head>
 <body>
-
+    <div id="preloader" style="background-color: var(--accent);"> <!-- Alba Green -->
+        <div class="preloader-content">
+            <img src="logos/light.png" alt="Alba Investment Partners" class="preloader-logo">
+            <div class="preloader-divider"></div>
+            <div class="preloader-text">
+                <span class="preloader-line">Investing With Insight.</span>
+                <span class="preloader-line">Partnering With Integrity.</span>
+            </div>
+        </div>
+    </div>
         <nav class="navbar" id="navbar">
         <a href="index.html" class="logo" style="text-decoration: none;">
             <img src="logos/light.png" id="navbar-logo" alt="Alba Investment Partners">
@@ -977,7 +1083,7 @@
                             <div class="hero-stats">
                                 <div class="hero-stat">
                                     <div class="stat-details">
-                                        <span class="stat-num" data-target="30">0</span><span class="stat-suffix">+</span>
+                                        <span style="white-space: nowrap;"><span class="stat-num" data-target="30">0</span><span class="stat-suffix">+</span></span>
                                         <span class="stat-label">INVESTMENT EXPERIENCE</span>
                                     </div>
                                 </div>
@@ -1023,15 +1129,15 @@
     </section>
 
     <!-- Scrollytelling Section 1 (Image Left) -->
-    <div class="scrollytelling-wrapper scrolly-reverse" id="scroll-section-1">
+    <div class="scrollytelling-wrapper scrolly-reverse" id="scroll-section-1" style="height: 350vh;">
         <div class="canvas-column">
             <div class="canvas-sticky" style="display: flex; align-items: center; justify-content: center; background-color: #ffffff;">
-                <img src="jet deau.jpeg" class="watercolor-reveal" alt="Jet d\'Eau Geneva" style="width: 100%; height: auto; max-height: 90vh; object-fit: contain; border-radius: 4px; transition-delay: 0.2s;">
+                <canvas id="jet-deau-canvas" width="1920" height="1080" style="width: 100%; height: auto; max-height: 90vh; object-fit: contain; border-radius: 4px; transform: scale(1.15); transform-origin: center;"></canvas>
             </div>
         </div>
         
         <div class="text-column">
-            <div class="step" style="min-height: 150vh; justify-content: flex-start; padding-top: 45vh;">
+            <div class="step" style="position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 100px;">
                 <h2>Our Approach</h2>
                 <p class="fade-up" style="font-size: 2.2rem; line-height: 1.3; max-width: 850px; text-align: left; font-family: 'Aperto', serif; margin: 30px 0; font-weight: 400; letter-spacing: -0.5px; color: #111;">
                     Alba's investment philosophy combines a research-driven, bottom-up approach to credit selection with a top-down macro framework to manage risk.
@@ -1046,9 +1152,9 @@
     </div>
 
     <!-- Scrollytelling Section 2 (Image Right) -->
-    <div class="scrollytelling-wrapper" id="scroll-section-2" style="background-color: #ffffff;">
+    <div class="scrollytelling-wrapper" id="scroll-section-2" style="background-color: #ffffff; height: 350vh;">
         <div class="text-column">
-            <div class="step" style="min-height: 150vh; justify-content: flex-start; padding-top: 45vh;">
+            <div class="step" style="position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 100px;">
                 <h2>Our Flagship Strategy</h2>
                 <h3 style="font-family: 'Inter', sans-serif; font-size: 1.3rem; color: var(--accent); margin-bottom: 15px; font-weight: 500; max-width: 700px; text-align: left; line-height: 1.5;">Alba Credit Opportunities — A differentiated approach to global credit investing.</h3>
                 <p style="font-size: 1.25rem; line-height: 1.6; max-width: 700px; text-align: left;">Alba Credit Opportunities (ACO) is Alba Investment Partners’ flagship fund, designed to deliver superior risk-adjusted returns through an opportunistic and differentiated approach to liquid credit investing. Positioned between traditional long-only credit and opportunistic hedge fund strategies, ACO combines flexibility, selectivity, and active portfolio management to capture opportunities across market cycles.</p>
@@ -1061,7 +1167,7 @@
 
         <div class="canvas-column">
             <div class="canvas-sticky" style="display: flex; align-items: center; justify-content: center; background-color: #ffffff;">
-                <img src="cathedral.jpeg" class="watercolor-reveal" alt="Cathedral" style="width: 100%; height: auto; max-height: 85vh; object-fit: contain; border-radius: 4px; padding: 0 5%; transition-delay: 0.2s;">
+                <canvas id="cathedral-canvas" width="1920" height="1080" style="width: 100%; height: auto; max-height: 85vh; object-fit: contain; border-radius: 4px; padding: 0 5%; transform: scale(1.15); transform-origin: center;"></canvas>
             </div>
         </div>
     </div>
@@ -1565,11 +1671,128 @@
         }
     </style>
 
+    
+    <style>
+        /* Modern Elegant Footer CSS */
+        .alba-footer {
+            background-color: #112215;
+            color: #ffffff;
+            padding: 100px 10% 40px;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            z-index: 20;
+            border-top: 3px solid var(--gold);
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+            margin-bottom: 80px;
+            align-items: flex-start;
+        }
+
+        .footer-brand {
+            max-width: 350px;
+        }
+
+        .footer-logo {
+            height: 70px;
+            margin-bottom: 30px;
+            object-fit: contain;
+            opacity: 1;
+        }
+
+        .footer-mission {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .footer-links-grid {
+            display: flex;
+            gap: 100px;
+        }
+
+        .footer-column h4 {
+            color: var(--gold);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .footer-column a {
+            display: block;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            font-weight: 300;
+        }
+
+        .footer-column a:hover {
+            color: #ffffff;
+            transform: translateX(4px);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .legal-links a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .legal-links a:hover {
+            color: var(--gold);
+        }
+
+        @media (max-width: 900px) {
+            .footer-top { flex-direction: column; gap: 50px; margin-bottom: 50px; }
+            .footer-links-grid { flex-direction: column; gap: 40px; }
+            .alba-footer { padding: 80px 8% 40px; }
+            .footer-bottom { flex-direction: column; gap: 20px; align-items: flex-start; }
+            .legal-links { flex-direction: column; gap: 15px; }
+        }
+    </style>
+
     <footer class="alba-footer">
         <div class="footer-container">
             <div class="footer-top">
                 <div class="footer-brand">
                     <img src="logos/light.png" alt="Alba Investment Partners" class="footer-logo">
+                    <p class="footer-mission">Alba is an independent investment management boutique dedicated to providing superior risk-adjusted returns in fixed income and credit.</p>
                 </div>
                 
                 <div class="footer-links-grid">
@@ -1577,16 +1800,19 @@
                         <h4>Firm</h4>
                         <a href="index.html">Home</a>
                         <a href="about.html">About Us</a>
-                        <a href="insights.html">Insights</a>
+                        <a href="our-people.html">Our People</a>
                     </div>
                     <div class="footer-column">
                         <h4>Strategies</h4>
                         <a href="investment-approach.html">Investment Approach</a>
-                        <a href="our-people.html">Our People</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Insights</h4>
+                        <a href="insights.html">News &amp; Insights</a>
                     </div>
                     <div class="footer-column">
                         <h4>Connect</h4>
-                        <a href="contact.html">Contact</a>
+                        <a href="contact.html">Contact Us</a>
                         <a href="#">LinkedIn</a>
                     </div>
                 </div>
@@ -1601,6 +1827,7 @@
             </div>
         </div>
     </footer>
+
 
 
 
@@ -1784,8 +2011,10 @@
                 if(!sec.wrapper || !sec.img) return;
                 const rect = sec.wrapper.getBoundingClientRect();
                 const windowHeight = window.innerHeight;
-                const startReveal = windowHeight * 0.85;
-                const endReveal = windowHeight * 0.15;
+                
+                // Start revealing just as it reaches the top, and finish over a long scroll
+                const startReveal = windowHeight * 0.25;
+                const endReveal = -windowHeight * 0.75;
                 
                 let p = 0;
                 if (rect.top <= startReveal) {
@@ -2176,5 +2405,78 @@
     });
     </script>
 
+    <script>
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                if(preloader) {
+                    preloader.classList.add('slide-up');
+                    setTimeout(() => preloader.remove(), 1200); // Remove from DOM after slide completes
+                }
+            }, 4000);
+        });
+    </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const frameCount = 120;
+        const jetDeauFrames = [];
+        const cathedralFrames = [];
+        
+        // Preload frames
+        for (let i = 1; i <= frameCount; i++) {
+            const frameNumber = i.toString().padStart(3, '0');
+            
+            const imgJet = new Image();
+            imgJet.src = `jet deau/ezgif-frame-${frameNumber}.jpg`;
+            jetDeauFrames.push(imgJet);
+            
+            const imgCath = new Image();
+            imgCath.src = `cathedral/ezgif-frame-${frameNumber}.jpg`;
+            cathedralFrames.push(imgCath);
+        }
+
+        const canvasJet = document.getElementById('jet-deau-canvas');
+        const ctxJet = canvasJet ? canvasJet.getContext('2d') : null;
+        
+        const canvasCath = document.getElementById('cathedral-canvas');
+        const ctxCath = canvasCath ? canvasCath.getContext('2d') : null;
+
+        if (ctxJet && jetDeauFrames[0]) {
+            jetDeauFrames[0].onload = () => ctxJet.drawImage(jetDeauFrames[0], 0, 0, 1920, 1080);
+        }
+        if (ctxCath && cathedralFrames[0]) {
+            cathedralFrames[0].onload = () => ctxCath.drawImage(cathedralFrames[0], 0, 0, 1920, 1080);
+        }
+
+        const sectionJet = document.getElementById('scroll-section-1');
+        const sectionCath = document.getElementById('scroll-section-2');
+
+        function updateCanvasOnScroll() {
+            if (sectionJet && ctxJet) {
+                const rectJet = sectionJet.getBoundingClientRect();
+                let progressJet = -rectJet.top / (rectJet.height - window.innerHeight);
+                progressJet = Math.max(0, Math.min(1, progressJet));
+                const frameIndexJet = Math.floor(progressJet * (frameCount - 1));
+                if (jetDeauFrames[frameIndexJet] && jetDeauFrames[frameIndexJet].complete) {
+                    ctxJet.drawImage(jetDeauFrames[frameIndexJet], 0, 0, 1920, 1080);
+                }
+            }
+
+            if (sectionCath && ctxCath) {
+                const rectCath = sectionCath.getBoundingClientRect();
+                let progressCath = -rectCath.top / (rectCath.height - window.innerHeight);
+                progressCath = Math.max(0, Math.min(1, progressCath));
+                const frameIndexCath = Math.floor(progressCath * (frameCount - 1));
+                if (cathedralFrames[frameIndexCath] && cathedralFrames[frameIndexCath].complete) {
+                    ctxCath.drawImage(cathedralFrames[frameIndexCath], 0, 0, 1920, 1080);
+                }
+            }
+
+            requestAnimationFrame(updateCanvasOnScroll);
+        }
+        
+        requestAnimationFrame(updateCanvasOnScroll);
+    });
+    </script>
 </body>
 </html>
