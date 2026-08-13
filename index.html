@@ -959,7 +959,7 @@
             height: 60px; 
             width: auto;
             opacity: 0;
-            animation: preloaderFadeIn 4.0s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            animation: preloaderFadeIn 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
         }
         .preloader-divider {
             width: 100%;
@@ -968,7 +968,7 @@
             opacity: 0;
             position: relative;
             overflow: hidden;
-            animation: preloaderFadeIn 4.0s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            animation: preloaderFadeIn 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
         }
         .preloader-divider::after {
             content: '';
@@ -1000,10 +1000,10 @@
             white-space: nowrap;
         }
         .preloader-line:nth-child(1) {
-            animation: textOneSequence 4.0s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            animation: textOneSequence 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
         }
         .preloader-line:nth-child(2) {
-            animation: textTwoSequence 4.0s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            animation: textTwoSequence 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
         }
         @keyframes textOneSequence {
             0% { opacity: 0; transform: translateY(10px); }
@@ -2409,7 +2409,7 @@
         const preloaderStartTime = Date.now();
         document.addEventListener('DOMContentLoaded', () => {
             const timePassed = Date.now() - preloaderStartTime;
-            const remainingTime = Math.max(0, 4000 - timePassed);
+            const remainingTime = Math.max(0, 2500 - timePassed);
             setTimeout(() => {
                 const preloader = document.getElementById('preloader');
                 if(preloader) {
