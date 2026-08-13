@@ -1061,7 +1061,7 @@
     <div class="hero-container" id="hero-section">
         <div class="hero-sticky">
             <div class="hero-bg">
-                <video autoplay loop muted playsinline preload="auto">
+                <video autoplay loop muted playsinline poster="alba-angle-image.jpeg">
                     <source src="compressed.mp4" type="video/mp4">
                 </video>
             </div>
@@ -2406,14 +2406,17 @@
     </script>
 
     <script>
-        window.addEventListener('load', () => {
+        const preloaderStartTime = Date.now();
+        document.addEventListener('DOMContentLoaded', () => {
+            const timePassed = Date.now() - preloaderStartTime;
+            const remainingTime = Math.max(0, 4000 - timePassed);
             setTimeout(() => {
                 const preloader = document.getElementById('preloader');
                 if(preloader) {
                     preloader.classList.add('slide-up');
                     setTimeout(() => preloader.remove(), 1200); // Remove from DOM after slide completes
                 }
-            }, 4000);
+            }, remainingTime);
         });
     </script>
     <script>
