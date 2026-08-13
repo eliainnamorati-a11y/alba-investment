@@ -2425,18 +2425,14 @@
         const jetDeauFrames = [];
         const cathedralFrames = [];
         
-        // Preload frames
-        for (let i = 1; i <= frameCount; i++) {
-            const frameNumber = i.toString().padStart(3, '0');
-            
-            const imgJet = new Image();
-            imgJet.src = `jet deau/ezgif-frame-${frameNumber}.jpg`;
-            jetDeauFrames.push(imgJet);
-            
-            const imgCath = new Image();
-            imgCath.src = `cathedral/ezgif-frame-${frameNumber}.jpg`;
-            cathedralFrames.push(imgCath);
-        }
+        // Preload first frames immediately
+        const imgJet0 = new Image();
+        imgJet0.src = `jet deau/ezgif-frame-001.jpg`;
+        jetDeauFrames.push(imgJet0);
+        
+        const imgCath0 = new Image();
+        imgCath0.src = `cathedral/ezgif-frame-001.jpg`;
+        cathedralFrames.push(imgCath0);
 
         const canvasJet = document.getElementById('jet-deau-canvas');
         const ctxJet = canvasJet ? canvasJet.getContext('2d') : null;
@@ -2444,12 +2440,28 @@
         const canvasCath = document.getElementById('cathedral-canvas');
         const ctxCath = canvasCath ? canvasCath.getContext('2d') : null;
 
-        if (ctxJet && jetDeauFrames[0]) {
-            jetDeauFrames[0].onload = () => ctxJet.drawImage(jetDeauFrames[0], 0, 0, 1920, 1080);
+        if (ctxJet) {
+            imgJet0.onload = () => ctxJet.drawImage(imgJet0, 0, 0, 1920, 1080);
         }
-        if (ctxCath && cathedralFrames[0]) {
-            cathedralFrames[0].onload = () => ctxCath.drawImage(cathedralFrames[0], 0, 0, 1920, 1080);
+        if (ctxCath) {
+            imgCath0.onload = () => ctxCath.drawImage(imgCath0, 0, 0, 1920, 1080);
         }
+
+        // Defer loading the rest of the 238 frames until the page is fully loaded
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                for (let i = 2; i <= frameCount; i++) {
+                    const frameNumber = i.toString().padStart(3, '0');
+                    const imgJ = new Image();
+                    imgJ.src = `jet deau/ezgif-frame-${frameNumber}.jpg`;
+                    jetDeauFrames.push(imgJ);
+                    
+                    const imgC = new Image();
+                    imgC.src = `cathedral/ezgif-frame-${frameNumber}.jpg`;
+                    cathedralFrames.push(imgC);
+                }
+            }, 1000);
+        });
 
         const sectionJet = document.getElementById('scroll-section-1');
         const sectionCath = document.getElementById('scroll-section-2');
